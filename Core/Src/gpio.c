@@ -51,20 +51,42 @@ void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(BOARD_LED_GPIO_Port, BOARD_LED_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(LED_SW_START_GPIO_Port, LED_SW_START_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : BOARD_BUTTON_Pin */
-  GPIO_InitStruct.Pin = BOARD_BUTTON_Pin;
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(LED_BOARD_GPIO_Port, LED_BOARD_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, MOSFET_CONTACTOR_GATE_Pin|MOSFET_PRECHARGE_GATE_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pins : BTN_BOARD_Pin SW_START_Pin SW_DIRECTION_Pin SW_BRAKE_Pin
+                           SW_PUSH_EMERGENCY_Pin */
+  GPIO_InitStruct.Pin = BTN_BOARD_Pin|SW_START_Pin|SW_DIRECTION_Pin|SW_BRAKE_Pin
+                          |SW_PUSH_EMERGENCY_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(BOARD_BUTTON_GPIO_Port, &GPIO_InitStruct);
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : BOARD_LED_Pin */
-  GPIO_InitStruct.Pin = BOARD_LED_Pin;
+  /*Configure GPIO pin : LED_SW_START_Pin */
+  GPIO_InitStruct.Pin = LED_SW_START_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(BOARD_LED_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(LED_SW_START_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : LED_BOARD_Pin */
+  GPIO_InitStruct.Pin = LED_BOARD_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(LED_BOARD_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : MOSFET_CONTACTOR_GATE_Pin MOSFET_PRECHARGE_GATE_Pin */
+  GPIO_InitStruct.Pin = MOSFET_CONTACTOR_GATE_Pin|MOSFET_PRECHARGE_GATE_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 }
 

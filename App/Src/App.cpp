@@ -14,10 +14,10 @@ extern "C" void App_Run(void) {
   App::Logic::VcuInputs inputs{};
 
   inputs.pilot.boardButtonPressed =
-      HAL_GPIO_ReadPin(BOARD_BUTTON_GPIO_Port, BOARD_BUTTON_Pin);
+      HAL_GPIO_ReadPin(BTN_BOARD_GPIO_Port, BTN_BOARD_Pin);
 
   vcuController.run(inputs, outputs);
 
-  HAL_GPIO_WritePin(BOARD_LED_GPIO_Port, BOARD_LED_Pin,
+  HAL_GPIO_WritePin(LED_BOARD_GPIO_Port, LED_BOARD_Pin,
                     outputs.lights.boardLed ? GPIO_PIN_SET : GPIO_PIN_RESET);
 }

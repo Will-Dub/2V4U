@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "adc.h"
 #include "fdcan.h"
 #include "gpio.h"
 
@@ -90,6 +91,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_FDCAN1_Init();
+  MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
   App_Init();
   /* USER CODE END 2 */

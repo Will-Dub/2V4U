@@ -60,8 +60,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define BOARD_BUTTON_Pin GPIO_PIN_13
-#define BOARD_BUTTON_GPIO_Port GPIOC
+#define BTN_BOARD_Pin GPIO_PIN_13
+#define BTN_BOARD_GPIO_Port GPIOC
 #define RCC_OSC32_OUT_Pin GPIO_PIN_14
 #define RCC_OSC32_OUT_GPIO_Port GPIOC
 #define RCC_OSC32_OUTC15_Pin GPIO_PIN_15
@@ -70,12 +70,28 @@ void Error_Handler(void);
 #define RCC_OSC_IN_GPIO_Port GPIOF
 #define RCC_OSC_OUT_Pin GPIO_PIN_1
 #define RCC_OSC_OUT_GPIO_Port GPIOF
-#define BOARD_LED_Pin GPIO_PIN_5
-#define BOARD_LED_GPIO_Port GPIOA
-#define VESC_CAN_RX_Pin GPIO_PIN_11
-#define VESC_CAN_RX_GPIO_Port GPIOA
-#define VESC_CAN_TX_Pin GPIO_PIN_12
-#define VESC_CAN_TX_GPIO_Port GPIOA
+#define LED_SW_START_Pin GPIO_PIN_0
+#define LED_SW_START_GPIO_Port GPIOC
+#define SW_START_Pin GPIO_PIN_1
+#define SW_START_GPIO_Port GPIOC
+#define SW_DIRECTION_Pin GPIO_PIN_2
+#define SW_DIRECTION_GPIO_Port GPIOC
+#define SW_BRAKE_Pin GPIO_PIN_3
+#define SW_BRAKE_GPIO_Port GPIOC
+#define THROTTLE_ADC_Pin GPIO_PIN_0
+#define THROTTLE_ADC_GPIO_Port GPIOA
+#define LED_BOARD_Pin GPIO_PIN_5
+#define LED_BOARD_GPIO_Port GPIOA
+#define SW_PUSH_EMERGENCY_Pin GPIO_PIN_4
+#define SW_PUSH_EMERGENCY_GPIO_Port GPIOC
+#define MOSFET_CONTACTOR_GATE_Pin GPIO_PIN_0
+#define MOSFET_CONTACTOR_GATE_GPIO_Port GPIOB
+#define MOSFET_PRECHARGE_GATE_Pin GPIO_PIN_1
+#define MOSFET_PRECHARGE_GATE_GPIO_Port GPIOB
+#define CAN_RX_Pin GPIO_PIN_11
+#define CAN_RX_GPIO_Port GPIOA
+#define CAN_TX_Pin GPIO_PIN_12
+#define CAN_TX_GPIO_Port GPIOA
 #define T_SWDIO_Pin GPIO_PIN_13
 #define T_SWDIO_GPIO_Port GPIOA
 #define T_SWCLK_Pin GPIO_PIN_14
