@@ -3,14 +3,15 @@
 
 namespace App::Logic {
 
-class VcuState {
-public:
-  virtual ~VcuState() {}
+class VcuState
+{
+  public:
+    virtual ~VcuState() {}
 
-  virtual void onEnter() {}
-  virtual void onExit() {}
+    virtual void onEnter() {}
+    virtual void onExit() {}
 
-  virtual VcuStateId update(const VcuInputs &inputs, VcuOutputs &outputs) = 0;
+    virtual VcuStateId update(const VcuInputs& inputs, VcuOutputs& outputs) = 0;
 };
 
 } // namespace App::Logic

@@ -59,13 +59,11 @@ void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, MOSFET_CONTACTOR_GATE_Pin|MOSFET_PRECHARGE_GATE_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : BTN_BOARD_Pin SW_START_Pin SW_DIRECTION_Pin SW_BRAKE_Pin
-                           SW_PUSH_EMERGENCY_Pin */
-  GPIO_InitStruct.Pin = BTN_BOARD_Pin|SW_START_Pin|SW_DIRECTION_Pin|SW_BRAKE_Pin
-                          |SW_PUSH_EMERGENCY_Pin;
+  /*Configure GPIO pin : BTN_BOARD_Pin */
+  GPIO_InitStruct.Pin = BTN_BOARD_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(BTN_BOARD_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : LED_SW_START_Pin */
   GPIO_InitStruct.Pin = LED_SW_START_Pin;
@@ -73,6 +71,12 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LED_SW_START_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : SW_START_Pin SW_DIRECTION_Pin SW_BRAKE_Pin SW_PUSH_EMERGENCY_Pin */
+  GPIO_InitStruct.Pin = SW_START_Pin|SW_DIRECTION_Pin|SW_BRAKE_Pin|SW_PUSH_EMERGENCY_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pin : LED_BOARD_Pin */
   GPIO_InitStruct.Pin = LED_BOARD_Pin;

@@ -4,7 +4,9 @@ using namespace App::Logic;
 
 void VcuStateInit::onEnter() {}
 
-VcuStateId VcuStateInit::update(const VcuInputs &inputs, VcuOutputs &outputs) {
-  outputs.lights.boardLed = inputs.pilot.boardButtonPressed;
-  return VcuStateId::SAME;
+VcuStateId VcuStateInit::update(const VcuInputs& inputs, VcuOutputs& outputs)
+{
+    outputs.lights.boardLed = inputs.pilot.boardButtonPressed;
+    outputs.power.contactor = inputs.pilot.boardButtonPressed;
+    return VcuStateId::SAME;
 }

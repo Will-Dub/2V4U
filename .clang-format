@@ -1,0 +1,68 @@
+---
+# Base style to fall back on if an option is missing
+BasedOnStyle: LLVM
+
+# Language target
+Language: Cpp
+
+# Universal standards
+Standard: Latest
+
+# Indentation and line length
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 100
+
+# Namespace and switch formatting
+NamespaceIndentation: None
+IndentCaseLabels: true
+
+# Pointer and reference alignment (West Coast: int* ptr;)
+PointerAlignment: Left
+DerivePointerAlignment: false
+
+# Code cleanliness and modern sorting
+SortIncludes: true
+IncludeBlocks: Regroup
+
+# Spacing preferences
+SpaceBeforeParens: ControlStatements
+SpaceBeforeAssignmentOperators: true
+SpaceAfterCStyleCast: false
+SpacesInAngles: false
+
+# Fine-grained brace wrapping (allows clean visual scoping)
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterClass: true
+  AfterControlStatement: Never
+  AfterEnum: true
+  AfterFunction: true
+  AfterNamespace: false
+  AfterObjCDeclaration: false
+  AfterStruct: true
+  AfterUnion: true
+  BeforeCatch: false
+  BeforeElse: false
+  IndentBraces: false
+  SplitEmptyFunction: true
+  SplitEmptyRecord: false
+  SplitEmptyNamespace: false
+
+# Prevent cramming short structures onto a single line
+AllowShortBlocksOnASingleLine: Never
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+
+# Penalty system (strongly discourages breaking lines mid-expression)
+PenaltyBreakAssignment: 100
+PenaltyBreakBeforeFirstCallParameter: 50
+PenaltyBreakComment: 30
+PenaltyBreakFirstLessLess: 0
+PenaltyBreakString: 1000
+PenaltyExcessCharacter: 1000
+PenaltyReturnTypeOnItsOwnLine: 1000
+...

@@ -4,20 +4,20 @@
 #include "VcuStateInit.hpp"
 #include "VcuStatePark.hpp"
 
-
 namespace App::Logic {
-class VcuController {
-private:
-  VcuStateInit m_stateInit;
-  VcuStatePark m_statePark;
-  VcuStateDrive m_stateDrive;
-  VcuStateFault m_stateFault;
-  VcuState *m_currentState;
+class VcuController
+{
+  private:
+    VcuStateInit m_stateInit;
+    VcuStatePark m_statePark;
+    VcuStateDrive m_stateDrive;
+    VcuStateFault m_stateFault;
+    VcuState* m_currentState;
 
-  VcuState *getStateInstance(VcuStateId id);
+    VcuState* getStateInstance(VcuStateId id);
 
-public:
-  VcuController();
-  void run(const VcuInputs &inputs, VcuOutputs &outputs);
+  public:
+    VcuController();
+    void run(const VcuInputs& inputs, VcuOutputs& outputs);
 };
 } // namespace App::Logic
