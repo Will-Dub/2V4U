@@ -15,19 +15,27 @@ extern "C" void App_Init(void)
 
 extern "C" void App_Run(void)
 {
+    // Reading
     App::Logic::VcuOutputs outputs{};
     App::Logic::VcuInputs inputs{};
 
-    inputs.pilot.boardButtonPressed = HAL_GPIO_ReadPin(BTN_BOARD_GPIO_Port, BTN_BOARD_Pin);
-    inputs.pilot.emergencyStopPressed = HAL_GPIO_ReadPin(SW_PUSH_EMERGENCY_GPIO_Port,
-                                                         SW_PUSH_EMERGENCY_Pin);
+    inputs.pilot.isBtnBoardPressed = HAL_GPIO_ReadPin(BTN_BOARD_GPIO_Port, BTN_BOARD_Pin);
+    inputs.pilot.isStartPressed = HAL_GPIO_ReadPin(SW_START_GPIO_Port, SW_START_Pin);
+    inputs.pilot.isEStopPressed = HAL_GPIO_ReadPin(SW_PUSH_EMERGENCY_GPIO_Port,
+                                                   SW_PUSH_EMERGENCY_Pin);
+    inputs.pilot.isBrakePressed = HAL_GPIO_ReadPin(SW_BRAKE_GPIO_Port, SW_BRAKE_Pin);
+    inputs.pilot.isForwardDirection = HAL_GPIO_ReadPin(SW_DIRECTION_GPIO_Port, SW_DIRECTION_Pin);
 
+    // Business logic
     vcuController.run(inputs, outputs);
 
+    // Writing
     HAL_GPIO_WritePin(LED_BOARD_GPIO_Port, LED_BOARD_Pin,
                       outputs.lights.boardLed ? GPIO_PIN_SET : GPIO_PIN_RESET);
     HAL_GPIO_WritePin(MOSFET_CONTACTOR_GATE_GPIO_Port, MOSFET_CONTACTOR_GATE_Pin,
                       outputs.power.contactor ? GPIO_PIN_SET : GPIO_PIN_RESET);
     HAL_GPIO_WritePin(MOSFET_PRECHARGE_GATE_GPIO_Port, MOSFET_PRECHARGE_GATE_Pin,
                       outputs.power.prechargeRelay ? GPIO_PIN_SET : GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(LED_SW_START_GPIO_Port, LED_SW_START_Pin,
+                      outputs.lights.startLed ? GPIO_PIN_SET : GPIO_PIN_RESET);
 }

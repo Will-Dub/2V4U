@@ -16,11 +16,12 @@ struct VcuInputs
 {
     struct
     {
-        bool boardButtonPressed;
-        bool startButtonPressed;
-        bool emergencyStopPressed;
-        bool brakePressed;
-        uint16_t pedalRawAdc;
+        bool isBtnBoardPressed;
+        bool isStartPressed;
+        bool isEStopPressed;
+        bool isBrakePressed;
+        bool isForwardDirection;
+        uint16_t throttleRawAdc;
     } pilot;
 
     struct
@@ -59,7 +60,8 @@ struct VcuOutputs
     struct
     {
         bool boardLed;
-        bool errorLight;
+        bool errorLed;
+        bool startLed;
     } lights;
 };
 

@@ -6,7 +6,7 @@ void VcuStateInit::onEnter() {}
 
 VcuStateId VcuStateInit::update(const VcuInputs& inputs, VcuOutputs& outputs)
 {
-    outputs.lights.boardLed = inputs.pilot.boardButtonPressed;
-    outputs.power.contactor = inputs.pilot.boardButtonPressed;
+    outputs.lights.boardLed = inputs.pilot.isBtnBoardPressed;
+    outputs.power.contactor = inputs.pilot.isBtnBoardPressed;
     return VcuStateId::SAME;
 }
