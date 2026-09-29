@@ -30,7 +30,6 @@ extern "C" {
 #include "stm32g4xx_hal.h"
 
 #include "stm32g4xx_nucleo.h"
-#include <stdio.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -82,8 +81,8 @@ void Error_Handler(void);
 #define THROTTLE_ADC_GPIO_Port GPIOA
 #define LED_BOARD_Pin GPIO_PIN_5
 #define LED_BOARD_GPIO_Port GPIOA
-#define SW_PUSH_EMERGENCY_Pin GPIO_PIN_4
-#define SW_PUSH_EMERGENCY_GPIO_Port GPIOC
+#define SW_PUSH_EMERGENCY_Pin GPIO_PIN_7
+#define SW_PUSH_EMERGENCY_GPIO_Port GPIOA
 #define MOSFET_CONTACTOR_GATE_Pin GPIO_PIN_0
 #define MOSFET_CONTACTOR_GATE_GPIO_Port GPIOB
 #define MOSFET_PRECHARGE_GATE_Pin GPIO_PIN_1

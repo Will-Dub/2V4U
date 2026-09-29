@@ -20,11 +20,21 @@
 #include "main.h"
 #include "adc.h"
 #include "fdcan.h"
+#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "App.h"
+#include <stdio.h>
+
+extern UART_HandleTypeDef hlpuart1;
+
+// Printf redirected to this
+int _write(int file, char *ptr, int len) {
+    HAL_UART_Transmit(&hlpuart1, (uint8_t *)ptr, len, HAL_MAX_DELAY);
+    return len;
+}
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -43,8 +53,6 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-
-COM_InitTypeDef BspCOMInit;
 
 /* USER CODE BEGIN PV */
 
@@ -92,20 +100,11 @@ int main(void)
   MX_GPIO_Init();
   MX_FDCAN1_Init();
   MX_ADC1_Init();
+  MX_LPUART1_UART_Init();
   /* USER CODE BEGIN 2 */
   App_Init();
+  setvbuf(stdout, NULL, _IONBF, 0);
   /* USER CODE END 2 */
-
-  /* Initialize COM1 port (115200, 8 bits (7-bit data + 1 stop bit), no parity */
-  BspCOMInit.BaudRate   = 115200;
-  BspCOMInit.WordLength = COM_WORDLENGTH_8B;
-  BspCOMInit.StopBits   = COM_STOPBITS_1;
-  BspCOMInit.Parity     = COM_PARITY_NONE;
-  BspCOMInit.HwFlowCtl  = COM_HWCONTROL_NONE;
-  if (BSP_COM_Init(COM1, &BspCOMInit) != BSP_ERROR_NONE)
-  {
-    Error_Handler();
-  }
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */

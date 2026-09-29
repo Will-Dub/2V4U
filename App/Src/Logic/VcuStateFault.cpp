@@ -13,7 +13,7 @@ VcuStateId VcuStateFault::update(const VcuInputs& inputs, VcuOutputs& outputs)
     outputs.motor.targetAmp = 0.0f;
     outputs.power.contactor = false;
     outputs.power.prechargeRelay = false;
-    outputs.lights.errorLight = true;
+    outputs.lights.errorLed = true;
     outputs.lights.boardLed = m_isBoardLedOn;
 
     m_blinkTimer++;
