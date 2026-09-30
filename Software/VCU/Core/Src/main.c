@@ -21,6 +21,7 @@
 #include "adc.h"
 #include "fdcan.h"
 #include "usart.h"
+#include "spi.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -101,6 +102,7 @@ int main(void)
   MX_FDCAN1_Init();
   MX_ADC1_Init();
   MX_LPUART1_UART_Init();
+  MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
   App_Init();
   setvbuf(stdout, NULL, _IONBF, 0);

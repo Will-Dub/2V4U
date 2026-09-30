@@ -1,3 +1,7 @@
 {
-    "cmake.sourceDirectory": "D:/Engine/2V4U/Software/VCU"
+    "cmake.sourceDirectory": "D:/Engine/2V4U/Software/VCU",
+    "cmake.cmakePath": "cube-cmake",
+    "cmake.configureArgs": [
+        "-DCMAKE_COMMAND=cube-cmake"
+    ]
 }
