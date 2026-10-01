@@ -21,7 +21,7 @@ struct VcuInputs
         bool isEStopPressed;
         bool isBrakePressed;
         bool isForwardDirection;
-        uint16_t throttleRawAdc;
+        float throttlePercent;
     } pilot;
 
     struct
