@@ -6,7 +6,8 @@ namespace App::Logic {
 enum class VcuStateId
 {
     INIT,
-    PARK,
+    STANDBY,
+    PRECHARGE,
     DRIVE,
     FAULT,
     SAME

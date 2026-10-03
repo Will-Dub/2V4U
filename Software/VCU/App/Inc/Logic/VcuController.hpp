@@ -2,14 +2,14 @@
 #include "VcuStateDrive.hpp"
 #include "VcuStateFault.hpp"
 #include "VcuStateInit.hpp"
-#include "VcuStatePark.hpp"
+#include "VcuStateStandby.hpp"
 
 namespace App::Logic {
 class VcuController
 {
   private:
     VcuStateInit m_stateInit;
-    VcuStatePark m_statePark;
+    VcuStateStandby m_stateStandby;
     VcuStateDrive m_stateDrive;
     VcuStateFault m_stateFault;
     VcuState* m_currentState;

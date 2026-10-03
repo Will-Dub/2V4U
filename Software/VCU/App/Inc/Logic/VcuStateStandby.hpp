@@ -3,7 +3,7 @@
 
 namespace App::Logic {
 
-class VcuStatePark : public VcuState
+class VcuStateStandby : public VcuState
 {
   public:
     void onEnter() override;

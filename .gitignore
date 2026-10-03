@@ -64,3 +64,4 @@ Thumbs.db
 *.xlsx
 *.kicad_prl
 *.lck
+.vscode/
