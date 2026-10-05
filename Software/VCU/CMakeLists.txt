@@ -76,6 +76,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/App.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Drivers/ThrottleHallSensor.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Drivers/VescCanDriver.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Drivers/DebounceButton.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Logic/VcuStateInit.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Logic/VcuStateStandby.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Logic/VcuStatePrecharge.cpp
