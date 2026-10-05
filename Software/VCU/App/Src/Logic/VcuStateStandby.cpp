@@ -2,7 +2,7 @@
 
 using namespace App::Logic;
 
-void VcuStateStandby::onEnter() {}
+void VcuStateStandby::onEnter(const VcuInputs& inputs) {}
 
 VcuStateId VcuStateStandby::update(const VcuInputs& inputs, VcuOutputs& outputs)
 {

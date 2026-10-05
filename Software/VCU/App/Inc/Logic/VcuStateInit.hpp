@@ -6,7 +6,7 @@ namespace App::Logic {
 class VcuStateInit : public VcuState
 {
   public:
-    void onEnter() override;
+    void onEnter(const VcuInputs& inputs) override;
     virtual VcuStateId update(const VcuInputs& inputs, VcuOutputs& outputs) override;
 };
 

@@ -10,59 +10,62 @@ enum class VcuStateId
     PRECHARGE,
     DRIVE,
     FAULT,
-    SAME
+    SHUTDOWN,
+    SAME,
 };
 
 struct VcuInputs
 {
     struct
     {
-        bool isBtnBoardPressed;
-        bool isStartPressed;
-        bool isEStopPressed;
-        bool isBrakePressed;
-        bool isForwardDirection;
-        float throttlePercent;
+        bool isBtnBoardPressed = false;
+        bool isStartPressed = false;
+        bool isEStopPressed = true;
+        bool isBrakePressed = false;
+        bool isForwardDirection = false;
+        float throttlePercent = 0.0f;
     } pilot;
 
     struct
     {
-        bool isAlive;
-        int32_t erpm;
-        float motorCurrent;
-        float inputCurrent;
-        float dutyCycle;
-        float inputVoltage;
-        float mosfetTemp;
-        float motorTemp;
-        uint8_t faultCode;
+        bool isAlive = false;
+        int32_t erpm = 0;
+        float motorCurrent = 0.0f;
+        float inputCurrent = 0.0f;
+        float dutyCycle = 0.0f;
+        float inputVoltage = 0.0f;
+        float mosfetTemp = 0.0f;
+        float motorTemp = 0.0f;
+        uint8_t faultCode = 0;
 
-        float ampHours;
-        float ampHoursCharged;
-        float wattHours;
-        float wattHoursCharged;
+        float ampHours = 0.0f;
+        float ampHoursCharged = 0.0f;
+        float wattHours = 0.0f;
+        float wattHoursCharged = 0.0f;
     } vesc;
+
+    uint32_t tickMs = 0;
 };
 
 struct VcuOutputs
 {
     struct
     {
-        bool prechargeRelay;
-        bool contactor;
+        bool prechargeRelay = false;
+        bool contactor = false;
     } power;
 
     struct
     {
-        bool enableMotor;
-        float targetAmp;
+        bool enableMotor = false;
+        float targetAmp = 0.0f;
     } motor;
 
     struct
     {
-        bool boardLed;
-        bool errorLed;
-        bool startLed;
+        bool boardLed = false;
+        bool errorLed = false;
+        bool startLed = false;
     } lights;
 };
 

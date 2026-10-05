@@ -3,7 +3,7 @@
 
 namespace App::Logic {
 
-class VcuStateStandby : public VcuState
+class VcuStateShutdown : public VcuState
 {
   public:
     void onEnter(const VcuInputs& inputs) override;

@@ -6,7 +6,7 @@ namespace App::Logic {
 class VcuStatePrecharge: public VcuState
 {
   public:
-    void onEnter() override;
+    void onEnter(const VcuInputs& inputs) override;
     virtual VcuStateId update(const VcuInputs& inputs, VcuOutputs& outputs) override;
   private:
     uint32_t m_prechargeStartTimeMs;

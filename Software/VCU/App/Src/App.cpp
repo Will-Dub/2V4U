@@ -25,6 +25,10 @@ extern "C" void App_Init(volatile uint16_t* throttleDmaPtr)
 {
     App::Drivers::vescDriver.init();
     throttleSensor.init(throttleDmaPtr);
+
+    App::Logic::VcuInputs inputs;
+    inputs.tickMs = HAL_GetTick();
+    vcuController.init(inputs);
 }
 
 extern "C" void App_Run(void)

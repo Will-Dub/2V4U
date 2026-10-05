@@ -2,7 +2,7 @@
 
 using namespace App::Logic;
 
-void VcuStateFault::onEnter()
+void VcuStateFault::onEnter(const VcuInputs& inputs)
 {
     m_blinkTimer = 0;
 }
