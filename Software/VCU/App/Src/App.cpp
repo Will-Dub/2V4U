@@ -1,5 +1,6 @@
 #include "App.h"
 
+#include "DebounceButton.hpp"
 #include "ThrottleHallSensor.hpp"
 #include "VcuController.hpp"
 #include "VcuStateInit.hpp"
@@ -12,6 +13,11 @@
 
 static App::Logic::VcuController vcuController;
 static App::Drivers::ThrottleHallSensor throttleSensor;
+static App::Drivers::DebounceButton brakeButton;
+static App::Drivers::DebounceButton boardButton;
+static App::Drivers::DebounceButton eStopButton;
+static App::Drivers::DebounceButton forwardButton;
+static App::Drivers::DebounceButton startButton;
 volatile bool tick = false;
 
 extern "C" void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
@@ -35,25 +41,37 @@ extern "C" void App_Run(void)
 {
     if (tick) {
         tick = false;
+
         // Reading
         App::Logic::VcuOutputs outputs{};
         App::Logic::VcuInputs inputs{};
 
-        inputs.pilot.isBtnBoardPressed = HAL_GPIO_ReadPin(BTN_BOARD_GPIO_Port, BTN_BOARD_Pin);
-        inputs.pilot.isStartPressed = HAL_GPIO_ReadPin(SW_START_GPIO_Port, SW_START_Pin);
-        inputs.pilot.isEStopPressed = HAL_GPIO_ReadPin(SW_PUSH_EMERGENCY_GPIO_Port,
-                                                       SW_PUSH_EMERGENCY_Pin);
-        inputs.pilot.isBrakePressed = HAL_GPIO_ReadPin(SW_BRAKE_GPIO_Port, SW_BRAKE_Pin);
-        inputs.pilot.isForwardDirection = HAL_GPIO_ReadPin(SW_DIRECTION_GPIO_Port,
-                                                           SW_DIRECTION_Pin);
+        uint32_t currentTickMs = HAL_GetTick();
+        inputs.tickMs = currentTickMs;
+
+        bool rawBrake = (HAL_GPIO_ReadPin(SW_BRAKE_GPIO_Port, SW_BRAKE_Pin) == GPIO_PIN_RESET);
+        bool rawBoard = (HAL_GPIO_ReadPin(BTN_BOARD_GPIO_Port, BTN_BOARD_Pin) == GPIO_PIN_SET);
+        bool rawEStop = (HAL_GPIO_ReadPin(SW_PUSH_EMERGENCY_GPIO_Port, SW_PUSH_EMERGENCY_Pin) ==
+                         GPIO_PIN_RESET);
+        bool rawForward = (HAL_GPIO_ReadPin(SW_DIRECTION_GPIO_Port, SW_DIRECTION_Pin) ==
+                           GPIO_PIN_RESET);
+        bool rawStart = (HAL_GPIO_ReadPin(SW_START_GPIO_Port, SW_START_Pin) == GPIO_PIN_RESET);
+
+        brakeButton.update(currentTickMs, rawBrake);
+        boardButton.update(currentTickMs, rawBoard);
+        eStopButton.update(currentTickMs, rawEStop);
+        forwardButton.update(currentTickMs, rawForward);
+        startButton.update(currentTickMs, rawStart);
+
+        inputs.pilot.isBrakePressed = brakeButton.isPressed();
+        inputs.pilot.isBtnBoardPressed = boardButton.isPressed();
+        inputs.pilot.isEStopPressed = eStopButton.isPressed();
+        inputs.pilot.isForwardDirection = forwardButton.isPressed();
+        inputs.pilot.isStartPressed = startButton.isPressed();
+        inputs.pilot.isStartRisingEdge = startButton.isRisingEdge();
 
         throttleSensor.update();
         inputs.pilot.throttlePercent = throttleSensor.getPercent();
-
-        int whole = (int)inputs.pilot.throttlePercent;
-        int fraction = (int)(abs(inputs.pilot.throttlePercent) * 100) % 100;
-
-        printf("Throttle2: %d.%02d\r\n", whole, fraction);
 
         // Business logic
         vcuController.run(inputs, outputs);

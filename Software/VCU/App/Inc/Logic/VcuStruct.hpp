@@ -18,11 +18,12 @@ struct VcuInputs
 {
     struct
     {
-        bool isBtnBoardPressed = false;
-        bool isStartPressed = false;
-        bool isEStopPressed = true;
         bool isBrakePressed = false;
+        bool isBtnBoardPressed = false;
+        bool isEStopPressed = true;
         bool isForwardDirection = false;
+        bool isStartPressed = false;
+        bool isStartRisingEdge = false;
         float throttlePercent = 0.0f;
     } pilot;
 
