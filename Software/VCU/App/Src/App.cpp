@@ -1,6 +1,7 @@
 #include "App.h"
 
 #include "DebounceButton.hpp"
+#include "StmLogger.hpp"
 #include "ThrottleHallSensor.hpp"
 #include "VcuController.hpp"
 #include "VcuStateInit.hpp"
@@ -11,7 +12,8 @@
 #include <math.h>
 #include <stdio.h>
 
-static App::Logic::VcuController vcuController;
+static App::Infrastructure::StmLogger stmLogger;
+static App::Logic::VcuController vcuController(stmLogger);
 static App::Drivers::ThrottleHallSensor throttleSensor;
 static App::Drivers::DebounceButton brakeButton;
 static App::Drivers::DebounceButton boardButton;

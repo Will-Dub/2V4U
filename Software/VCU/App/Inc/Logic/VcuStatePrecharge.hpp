@@ -3,11 +3,13 @@
 
 namespace App::Logic {
 
-class VcuStatePrecharge: public VcuState
+class VcuStatePrecharge : public VcuState
 {
   public:
+    VcuStatePrecharge(ILogger& logger) : VcuState(logger) {}
     void onEnter(const VcuInputs& inputs) override;
     virtual VcuStateId update(const VcuInputs& inputs, VcuOutputs& outputs) override;
+
   private:
     uint32_t m_prechargeStartTimeMs;
 };

@@ -2,11 +2,12 @@
 
 using namespace App::Logic;
 
-void VcuStateInit::onEnter(const VcuInputs& inputs) {}
+void VcuStateInit::onEnter(const VcuInputs& inputs)
+{
+    m_logger.debug("OnEnter: Init");
+}
 
 VcuStateId VcuStateInit::update(const VcuInputs& inputs, VcuOutputs& outputs)
 {
-    outputs.lights.boardLed = inputs.pilot.isBtnBoardPressed;
-    outputs.power.contactor = inputs.pilot.isBtnBoardPressed;
     return VcuStateId::STANDBY;
 }

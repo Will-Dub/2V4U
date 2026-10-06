@@ -1,13 +1,18 @@
 #include "VcuController.hpp"
 
+#include "VcuStruct.hpp"
+
 using namespace App::Logic;
 
-VcuController::VcuController()
+VcuController::VcuController(ILogger& logger)
+    : m_logger(logger), m_stateStandby(logger), m_statePrecharge(logger), m_stateDrive(logger),
+      m_stateFault(logger), m_stateShutdown(logger), m_stateInit(logger)
 {
     m_currentState = &m_stateInit;
 }
 
-void VcuController::init(const VcuInputs& inputs) {
+void VcuController::init(const VcuInputs& inputs)
+{
     m_currentState->onEnter(inputs);
 }
 
@@ -33,7 +38,8 @@ VcuState* VcuController::getStateInstance(VcuStateId id)
     }
 }
 
-void VcuController::transitionToState(VcuStateId nextStateId, const VcuInputs& inputs){
+void VcuController::transitionToState(VcuStateId nextStateId, const VcuInputs& inputs)
+{
     VcuState* nextState = getStateInstance(nextStateId);
 
     if (nextState != m_currentState) {
@@ -45,10 +51,10 @@ void VcuController::transitionToState(VcuStateId nextStateId, const VcuInputs& i
 
 void VcuController::run(const VcuInputs& inputs, VcuOutputs& outputs)
 {
-    if(inputs.pilot.isEStopPressed) {
+    if (inputs.pilot.isEStopPressed) {
         transitionToState(VcuStateId::FAULT, inputs);
     }
-    
+
     VcuStateId nextStateId = m_currentState->update(inputs, outputs);
     transitionToState(nextStateId, inputs);
 }
