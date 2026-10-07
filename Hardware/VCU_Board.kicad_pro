@@ -453,13 +453,41 @@
         "uuid": "8a252f7b-887b-4a1b-8069-7e7f79ad368e"
       }
     ],
-    "used_designators": "K1-2,SW1-6,F1-3,U1-4,Q1-2,#PWR1-27,D1-3,J1-3,#FLG1,R1-9",
+    "used_designators": "K1-2,SW1-6,F1-3,U1-4,Q1-2,#PWR1-29,D1-3,J1-4,#FLG1,R1-9",
     "variants": []
   },
   "sheets": [
     [
       "8a252f7b-887b-4a1b-8069-7e7f79ad368e",
       "Racine"
+    ],
+    [
+      "9a93c83a-7f8f-4af7-8a04-60396eb7b9f3",
+      "STM32_MCU"
+    ],
+    [
+      "36971991-9a9b-49b4-8694-458fb9556d57",
+      "Power Supply"
+    ],
+    [
+      "b757cbe8-9412-41ee-9968-5156ebc434eb",
+      "CAN Network"
+    ],
+    [
+      "9e18eb76-28b4-4055-9aef-244a19afac1f",
+      "Analog Input-Output"
+    ],
+    [
+      "31c42408-c395-4f3d-b4da-63e1515f3c62",
+      "Digital Input-Output"
+    ],
+    [
+      "27568a15-c50f-43e7-b51b-8b97aabe19a3",
+      "System Wiring"
+    ],
+    [
+      "25a216a9-2122-4dd2-a862-30979943c242",
+      "Driver"
     ]
   ],
   "text_variables": {},
