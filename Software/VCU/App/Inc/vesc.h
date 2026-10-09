@@ -36,12 +36,12 @@
 extern "C" {
 #endif
 
-#include <stdint.h>
 #include <stdbool.h>
 #include <stddef.h>
+#include <stdint.h>
 
 #ifndef EINVAL
-#    define EINVAL 22
+#define EINVAL 22
 #endif
 
 /* Frame ids. */
@@ -436,9 +436,7 @@ extern "C" {
 
 /* Frame cycle times in milliseconds. */
 
-
 /* Signal choices. */
-
 
 /* Frame Names. */
 #define VESC_VESC_COMMAND_ABS_H_BRAKE_CURRENT_V8_NAME "VESC_Command_AbsHBrakeCurrent_V8"
@@ -571,30 +569,53 @@ extern "C" {
 #define VESC_VESC_COMMAND_DUTY_CYCLE_V8_NAME "VESC_Command_DutyCycle_V8"
 
 /* Signal Names. */
-#define VESC_VESC_COMMAND_ABS_H_BRAKE_CURRENT_V8_COMMAND_H_BRAKE_CURRENT_V8_NAME "Command_HBrakeCurrent_V8"
-#define VESC_VESC_COMMAND_ABS_H_BRAKE_CURRENT_V7_COMMAND_H_BRAKE_CURRENT_V7_NAME "Command_HBrakeCurrent_V7"
-#define VESC_VESC_COMMAND_ABS_H_BRAKE_CURRENT_V6_COMMAND_H_BRAKE_CURRENT_V6_NAME "Command_HBrakeCurrent_V6"
-#define VESC_VESC_COMMAND_ABS_H_BRAKE_CURRENT_V5_COMMAND_H_BRAKE_CURRENT_V5_NAME "Command_HBrakeCurrent_V5"
-#define VESC_VESC_COMMAND_ABS_H_BRAKE_CURRENT_V4_COMMAND_H_BRAKE_CURRENT_V4_NAME "Command_HBrakeCurrent_V4"
-#define VESC_VESC_COMMAND_ABS_H_BRAKE_CURRENT_V3_COMMAND_H_BRAKE_CURRENT_V3_NAME "Command_HBrakeCurrent_V3"
-#define VESC_VESC_COMMAND_ABS_H_BRAKE_CURRENT_V2_COMMAND_H_BRAKE_CURRENT_V2_NAME "Command_HBrakeCurrent_V2"
-#define VESC_VESC_COMMAND_ABS_H_BRAKE_CURRENT_V1_COMMAND_H_BRAKE_CURRENT_V1_NAME "Command_HBrakeCurrent_V1"
-#define VESC_VESC_COMMAND_REL_H_BRAKE_CURRENT_V8_COMMAND_RELATIVE_H_BRAKE_CURRENT_V8_NAME "Command_RelativeHBrakeCurrent_V8"
-#define VESC_VESC_COMMAND_REL_H_BRAKE_CURRENT_V7_COMMAND_RELATIVE_H_BRAKE_CURRENT_V7_NAME "Command_RelativeHBrakeCurrent_V7"
-#define VESC_VESC_COMMAND_REL_H_BRAKE_CURRENT_V6_COMMAND_RELATIVE_H_BRAKE_CURRENT_V6_NAME "Command_RelativeHBrakeCurrent_V6"
-#define VESC_VESC_COMMAND_REL_H_BRAKE_CURRENT_V5_COMMAND_RELATIVE_H_BRAKE_CURRENT_V5_NAME "Command_RelativeHBrakeCurrent_V5"
-#define VESC_VESC_COMMAND_REL_H_BRAKE_CURRENT_V4_COMMAND_RELATIVE_H_BRAKE_CURRENT_V4_NAME "Command_RelativeHBrakeCurrent_V4"
-#define VESC_VESC_COMMAND_REL_H_BRAKE_CURRENT_V3_COMMAND_RELATIVE_H_BRAKE_CURRENT_V3_NAME "Command_RelativeHBrakeCurrent_V3"
-#define VESC_VESC_COMMAND_REL_H_BRAKE_CURRENT_V2_COMMAND_RELATIVE_H_BRAKE_CURRENT_V2_NAME "Command_RelativeHBrakeCurrent_V2"
-#define VESC_VESC_COMMAND_REL_H_BRAKE_CURRENT_V1_COMMAND_RELATIVE_H_BRAKE_CURRENT_V1_NAME "Command_RelativeHBrakeCurrent_V1"
-#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V1_SETTING_CURRENT_LIMIT_MIN_V1_NAME "Setting_CurrentLimitMin_V1"
-#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V1_SETTING_CURRENT_LIMIT_MAX_V1_NAME "Setting_CurrentLimitMax_V1"
-#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V1_SETTING_CURRENT_LIMIT_MIN_V1_NAME "Setting_CurrentLimitMin_V1"
-#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V1_SETTING_CURRENT_LIMIT_MAX_V1_NAME "Setting_CurrentLimitMax_V1"
-#define VESC_VESC_COMMAND_REL_BRAKE_CURRENT_V1_COMMAND_RELATIVE_BRAKE_CURRENT_V1_NAME "Command_RelativeBrakeCurrent_V1"
-#define VESC_VESC_COMMAND_REL_CURRENT_V1_COMMAND_RELATIVE_CURRENT_V1_NAME "Command_RelativeCurrent_V1"
+#define VESC_VESC_COMMAND_ABS_H_BRAKE_CURRENT_V8_COMMAND_H_BRAKE_CURRENT_V8_NAME                   \
+    "Command_HBrakeCurrent_V8"
+#define VESC_VESC_COMMAND_ABS_H_BRAKE_CURRENT_V7_COMMAND_H_BRAKE_CURRENT_V7_NAME                   \
+    "Command_HBrakeCurrent_V7"
+#define VESC_VESC_COMMAND_ABS_H_BRAKE_CURRENT_V6_COMMAND_H_BRAKE_CURRENT_V6_NAME                   \
+    "Command_HBrakeCurrent_V6"
+#define VESC_VESC_COMMAND_ABS_H_BRAKE_CURRENT_V5_COMMAND_H_BRAKE_CURRENT_V5_NAME                   \
+    "Command_HBrakeCurrent_V5"
+#define VESC_VESC_COMMAND_ABS_H_BRAKE_CURRENT_V4_COMMAND_H_BRAKE_CURRENT_V4_NAME                   \
+    "Command_HBrakeCurrent_V4"
+#define VESC_VESC_COMMAND_ABS_H_BRAKE_CURRENT_V3_COMMAND_H_BRAKE_CURRENT_V3_NAME                   \
+    "Command_HBrakeCurrent_V3"
+#define VESC_VESC_COMMAND_ABS_H_BRAKE_CURRENT_V2_COMMAND_H_BRAKE_CURRENT_V2_NAME                   \
+    "Command_HBrakeCurrent_V2"
+#define VESC_VESC_COMMAND_ABS_H_BRAKE_CURRENT_V1_COMMAND_H_BRAKE_CURRENT_V1_NAME                   \
+    "Command_HBrakeCurrent_V1"
+#define VESC_VESC_COMMAND_REL_H_BRAKE_CURRENT_V8_COMMAND_RELATIVE_H_BRAKE_CURRENT_V8_NAME          \
+    "Command_RelativeHBrakeCurrent_V8"
+#define VESC_VESC_COMMAND_REL_H_BRAKE_CURRENT_V7_COMMAND_RELATIVE_H_BRAKE_CURRENT_V7_NAME          \
+    "Command_RelativeHBrakeCurrent_V7"
+#define VESC_VESC_COMMAND_REL_H_BRAKE_CURRENT_V6_COMMAND_RELATIVE_H_BRAKE_CURRENT_V6_NAME          \
+    "Command_RelativeHBrakeCurrent_V6"
+#define VESC_VESC_COMMAND_REL_H_BRAKE_CURRENT_V5_COMMAND_RELATIVE_H_BRAKE_CURRENT_V5_NAME          \
+    "Command_RelativeHBrakeCurrent_V5"
+#define VESC_VESC_COMMAND_REL_H_BRAKE_CURRENT_V4_COMMAND_RELATIVE_H_BRAKE_CURRENT_V4_NAME          \
+    "Command_RelativeHBrakeCurrent_V4"
+#define VESC_VESC_COMMAND_REL_H_BRAKE_CURRENT_V3_COMMAND_RELATIVE_H_BRAKE_CURRENT_V3_NAME          \
+    "Command_RelativeHBrakeCurrent_V3"
+#define VESC_VESC_COMMAND_REL_H_BRAKE_CURRENT_V2_COMMAND_RELATIVE_H_BRAKE_CURRENT_V2_NAME          \
+    "Command_RelativeHBrakeCurrent_V2"
+#define VESC_VESC_COMMAND_REL_H_BRAKE_CURRENT_V1_COMMAND_RELATIVE_H_BRAKE_CURRENT_V1_NAME          \
+    "Command_RelativeHBrakeCurrent_V1"
+#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V1_SETTING_CURRENT_LIMIT_MIN_V1_NAME                      \
+    "Setting_CurrentLimitMin_V1"
+#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V1_SETTING_CURRENT_LIMIT_MAX_V1_NAME                      \
+    "Setting_CurrentLimitMax_V1"
+#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V1_SETTING_CURRENT_LIMIT_MIN_V1_NAME                      \
+    "Setting_CurrentLimitMin_V1"
+#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V1_SETTING_CURRENT_LIMIT_MAX_V1_NAME                      \
+    "Setting_CurrentLimitMax_V1"
+#define VESC_VESC_COMMAND_REL_BRAKE_CURRENT_V1_COMMAND_RELATIVE_BRAKE_CURRENT_V1_NAME              \
+    "Command_RelativeBrakeCurrent_V1"
+#define VESC_VESC_COMMAND_REL_CURRENT_V1_COMMAND_RELATIVE_CURRENT_V1_NAME                          \
+    "Command_RelativeCurrent_V1"
 #define VESC_VESC_COMMAND_POS_V1_COMMAND_POS_V1_NAME "Command_POS_V1"
-#define VESC_VESC_COMMAND_ABS_BRAKE_CURRENT_V1_COMMAND_BRAKE_CURRENT_V1_NAME "Command_BrakeCurrent_V1"
+#define VESC_VESC_COMMAND_ABS_BRAKE_CURRENT_V1_COMMAND_BRAKE_CURRENT_V1_NAME                       \
+    "Command_BrakeCurrent_V1"
 #define VESC_VESC_COMMAND_ABS_CURRENT_V1_COMMAND_CURRENT_V1_NAME "Command_Current_V1"
 #define VESC_VESC_COMMAND_RPM_V1_COMMAND_RPM_V1_NAME "Command_RPM_V1"
 #define VESC_VESC_STATUS5_V1_STATUS_INPUT_VOLTAGE_V1_NAME "Status_InputVoltage_V1"
@@ -612,14 +633,21 @@ extern "C" {
 #define VESC_VESC_STATUS1_V1_STATUS_TOTAL_CURRENT_V1_NAME "Status_TotalCurrent_V1"
 #define VESC_VESC_STATUS1_V1_STATUS_DUTY_CYCLE_V1_NAME "Status_DutyCycle_V1"
 #define VESC_VESC_COMMAND_DUTY_CYCLE_V1_COMMAND_DUTY_CYCLE_V1_NAME "Command_DutyCycle_V1"
-#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V2_SETTING_CURRENT_LIMIT_MIN_V2_NAME "Setting_CurrentLimitMin_V2"
-#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V2_SETTING_CURRENT_LIMIT_MAX_V2_NAME "Setting_CurrentLimitMax_V2"
-#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V2_SETTING_CURRENT_LIMIT_MIN_V2_NAME "Setting_CurrentLimitMin_V2"
-#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V2_SETTING_CURRENT_LIMIT_MAX_V2_NAME "Setting_CurrentLimitMax_V2"
-#define VESC_VESC_COMMAND_REL_BRAKE_CURRENT_V2_COMMAND_RELATIVE_BRAKE_CURRENT_V2_NAME "Command_RelativeBrakeCurrent_V2"
-#define VESC_VESC_COMMAND_REL_CURRENT_V2_COMMAND_RELATIVE_CURRENT_V2_NAME "Command_RelativeCurrent_V2"
+#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V2_SETTING_CURRENT_LIMIT_MIN_V2_NAME                      \
+    "Setting_CurrentLimitMin_V2"
+#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V2_SETTING_CURRENT_LIMIT_MAX_V2_NAME                      \
+    "Setting_CurrentLimitMax_V2"
+#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V2_SETTING_CURRENT_LIMIT_MIN_V2_NAME                      \
+    "Setting_CurrentLimitMin_V2"
+#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V2_SETTING_CURRENT_LIMIT_MAX_V2_NAME                      \
+    "Setting_CurrentLimitMax_V2"
+#define VESC_VESC_COMMAND_REL_BRAKE_CURRENT_V2_COMMAND_RELATIVE_BRAKE_CURRENT_V2_NAME              \
+    "Command_RelativeBrakeCurrent_V2"
+#define VESC_VESC_COMMAND_REL_CURRENT_V2_COMMAND_RELATIVE_CURRENT_V2_NAME                          \
+    "Command_RelativeCurrent_V2"
 #define VESC_VESC_COMMAND_POS_V2_COMMAND_POS_V2_NAME "Command_POS_V2"
-#define VESC_VESC_COMMAND_ABS_BRAKE_CURRENT_V2_COMMAND_BRAKE_CURRENT_V2_NAME "Command_BrakeCurrent_V2"
+#define VESC_VESC_COMMAND_ABS_BRAKE_CURRENT_V2_COMMAND_BRAKE_CURRENT_V2_NAME                       \
+    "Command_BrakeCurrent_V2"
 #define VESC_VESC_COMMAND_ABS_CURRENT_V2_COMMAND_CURRENT_V2_NAME "Command_Current_V2"
 #define VESC_VESC_COMMAND_RPM_V2_COMMAND_RPM_V2_NAME "Command_RPM_V2"
 #define VESC_VESC_STATUS5_V2_STATUS_INPUT_VOLTAGE_V2_NAME "Status_InputVoltage_V2"
@@ -637,14 +665,21 @@ extern "C" {
 #define VESC_VESC_STATUS1_V2_STATUS_TOTAL_CURRENT_V2_NAME "Status_TotalCurrent_V2"
 #define VESC_VESC_STATUS1_V2_STATUS_DUTY_CYCLE_V2_NAME "Status_DutyCycle_V2"
 #define VESC_VESC_COMMAND_DUTY_CYCLE_V2_COMMAND_DUTY_CYCLE_V2_NAME "Command_DutyCycle_V2"
-#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V3_SETTING_CURRENT_LIMIT_MIN_V3_NAME "Setting_CurrentLimitMin_V3"
-#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V3_SETTING_CURRENT_LIMIT_MAX_V3_NAME "Setting_CurrentLimitMax_V3"
-#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V3_SETTING_CURRENT_LIMIT_MIN_V3_NAME "Setting_CurrentLimitMin_V3"
-#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V3_SETTING_CURRENT_LIMIT_MAX_V3_NAME "Setting_CurrentLimitMax_V3"
-#define VESC_VESC_COMMAND_REL_BRAKE_CURRENT_V3_COMMAND_RELATIVE_BRAKE_CURRENT_V3_NAME "Command_RelativeBrakeCurrent_V3"
-#define VESC_VESC_COMMAND_REL_CURRENT_V3_COMMAND_RELATIVE_CURRENT_V3_NAME "Command_RelativeCurrent_V3"
+#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V3_SETTING_CURRENT_LIMIT_MIN_V3_NAME                      \
+    "Setting_CurrentLimitMin_V3"
+#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V3_SETTING_CURRENT_LIMIT_MAX_V3_NAME                      \
+    "Setting_CurrentLimitMax_V3"
+#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V3_SETTING_CURRENT_LIMIT_MIN_V3_NAME                      \
+    "Setting_CurrentLimitMin_V3"
+#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V3_SETTING_CURRENT_LIMIT_MAX_V3_NAME                      \
+    "Setting_CurrentLimitMax_V3"
+#define VESC_VESC_COMMAND_REL_BRAKE_CURRENT_V3_COMMAND_RELATIVE_BRAKE_CURRENT_V3_NAME              \
+    "Command_RelativeBrakeCurrent_V3"
+#define VESC_VESC_COMMAND_REL_CURRENT_V3_COMMAND_RELATIVE_CURRENT_V3_NAME                          \
+    "Command_RelativeCurrent_V3"
 #define VESC_VESC_COMMAND_POS_V3_COMMAND_POS_V3_NAME "Command_POS_V3"
-#define VESC_VESC_COMMAND_ABS_BRAKE_CURRENT_V3_COMMAND_BRAKE_CURRENT_V3_NAME "Command_BrakeCurrent_V3"
+#define VESC_VESC_COMMAND_ABS_BRAKE_CURRENT_V3_COMMAND_BRAKE_CURRENT_V3_NAME                       \
+    "Command_BrakeCurrent_V3"
 #define VESC_VESC_COMMAND_ABS_CURRENT_V3_COMMAND_CURRENT_V3_NAME "Command_Current_V3"
 #define VESC_VESC_COMMAND_RPM_V3_COMMAND_RPM_V3_NAME "Command_RPM_V3"
 #define VESC_VESC_STATUS5_V3_STATUS_INPUT_VOLTAGE_V3_NAME "Status_InputVoltage_V3"
@@ -662,14 +697,21 @@ extern "C" {
 #define VESC_VESC_STATUS1_V3_STATUS_TOTAL_CURRENT_V3_NAME "Status_TotalCurrent_V3"
 #define VESC_VESC_STATUS1_V3_STATUS_DUTY_CYCLE_V3_NAME "Status_DutyCycle_V3"
 #define VESC_VESC_COMMAND_DUTY_CYCLE_V3_COMMAND_DUTY_CYCLE_V3_NAME "Command_DutyCycle_V3"
-#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V4_SETTING_CURRENT_LIMIT_MIN_V4_NAME "Setting_CurrentLimitMin_V4"
-#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V4_SETTING_CURRENT_LIMIT_MAX_V4_NAME "Setting_CurrentLimitMax_V4"
-#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V4_SETTING_CURRENT_LIMIT_MIN_V4_NAME "Setting_CurrentLimitMin_V4"
-#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V4_SETTING_CURRENT_LIMIT_MAX_V4_NAME "Setting_CurrentLimitMax_V4"
-#define VESC_VESC_COMMAND_REL_BRAKE_CURRENT_V4_COMMAND_RELATIVE_BRAKE_CURRENT_V4_NAME "Command_RelativeBrakeCurrent_V4"
-#define VESC_VESC_COMMAND_REL_CURRENT_V4_COMMAND_RELATIVE_CURRENT_V4_NAME "Command_RelativeCurrent_V4"
+#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V4_SETTING_CURRENT_LIMIT_MIN_V4_NAME                      \
+    "Setting_CurrentLimitMin_V4"
+#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V4_SETTING_CURRENT_LIMIT_MAX_V4_NAME                      \
+    "Setting_CurrentLimitMax_V4"
+#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V4_SETTING_CURRENT_LIMIT_MIN_V4_NAME                      \
+    "Setting_CurrentLimitMin_V4"
+#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V4_SETTING_CURRENT_LIMIT_MAX_V4_NAME                      \
+    "Setting_CurrentLimitMax_V4"
+#define VESC_VESC_COMMAND_REL_BRAKE_CURRENT_V4_COMMAND_RELATIVE_BRAKE_CURRENT_V4_NAME              \
+    "Command_RelativeBrakeCurrent_V4"
+#define VESC_VESC_COMMAND_REL_CURRENT_V4_COMMAND_RELATIVE_CURRENT_V4_NAME                          \
+    "Command_RelativeCurrent_V4"
 #define VESC_VESC_COMMAND_POS_V4_COMMAND_POS_V4_NAME "Command_POS_V4"
-#define VESC_VESC_COMMAND_ABS_BRAKE_CURRENT_V4_COMMAND_BRAKE_CURRENT_V4_NAME "Command_BrakeCurrent_V4"
+#define VESC_VESC_COMMAND_ABS_BRAKE_CURRENT_V4_COMMAND_BRAKE_CURRENT_V4_NAME                       \
+    "Command_BrakeCurrent_V4"
 #define VESC_VESC_COMMAND_ABS_CURRENT_V4_COMMAND_CURRENT_V4_NAME "Command_Current_V4"
 #define VESC_VESC_COMMAND_RPM_V4_COMMAND_RPM_V4_NAME "Command_RPM_V4"
 #define VESC_VESC_STATUS5_V4_STATUS_INPUT_VOLTAGE_V4_NAME "Status_InputVoltage_V4"
@@ -687,14 +729,21 @@ extern "C" {
 #define VESC_VESC_STATUS1_V4_STATUS_TOTAL_CURRENT_V4_NAME "Status_TotalCurrent_V4"
 #define VESC_VESC_STATUS1_V4_STATUS_DUTY_CYCLE_V4_NAME "Status_DutyCycle_V4"
 #define VESC_VESC_COMMAND_DUTY_CYCLE_V4_COMMAND_DUTY_CYCLE_V4_NAME "Command_DutyCycle_V4"
-#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V5_SETTING_CURRENT_LIMIT_MIN_V5_NAME "Setting_CurrentLimitMin_V5"
-#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V5_SETTING_CURRENT_LIMIT_MAX_V5_NAME "Setting_CurrentLimitMax_V5"
-#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V5_SETTING_CURRENT_LIMIT_MIN_V5_NAME "Setting_CurrentLimitMin_V5"
-#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V5_SETTING_CURRENT_LIMIT_MAX_V5_NAME "Setting_CurrentLimitMax_V5"
-#define VESC_VESC_COMMAND_REL_BRAKE_CURRENT_V5_COMMAND_RELATIVE_BRAKE_CURRENT_V5_NAME "Command_RelativeBrakeCurrent_V5"
-#define VESC_VESC_COMMAND_REL_CURRENT_V5_COMMAND_RELATIVE_CURRENT_V5_NAME "Command_RelativeCurrent_V5"
+#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V5_SETTING_CURRENT_LIMIT_MIN_V5_NAME                      \
+    "Setting_CurrentLimitMin_V5"
+#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V5_SETTING_CURRENT_LIMIT_MAX_V5_NAME                      \
+    "Setting_CurrentLimitMax_V5"
+#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V5_SETTING_CURRENT_LIMIT_MIN_V5_NAME                      \
+    "Setting_CurrentLimitMin_V5"
+#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V5_SETTING_CURRENT_LIMIT_MAX_V5_NAME                      \
+    "Setting_CurrentLimitMax_V5"
+#define VESC_VESC_COMMAND_REL_BRAKE_CURRENT_V5_COMMAND_RELATIVE_BRAKE_CURRENT_V5_NAME              \
+    "Command_RelativeBrakeCurrent_V5"
+#define VESC_VESC_COMMAND_REL_CURRENT_V5_COMMAND_RELATIVE_CURRENT_V5_NAME                          \
+    "Command_RelativeCurrent_V5"
 #define VESC_VESC_COMMAND_POS_V5_COMMAND_POS_V5_NAME "Command_POS_V5"
-#define VESC_VESC_COMMAND_ABS_BRAKE_CURRENT_V5_COMMAND_BRAKE_CURRENT_V5_NAME "Command_BrakeCurrent_V5"
+#define VESC_VESC_COMMAND_ABS_BRAKE_CURRENT_V5_COMMAND_BRAKE_CURRENT_V5_NAME                       \
+    "Command_BrakeCurrent_V5"
 #define VESC_VESC_COMMAND_ABS_CURRENT_V5_COMMAND_CURRENT_V5_NAME "Command_Current_V5"
 #define VESC_VESC_COMMAND_RPM_V5_COMMAND_RPM_V5_NAME "Command_RPM_V5"
 #define VESC_VESC_STATUS5_V5_STATUS_INPUT_VOLTAGE_V5_NAME "Status_InputVoltage_V5"
@@ -712,14 +761,21 @@ extern "C" {
 #define VESC_VESC_STATUS1_V5_STATUS_TOTAL_CURRENT_V5_NAME "Status_TotalCurrent_V5"
 #define VESC_VESC_STATUS1_V5_STATUS_DUTY_CYCLE_V5_NAME "Status_DutyCycle_V5"
 #define VESC_VESC_COMMAND_DUTY_CYCLE_V5_COMMAND_DUTY_CYCLE_V5_NAME "Command_DutyCycle_V5"
-#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V6_SETTING_CURRENT_LIMIT_MIN_V6_NAME "Setting_CurrentLimitMin_V6"
-#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V6_SETTING_CURRENT_LIMIT_MAX_V6_NAME "Setting_CurrentLimitMax_V6"
-#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V6_SETTING_CURRENT_LIMIT_MIN_V6_NAME "Setting_CurrentLimitMin_V6"
-#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V6_SETTING_CURRENT_LIMIT_MAX_V6_NAME "Setting_CurrentLimitMax_V6"
-#define VESC_VESC_COMMAND_REL_BRAKE_CURRENT_V6_COMMAND_RELATIVE_BRAKE_CURRENT_V6_NAME "Command_RelativeBrakeCurrent_V6"
-#define VESC_VESC_COMMAND_REL_CURRENT_V6_COMMAND_RELATIVE_CURRENT_V6_NAME "Command_RelativeCurrent_V6"
+#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V6_SETTING_CURRENT_LIMIT_MIN_V6_NAME                      \
+    "Setting_CurrentLimitMin_V6"
+#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V6_SETTING_CURRENT_LIMIT_MAX_V6_NAME                      \
+    "Setting_CurrentLimitMax_V6"
+#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V6_SETTING_CURRENT_LIMIT_MIN_V6_NAME                      \
+    "Setting_CurrentLimitMin_V6"
+#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V6_SETTING_CURRENT_LIMIT_MAX_V6_NAME                      \
+    "Setting_CurrentLimitMax_V6"
+#define VESC_VESC_COMMAND_REL_BRAKE_CURRENT_V6_COMMAND_RELATIVE_BRAKE_CURRENT_V6_NAME              \
+    "Command_RelativeBrakeCurrent_V6"
+#define VESC_VESC_COMMAND_REL_CURRENT_V6_COMMAND_RELATIVE_CURRENT_V6_NAME                          \
+    "Command_RelativeCurrent_V6"
 #define VESC_VESC_COMMAND_POS_V6_COMMAND_POS_V6_NAME "Command_POS_V6"
-#define VESC_VESC_COMMAND_ABS_BRAKE_CURRENT_V6_COMMAND_BRAKE_CURRENT_V6_NAME "Command_BrakeCurrent_V6"
+#define VESC_VESC_COMMAND_ABS_BRAKE_CURRENT_V6_COMMAND_BRAKE_CURRENT_V6_NAME                       \
+    "Command_BrakeCurrent_V6"
 #define VESC_VESC_COMMAND_ABS_CURRENT_V6_COMMAND_CURRENT_V6_NAME "Command_Current_V6"
 #define VESC_VESC_COMMAND_RPM_V6_COMMAND_RPM_V6_NAME "Command_RPM_V6"
 #define VESC_VESC_STATUS5_V6_STATUS_INPUT_VOLTAGE_V6_NAME "Status_InputVoltage_V6"
@@ -737,14 +793,21 @@ extern "C" {
 #define VESC_VESC_STATUS1_V6_STATUS_TOTAL_CURRENT_V6_NAME "Status_TotalCurrent_V6"
 #define VESC_VESC_STATUS1_V6_STATUS_DUTY_CYCLE_V6_NAME "Status_DutyCycle_V6"
 #define VESC_VESC_COMMAND_DUTY_CYCLE_V6_COMMAND_DUTY_CYCLE_V6_NAME "Command_DutyCycle_V6"
-#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V7_SETTING_CURRENT_LIMIT_MIN_V7_NAME "Setting_CurrentLimitMin_V7"
-#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V7_SETTING_CURRENT_LIMIT_MAX_V7_NAME "Setting_CurrentLimitMax_V7"
-#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V7_SETTING_CURRENT_LIMIT_MIN_V7_NAME "Setting_CurrentLimitMin_V7"
-#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V7_SETTING_CURRENT_LIMIT_MAX_V7_NAME "Setting_CurrentLimitMax_V7"
-#define VESC_VESC_COMMAND_REL_BRAKE_CURRENT_V7_COMMAND_RELATIVE_BRAKE_CURRENT_V7_NAME "Command_RelativeBrakeCurrent_V7"
-#define VESC_VESC_COMMAND_REL_CURRENT_V7_COMMAND_RELATIVE_CURRENT_V7_NAME "Command_RelativeCurrent_V7"
+#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V7_SETTING_CURRENT_LIMIT_MIN_V7_NAME                      \
+    "Setting_CurrentLimitMin_V7"
+#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V7_SETTING_CURRENT_LIMIT_MAX_V7_NAME                      \
+    "Setting_CurrentLimitMax_V7"
+#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V7_SETTING_CURRENT_LIMIT_MIN_V7_NAME                      \
+    "Setting_CurrentLimitMin_V7"
+#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V7_SETTING_CURRENT_LIMIT_MAX_V7_NAME                      \
+    "Setting_CurrentLimitMax_V7"
+#define VESC_VESC_COMMAND_REL_BRAKE_CURRENT_V7_COMMAND_RELATIVE_BRAKE_CURRENT_V7_NAME              \
+    "Command_RelativeBrakeCurrent_V7"
+#define VESC_VESC_COMMAND_REL_CURRENT_V7_COMMAND_RELATIVE_CURRENT_V7_NAME                          \
+    "Command_RelativeCurrent_V7"
 #define VESC_VESC_COMMAND_POS_V7_COMMAND_POS_V7_NAME "Command_POS_V7"
-#define VESC_VESC_COMMAND_ABS_BRAKE_CURRENT_V7_COMMAND_BRAKE_CURRENT_V7_NAME "Command_BrakeCurrent_V7"
+#define VESC_VESC_COMMAND_ABS_BRAKE_CURRENT_V7_COMMAND_BRAKE_CURRENT_V7_NAME                       \
+    "Command_BrakeCurrent_V7"
 #define VESC_VESC_COMMAND_ABS_CURRENT_V7_COMMAND_CURRENT_V7_NAME "Command_Current_V7"
 #define VESC_VESC_COMMAND_RPM_V7_COMMAND_RPM_V7_NAME "Command_RPM_V7"
 #define VESC_VESC_STATUS5_V7_STATUS_INPUT_VOLTAGE_V7_NAME "Status_InputVoltage_V7"
@@ -762,14 +825,21 @@ extern "C" {
 #define VESC_VESC_STATUS1_V7_STATUS_TOTAL_CURRENT_V7_NAME "Status_TotalCurrent_V7"
 #define VESC_VESC_STATUS1_V7_STATUS_DUTY_CYCLE_V7_NAME "Status_DutyCycle_V7"
 #define VESC_VESC_COMMAND_DUTY_CYCLE_V7_COMMAND_DUTY_CYCLE_V7_NAME "Command_DutyCycle_V7"
-#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V8_SETTING_CURRENT_LIMIT_MIN_V8_NAME "Setting_CurrentLimitMin_V8"
-#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V8_SETTING_CURRENT_LIMIT_MAX_V8_NAME "Setting_CurrentLimitMax_V8"
-#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V8_SETTING_CURRENT_LIMIT_MIN_V8_NAME "Setting_CurrentLimitMin_V8"
-#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V8_SETTING_CURRENT_LIMIT_MAX_V8_NAME "Setting_CurrentLimitMax_V8"
-#define VESC_VESC_COMMAND_REL_BRAKE_CURRENT_V8_COMMAND_RELATIVE_BRAKE_CURRENT_V8_NAME "Command_RelativeBrakeCurrent_V8"
-#define VESC_VESC_COMMAND_REL_CURRENT_V8_COMMAND_RELATIVE_CURRENT_V8_NAME "Command_RelativeCurrent_V8"
+#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V8_SETTING_CURRENT_LIMIT_MIN_V8_NAME                      \
+    "Setting_CurrentLimitMin_V8"
+#define VESC_VESC_SET_CURRENT_LIMIT_PERM_V8_SETTING_CURRENT_LIMIT_MAX_V8_NAME                      \
+    "Setting_CurrentLimitMax_V8"
+#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V8_SETTING_CURRENT_LIMIT_MIN_V8_NAME                      \
+    "Setting_CurrentLimitMin_V8"
+#define VESC_VESC_SET_CURRENT_LIMIT_TEMP_V8_SETTING_CURRENT_LIMIT_MAX_V8_NAME                      \
+    "Setting_CurrentLimitMax_V8"
+#define VESC_VESC_COMMAND_REL_BRAKE_CURRENT_V8_COMMAND_RELATIVE_BRAKE_CURRENT_V8_NAME              \
+    "Command_RelativeBrakeCurrent_V8"
+#define VESC_VESC_COMMAND_REL_CURRENT_V8_COMMAND_RELATIVE_CURRENT_V8_NAME                          \
+    "Command_RelativeCurrent_V8"
 #define VESC_VESC_COMMAND_POS_V8_COMMAND_POS_V8_NAME "Command_POS_V8"
-#define VESC_VESC_COMMAND_ABS_BRAKE_CURRENT_V8_COMMAND_BRAKE_CURRENT_V8_NAME "Command_BrakeCurrent_V8"
+#define VESC_VESC_COMMAND_ABS_BRAKE_CURRENT_V8_COMMAND_BRAKE_CURRENT_V8_NAME                       \
+    "Command_BrakeCurrent_V8"
 #define VESC_VESC_COMMAND_ABS_CURRENT_V8_COMMAND_CURRENT_V8_NAME "Command_Current_V8"
 #define VESC_VESC_COMMAND_RPM_V8_COMMAND_RPM_V8_NAME "Command_RPM_V8"
 #define VESC_VESC_STATUS5_V8_STATUS_INPUT_VOLTAGE_V8_NAME "Status_InputVoltage_V8"
@@ -793,7 +863,8 @@ extern "C" {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_abs_h_brake_current_v8_t {
+struct vesc_vesc_command_abs_h_brake_current_v8_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 mA)
      * Scale: 0.001
@@ -807,7 +878,8 @@ struct vesc_vesc_command_abs_h_brake_current_v8_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_abs_h_brake_current_v7_t {
+struct vesc_vesc_command_abs_h_brake_current_v7_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 mA)
      * Scale: 0.001
@@ -821,7 +893,8 @@ struct vesc_vesc_command_abs_h_brake_current_v7_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_abs_h_brake_current_v6_t {
+struct vesc_vesc_command_abs_h_brake_current_v6_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 mA)
      * Scale: 0.001
@@ -835,7 +908,8 @@ struct vesc_vesc_command_abs_h_brake_current_v6_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_abs_h_brake_current_v5_t {
+struct vesc_vesc_command_abs_h_brake_current_v5_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 mA)
      * Scale: 0.001
@@ -849,7 +923,8 @@ struct vesc_vesc_command_abs_h_brake_current_v5_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_abs_h_brake_current_v4_t {
+struct vesc_vesc_command_abs_h_brake_current_v4_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 mA)
      * Scale: 0.001
@@ -863,7 +938,8 @@ struct vesc_vesc_command_abs_h_brake_current_v4_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_abs_h_brake_current_v3_t {
+struct vesc_vesc_command_abs_h_brake_current_v3_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 mA)
      * Scale: 0.001
@@ -877,7 +953,8 @@ struct vesc_vesc_command_abs_h_brake_current_v3_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_abs_h_brake_current_v2_t {
+struct vesc_vesc_command_abs_h_brake_current_v2_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 mA)
      * Scale: 0.001
@@ -891,7 +968,8 @@ struct vesc_vesc_command_abs_h_brake_current_v2_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_abs_h_brake_current_v1_t {
+struct vesc_vesc_command_abs_h_brake_current_v1_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 mA)
      * Scale: 0.001
@@ -905,7 +983,8 @@ struct vesc_vesc_command_abs_h_brake_current_v1_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rel_h_brake_current_v8_t {
+struct vesc_vesc_command_rel_h_brake_current_v8_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -919,7 +998,8 @@ struct vesc_vesc_command_rel_h_brake_current_v8_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rel_h_brake_current_v7_t {
+struct vesc_vesc_command_rel_h_brake_current_v7_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -933,7 +1013,8 @@ struct vesc_vesc_command_rel_h_brake_current_v7_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rel_h_brake_current_v6_t {
+struct vesc_vesc_command_rel_h_brake_current_v6_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -947,7 +1028,8 @@ struct vesc_vesc_command_rel_h_brake_current_v6_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rel_h_brake_current_v5_t {
+struct vesc_vesc_command_rel_h_brake_current_v5_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -961,7 +1043,8 @@ struct vesc_vesc_command_rel_h_brake_current_v5_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rel_h_brake_current_v4_t {
+struct vesc_vesc_command_rel_h_brake_current_v4_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -975,7 +1058,8 @@ struct vesc_vesc_command_rel_h_brake_current_v4_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rel_h_brake_current_v3_t {
+struct vesc_vesc_command_rel_h_brake_current_v3_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -989,7 +1073,8 @@ struct vesc_vesc_command_rel_h_brake_current_v3_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rel_h_brake_current_v2_t {
+struct vesc_vesc_command_rel_h_brake_current_v2_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -1003,7 +1088,8 @@ struct vesc_vesc_command_rel_h_brake_current_v2_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rel_h_brake_current_v1_t {
+struct vesc_vesc_command_rel_h_brake_current_v1_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -1017,7 +1103,8 @@ struct vesc_vesc_command_rel_h_brake_current_v1_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_set_current_limit_perm_v1_t {
+struct vesc_vesc_set_current_limit_perm_v1_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 -)
      * Scale: 0.001
@@ -1038,7 +1125,8 @@ struct vesc_vesc_set_current_limit_perm_v1_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_set_current_limit_temp_v1_t {
+struct vesc_vesc_set_current_limit_temp_v1_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 -)
      * Scale: 0.001
@@ -1059,7 +1147,8 @@ struct vesc_vesc_set_current_limit_temp_v1_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rel_brake_current_v1_t {
+struct vesc_vesc_command_rel_brake_current_v1_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -1073,7 +1162,8 @@ struct vesc_vesc_command_rel_brake_current_v1_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rel_current_v1_t {
+struct vesc_vesc_command_rel_current_v1_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -1087,7 +1177,8 @@ struct vesc_vesc_command_rel_current_v1_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_pos_v1_t {
+struct vesc_vesc_command_pos_v1_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483648..2147483647 RPM)
      * Scale: 1
@@ -1101,7 +1192,8 @@ struct vesc_vesc_command_pos_v1_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_abs_brake_current_v1_t {
+struct vesc_vesc_command_abs_brake_current_v1_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 mA)
      * Scale: 0.001
@@ -1115,7 +1207,8 @@ struct vesc_vesc_command_abs_brake_current_v1_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_abs_current_v1_t {
+struct vesc_vesc_command_abs_current_v1_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 mA)
      * Scale: 0.001
@@ -1129,7 +1222,8 @@ struct vesc_vesc_command_abs_current_v1_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rpm_v1_t {
+struct vesc_vesc_command_rpm_v1_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483648..2147483647 RPM)
      * Scale: 1
@@ -1143,7 +1237,8 @@ struct vesc_vesc_command_rpm_v1_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status5_v1_t {
+struct vesc_vesc_status5_v1_t
+{
     /**
      * Range: -
      * Scale: 0.1
@@ -1171,7 +1266,8 @@ struct vesc_vesc_status5_v1_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status4_v1_t {
+struct vesc_vesc_status4_v1_t
+{
     /**
      * Range: -32768..32767 (-3276.8..3276.7 °C)
      * Scale: 0.1
@@ -1206,7 +1302,8 @@ struct vesc_vesc_status4_v1_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status3_v1_t {
+struct vesc_vesc_status3_v1_t
+{
     /**
      * Range: -2147483648..2147483647 (-21474.83648..21474.83647 Wh)
      * Scale: 1e-05
@@ -1227,7 +1324,8 @@ struct vesc_vesc_status3_v1_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status2_v1_t {
+struct vesc_vesc_status2_v1_t
+{
     /**
      * Range: -2147483648..2147483647 (-21474.83648..21474.83647 Ah)
      * Scale: 1e-05
@@ -1248,7 +1346,8 @@ struct vesc_vesc_status2_v1_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status1_v1_t {
+struct vesc_vesc_status1_v1_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483648..2147483647 RPM)
      * Scale: 1
@@ -1276,7 +1375,8 @@ struct vesc_vesc_status1_v1_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_duty_cycle_v1_t {
+struct vesc_vesc_command_duty_cycle_v1_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -1290,7 +1390,8 @@ struct vesc_vesc_command_duty_cycle_v1_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_set_current_limit_perm_v2_t {
+struct vesc_vesc_set_current_limit_perm_v2_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 -)
      * Scale: 0.001
@@ -1311,7 +1412,8 @@ struct vesc_vesc_set_current_limit_perm_v2_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_set_current_limit_temp_v2_t {
+struct vesc_vesc_set_current_limit_temp_v2_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 -)
      * Scale: 0.001
@@ -1332,7 +1434,8 @@ struct vesc_vesc_set_current_limit_temp_v2_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rel_brake_current_v2_t {
+struct vesc_vesc_command_rel_brake_current_v2_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -1346,7 +1449,8 @@ struct vesc_vesc_command_rel_brake_current_v2_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rel_current_v2_t {
+struct vesc_vesc_command_rel_current_v2_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -1360,7 +1464,8 @@ struct vesc_vesc_command_rel_current_v2_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_pos_v2_t {
+struct vesc_vesc_command_pos_v2_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483648..2147483647 RPM)
      * Scale: 1
@@ -1374,7 +1479,8 @@ struct vesc_vesc_command_pos_v2_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_abs_brake_current_v2_t {
+struct vesc_vesc_command_abs_brake_current_v2_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 mA)
      * Scale: 0.001
@@ -1388,7 +1494,8 @@ struct vesc_vesc_command_abs_brake_current_v2_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_abs_current_v2_t {
+struct vesc_vesc_command_abs_current_v2_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 mA)
      * Scale: 0.001
@@ -1402,7 +1509,8 @@ struct vesc_vesc_command_abs_current_v2_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rpm_v2_t {
+struct vesc_vesc_command_rpm_v2_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483648..2147483647 RPM)
      * Scale: 1
@@ -1416,7 +1524,8 @@ struct vesc_vesc_command_rpm_v2_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status5_v2_t {
+struct vesc_vesc_status5_v2_t
+{
     /**
      * Range: -
      * Scale: 0.1
@@ -1444,7 +1553,8 @@ struct vesc_vesc_status5_v2_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status4_v2_t {
+struct vesc_vesc_status4_v2_t
+{
     /**
      * Range: -32768..32767 (-3276.8..3276.7 °C)
      * Scale: 0.1
@@ -1479,7 +1589,8 @@ struct vesc_vesc_status4_v2_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status3_v2_t {
+struct vesc_vesc_status3_v2_t
+{
     /**
      * Range: -2147483648..2147483647 (-21474.83648..21474.83647 Wh)
      * Scale: 1e-05
@@ -1500,7 +1611,8 @@ struct vesc_vesc_status3_v2_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status2_v2_t {
+struct vesc_vesc_status2_v2_t
+{
     /**
      * Range: -2147483648..2147483647 (-21474.83648..21474.83647 Ah)
      * Scale: 1e-05
@@ -1521,7 +1633,8 @@ struct vesc_vesc_status2_v2_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status1_v2_t {
+struct vesc_vesc_status1_v2_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483648..2147483647 RPM)
      * Scale: 1
@@ -1549,7 +1662,8 @@ struct vesc_vesc_status1_v2_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_duty_cycle_v2_t {
+struct vesc_vesc_command_duty_cycle_v2_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -1563,7 +1677,8 @@ struct vesc_vesc_command_duty_cycle_v2_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_set_current_limit_perm_v3_t {
+struct vesc_vesc_set_current_limit_perm_v3_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 -)
      * Scale: 0.001
@@ -1584,7 +1699,8 @@ struct vesc_vesc_set_current_limit_perm_v3_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_set_current_limit_temp_v3_t {
+struct vesc_vesc_set_current_limit_temp_v3_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 -)
      * Scale: 0.001
@@ -1605,7 +1721,8 @@ struct vesc_vesc_set_current_limit_temp_v3_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rel_brake_current_v3_t {
+struct vesc_vesc_command_rel_brake_current_v3_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -1619,7 +1736,8 @@ struct vesc_vesc_command_rel_brake_current_v3_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rel_current_v3_t {
+struct vesc_vesc_command_rel_current_v3_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -1633,7 +1751,8 @@ struct vesc_vesc_command_rel_current_v3_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_pos_v3_t {
+struct vesc_vesc_command_pos_v3_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483648..2147483647 RPM)
      * Scale: 1
@@ -1647,7 +1766,8 @@ struct vesc_vesc_command_pos_v3_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_abs_brake_current_v3_t {
+struct vesc_vesc_command_abs_brake_current_v3_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 mA)
      * Scale: 0.001
@@ -1661,7 +1781,8 @@ struct vesc_vesc_command_abs_brake_current_v3_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_abs_current_v3_t {
+struct vesc_vesc_command_abs_current_v3_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 mA)
      * Scale: 0.001
@@ -1675,7 +1796,8 @@ struct vesc_vesc_command_abs_current_v3_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rpm_v3_t {
+struct vesc_vesc_command_rpm_v3_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483648..2147483647 RPM)
      * Scale: 1
@@ -1689,7 +1811,8 @@ struct vesc_vesc_command_rpm_v3_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status5_v3_t {
+struct vesc_vesc_status5_v3_t
+{
     /**
      * Range: -
      * Scale: 0.1
@@ -1717,7 +1840,8 @@ struct vesc_vesc_status5_v3_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status4_v3_t {
+struct vesc_vesc_status4_v3_t
+{
     /**
      * Range: -32768..32767 (-3276.8..3276.7 °C)
      * Scale: 0.1
@@ -1752,7 +1876,8 @@ struct vesc_vesc_status4_v3_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status3_v3_t {
+struct vesc_vesc_status3_v3_t
+{
     /**
      * Range: -2147483648..2147483647 (-21474.83648..21474.83647 Wh)
      * Scale: 1e-05
@@ -1773,7 +1898,8 @@ struct vesc_vesc_status3_v3_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status2_v3_t {
+struct vesc_vesc_status2_v3_t
+{
     /**
      * Range: -2147483648..2147483647 (-21474.83648..21474.83647 Ah)
      * Scale: 1e-05
@@ -1794,7 +1920,8 @@ struct vesc_vesc_status2_v3_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status1_v3_t {
+struct vesc_vesc_status1_v3_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483648..2147483647 RPM)
      * Scale: 1
@@ -1822,7 +1949,8 @@ struct vesc_vesc_status1_v3_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_duty_cycle_v3_t {
+struct vesc_vesc_command_duty_cycle_v3_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -1836,7 +1964,8 @@ struct vesc_vesc_command_duty_cycle_v3_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_set_current_limit_perm_v4_t {
+struct vesc_vesc_set_current_limit_perm_v4_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 -)
      * Scale: 0.001
@@ -1857,7 +1986,8 @@ struct vesc_vesc_set_current_limit_perm_v4_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_set_current_limit_temp_v4_t {
+struct vesc_vesc_set_current_limit_temp_v4_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 -)
      * Scale: 0.001
@@ -1878,7 +2008,8 @@ struct vesc_vesc_set_current_limit_temp_v4_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rel_brake_current_v4_t {
+struct vesc_vesc_command_rel_brake_current_v4_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -1892,7 +2023,8 @@ struct vesc_vesc_command_rel_brake_current_v4_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rel_current_v4_t {
+struct vesc_vesc_command_rel_current_v4_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -1906,7 +2038,8 @@ struct vesc_vesc_command_rel_current_v4_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_pos_v4_t {
+struct vesc_vesc_command_pos_v4_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483648..2147483647 RPM)
      * Scale: 1
@@ -1920,7 +2053,8 @@ struct vesc_vesc_command_pos_v4_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_abs_brake_current_v4_t {
+struct vesc_vesc_command_abs_brake_current_v4_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 mA)
      * Scale: 0.001
@@ -1934,7 +2068,8 @@ struct vesc_vesc_command_abs_brake_current_v4_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_abs_current_v4_t {
+struct vesc_vesc_command_abs_current_v4_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 mA)
      * Scale: 0.001
@@ -1948,7 +2083,8 @@ struct vesc_vesc_command_abs_current_v4_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rpm_v4_t {
+struct vesc_vesc_command_rpm_v4_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483648..2147483647 RPM)
      * Scale: 1
@@ -1962,7 +2098,8 @@ struct vesc_vesc_command_rpm_v4_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status5_v4_t {
+struct vesc_vesc_status5_v4_t
+{
     /**
      * Range: -
      * Scale: 0.1
@@ -1990,7 +2127,8 @@ struct vesc_vesc_status5_v4_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status4_v4_t {
+struct vesc_vesc_status4_v4_t
+{
     /**
      * Range: -32768..32767 (-3276.8..3276.7 °C)
      * Scale: 0.1
@@ -2025,7 +2163,8 @@ struct vesc_vesc_status4_v4_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status3_v4_t {
+struct vesc_vesc_status3_v4_t
+{
     /**
      * Range: -2147483648..2147483647 (-21474.83648..21474.83647 Wh)
      * Scale: 1e-05
@@ -2046,7 +2185,8 @@ struct vesc_vesc_status3_v4_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status2_v4_t {
+struct vesc_vesc_status2_v4_t
+{
     /**
      * Range: -2147483648..2147483647 (-21474.83648..21474.83647 Ah)
      * Scale: 1e-05
@@ -2067,7 +2207,8 @@ struct vesc_vesc_status2_v4_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status1_v4_t {
+struct vesc_vesc_status1_v4_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483648..2147483647 RPM)
      * Scale: 1
@@ -2095,7 +2236,8 @@ struct vesc_vesc_status1_v4_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_duty_cycle_v4_t {
+struct vesc_vesc_command_duty_cycle_v4_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -2109,7 +2251,8 @@ struct vesc_vesc_command_duty_cycle_v4_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_set_current_limit_perm_v5_t {
+struct vesc_vesc_set_current_limit_perm_v5_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 -)
      * Scale: 0.001
@@ -2130,7 +2273,8 @@ struct vesc_vesc_set_current_limit_perm_v5_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_set_current_limit_temp_v5_t {
+struct vesc_vesc_set_current_limit_temp_v5_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 -)
      * Scale: 0.001
@@ -2151,7 +2295,8 @@ struct vesc_vesc_set_current_limit_temp_v5_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rel_brake_current_v5_t {
+struct vesc_vesc_command_rel_brake_current_v5_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -2165,7 +2310,8 @@ struct vesc_vesc_command_rel_brake_current_v5_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rel_current_v5_t {
+struct vesc_vesc_command_rel_current_v5_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -2179,7 +2325,8 @@ struct vesc_vesc_command_rel_current_v5_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_pos_v5_t {
+struct vesc_vesc_command_pos_v5_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483648..2147483647 RPM)
      * Scale: 1
@@ -2193,7 +2340,8 @@ struct vesc_vesc_command_pos_v5_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_abs_brake_current_v5_t {
+struct vesc_vesc_command_abs_brake_current_v5_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 mA)
      * Scale: 0.001
@@ -2207,7 +2355,8 @@ struct vesc_vesc_command_abs_brake_current_v5_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_abs_current_v5_t {
+struct vesc_vesc_command_abs_current_v5_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 mA)
      * Scale: 0.001
@@ -2221,7 +2370,8 @@ struct vesc_vesc_command_abs_current_v5_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rpm_v5_t {
+struct vesc_vesc_command_rpm_v5_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483648..2147483647 RPM)
      * Scale: 1
@@ -2235,7 +2385,8 @@ struct vesc_vesc_command_rpm_v5_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status5_v5_t {
+struct vesc_vesc_status5_v5_t
+{
     /**
      * Range: -
      * Scale: 0.1
@@ -2263,7 +2414,8 @@ struct vesc_vesc_status5_v5_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status4_v5_t {
+struct vesc_vesc_status4_v5_t
+{
     /**
      * Range: -32768..32767 (-3276.8..3276.7 °C)
      * Scale: 0.1
@@ -2298,7 +2450,8 @@ struct vesc_vesc_status4_v5_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status3_v5_t {
+struct vesc_vesc_status3_v5_t
+{
     /**
      * Range: -2147483648..2147483647 (-21474.83648..21474.83647 Wh)
      * Scale: 1e-05
@@ -2319,7 +2472,8 @@ struct vesc_vesc_status3_v5_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status2_v5_t {
+struct vesc_vesc_status2_v5_t
+{
     /**
      * Range: -2147483648..2147483647 (-21474.83648..21474.83647 Ah)
      * Scale: 1e-05
@@ -2340,7 +2494,8 @@ struct vesc_vesc_status2_v5_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status1_v5_t {
+struct vesc_vesc_status1_v5_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483648..2147483647 RPM)
      * Scale: 1
@@ -2368,7 +2523,8 @@ struct vesc_vesc_status1_v5_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_duty_cycle_v5_t {
+struct vesc_vesc_command_duty_cycle_v5_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -2382,7 +2538,8 @@ struct vesc_vesc_command_duty_cycle_v5_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_set_current_limit_perm_v6_t {
+struct vesc_vesc_set_current_limit_perm_v6_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 -)
      * Scale: 0.001
@@ -2403,7 +2560,8 @@ struct vesc_vesc_set_current_limit_perm_v6_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_set_current_limit_temp_v6_t {
+struct vesc_vesc_set_current_limit_temp_v6_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 -)
      * Scale: 0.001
@@ -2424,7 +2582,8 @@ struct vesc_vesc_set_current_limit_temp_v6_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rel_brake_current_v6_t {
+struct vesc_vesc_command_rel_brake_current_v6_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -2438,7 +2597,8 @@ struct vesc_vesc_command_rel_brake_current_v6_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rel_current_v6_t {
+struct vesc_vesc_command_rel_current_v6_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -2452,7 +2612,8 @@ struct vesc_vesc_command_rel_current_v6_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_pos_v6_t {
+struct vesc_vesc_command_pos_v6_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483648..2147483647 RPM)
      * Scale: 1
@@ -2466,7 +2627,8 @@ struct vesc_vesc_command_pos_v6_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_abs_brake_current_v6_t {
+struct vesc_vesc_command_abs_brake_current_v6_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 mA)
      * Scale: 0.001
@@ -2480,7 +2642,8 @@ struct vesc_vesc_command_abs_brake_current_v6_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_abs_current_v6_t {
+struct vesc_vesc_command_abs_current_v6_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 mA)
      * Scale: 0.001
@@ -2494,7 +2657,8 @@ struct vesc_vesc_command_abs_current_v6_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rpm_v6_t {
+struct vesc_vesc_command_rpm_v6_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483648..2147483647 RPM)
      * Scale: 1
@@ -2508,7 +2672,8 @@ struct vesc_vesc_command_rpm_v6_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status5_v6_t {
+struct vesc_vesc_status5_v6_t
+{
     /**
      * Range: -
      * Scale: 0.1
@@ -2536,7 +2701,8 @@ struct vesc_vesc_status5_v6_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status4_v6_t {
+struct vesc_vesc_status4_v6_t
+{
     /**
      * Range: -32768..32767 (-3276.8..3276.7 °C)
      * Scale: 0.1
@@ -2571,7 +2737,8 @@ struct vesc_vesc_status4_v6_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status3_v6_t {
+struct vesc_vesc_status3_v6_t
+{
     /**
      * Range: -2147483648..2147483647 (-21474.83648..21474.83647 Wh)
      * Scale: 1e-05
@@ -2592,7 +2759,8 @@ struct vesc_vesc_status3_v6_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status2_v6_t {
+struct vesc_vesc_status2_v6_t
+{
     /**
      * Range: -2147483648..2147483647 (-21474.83648..21474.83647 Ah)
      * Scale: 1e-05
@@ -2613,7 +2781,8 @@ struct vesc_vesc_status2_v6_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status1_v6_t {
+struct vesc_vesc_status1_v6_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483648..2147483647 RPM)
      * Scale: 1
@@ -2641,7 +2810,8 @@ struct vesc_vesc_status1_v6_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_duty_cycle_v6_t {
+struct vesc_vesc_command_duty_cycle_v6_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -2655,7 +2825,8 @@ struct vesc_vesc_command_duty_cycle_v6_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_set_current_limit_perm_v7_t {
+struct vesc_vesc_set_current_limit_perm_v7_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 -)
      * Scale: 0.001
@@ -2676,7 +2847,8 @@ struct vesc_vesc_set_current_limit_perm_v7_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_set_current_limit_temp_v7_t {
+struct vesc_vesc_set_current_limit_temp_v7_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 -)
      * Scale: 0.001
@@ -2697,7 +2869,8 @@ struct vesc_vesc_set_current_limit_temp_v7_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rel_brake_current_v7_t {
+struct vesc_vesc_command_rel_brake_current_v7_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -2711,7 +2884,8 @@ struct vesc_vesc_command_rel_brake_current_v7_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rel_current_v7_t {
+struct vesc_vesc_command_rel_current_v7_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -2725,7 +2899,8 @@ struct vesc_vesc_command_rel_current_v7_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_pos_v7_t {
+struct vesc_vesc_command_pos_v7_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483648..2147483647 RPM)
      * Scale: 1
@@ -2739,7 +2914,8 @@ struct vesc_vesc_command_pos_v7_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_abs_brake_current_v7_t {
+struct vesc_vesc_command_abs_brake_current_v7_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 mA)
      * Scale: 0.001
@@ -2753,7 +2929,8 @@ struct vesc_vesc_command_abs_brake_current_v7_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_abs_current_v7_t {
+struct vesc_vesc_command_abs_current_v7_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 mA)
      * Scale: 0.001
@@ -2767,7 +2944,8 @@ struct vesc_vesc_command_abs_current_v7_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rpm_v7_t {
+struct vesc_vesc_command_rpm_v7_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483648..2147483647 RPM)
      * Scale: 1
@@ -2781,7 +2959,8 @@ struct vesc_vesc_command_rpm_v7_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status5_v7_t {
+struct vesc_vesc_status5_v7_t
+{
     /**
      * Range: -
      * Scale: 0.1
@@ -2809,7 +2988,8 @@ struct vesc_vesc_status5_v7_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status4_v7_t {
+struct vesc_vesc_status4_v7_t
+{
     /**
      * Range: -32768..32767 (-3276.8..3276.7 °C)
      * Scale: 0.1
@@ -2844,7 +3024,8 @@ struct vesc_vesc_status4_v7_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status3_v7_t {
+struct vesc_vesc_status3_v7_t
+{
     /**
      * Range: -2147483648..2147483647 (-21474.83648..21474.83647 Wh)
      * Scale: 1e-05
@@ -2865,7 +3046,8 @@ struct vesc_vesc_status3_v7_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status2_v7_t {
+struct vesc_vesc_status2_v7_t
+{
     /**
      * Range: -2147483648..2147483647 (-21474.83648..21474.83647 Ah)
      * Scale: 1e-05
@@ -2886,7 +3068,8 @@ struct vesc_vesc_status2_v7_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status1_v7_t {
+struct vesc_vesc_status1_v7_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483648..2147483647 RPM)
      * Scale: 1
@@ -2914,7 +3097,8 @@ struct vesc_vesc_status1_v7_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_duty_cycle_v7_t {
+struct vesc_vesc_command_duty_cycle_v7_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -2928,7 +3112,8 @@ struct vesc_vesc_command_duty_cycle_v7_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_set_current_limit_perm_v8_t {
+struct vesc_vesc_set_current_limit_perm_v8_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 -)
      * Scale: 0.001
@@ -2949,7 +3134,8 @@ struct vesc_vesc_set_current_limit_perm_v8_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_set_current_limit_temp_v8_t {
+struct vesc_vesc_set_current_limit_temp_v8_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 -)
      * Scale: 0.001
@@ -2970,7 +3156,8 @@ struct vesc_vesc_set_current_limit_temp_v8_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rel_brake_current_v8_t {
+struct vesc_vesc_command_rel_brake_current_v8_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -2984,7 +3171,8 @@ struct vesc_vesc_command_rel_brake_current_v8_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rel_current_v8_t {
+struct vesc_vesc_command_rel_current_v8_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -2998,7 +3186,8 @@ struct vesc_vesc_command_rel_current_v8_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_pos_v8_t {
+struct vesc_vesc_command_pos_v8_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483648..2147483647 RPM)
      * Scale: 1
@@ -3012,7 +3201,8 @@ struct vesc_vesc_command_pos_v8_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_abs_brake_current_v8_t {
+struct vesc_vesc_command_abs_brake_current_v8_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 mA)
      * Scale: 0.001
@@ -3026,7 +3216,8 @@ struct vesc_vesc_command_abs_brake_current_v8_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_abs_current_v8_t {
+struct vesc_vesc_command_abs_current_v8_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483.648..2147483.647 mA)
      * Scale: 0.001
@@ -3040,7 +3231,8 @@ struct vesc_vesc_command_abs_current_v8_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_rpm_v8_t {
+struct vesc_vesc_command_rpm_v8_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483648..2147483647 RPM)
      * Scale: 1
@@ -3054,7 +3246,8 @@ struct vesc_vesc_command_rpm_v8_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status5_v8_t {
+struct vesc_vesc_status5_v8_t
+{
     /**
      * Range: -
      * Scale: 0.1
@@ -3082,7 +3275,8 @@ struct vesc_vesc_status5_v8_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status4_v8_t {
+struct vesc_vesc_status4_v8_t
+{
     /**
      * Range: -32768..32767 (-3276.8..3276.7 °C)
      * Scale: 0.1
@@ -3117,7 +3311,8 @@ struct vesc_vesc_status4_v8_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status3_v8_t {
+struct vesc_vesc_status3_v8_t
+{
     /**
      * Range: -2147483648..2147483647 (-21474.83648..21474.83647 Wh)
      * Scale: 1e-05
@@ -3138,7 +3333,8 @@ struct vesc_vesc_status3_v8_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status2_v8_t {
+struct vesc_vesc_status2_v8_t
+{
     /**
      * Range: -2147483648..2147483647 (-21474.83648..21474.83647 Ah)
      * Scale: 1e-05
@@ -3159,7 +3355,8 @@ struct vesc_vesc_status2_v8_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_status1_v8_t {
+struct vesc_vesc_status1_v8_t
+{
     /**
      * Range: -2147483648..2147483647 (-2147483648..2147483647 RPM)
      * Scale: 1
@@ -3187,7 +3384,8 @@ struct vesc_vesc_status1_v8_t {
  *
  * All signal values are as on the CAN bus.
  */
-struct vesc_vesc_command_duty_cycle_v8_t {
+struct vesc_vesc_command_duty_cycle_v8_t
+{
     /**
      * Range: -100000..100000 (-100..100 %)
      * Scale: 0.001
@@ -3206,9 +3404,7 @@ struct vesc_vesc_command_duty_cycle_v8_t {
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_abs_h_brake_current_v8_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_abs_h_brake_current_v8_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_abs_h_brake_current_v8_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_AbsHBrakeCurrent_V8.
@@ -3220,9 +3416,7 @@ int vesc_vesc_command_abs_h_brake_current_v8_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_abs_h_brake_current_v8_unpack(
-    struct vesc_vesc_command_abs_h_brake_current_v8_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_abs_h_brake_current_v8_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_AbsHBrakeCurrent_V8.
@@ -3231,7 +3425,8 @@ int vesc_vesc_command_abs_h_brake_current_v8_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_abs_h_brake_current_v8_init(struct vesc_vesc_command_abs_h_brake_current_v8_t *msg_p);
+int vesc_vesc_command_abs_h_brake_current_v8_init(
+    struct vesc_vesc_command_abs_h_brake_current_v8_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -3271,7 +3466,8 @@ bool vesc_vesc_command_abs_h_brake_current_v8_command_h_brake_current_v8_is_in_r
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_abs_h_brake_current_v8_command_h_brake_current_v8_is_in_phys_range(double value);
+bool vesc_vesc_command_abs_h_brake_current_v8_command_h_brake_current_v8_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_AbsHBrakeCurrent_V7.
@@ -3283,9 +3479,7 @@ bool vesc_vesc_command_abs_h_brake_current_v8_command_h_brake_current_v8_is_in_p
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_abs_h_brake_current_v7_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_abs_h_brake_current_v7_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_abs_h_brake_current_v7_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_AbsHBrakeCurrent_V7.
@@ -3297,9 +3491,7 @@ int vesc_vesc_command_abs_h_brake_current_v7_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_abs_h_brake_current_v7_unpack(
-    struct vesc_vesc_command_abs_h_brake_current_v7_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_abs_h_brake_current_v7_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_AbsHBrakeCurrent_V7.
@@ -3308,7 +3500,8 @@ int vesc_vesc_command_abs_h_brake_current_v7_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_abs_h_brake_current_v7_init(struct vesc_vesc_command_abs_h_brake_current_v7_t *msg_p);
+int vesc_vesc_command_abs_h_brake_current_v7_init(
+    struct vesc_vesc_command_abs_h_brake_current_v7_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -3348,7 +3541,8 @@ bool vesc_vesc_command_abs_h_brake_current_v7_command_h_brake_current_v7_is_in_r
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_abs_h_brake_current_v7_command_h_brake_current_v7_is_in_phys_range(double value);
+bool vesc_vesc_command_abs_h_brake_current_v7_command_h_brake_current_v7_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_AbsHBrakeCurrent_V6.
@@ -3360,9 +3554,7 @@ bool vesc_vesc_command_abs_h_brake_current_v7_command_h_brake_current_v7_is_in_p
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_abs_h_brake_current_v6_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_abs_h_brake_current_v6_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_abs_h_brake_current_v6_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_AbsHBrakeCurrent_V6.
@@ -3374,9 +3566,7 @@ int vesc_vesc_command_abs_h_brake_current_v6_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_abs_h_brake_current_v6_unpack(
-    struct vesc_vesc_command_abs_h_brake_current_v6_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_abs_h_brake_current_v6_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_AbsHBrakeCurrent_V6.
@@ -3385,7 +3575,8 @@ int vesc_vesc_command_abs_h_brake_current_v6_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_abs_h_brake_current_v6_init(struct vesc_vesc_command_abs_h_brake_current_v6_t *msg_p);
+int vesc_vesc_command_abs_h_brake_current_v6_init(
+    struct vesc_vesc_command_abs_h_brake_current_v6_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -3425,7 +3616,8 @@ bool vesc_vesc_command_abs_h_brake_current_v6_command_h_brake_current_v6_is_in_r
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_abs_h_brake_current_v6_command_h_brake_current_v6_is_in_phys_range(double value);
+bool vesc_vesc_command_abs_h_brake_current_v6_command_h_brake_current_v6_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_AbsHBrakeCurrent_V5.
@@ -3437,9 +3629,7 @@ bool vesc_vesc_command_abs_h_brake_current_v6_command_h_brake_current_v6_is_in_p
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_abs_h_brake_current_v5_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_abs_h_brake_current_v5_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_abs_h_brake_current_v5_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_AbsHBrakeCurrent_V5.
@@ -3451,9 +3641,7 @@ int vesc_vesc_command_abs_h_brake_current_v5_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_abs_h_brake_current_v5_unpack(
-    struct vesc_vesc_command_abs_h_brake_current_v5_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_abs_h_brake_current_v5_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_AbsHBrakeCurrent_V5.
@@ -3462,7 +3650,8 @@ int vesc_vesc_command_abs_h_brake_current_v5_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_abs_h_brake_current_v5_init(struct vesc_vesc_command_abs_h_brake_current_v5_t *msg_p);
+int vesc_vesc_command_abs_h_brake_current_v5_init(
+    struct vesc_vesc_command_abs_h_brake_current_v5_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -3502,7 +3691,8 @@ bool vesc_vesc_command_abs_h_brake_current_v5_command_h_brake_current_v5_is_in_r
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_abs_h_brake_current_v5_command_h_brake_current_v5_is_in_phys_range(double value);
+bool vesc_vesc_command_abs_h_brake_current_v5_command_h_brake_current_v5_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_AbsHBrakeCurrent_V4.
@@ -3514,9 +3704,7 @@ bool vesc_vesc_command_abs_h_brake_current_v5_command_h_brake_current_v5_is_in_p
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_abs_h_brake_current_v4_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_abs_h_brake_current_v4_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_abs_h_brake_current_v4_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_AbsHBrakeCurrent_V4.
@@ -3528,9 +3716,7 @@ int vesc_vesc_command_abs_h_brake_current_v4_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_abs_h_brake_current_v4_unpack(
-    struct vesc_vesc_command_abs_h_brake_current_v4_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_abs_h_brake_current_v4_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_AbsHBrakeCurrent_V4.
@@ -3539,7 +3725,8 @@ int vesc_vesc_command_abs_h_brake_current_v4_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_abs_h_brake_current_v4_init(struct vesc_vesc_command_abs_h_brake_current_v4_t *msg_p);
+int vesc_vesc_command_abs_h_brake_current_v4_init(
+    struct vesc_vesc_command_abs_h_brake_current_v4_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -3579,7 +3766,8 @@ bool vesc_vesc_command_abs_h_brake_current_v4_command_h_brake_current_v4_is_in_r
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_abs_h_brake_current_v4_command_h_brake_current_v4_is_in_phys_range(double value);
+bool vesc_vesc_command_abs_h_brake_current_v4_command_h_brake_current_v4_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_AbsHBrakeCurrent_V3.
@@ -3591,9 +3779,7 @@ bool vesc_vesc_command_abs_h_brake_current_v4_command_h_brake_current_v4_is_in_p
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_abs_h_brake_current_v3_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_abs_h_brake_current_v3_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_abs_h_brake_current_v3_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_AbsHBrakeCurrent_V3.
@@ -3605,9 +3791,7 @@ int vesc_vesc_command_abs_h_brake_current_v3_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_abs_h_brake_current_v3_unpack(
-    struct vesc_vesc_command_abs_h_brake_current_v3_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_abs_h_brake_current_v3_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_AbsHBrakeCurrent_V3.
@@ -3616,7 +3800,8 @@ int vesc_vesc_command_abs_h_brake_current_v3_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_abs_h_brake_current_v3_init(struct vesc_vesc_command_abs_h_brake_current_v3_t *msg_p);
+int vesc_vesc_command_abs_h_brake_current_v3_init(
+    struct vesc_vesc_command_abs_h_brake_current_v3_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -3656,7 +3841,8 @@ bool vesc_vesc_command_abs_h_brake_current_v3_command_h_brake_current_v3_is_in_r
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_abs_h_brake_current_v3_command_h_brake_current_v3_is_in_phys_range(double value);
+bool vesc_vesc_command_abs_h_brake_current_v3_command_h_brake_current_v3_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_AbsHBrakeCurrent_V2.
@@ -3668,9 +3854,7 @@ bool vesc_vesc_command_abs_h_brake_current_v3_command_h_brake_current_v3_is_in_p
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_abs_h_brake_current_v2_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_abs_h_brake_current_v2_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_abs_h_brake_current_v2_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_AbsHBrakeCurrent_V2.
@@ -3682,9 +3866,7 @@ int vesc_vesc_command_abs_h_brake_current_v2_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_abs_h_brake_current_v2_unpack(
-    struct vesc_vesc_command_abs_h_brake_current_v2_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_abs_h_brake_current_v2_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_AbsHBrakeCurrent_V2.
@@ -3693,7 +3875,8 @@ int vesc_vesc_command_abs_h_brake_current_v2_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_abs_h_brake_current_v2_init(struct vesc_vesc_command_abs_h_brake_current_v2_t *msg_p);
+int vesc_vesc_command_abs_h_brake_current_v2_init(
+    struct vesc_vesc_command_abs_h_brake_current_v2_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -3733,7 +3916,8 @@ bool vesc_vesc_command_abs_h_brake_current_v2_command_h_brake_current_v2_is_in_r
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_abs_h_brake_current_v2_command_h_brake_current_v2_is_in_phys_range(double value);
+bool vesc_vesc_command_abs_h_brake_current_v2_command_h_brake_current_v2_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_AbsHBrakeCurrent_V1.
@@ -3745,9 +3929,7 @@ bool vesc_vesc_command_abs_h_brake_current_v2_command_h_brake_current_v2_is_in_p
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_abs_h_brake_current_v1_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_abs_h_brake_current_v1_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_abs_h_brake_current_v1_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_AbsHBrakeCurrent_V1.
@@ -3759,9 +3941,7 @@ int vesc_vesc_command_abs_h_brake_current_v1_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_abs_h_brake_current_v1_unpack(
-    struct vesc_vesc_command_abs_h_brake_current_v1_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_abs_h_brake_current_v1_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_AbsHBrakeCurrent_V1.
@@ -3770,7 +3950,8 @@ int vesc_vesc_command_abs_h_brake_current_v1_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_abs_h_brake_current_v1_init(struct vesc_vesc_command_abs_h_brake_current_v1_t *msg_p);
+int vesc_vesc_command_abs_h_brake_current_v1_init(
+    struct vesc_vesc_command_abs_h_brake_current_v1_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -3810,7 +3991,8 @@ bool vesc_vesc_command_abs_h_brake_current_v1_command_h_brake_current_v1_is_in_r
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_abs_h_brake_current_v1_command_h_brake_current_v1_is_in_phys_range(double value);
+bool vesc_vesc_command_abs_h_brake_current_v1_command_h_brake_current_v1_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_RelHBrakeCurrent_V8.
@@ -3822,9 +4004,7 @@ bool vesc_vesc_command_abs_h_brake_current_v1_command_h_brake_current_v1_is_in_p
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_rel_h_brake_current_v8_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rel_h_brake_current_v8_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_rel_h_brake_current_v8_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_RelHBrakeCurrent_V8.
@@ -3836,9 +4016,7 @@ int vesc_vesc_command_rel_h_brake_current_v8_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_rel_h_brake_current_v8_unpack(
-    struct vesc_vesc_command_rel_h_brake_current_v8_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_rel_h_brake_current_v8_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RelHBrakeCurrent_V8.
@@ -3847,7 +4025,8 @@ int vesc_vesc_command_rel_h_brake_current_v8_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rel_h_brake_current_v8_init(struct vesc_vesc_command_rel_h_brake_current_v8_t *msg_p);
+int vesc_vesc_command_rel_h_brake_current_v8_init(
+    struct vesc_vesc_command_rel_h_brake_current_v8_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -3856,7 +4035,8 @@ int vesc_vesc_command_rel_h_brake_current_v8_init(struct vesc_vesc_command_rel_h
  *
  * @return Encoded signal.
  */
-int32_t vesc_vesc_command_rel_h_brake_current_v8_command_relative_h_brake_current_v8_encode(double value);
+int32_t vesc_vesc_command_rel_h_brake_current_v8_command_relative_h_brake_current_v8_encode(
+    double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -3865,7 +4045,8 @@ int32_t vesc_vesc_command_rel_h_brake_current_v8_command_relative_h_brake_curren
  *
  * @return Decoded signal.
  */
-double vesc_vesc_command_rel_h_brake_current_v8_command_relative_h_brake_current_v8_decode(int32_t value);
+double vesc_vesc_command_rel_h_brake_current_v8_command_relative_h_brake_current_v8_decode(
+    int32_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -3874,7 +4055,8 @@ double vesc_vesc_command_rel_h_brake_current_v8_command_relative_h_brake_current
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_h_brake_current_v8_command_relative_h_brake_current_v8_is_in_range(int32_t value);
+bool vesc_vesc_command_rel_h_brake_current_v8_command_relative_h_brake_current_v8_is_in_range(
+    int32_t value);
 
 /**
  * Check that given physical value is in allowed range before encoding.
@@ -3887,7 +4069,8 @@ bool vesc_vesc_command_rel_h_brake_current_v8_command_relative_h_brake_current_v
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_h_brake_current_v8_command_relative_h_brake_current_v8_is_in_phys_range(double value);
+bool vesc_vesc_command_rel_h_brake_current_v8_command_relative_h_brake_current_v8_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_RelHBrakeCurrent_V7.
@@ -3899,9 +4082,7 @@ bool vesc_vesc_command_rel_h_brake_current_v8_command_relative_h_brake_current_v
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_rel_h_brake_current_v7_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rel_h_brake_current_v7_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_rel_h_brake_current_v7_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_RelHBrakeCurrent_V7.
@@ -3913,9 +4094,7 @@ int vesc_vesc_command_rel_h_brake_current_v7_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_rel_h_brake_current_v7_unpack(
-    struct vesc_vesc_command_rel_h_brake_current_v7_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_rel_h_brake_current_v7_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RelHBrakeCurrent_V7.
@@ -3924,7 +4103,8 @@ int vesc_vesc_command_rel_h_brake_current_v7_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rel_h_brake_current_v7_init(struct vesc_vesc_command_rel_h_brake_current_v7_t *msg_p);
+int vesc_vesc_command_rel_h_brake_current_v7_init(
+    struct vesc_vesc_command_rel_h_brake_current_v7_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -3933,7 +4113,8 @@ int vesc_vesc_command_rel_h_brake_current_v7_init(struct vesc_vesc_command_rel_h
  *
  * @return Encoded signal.
  */
-int32_t vesc_vesc_command_rel_h_brake_current_v7_command_relative_h_brake_current_v7_encode(double value);
+int32_t vesc_vesc_command_rel_h_brake_current_v7_command_relative_h_brake_current_v7_encode(
+    double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -3942,7 +4123,8 @@ int32_t vesc_vesc_command_rel_h_brake_current_v7_command_relative_h_brake_curren
  *
  * @return Decoded signal.
  */
-double vesc_vesc_command_rel_h_brake_current_v7_command_relative_h_brake_current_v7_decode(int32_t value);
+double vesc_vesc_command_rel_h_brake_current_v7_command_relative_h_brake_current_v7_decode(
+    int32_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -3951,7 +4133,8 @@ double vesc_vesc_command_rel_h_brake_current_v7_command_relative_h_brake_current
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_h_brake_current_v7_command_relative_h_brake_current_v7_is_in_range(int32_t value);
+bool vesc_vesc_command_rel_h_brake_current_v7_command_relative_h_brake_current_v7_is_in_range(
+    int32_t value);
 
 /**
  * Check that given physical value is in allowed range before encoding.
@@ -3964,7 +4147,8 @@ bool vesc_vesc_command_rel_h_brake_current_v7_command_relative_h_brake_current_v
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_h_brake_current_v7_command_relative_h_brake_current_v7_is_in_phys_range(double value);
+bool vesc_vesc_command_rel_h_brake_current_v7_command_relative_h_brake_current_v7_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_RelHBrakeCurrent_V6.
@@ -3976,9 +4160,7 @@ bool vesc_vesc_command_rel_h_brake_current_v7_command_relative_h_brake_current_v
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_rel_h_brake_current_v6_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rel_h_brake_current_v6_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_rel_h_brake_current_v6_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_RelHBrakeCurrent_V6.
@@ -3990,9 +4172,7 @@ int vesc_vesc_command_rel_h_brake_current_v6_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_rel_h_brake_current_v6_unpack(
-    struct vesc_vesc_command_rel_h_brake_current_v6_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_rel_h_brake_current_v6_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RelHBrakeCurrent_V6.
@@ -4001,7 +4181,8 @@ int vesc_vesc_command_rel_h_brake_current_v6_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rel_h_brake_current_v6_init(struct vesc_vesc_command_rel_h_brake_current_v6_t *msg_p);
+int vesc_vesc_command_rel_h_brake_current_v6_init(
+    struct vesc_vesc_command_rel_h_brake_current_v6_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -4010,7 +4191,8 @@ int vesc_vesc_command_rel_h_brake_current_v6_init(struct vesc_vesc_command_rel_h
  *
  * @return Encoded signal.
  */
-int32_t vesc_vesc_command_rel_h_brake_current_v6_command_relative_h_brake_current_v6_encode(double value);
+int32_t vesc_vesc_command_rel_h_brake_current_v6_command_relative_h_brake_current_v6_encode(
+    double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -4019,7 +4201,8 @@ int32_t vesc_vesc_command_rel_h_brake_current_v6_command_relative_h_brake_curren
  *
  * @return Decoded signal.
  */
-double vesc_vesc_command_rel_h_brake_current_v6_command_relative_h_brake_current_v6_decode(int32_t value);
+double vesc_vesc_command_rel_h_brake_current_v6_command_relative_h_brake_current_v6_decode(
+    int32_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -4028,7 +4211,8 @@ double vesc_vesc_command_rel_h_brake_current_v6_command_relative_h_brake_current
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_h_brake_current_v6_command_relative_h_brake_current_v6_is_in_range(int32_t value);
+bool vesc_vesc_command_rel_h_brake_current_v6_command_relative_h_brake_current_v6_is_in_range(
+    int32_t value);
 
 /**
  * Check that given physical value is in allowed range before encoding.
@@ -4041,7 +4225,8 @@ bool vesc_vesc_command_rel_h_brake_current_v6_command_relative_h_brake_current_v
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_h_brake_current_v6_command_relative_h_brake_current_v6_is_in_phys_range(double value);
+bool vesc_vesc_command_rel_h_brake_current_v6_command_relative_h_brake_current_v6_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_RelHBrakeCurrent_V5.
@@ -4053,9 +4238,7 @@ bool vesc_vesc_command_rel_h_brake_current_v6_command_relative_h_brake_current_v
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_rel_h_brake_current_v5_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rel_h_brake_current_v5_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_rel_h_brake_current_v5_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_RelHBrakeCurrent_V5.
@@ -4067,9 +4250,7 @@ int vesc_vesc_command_rel_h_brake_current_v5_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_rel_h_brake_current_v5_unpack(
-    struct vesc_vesc_command_rel_h_brake_current_v5_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_rel_h_brake_current_v5_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RelHBrakeCurrent_V5.
@@ -4078,7 +4259,8 @@ int vesc_vesc_command_rel_h_brake_current_v5_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rel_h_brake_current_v5_init(struct vesc_vesc_command_rel_h_brake_current_v5_t *msg_p);
+int vesc_vesc_command_rel_h_brake_current_v5_init(
+    struct vesc_vesc_command_rel_h_brake_current_v5_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -4087,7 +4269,8 @@ int vesc_vesc_command_rel_h_brake_current_v5_init(struct vesc_vesc_command_rel_h
  *
  * @return Encoded signal.
  */
-int32_t vesc_vesc_command_rel_h_brake_current_v5_command_relative_h_brake_current_v5_encode(double value);
+int32_t vesc_vesc_command_rel_h_brake_current_v5_command_relative_h_brake_current_v5_encode(
+    double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -4096,7 +4279,8 @@ int32_t vesc_vesc_command_rel_h_brake_current_v5_command_relative_h_brake_curren
  *
  * @return Decoded signal.
  */
-double vesc_vesc_command_rel_h_brake_current_v5_command_relative_h_brake_current_v5_decode(int32_t value);
+double vesc_vesc_command_rel_h_brake_current_v5_command_relative_h_brake_current_v5_decode(
+    int32_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -4105,7 +4289,8 @@ double vesc_vesc_command_rel_h_brake_current_v5_command_relative_h_brake_current
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_h_brake_current_v5_command_relative_h_brake_current_v5_is_in_range(int32_t value);
+bool vesc_vesc_command_rel_h_brake_current_v5_command_relative_h_brake_current_v5_is_in_range(
+    int32_t value);
 
 /**
  * Check that given physical value is in allowed range before encoding.
@@ -4118,7 +4303,8 @@ bool vesc_vesc_command_rel_h_brake_current_v5_command_relative_h_brake_current_v
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_h_brake_current_v5_command_relative_h_brake_current_v5_is_in_phys_range(double value);
+bool vesc_vesc_command_rel_h_brake_current_v5_command_relative_h_brake_current_v5_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_RelHBrakeCurrent_V4.
@@ -4130,9 +4316,7 @@ bool vesc_vesc_command_rel_h_brake_current_v5_command_relative_h_brake_current_v
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_rel_h_brake_current_v4_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rel_h_brake_current_v4_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_rel_h_brake_current_v4_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_RelHBrakeCurrent_V4.
@@ -4144,9 +4328,7 @@ int vesc_vesc_command_rel_h_brake_current_v4_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_rel_h_brake_current_v4_unpack(
-    struct vesc_vesc_command_rel_h_brake_current_v4_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_rel_h_brake_current_v4_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RelHBrakeCurrent_V4.
@@ -4155,7 +4337,8 @@ int vesc_vesc_command_rel_h_brake_current_v4_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rel_h_brake_current_v4_init(struct vesc_vesc_command_rel_h_brake_current_v4_t *msg_p);
+int vesc_vesc_command_rel_h_brake_current_v4_init(
+    struct vesc_vesc_command_rel_h_brake_current_v4_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -4164,7 +4347,8 @@ int vesc_vesc_command_rel_h_brake_current_v4_init(struct vesc_vesc_command_rel_h
  *
  * @return Encoded signal.
  */
-int32_t vesc_vesc_command_rel_h_brake_current_v4_command_relative_h_brake_current_v4_encode(double value);
+int32_t vesc_vesc_command_rel_h_brake_current_v4_command_relative_h_brake_current_v4_encode(
+    double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -4173,7 +4357,8 @@ int32_t vesc_vesc_command_rel_h_brake_current_v4_command_relative_h_brake_curren
  *
  * @return Decoded signal.
  */
-double vesc_vesc_command_rel_h_brake_current_v4_command_relative_h_brake_current_v4_decode(int32_t value);
+double vesc_vesc_command_rel_h_brake_current_v4_command_relative_h_brake_current_v4_decode(
+    int32_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -4182,7 +4367,8 @@ double vesc_vesc_command_rel_h_brake_current_v4_command_relative_h_brake_current
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_h_brake_current_v4_command_relative_h_brake_current_v4_is_in_range(int32_t value);
+bool vesc_vesc_command_rel_h_brake_current_v4_command_relative_h_brake_current_v4_is_in_range(
+    int32_t value);
 
 /**
  * Check that given physical value is in allowed range before encoding.
@@ -4195,7 +4381,8 @@ bool vesc_vesc_command_rel_h_brake_current_v4_command_relative_h_brake_current_v
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_h_brake_current_v4_command_relative_h_brake_current_v4_is_in_phys_range(double value);
+bool vesc_vesc_command_rel_h_brake_current_v4_command_relative_h_brake_current_v4_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_RelHBrakeCurrent_V3.
@@ -4207,9 +4394,7 @@ bool vesc_vesc_command_rel_h_brake_current_v4_command_relative_h_brake_current_v
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_rel_h_brake_current_v3_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rel_h_brake_current_v3_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_rel_h_brake_current_v3_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_RelHBrakeCurrent_V3.
@@ -4221,9 +4406,7 @@ int vesc_vesc_command_rel_h_brake_current_v3_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_rel_h_brake_current_v3_unpack(
-    struct vesc_vesc_command_rel_h_brake_current_v3_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_rel_h_brake_current_v3_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RelHBrakeCurrent_V3.
@@ -4232,7 +4415,8 @@ int vesc_vesc_command_rel_h_brake_current_v3_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rel_h_brake_current_v3_init(struct vesc_vesc_command_rel_h_brake_current_v3_t *msg_p);
+int vesc_vesc_command_rel_h_brake_current_v3_init(
+    struct vesc_vesc_command_rel_h_brake_current_v3_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -4241,7 +4425,8 @@ int vesc_vesc_command_rel_h_brake_current_v3_init(struct vesc_vesc_command_rel_h
  *
  * @return Encoded signal.
  */
-int32_t vesc_vesc_command_rel_h_brake_current_v3_command_relative_h_brake_current_v3_encode(double value);
+int32_t vesc_vesc_command_rel_h_brake_current_v3_command_relative_h_brake_current_v3_encode(
+    double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -4250,7 +4435,8 @@ int32_t vesc_vesc_command_rel_h_brake_current_v3_command_relative_h_brake_curren
  *
  * @return Decoded signal.
  */
-double vesc_vesc_command_rel_h_brake_current_v3_command_relative_h_brake_current_v3_decode(int32_t value);
+double vesc_vesc_command_rel_h_brake_current_v3_command_relative_h_brake_current_v3_decode(
+    int32_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -4259,7 +4445,8 @@ double vesc_vesc_command_rel_h_brake_current_v3_command_relative_h_brake_current
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_h_brake_current_v3_command_relative_h_brake_current_v3_is_in_range(int32_t value);
+bool vesc_vesc_command_rel_h_brake_current_v3_command_relative_h_brake_current_v3_is_in_range(
+    int32_t value);
 
 /**
  * Check that given physical value is in allowed range before encoding.
@@ -4272,7 +4459,8 @@ bool vesc_vesc_command_rel_h_brake_current_v3_command_relative_h_brake_current_v
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_h_brake_current_v3_command_relative_h_brake_current_v3_is_in_phys_range(double value);
+bool vesc_vesc_command_rel_h_brake_current_v3_command_relative_h_brake_current_v3_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_RelHBrakeCurrent_V2.
@@ -4284,9 +4472,7 @@ bool vesc_vesc_command_rel_h_brake_current_v3_command_relative_h_brake_current_v
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_rel_h_brake_current_v2_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rel_h_brake_current_v2_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_rel_h_brake_current_v2_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_RelHBrakeCurrent_V2.
@@ -4298,9 +4484,7 @@ int vesc_vesc_command_rel_h_brake_current_v2_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_rel_h_brake_current_v2_unpack(
-    struct vesc_vesc_command_rel_h_brake_current_v2_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_rel_h_brake_current_v2_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RelHBrakeCurrent_V2.
@@ -4309,7 +4493,8 @@ int vesc_vesc_command_rel_h_brake_current_v2_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rel_h_brake_current_v2_init(struct vesc_vesc_command_rel_h_brake_current_v2_t *msg_p);
+int vesc_vesc_command_rel_h_brake_current_v2_init(
+    struct vesc_vesc_command_rel_h_brake_current_v2_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -4318,7 +4503,8 @@ int vesc_vesc_command_rel_h_brake_current_v2_init(struct vesc_vesc_command_rel_h
  *
  * @return Encoded signal.
  */
-int32_t vesc_vesc_command_rel_h_brake_current_v2_command_relative_h_brake_current_v2_encode(double value);
+int32_t vesc_vesc_command_rel_h_brake_current_v2_command_relative_h_brake_current_v2_encode(
+    double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -4327,7 +4513,8 @@ int32_t vesc_vesc_command_rel_h_brake_current_v2_command_relative_h_brake_curren
  *
  * @return Decoded signal.
  */
-double vesc_vesc_command_rel_h_brake_current_v2_command_relative_h_brake_current_v2_decode(int32_t value);
+double vesc_vesc_command_rel_h_brake_current_v2_command_relative_h_brake_current_v2_decode(
+    int32_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -4336,7 +4523,8 @@ double vesc_vesc_command_rel_h_brake_current_v2_command_relative_h_brake_current
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_h_brake_current_v2_command_relative_h_brake_current_v2_is_in_range(int32_t value);
+bool vesc_vesc_command_rel_h_brake_current_v2_command_relative_h_brake_current_v2_is_in_range(
+    int32_t value);
 
 /**
  * Check that given physical value is in allowed range before encoding.
@@ -4349,7 +4537,8 @@ bool vesc_vesc_command_rel_h_brake_current_v2_command_relative_h_brake_current_v
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_h_brake_current_v2_command_relative_h_brake_current_v2_is_in_phys_range(double value);
+bool vesc_vesc_command_rel_h_brake_current_v2_command_relative_h_brake_current_v2_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_RelHBrakeCurrent_V1.
@@ -4361,9 +4550,7 @@ bool vesc_vesc_command_rel_h_brake_current_v2_command_relative_h_brake_current_v
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_rel_h_brake_current_v1_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rel_h_brake_current_v1_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_rel_h_brake_current_v1_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_RelHBrakeCurrent_V1.
@@ -4375,9 +4562,7 @@ int vesc_vesc_command_rel_h_brake_current_v1_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_rel_h_brake_current_v1_unpack(
-    struct vesc_vesc_command_rel_h_brake_current_v1_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_rel_h_brake_current_v1_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RelHBrakeCurrent_V1.
@@ -4386,7 +4571,8 @@ int vesc_vesc_command_rel_h_brake_current_v1_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rel_h_brake_current_v1_init(struct vesc_vesc_command_rel_h_brake_current_v1_t *msg_p);
+int vesc_vesc_command_rel_h_brake_current_v1_init(
+    struct vesc_vesc_command_rel_h_brake_current_v1_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -4395,7 +4581,8 @@ int vesc_vesc_command_rel_h_brake_current_v1_init(struct vesc_vesc_command_rel_h
  *
  * @return Encoded signal.
  */
-int32_t vesc_vesc_command_rel_h_brake_current_v1_command_relative_h_brake_current_v1_encode(double value);
+int32_t vesc_vesc_command_rel_h_brake_current_v1_command_relative_h_brake_current_v1_encode(
+    double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -4404,7 +4591,8 @@ int32_t vesc_vesc_command_rel_h_brake_current_v1_command_relative_h_brake_curren
  *
  * @return Decoded signal.
  */
-double vesc_vesc_command_rel_h_brake_current_v1_command_relative_h_brake_current_v1_decode(int32_t value);
+double vesc_vesc_command_rel_h_brake_current_v1_command_relative_h_brake_current_v1_decode(
+    int32_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -4413,7 +4601,8 @@ double vesc_vesc_command_rel_h_brake_current_v1_command_relative_h_brake_current
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_h_brake_current_v1_command_relative_h_brake_current_v1_is_in_range(int32_t value);
+bool vesc_vesc_command_rel_h_brake_current_v1_command_relative_h_brake_current_v1_is_in_range(
+    int32_t value);
 
 /**
  * Check that given physical value is in allowed range before encoding.
@@ -4426,7 +4615,8 @@ bool vesc_vesc_command_rel_h_brake_current_v1_command_relative_h_brake_current_v
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_h_brake_current_v1_command_relative_h_brake_current_v1_is_in_phys_range(double value);
+bool vesc_vesc_command_rel_h_brake_current_v1_command_relative_h_brake_current_v1_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Set_CurrentLimitPerm_V1.
@@ -4438,9 +4628,7 @@ bool vesc_vesc_command_rel_h_brake_current_v1_command_relative_h_brake_current_v
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_set_current_limit_perm_v1_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_set_current_limit_perm_v1_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_set_current_limit_perm_v1_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Set_CurrentLimitPerm_V1.
@@ -4451,10 +4639,8 @@ int vesc_vesc_set_current_limit_perm_v1_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_set_current_limit_perm_v1_unpack(
-    struct vesc_vesc_set_current_limit_perm_v1_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_set_current_limit_perm_v1_unpack(struct vesc_vesc_set_current_limit_perm_v1_t* dst_p,
+                                               const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Set_CurrentLimitPerm_V1.
@@ -4463,7 +4649,7 @@ int vesc_vesc_set_current_limit_perm_v1_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_set_current_limit_perm_v1_init(struct vesc_vesc_set_current_limit_perm_v1_t *msg_p);
+int vesc_vesc_set_current_limit_perm_v1_init(struct vesc_vesc_set_current_limit_perm_v1_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -4503,7 +4689,8 @@ bool vesc_vesc_set_current_limit_perm_v1_setting_current_limit_min_v1_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_perm_v1_setting_current_limit_min_v1_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_perm_v1_setting_current_limit_min_v1_is_in_phys_range(
+    double value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -4543,7 +4730,8 @@ bool vesc_vesc_set_current_limit_perm_v1_setting_current_limit_max_v1_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_perm_v1_setting_current_limit_max_v1_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_perm_v1_setting_current_limit_max_v1_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Set_CurrentLimitTemp_V1.
@@ -4555,9 +4743,7 @@ bool vesc_vesc_set_current_limit_perm_v1_setting_current_limit_max_v1_is_in_phys
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_set_current_limit_temp_v1_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_set_current_limit_temp_v1_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_set_current_limit_temp_v1_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Set_CurrentLimitTemp_V1.
@@ -4568,10 +4754,8 @@ int vesc_vesc_set_current_limit_temp_v1_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_set_current_limit_temp_v1_unpack(
-    struct vesc_vesc_set_current_limit_temp_v1_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_set_current_limit_temp_v1_unpack(struct vesc_vesc_set_current_limit_temp_v1_t* dst_p,
+                                               const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Set_CurrentLimitTemp_V1.
@@ -4580,7 +4764,7 @@ int vesc_vesc_set_current_limit_temp_v1_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_set_current_limit_temp_v1_init(struct vesc_vesc_set_current_limit_temp_v1_t *msg_p);
+int vesc_vesc_set_current_limit_temp_v1_init(struct vesc_vesc_set_current_limit_temp_v1_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -4620,7 +4804,8 @@ bool vesc_vesc_set_current_limit_temp_v1_setting_current_limit_min_v1_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_temp_v1_setting_current_limit_min_v1_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_temp_v1_setting_current_limit_min_v1_is_in_phys_range(
+    double value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -4660,7 +4845,8 @@ bool vesc_vesc_set_current_limit_temp_v1_setting_current_limit_max_v1_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_temp_v1_setting_current_limit_max_v1_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_temp_v1_setting_current_limit_max_v1_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_RelBrakeCurrent_V1.
@@ -4672,9 +4858,7 @@ bool vesc_vesc_set_current_limit_temp_v1_setting_current_limit_max_v1_is_in_phys
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_rel_brake_current_v1_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rel_brake_current_v1_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_rel_brake_current_v1_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_RelBrakeCurrent_V1.
@@ -4686,9 +4870,7 @@ int vesc_vesc_command_rel_brake_current_v1_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_rel_brake_current_v1_unpack(
-    struct vesc_vesc_command_rel_brake_current_v1_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_rel_brake_current_v1_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RelBrakeCurrent_V1.
@@ -4697,7 +4879,8 @@ int vesc_vesc_command_rel_brake_current_v1_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rel_brake_current_v1_init(struct vesc_vesc_command_rel_brake_current_v1_t *msg_p);
+int vesc_vesc_command_rel_brake_current_v1_init(
+    struct vesc_vesc_command_rel_brake_current_v1_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -4706,7 +4889,8 @@ int vesc_vesc_command_rel_brake_current_v1_init(struct vesc_vesc_command_rel_bra
  *
  * @return Encoded signal.
  */
-int32_t vesc_vesc_command_rel_brake_current_v1_command_relative_brake_current_v1_encode(double value);
+int32_t vesc_vesc_command_rel_brake_current_v1_command_relative_brake_current_v1_encode(
+    double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -4715,7 +4899,8 @@ int32_t vesc_vesc_command_rel_brake_current_v1_command_relative_brake_current_v1
  *
  * @return Decoded signal.
  */
-double vesc_vesc_command_rel_brake_current_v1_command_relative_brake_current_v1_decode(int32_t value);
+double vesc_vesc_command_rel_brake_current_v1_command_relative_brake_current_v1_decode(
+    int32_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -4724,7 +4909,8 @@ double vesc_vesc_command_rel_brake_current_v1_command_relative_brake_current_v1_
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_brake_current_v1_command_relative_brake_current_v1_is_in_range(int32_t value);
+bool vesc_vesc_command_rel_brake_current_v1_command_relative_brake_current_v1_is_in_range(
+    int32_t value);
 
 /**
  * Check that given physical value is in allowed range before encoding.
@@ -4737,7 +4923,8 @@ bool vesc_vesc_command_rel_brake_current_v1_command_relative_brake_current_v1_is
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_brake_current_v1_command_relative_brake_current_v1_is_in_phys_range(double value);
+bool vesc_vesc_command_rel_brake_current_v1_command_relative_brake_current_v1_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_RelCurrent_V1.
@@ -4748,10 +4935,9 @@ bool vesc_vesc_command_rel_brake_current_v1_command_relative_brake_current_v1_is
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_rel_current_v1_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rel_current_v1_t *src_p,
-    size_t size);
+int vesc_vesc_command_rel_current_v1_pack(uint8_t* dst_p,
+                                          const struct vesc_vesc_command_rel_current_v1_t* src_p,
+                                          size_t size);
 
 /**
  * Unpack message VESC_Command_RelCurrent_V1.
@@ -4762,10 +4948,8 @@ int vesc_vesc_command_rel_current_v1_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_rel_current_v1_unpack(
-    struct vesc_vesc_command_rel_current_v1_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_rel_current_v1_unpack(struct vesc_vesc_command_rel_current_v1_t* dst_p,
+                                            const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RelCurrent_V1.
@@ -4774,7 +4958,7 @@ int vesc_vesc_command_rel_current_v1_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rel_current_v1_init(struct vesc_vesc_command_rel_current_v1_t *msg_p);
+int vesc_vesc_command_rel_current_v1_init(struct vesc_vesc_command_rel_current_v1_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -4825,10 +5009,8 @@ bool vesc_vesc_command_rel_current_v1_command_relative_current_v1_is_in_phys_ran
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_pos_v1_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_pos_v1_t *src_p,
-    size_t size);
+int vesc_vesc_command_pos_v1_pack(uint8_t* dst_p, const struct vesc_vesc_command_pos_v1_t* src_p,
+                                  size_t size);
 
 /**
  * Unpack message VESC_Command_POS_V1.
@@ -4839,10 +5021,8 @@ int vesc_vesc_command_pos_v1_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_pos_v1_unpack(
-    struct vesc_vesc_command_pos_v1_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_pos_v1_unpack(struct vesc_vesc_command_pos_v1_t* dst_p, const uint8_t* src_p,
+                                    size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_POS_V1.
@@ -4851,7 +5031,7 @@ int vesc_vesc_command_pos_v1_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_pos_v1_init(struct vesc_vesc_command_pos_v1_t *msg_p);
+int vesc_vesc_command_pos_v1_init(struct vesc_vesc_command_pos_v1_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -4903,9 +5083,7 @@ bool vesc_vesc_command_pos_v1_command_pos_v1_is_in_phys_range(double value);
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_abs_brake_current_v1_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_abs_brake_current_v1_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_abs_brake_current_v1_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_AbsBrakeCurrent_V1.
@@ -4917,9 +5095,7 @@ int vesc_vesc_command_abs_brake_current_v1_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_abs_brake_current_v1_unpack(
-    struct vesc_vesc_command_abs_brake_current_v1_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_abs_brake_current_v1_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_AbsBrakeCurrent_V1.
@@ -4928,7 +5104,8 @@ int vesc_vesc_command_abs_brake_current_v1_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_abs_brake_current_v1_init(struct vesc_vesc_command_abs_brake_current_v1_t *msg_p);
+int vesc_vesc_command_abs_brake_current_v1_init(
+    struct vesc_vesc_command_abs_brake_current_v1_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -4979,10 +5156,9 @@ bool vesc_vesc_command_abs_brake_current_v1_command_brake_current_v1_is_in_phys_
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_abs_current_v1_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_abs_current_v1_t *src_p,
-    size_t size);
+int vesc_vesc_command_abs_current_v1_pack(uint8_t* dst_p,
+                                          const struct vesc_vesc_command_abs_current_v1_t* src_p,
+                                          size_t size);
 
 /**
  * Unpack message VESC_Command_AbsCurrent_V1.
@@ -4993,10 +5169,8 @@ int vesc_vesc_command_abs_current_v1_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_abs_current_v1_unpack(
-    struct vesc_vesc_command_abs_current_v1_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_abs_current_v1_unpack(struct vesc_vesc_command_abs_current_v1_t* dst_p,
+                                            const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_AbsCurrent_V1.
@@ -5005,7 +5179,7 @@ int vesc_vesc_command_abs_current_v1_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_abs_current_v1_init(struct vesc_vesc_command_abs_current_v1_t *msg_p);
+int vesc_vesc_command_abs_current_v1_init(struct vesc_vesc_command_abs_current_v1_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5056,10 +5230,8 @@ bool vesc_vesc_command_abs_current_v1_command_current_v1_is_in_phys_range(double
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_rpm_v1_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rpm_v1_t *src_p,
-    size_t size);
+int vesc_vesc_command_rpm_v1_pack(uint8_t* dst_p, const struct vesc_vesc_command_rpm_v1_t* src_p,
+                                  size_t size);
 
 /**
  * Unpack message VESC_Command_RPM_V1.
@@ -5070,10 +5242,8 @@ int vesc_vesc_command_rpm_v1_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_rpm_v1_unpack(
-    struct vesc_vesc_command_rpm_v1_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_rpm_v1_unpack(struct vesc_vesc_command_rpm_v1_t* dst_p, const uint8_t* src_p,
+                                    size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RPM_V1.
@@ -5082,7 +5252,7 @@ int vesc_vesc_command_rpm_v1_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rpm_v1_init(struct vesc_vesc_command_rpm_v1_t *msg_p);
+int vesc_vesc_command_rpm_v1_init(struct vesc_vesc_command_rpm_v1_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5133,10 +5303,8 @@ bool vesc_vesc_command_rpm_v1_command_rpm_v1_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status5_v1_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status5_v1_t *src_p,
-    size_t size);
+int vesc_vesc_status5_v1_pack(uint8_t* dst_p, const struct vesc_vesc_status5_v1_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status5_V1.
@@ -5147,10 +5315,8 @@ int vesc_vesc_status5_v1_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status5_v1_unpack(
-    struct vesc_vesc_status5_v1_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status5_v1_unpack(struct vesc_vesc_status5_v1_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status5_V1.
@@ -5159,7 +5325,7 @@ int vesc_vesc_status5_v1_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status5_v1_init(struct vesc_vesc_status5_v1_t *msg_p);
+int vesc_vesc_status5_v1_init(struct vesc_vesc_status5_v1_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5290,10 +5456,8 @@ bool vesc_vesc_status5_v1_status_tachometer_v1_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status4_v1_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status4_v1_t *src_p,
-    size_t size);
+int vesc_vesc_status4_v1_pack(uint8_t* dst_p, const struct vesc_vesc_status4_v1_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status4_V1.
@@ -5304,10 +5468,8 @@ int vesc_vesc_status4_v1_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status4_v1_unpack(
-    struct vesc_vesc_status4_v1_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status4_v1_unpack(struct vesc_vesc_status4_v1_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status4_V1.
@@ -5316,7 +5478,7 @@ int vesc_vesc_status4_v1_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status4_v1_init(struct vesc_vesc_status4_v1_t *msg_p);
+int vesc_vesc_status4_v1_init(struct vesc_vesc_status4_v1_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5487,10 +5649,8 @@ bool vesc_vesc_status4_v1_status_pid_pos_v1_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status3_v1_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status3_v1_t *src_p,
-    size_t size);
+int vesc_vesc_status3_v1_pack(uint8_t* dst_p, const struct vesc_vesc_status3_v1_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status3_V1.
@@ -5501,10 +5661,8 @@ int vesc_vesc_status3_v1_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status3_v1_unpack(
-    struct vesc_vesc_status3_v1_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status3_v1_unpack(struct vesc_vesc_status3_v1_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status3_V1.
@@ -5513,7 +5671,7 @@ int vesc_vesc_status3_v1_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status3_v1_init(struct vesc_vesc_status3_v1_t *msg_p);
+int vesc_vesc_status3_v1_init(struct vesc_vesc_status3_v1_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5604,10 +5762,8 @@ bool vesc_vesc_status3_v1_status_watt_hours_charged_v1_is_in_phys_range(double v
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status2_v1_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status2_v1_t *src_p,
-    size_t size);
+int vesc_vesc_status2_v1_pack(uint8_t* dst_p, const struct vesc_vesc_status2_v1_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status2_V1.
@@ -5618,10 +5774,8 @@ int vesc_vesc_status2_v1_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status2_v1_unpack(
-    struct vesc_vesc_status2_v1_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status2_v1_unpack(struct vesc_vesc_status2_v1_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status2_V1.
@@ -5630,7 +5784,7 @@ int vesc_vesc_status2_v1_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status2_v1_init(struct vesc_vesc_status2_v1_t *msg_p);
+int vesc_vesc_status2_v1_init(struct vesc_vesc_status2_v1_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5721,10 +5875,8 @@ bool vesc_vesc_status2_v1_status_amp_hours_charged_v1_is_in_phys_range(double va
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status1_v1_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status1_v1_t *src_p,
-    size_t size);
+int vesc_vesc_status1_v1_pack(uint8_t* dst_p, const struct vesc_vesc_status1_v1_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status1_V1.
@@ -5735,10 +5887,8 @@ int vesc_vesc_status1_v1_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status1_v1_unpack(
-    struct vesc_vesc_status1_v1_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status1_v1_unpack(struct vesc_vesc_status1_v1_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status1_V1.
@@ -5747,7 +5897,7 @@ int vesc_vesc_status1_v1_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status1_v1_init(struct vesc_vesc_status1_v1_t *msg_p);
+int vesc_vesc_status1_v1_init(struct vesc_vesc_status1_v1_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5878,10 +6028,9 @@ bool vesc_vesc_status1_v1_status_duty_cycle_v1_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_duty_cycle_v1_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_duty_cycle_v1_t *src_p,
-    size_t size);
+int vesc_vesc_command_duty_cycle_v1_pack(uint8_t* dst_p,
+                                         const struct vesc_vesc_command_duty_cycle_v1_t* src_p,
+                                         size_t size);
 
 /**
  * Unpack message VESC_Command_DutyCycle_V1.
@@ -5892,10 +6041,8 @@ int vesc_vesc_command_duty_cycle_v1_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_duty_cycle_v1_unpack(
-    struct vesc_vesc_command_duty_cycle_v1_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_duty_cycle_v1_unpack(struct vesc_vesc_command_duty_cycle_v1_t* dst_p,
+                                           const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_DutyCycle_V1.
@@ -5904,7 +6051,7 @@ int vesc_vesc_command_duty_cycle_v1_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_duty_cycle_v1_init(struct vesc_vesc_command_duty_cycle_v1_t *msg_p);
+int vesc_vesc_command_duty_cycle_v1_init(struct vesc_vesc_command_duty_cycle_v1_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -5956,9 +6103,7 @@ bool vesc_vesc_command_duty_cycle_v1_command_duty_cycle_v1_is_in_phys_range(doub
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_set_current_limit_perm_v2_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_set_current_limit_perm_v2_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_set_current_limit_perm_v2_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Set_CurrentLimitPerm_V2.
@@ -5969,10 +6114,8 @@ int vesc_vesc_set_current_limit_perm_v2_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_set_current_limit_perm_v2_unpack(
-    struct vesc_vesc_set_current_limit_perm_v2_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_set_current_limit_perm_v2_unpack(struct vesc_vesc_set_current_limit_perm_v2_t* dst_p,
+                                               const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Set_CurrentLimitPerm_V2.
@@ -5981,7 +6124,7 @@ int vesc_vesc_set_current_limit_perm_v2_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_set_current_limit_perm_v2_init(struct vesc_vesc_set_current_limit_perm_v2_t *msg_p);
+int vesc_vesc_set_current_limit_perm_v2_init(struct vesc_vesc_set_current_limit_perm_v2_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -6021,7 +6164,8 @@ bool vesc_vesc_set_current_limit_perm_v2_setting_current_limit_min_v2_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_perm_v2_setting_current_limit_min_v2_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_perm_v2_setting_current_limit_min_v2_is_in_phys_range(
+    double value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -6061,7 +6205,8 @@ bool vesc_vesc_set_current_limit_perm_v2_setting_current_limit_max_v2_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_perm_v2_setting_current_limit_max_v2_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_perm_v2_setting_current_limit_max_v2_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Set_CurrentLimitTemp_V2.
@@ -6073,9 +6218,7 @@ bool vesc_vesc_set_current_limit_perm_v2_setting_current_limit_max_v2_is_in_phys
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_set_current_limit_temp_v2_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_set_current_limit_temp_v2_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_set_current_limit_temp_v2_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Set_CurrentLimitTemp_V2.
@@ -6086,10 +6229,8 @@ int vesc_vesc_set_current_limit_temp_v2_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_set_current_limit_temp_v2_unpack(
-    struct vesc_vesc_set_current_limit_temp_v2_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_set_current_limit_temp_v2_unpack(struct vesc_vesc_set_current_limit_temp_v2_t* dst_p,
+                                               const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Set_CurrentLimitTemp_V2.
@@ -6098,7 +6239,7 @@ int vesc_vesc_set_current_limit_temp_v2_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_set_current_limit_temp_v2_init(struct vesc_vesc_set_current_limit_temp_v2_t *msg_p);
+int vesc_vesc_set_current_limit_temp_v2_init(struct vesc_vesc_set_current_limit_temp_v2_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -6138,7 +6279,8 @@ bool vesc_vesc_set_current_limit_temp_v2_setting_current_limit_min_v2_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_temp_v2_setting_current_limit_min_v2_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_temp_v2_setting_current_limit_min_v2_is_in_phys_range(
+    double value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -6178,7 +6320,8 @@ bool vesc_vesc_set_current_limit_temp_v2_setting_current_limit_max_v2_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_temp_v2_setting_current_limit_max_v2_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_temp_v2_setting_current_limit_max_v2_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_RelBrakeCurrent_V2.
@@ -6190,9 +6333,7 @@ bool vesc_vesc_set_current_limit_temp_v2_setting_current_limit_max_v2_is_in_phys
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_rel_brake_current_v2_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rel_brake_current_v2_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_rel_brake_current_v2_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_RelBrakeCurrent_V2.
@@ -6204,9 +6345,7 @@ int vesc_vesc_command_rel_brake_current_v2_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_rel_brake_current_v2_unpack(
-    struct vesc_vesc_command_rel_brake_current_v2_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_rel_brake_current_v2_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RelBrakeCurrent_V2.
@@ -6215,7 +6354,8 @@ int vesc_vesc_command_rel_brake_current_v2_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rel_brake_current_v2_init(struct vesc_vesc_command_rel_brake_current_v2_t *msg_p);
+int vesc_vesc_command_rel_brake_current_v2_init(
+    struct vesc_vesc_command_rel_brake_current_v2_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -6224,7 +6364,8 @@ int vesc_vesc_command_rel_brake_current_v2_init(struct vesc_vesc_command_rel_bra
  *
  * @return Encoded signal.
  */
-int32_t vesc_vesc_command_rel_brake_current_v2_command_relative_brake_current_v2_encode(double value);
+int32_t vesc_vesc_command_rel_brake_current_v2_command_relative_brake_current_v2_encode(
+    double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -6233,7 +6374,8 @@ int32_t vesc_vesc_command_rel_brake_current_v2_command_relative_brake_current_v2
  *
  * @return Decoded signal.
  */
-double vesc_vesc_command_rel_brake_current_v2_command_relative_brake_current_v2_decode(int32_t value);
+double vesc_vesc_command_rel_brake_current_v2_command_relative_brake_current_v2_decode(
+    int32_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -6242,7 +6384,8 @@ double vesc_vesc_command_rel_brake_current_v2_command_relative_brake_current_v2_
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_brake_current_v2_command_relative_brake_current_v2_is_in_range(int32_t value);
+bool vesc_vesc_command_rel_brake_current_v2_command_relative_brake_current_v2_is_in_range(
+    int32_t value);
 
 /**
  * Check that given physical value is in allowed range before encoding.
@@ -6255,7 +6398,8 @@ bool vesc_vesc_command_rel_brake_current_v2_command_relative_brake_current_v2_is
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_brake_current_v2_command_relative_brake_current_v2_is_in_phys_range(double value);
+bool vesc_vesc_command_rel_brake_current_v2_command_relative_brake_current_v2_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_RelCurrent_V2.
@@ -6266,10 +6410,9 @@ bool vesc_vesc_command_rel_brake_current_v2_command_relative_brake_current_v2_is
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_rel_current_v2_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rel_current_v2_t *src_p,
-    size_t size);
+int vesc_vesc_command_rel_current_v2_pack(uint8_t* dst_p,
+                                          const struct vesc_vesc_command_rel_current_v2_t* src_p,
+                                          size_t size);
 
 /**
  * Unpack message VESC_Command_RelCurrent_V2.
@@ -6280,10 +6423,8 @@ int vesc_vesc_command_rel_current_v2_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_rel_current_v2_unpack(
-    struct vesc_vesc_command_rel_current_v2_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_rel_current_v2_unpack(struct vesc_vesc_command_rel_current_v2_t* dst_p,
+                                            const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RelCurrent_V2.
@@ -6292,7 +6433,7 @@ int vesc_vesc_command_rel_current_v2_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rel_current_v2_init(struct vesc_vesc_command_rel_current_v2_t *msg_p);
+int vesc_vesc_command_rel_current_v2_init(struct vesc_vesc_command_rel_current_v2_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -6343,10 +6484,8 @@ bool vesc_vesc_command_rel_current_v2_command_relative_current_v2_is_in_phys_ran
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_pos_v2_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_pos_v2_t *src_p,
-    size_t size);
+int vesc_vesc_command_pos_v2_pack(uint8_t* dst_p, const struct vesc_vesc_command_pos_v2_t* src_p,
+                                  size_t size);
 
 /**
  * Unpack message VESC_Command_POS_V2.
@@ -6357,10 +6496,8 @@ int vesc_vesc_command_pos_v2_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_pos_v2_unpack(
-    struct vesc_vesc_command_pos_v2_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_pos_v2_unpack(struct vesc_vesc_command_pos_v2_t* dst_p, const uint8_t* src_p,
+                                    size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_POS_V2.
@@ -6369,7 +6506,7 @@ int vesc_vesc_command_pos_v2_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_pos_v2_init(struct vesc_vesc_command_pos_v2_t *msg_p);
+int vesc_vesc_command_pos_v2_init(struct vesc_vesc_command_pos_v2_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -6421,9 +6558,7 @@ bool vesc_vesc_command_pos_v2_command_pos_v2_is_in_phys_range(double value);
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_abs_brake_current_v2_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_abs_brake_current_v2_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_abs_brake_current_v2_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_AbsBrakeCurrent_V2.
@@ -6435,9 +6570,7 @@ int vesc_vesc_command_abs_brake_current_v2_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_abs_brake_current_v2_unpack(
-    struct vesc_vesc_command_abs_brake_current_v2_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_abs_brake_current_v2_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_AbsBrakeCurrent_V2.
@@ -6446,7 +6579,8 @@ int vesc_vesc_command_abs_brake_current_v2_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_abs_brake_current_v2_init(struct vesc_vesc_command_abs_brake_current_v2_t *msg_p);
+int vesc_vesc_command_abs_brake_current_v2_init(
+    struct vesc_vesc_command_abs_brake_current_v2_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -6497,10 +6631,9 @@ bool vesc_vesc_command_abs_brake_current_v2_command_brake_current_v2_is_in_phys_
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_abs_current_v2_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_abs_current_v2_t *src_p,
-    size_t size);
+int vesc_vesc_command_abs_current_v2_pack(uint8_t* dst_p,
+                                          const struct vesc_vesc_command_abs_current_v2_t* src_p,
+                                          size_t size);
 
 /**
  * Unpack message VESC_Command_AbsCurrent_V2.
@@ -6511,10 +6644,8 @@ int vesc_vesc_command_abs_current_v2_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_abs_current_v2_unpack(
-    struct vesc_vesc_command_abs_current_v2_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_abs_current_v2_unpack(struct vesc_vesc_command_abs_current_v2_t* dst_p,
+                                            const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_AbsCurrent_V2.
@@ -6523,7 +6654,7 @@ int vesc_vesc_command_abs_current_v2_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_abs_current_v2_init(struct vesc_vesc_command_abs_current_v2_t *msg_p);
+int vesc_vesc_command_abs_current_v2_init(struct vesc_vesc_command_abs_current_v2_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -6574,10 +6705,8 @@ bool vesc_vesc_command_abs_current_v2_command_current_v2_is_in_phys_range(double
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_rpm_v2_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rpm_v2_t *src_p,
-    size_t size);
+int vesc_vesc_command_rpm_v2_pack(uint8_t* dst_p, const struct vesc_vesc_command_rpm_v2_t* src_p,
+                                  size_t size);
 
 /**
  * Unpack message VESC_Command_RPM_V2.
@@ -6588,10 +6717,8 @@ int vesc_vesc_command_rpm_v2_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_rpm_v2_unpack(
-    struct vesc_vesc_command_rpm_v2_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_rpm_v2_unpack(struct vesc_vesc_command_rpm_v2_t* dst_p, const uint8_t* src_p,
+                                    size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RPM_V2.
@@ -6600,7 +6727,7 @@ int vesc_vesc_command_rpm_v2_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rpm_v2_init(struct vesc_vesc_command_rpm_v2_t *msg_p);
+int vesc_vesc_command_rpm_v2_init(struct vesc_vesc_command_rpm_v2_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -6651,10 +6778,8 @@ bool vesc_vesc_command_rpm_v2_command_rpm_v2_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status5_v2_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status5_v2_t *src_p,
-    size_t size);
+int vesc_vesc_status5_v2_pack(uint8_t* dst_p, const struct vesc_vesc_status5_v2_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status5_V2.
@@ -6665,10 +6790,8 @@ int vesc_vesc_status5_v2_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status5_v2_unpack(
-    struct vesc_vesc_status5_v2_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status5_v2_unpack(struct vesc_vesc_status5_v2_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status5_V2.
@@ -6677,7 +6800,7 @@ int vesc_vesc_status5_v2_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status5_v2_init(struct vesc_vesc_status5_v2_t *msg_p);
+int vesc_vesc_status5_v2_init(struct vesc_vesc_status5_v2_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -6808,10 +6931,8 @@ bool vesc_vesc_status5_v2_status_tachometer_v2_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status4_v2_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status4_v2_t *src_p,
-    size_t size);
+int vesc_vesc_status4_v2_pack(uint8_t* dst_p, const struct vesc_vesc_status4_v2_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status4_V2.
@@ -6822,10 +6943,8 @@ int vesc_vesc_status4_v2_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status4_v2_unpack(
-    struct vesc_vesc_status4_v2_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status4_v2_unpack(struct vesc_vesc_status4_v2_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status4_V2.
@@ -6834,7 +6953,7 @@ int vesc_vesc_status4_v2_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status4_v2_init(struct vesc_vesc_status4_v2_t *msg_p);
+int vesc_vesc_status4_v2_init(struct vesc_vesc_status4_v2_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -7005,10 +7124,8 @@ bool vesc_vesc_status4_v2_status_pid_pos_v2_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status3_v2_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status3_v2_t *src_p,
-    size_t size);
+int vesc_vesc_status3_v2_pack(uint8_t* dst_p, const struct vesc_vesc_status3_v2_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status3_V2.
@@ -7019,10 +7136,8 @@ int vesc_vesc_status3_v2_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status3_v2_unpack(
-    struct vesc_vesc_status3_v2_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status3_v2_unpack(struct vesc_vesc_status3_v2_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status3_V2.
@@ -7031,7 +7146,7 @@ int vesc_vesc_status3_v2_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status3_v2_init(struct vesc_vesc_status3_v2_t *msg_p);
+int vesc_vesc_status3_v2_init(struct vesc_vesc_status3_v2_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -7122,10 +7237,8 @@ bool vesc_vesc_status3_v2_status_watt_hours_charged_v2_is_in_phys_range(double v
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status2_v2_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status2_v2_t *src_p,
-    size_t size);
+int vesc_vesc_status2_v2_pack(uint8_t* dst_p, const struct vesc_vesc_status2_v2_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status2_V2.
@@ -7136,10 +7249,8 @@ int vesc_vesc_status2_v2_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status2_v2_unpack(
-    struct vesc_vesc_status2_v2_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status2_v2_unpack(struct vesc_vesc_status2_v2_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status2_V2.
@@ -7148,7 +7259,7 @@ int vesc_vesc_status2_v2_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status2_v2_init(struct vesc_vesc_status2_v2_t *msg_p);
+int vesc_vesc_status2_v2_init(struct vesc_vesc_status2_v2_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -7239,10 +7350,8 @@ bool vesc_vesc_status2_v2_status_amp_hours_charged_v2_is_in_phys_range(double va
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status1_v2_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status1_v2_t *src_p,
-    size_t size);
+int vesc_vesc_status1_v2_pack(uint8_t* dst_p, const struct vesc_vesc_status1_v2_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status1_V2.
@@ -7253,10 +7362,8 @@ int vesc_vesc_status1_v2_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status1_v2_unpack(
-    struct vesc_vesc_status1_v2_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status1_v2_unpack(struct vesc_vesc_status1_v2_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status1_V2.
@@ -7265,7 +7372,7 @@ int vesc_vesc_status1_v2_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status1_v2_init(struct vesc_vesc_status1_v2_t *msg_p);
+int vesc_vesc_status1_v2_init(struct vesc_vesc_status1_v2_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -7396,10 +7503,9 @@ bool vesc_vesc_status1_v2_status_duty_cycle_v2_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_duty_cycle_v2_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_duty_cycle_v2_t *src_p,
-    size_t size);
+int vesc_vesc_command_duty_cycle_v2_pack(uint8_t* dst_p,
+                                         const struct vesc_vesc_command_duty_cycle_v2_t* src_p,
+                                         size_t size);
 
 /**
  * Unpack message VESC_Command_DutyCycle_V2.
@@ -7410,10 +7516,8 @@ int vesc_vesc_command_duty_cycle_v2_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_duty_cycle_v2_unpack(
-    struct vesc_vesc_command_duty_cycle_v2_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_duty_cycle_v2_unpack(struct vesc_vesc_command_duty_cycle_v2_t* dst_p,
+                                           const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_DutyCycle_V2.
@@ -7422,7 +7526,7 @@ int vesc_vesc_command_duty_cycle_v2_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_duty_cycle_v2_init(struct vesc_vesc_command_duty_cycle_v2_t *msg_p);
+int vesc_vesc_command_duty_cycle_v2_init(struct vesc_vesc_command_duty_cycle_v2_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -7474,9 +7578,7 @@ bool vesc_vesc_command_duty_cycle_v2_command_duty_cycle_v2_is_in_phys_range(doub
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_set_current_limit_perm_v3_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_set_current_limit_perm_v3_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_set_current_limit_perm_v3_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Set_CurrentLimitPerm_V3.
@@ -7487,10 +7589,8 @@ int vesc_vesc_set_current_limit_perm_v3_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_set_current_limit_perm_v3_unpack(
-    struct vesc_vesc_set_current_limit_perm_v3_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_set_current_limit_perm_v3_unpack(struct vesc_vesc_set_current_limit_perm_v3_t* dst_p,
+                                               const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Set_CurrentLimitPerm_V3.
@@ -7499,7 +7599,7 @@ int vesc_vesc_set_current_limit_perm_v3_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_set_current_limit_perm_v3_init(struct vesc_vesc_set_current_limit_perm_v3_t *msg_p);
+int vesc_vesc_set_current_limit_perm_v3_init(struct vesc_vesc_set_current_limit_perm_v3_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -7539,7 +7639,8 @@ bool vesc_vesc_set_current_limit_perm_v3_setting_current_limit_min_v3_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_perm_v3_setting_current_limit_min_v3_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_perm_v3_setting_current_limit_min_v3_is_in_phys_range(
+    double value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -7579,7 +7680,8 @@ bool vesc_vesc_set_current_limit_perm_v3_setting_current_limit_max_v3_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_perm_v3_setting_current_limit_max_v3_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_perm_v3_setting_current_limit_max_v3_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Set_CurrentLimitTemp_V3.
@@ -7591,9 +7693,7 @@ bool vesc_vesc_set_current_limit_perm_v3_setting_current_limit_max_v3_is_in_phys
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_set_current_limit_temp_v3_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_set_current_limit_temp_v3_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_set_current_limit_temp_v3_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Set_CurrentLimitTemp_V3.
@@ -7604,10 +7704,8 @@ int vesc_vesc_set_current_limit_temp_v3_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_set_current_limit_temp_v3_unpack(
-    struct vesc_vesc_set_current_limit_temp_v3_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_set_current_limit_temp_v3_unpack(struct vesc_vesc_set_current_limit_temp_v3_t* dst_p,
+                                               const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Set_CurrentLimitTemp_V3.
@@ -7616,7 +7714,7 @@ int vesc_vesc_set_current_limit_temp_v3_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_set_current_limit_temp_v3_init(struct vesc_vesc_set_current_limit_temp_v3_t *msg_p);
+int vesc_vesc_set_current_limit_temp_v3_init(struct vesc_vesc_set_current_limit_temp_v3_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -7656,7 +7754,8 @@ bool vesc_vesc_set_current_limit_temp_v3_setting_current_limit_min_v3_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_temp_v3_setting_current_limit_min_v3_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_temp_v3_setting_current_limit_min_v3_is_in_phys_range(
+    double value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -7696,7 +7795,8 @@ bool vesc_vesc_set_current_limit_temp_v3_setting_current_limit_max_v3_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_temp_v3_setting_current_limit_max_v3_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_temp_v3_setting_current_limit_max_v3_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_RelBrakeCurrent_V3.
@@ -7708,9 +7808,7 @@ bool vesc_vesc_set_current_limit_temp_v3_setting_current_limit_max_v3_is_in_phys
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_rel_brake_current_v3_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rel_brake_current_v3_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_rel_brake_current_v3_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_RelBrakeCurrent_V3.
@@ -7722,9 +7820,7 @@ int vesc_vesc_command_rel_brake_current_v3_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_rel_brake_current_v3_unpack(
-    struct vesc_vesc_command_rel_brake_current_v3_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_rel_brake_current_v3_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RelBrakeCurrent_V3.
@@ -7733,7 +7829,8 @@ int vesc_vesc_command_rel_brake_current_v3_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rel_brake_current_v3_init(struct vesc_vesc_command_rel_brake_current_v3_t *msg_p);
+int vesc_vesc_command_rel_brake_current_v3_init(
+    struct vesc_vesc_command_rel_brake_current_v3_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -7742,7 +7839,8 @@ int vesc_vesc_command_rel_brake_current_v3_init(struct vesc_vesc_command_rel_bra
  *
  * @return Encoded signal.
  */
-int32_t vesc_vesc_command_rel_brake_current_v3_command_relative_brake_current_v3_encode(double value);
+int32_t vesc_vesc_command_rel_brake_current_v3_command_relative_brake_current_v3_encode(
+    double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -7751,7 +7849,8 @@ int32_t vesc_vesc_command_rel_brake_current_v3_command_relative_brake_current_v3
  *
  * @return Decoded signal.
  */
-double vesc_vesc_command_rel_brake_current_v3_command_relative_brake_current_v3_decode(int32_t value);
+double vesc_vesc_command_rel_brake_current_v3_command_relative_brake_current_v3_decode(
+    int32_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -7760,7 +7859,8 @@ double vesc_vesc_command_rel_brake_current_v3_command_relative_brake_current_v3_
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_brake_current_v3_command_relative_brake_current_v3_is_in_range(int32_t value);
+bool vesc_vesc_command_rel_brake_current_v3_command_relative_brake_current_v3_is_in_range(
+    int32_t value);
 
 /**
  * Check that given physical value is in allowed range before encoding.
@@ -7773,7 +7873,8 @@ bool vesc_vesc_command_rel_brake_current_v3_command_relative_brake_current_v3_is
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_brake_current_v3_command_relative_brake_current_v3_is_in_phys_range(double value);
+bool vesc_vesc_command_rel_brake_current_v3_command_relative_brake_current_v3_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_RelCurrent_V3.
@@ -7784,10 +7885,9 @@ bool vesc_vesc_command_rel_brake_current_v3_command_relative_brake_current_v3_is
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_rel_current_v3_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rel_current_v3_t *src_p,
-    size_t size);
+int vesc_vesc_command_rel_current_v3_pack(uint8_t* dst_p,
+                                          const struct vesc_vesc_command_rel_current_v3_t* src_p,
+                                          size_t size);
 
 /**
  * Unpack message VESC_Command_RelCurrent_V3.
@@ -7798,10 +7898,8 @@ int vesc_vesc_command_rel_current_v3_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_rel_current_v3_unpack(
-    struct vesc_vesc_command_rel_current_v3_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_rel_current_v3_unpack(struct vesc_vesc_command_rel_current_v3_t* dst_p,
+                                            const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RelCurrent_V3.
@@ -7810,7 +7908,7 @@ int vesc_vesc_command_rel_current_v3_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rel_current_v3_init(struct vesc_vesc_command_rel_current_v3_t *msg_p);
+int vesc_vesc_command_rel_current_v3_init(struct vesc_vesc_command_rel_current_v3_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -7861,10 +7959,8 @@ bool vesc_vesc_command_rel_current_v3_command_relative_current_v3_is_in_phys_ran
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_pos_v3_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_pos_v3_t *src_p,
-    size_t size);
+int vesc_vesc_command_pos_v3_pack(uint8_t* dst_p, const struct vesc_vesc_command_pos_v3_t* src_p,
+                                  size_t size);
 
 /**
  * Unpack message VESC_Command_POS_V3.
@@ -7875,10 +7971,8 @@ int vesc_vesc_command_pos_v3_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_pos_v3_unpack(
-    struct vesc_vesc_command_pos_v3_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_pos_v3_unpack(struct vesc_vesc_command_pos_v3_t* dst_p, const uint8_t* src_p,
+                                    size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_POS_V3.
@@ -7887,7 +7981,7 @@ int vesc_vesc_command_pos_v3_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_pos_v3_init(struct vesc_vesc_command_pos_v3_t *msg_p);
+int vesc_vesc_command_pos_v3_init(struct vesc_vesc_command_pos_v3_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -7939,9 +8033,7 @@ bool vesc_vesc_command_pos_v3_command_pos_v3_is_in_phys_range(double value);
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_abs_brake_current_v3_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_abs_brake_current_v3_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_abs_brake_current_v3_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_AbsBrakeCurrent_V3.
@@ -7953,9 +8045,7 @@ int vesc_vesc_command_abs_brake_current_v3_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_abs_brake_current_v3_unpack(
-    struct vesc_vesc_command_abs_brake_current_v3_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_abs_brake_current_v3_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_AbsBrakeCurrent_V3.
@@ -7964,7 +8054,8 @@ int vesc_vesc_command_abs_brake_current_v3_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_abs_brake_current_v3_init(struct vesc_vesc_command_abs_brake_current_v3_t *msg_p);
+int vesc_vesc_command_abs_brake_current_v3_init(
+    struct vesc_vesc_command_abs_brake_current_v3_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -8015,10 +8106,9 @@ bool vesc_vesc_command_abs_brake_current_v3_command_brake_current_v3_is_in_phys_
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_abs_current_v3_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_abs_current_v3_t *src_p,
-    size_t size);
+int vesc_vesc_command_abs_current_v3_pack(uint8_t* dst_p,
+                                          const struct vesc_vesc_command_abs_current_v3_t* src_p,
+                                          size_t size);
 
 /**
  * Unpack message VESC_Command_AbsCurrent_V3.
@@ -8029,10 +8119,8 @@ int vesc_vesc_command_abs_current_v3_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_abs_current_v3_unpack(
-    struct vesc_vesc_command_abs_current_v3_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_abs_current_v3_unpack(struct vesc_vesc_command_abs_current_v3_t* dst_p,
+                                            const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_AbsCurrent_V3.
@@ -8041,7 +8129,7 @@ int vesc_vesc_command_abs_current_v3_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_abs_current_v3_init(struct vesc_vesc_command_abs_current_v3_t *msg_p);
+int vesc_vesc_command_abs_current_v3_init(struct vesc_vesc_command_abs_current_v3_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -8092,10 +8180,8 @@ bool vesc_vesc_command_abs_current_v3_command_current_v3_is_in_phys_range(double
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_rpm_v3_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rpm_v3_t *src_p,
-    size_t size);
+int vesc_vesc_command_rpm_v3_pack(uint8_t* dst_p, const struct vesc_vesc_command_rpm_v3_t* src_p,
+                                  size_t size);
 
 /**
  * Unpack message VESC_Command_RPM_V3.
@@ -8106,10 +8192,8 @@ int vesc_vesc_command_rpm_v3_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_rpm_v3_unpack(
-    struct vesc_vesc_command_rpm_v3_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_rpm_v3_unpack(struct vesc_vesc_command_rpm_v3_t* dst_p, const uint8_t* src_p,
+                                    size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RPM_V3.
@@ -8118,7 +8202,7 @@ int vesc_vesc_command_rpm_v3_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rpm_v3_init(struct vesc_vesc_command_rpm_v3_t *msg_p);
+int vesc_vesc_command_rpm_v3_init(struct vesc_vesc_command_rpm_v3_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -8169,10 +8253,8 @@ bool vesc_vesc_command_rpm_v3_command_rpm_v3_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status5_v3_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status5_v3_t *src_p,
-    size_t size);
+int vesc_vesc_status5_v3_pack(uint8_t* dst_p, const struct vesc_vesc_status5_v3_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status5_V3.
@@ -8183,10 +8265,8 @@ int vesc_vesc_status5_v3_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status5_v3_unpack(
-    struct vesc_vesc_status5_v3_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status5_v3_unpack(struct vesc_vesc_status5_v3_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status5_V3.
@@ -8195,7 +8275,7 @@ int vesc_vesc_status5_v3_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status5_v3_init(struct vesc_vesc_status5_v3_t *msg_p);
+int vesc_vesc_status5_v3_init(struct vesc_vesc_status5_v3_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -8326,10 +8406,8 @@ bool vesc_vesc_status5_v3_status_tachometer_v3_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status4_v3_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status4_v3_t *src_p,
-    size_t size);
+int vesc_vesc_status4_v3_pack(uint8_t* dst_p, const struct vesc_vesc_status4_v3_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status4_V3.
@@ -8340,10 +8418,8 @@ int vesc_vesc_status4_v3_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status4_v3_unpack(
-    struct vesc_vesc_status4_v3_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status4_v3_unpack(struct vesc_vesc_status4_v3_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status4_V3.
@@ -8352,7 +8428,7 @@ int vesc_vesc_status4_v3_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status4_v3_init(struct vesc_vesc_status4_v3_t *msg_p);
+int vesc_vesc_status4_v3_init(struct vesc_vesc_status4_v3_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -8523,10 +8599,8 @@ bool vesc_vesc_status4_v3_status_pid_pos_v3_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status3_v3_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status3_v3_t *src_p,
-    size_t size);
+int vesc_vesc_status3_v3_pack(uint8_t* dst_p, const struct vesc_vesc_status3_v3_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status3_V3.
@@ -8537,10 +8611,8 @@ int vesc_vesc_status3_v3_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status3_v3_unpack(
-    struct vesc_vesc_status3_v3_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status3_v3_unpack(struct vesc_vesc_status3_v3_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status3_V3.
@@ -8549,7 +8621,7 @@ int vesc_vesc_status3_v3_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status3_v3_init(struct vesc_vesc_status3_v3_t *msg_p);
+int vesc_vesc_status3_v3_init(struct vesc_vesc_status3_v3_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -8640,10 +8712,8 @@ bool vesc_vesc_status3_v3_status_watt_hours_charged_v3_is_in_phys_range(double v
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status2_v3_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status2_v3_t *src_p,
-    size_t size);
+int vesc_vesc_status2_v3_pack(uint8_t* dst_p, const struct vesc_vesc_status2_v3_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status2_V3.
@@ -8654,10 +8724,8 @@ int vesc_vesc_status2_v3_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status2_v3_unpack(
-    struct vesc_vesc_status2_v3_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status2_v3_unpack(struct vesc_vesc_status2_v3_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status2_V3.
@@ -8666,7 +8734,7 @@ int vesc_vesc_status2_v3_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status2_v3_init(struct vesc_vesc_status2_v3_t *msg_p);
+int vesc_vesc_status2_v3_init(struct vesc_vesc_status2_v3_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -8757,10 +8825,8 @@ bool vesc_vesc_status2_v3_status_amp_hours_charged_v3_is_in_phys_range(double va
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status1_v3_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status1_v3_t *src_p,
-    size_t size);
+int vesc_vesc_status1_v3_pack(uint8_t* dst_p, const struct vesc_vesc_status1_v3_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status1_V3.
@@ -8771,10 +8837,8 @@ int vesc_vesc_status1_v3_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status1_v3_unpack(
-    struct vesc_vesc_status1_v3_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status1_v3_unpack(struct vesc_vesc_status1_v3_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status1_V3.
@@ -8783,7 +8847,7 @@ int vesc_vesc_status1_v3_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status1_v3_init(struct vesc_vesc_status1_v3_t *msg_p);
+int vesc_vesc_status1_v3_init(struct vesc_vesc_status1_v3_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -8914,10 +8978,9 @@ bool vesc_vesc_status1_v3_status_duty_cycle_v3_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_duty_cycle_v3_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_duty_cycle_v3_t *src_p,
-    size_t size);
+int vesc_vesc_command_duty_cycle_v3_pack(uint8_t* dst_p,
+                                         const struct vesc_vesc_command_duty_cycle_v3_t* src_p,
+                                         size_t size);
 
 /**
  * Unpack message VESC_Command_DutyCycle_V3.
@@ -8928,10 +8991,8 @@ int vesc_vesc_command_duty_cycle_v3_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_duty_cycle_v3_unpack(
-    struct vesc_vesc_command_duty_cycle_v3_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_duty_cycle_v3_unpack(struct vesc_vesc_command_duty_cycle_v3_t* dst_p,
+                                           const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_DutyCycle_V3.
@@ -8940,7 +9001,7 @@ int vesc_vesc_command_duty_cycle_v3_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_duty_cycle_v3_init(struct vesc_vesc_command_duty_cycle_v3_t *msg_p);
+int vesc_vesc_command_duty_cycle_v3_init(struct vesc_vesc_command_duty_cycle_v3_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -8992,9 +9053,7 @@ bool vesc_vesc_command_duty_cycle_v3_command_duty_cycle_v3_is_in_phys_range(doub
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_set_current_limit_perm_v4_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_set_current_limit_perm_v4_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_set_current_limit_perm_v4_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Set_CurrentLimitPerm_V4.
@@ -9005,10 +9064,8 @@ int vesc_vesc_set_current_limit_perm_v4_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_set_current_limit_perm_v4_unpack(
-    struct vesc_vesc_set_current_limit_perm_v4_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_set_current_limit_perm_v4_unpack(struct vesc_vesc_set_current_limit_perm_v4_t* dst_p,
+                                               const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Set_CurrentLimitPerm_V4.
@@ -9017,7 +9074,7 @@ int vesc_vesc_set_current_limit_perm_v4_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_set_current_limit_perm_v4_init(struct vesc_vesc_set_current_limit_perm_v4_t *msg_p);
+int vesc_vesc_set_current_limit_perm_v4_init(struct vesc_vesc_set_current_limit_perm_v4_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -9057,7 +9114,8 @@ bool vesc_vesc_set_current_limit_perm_v4_setting_current_limit_min_v4_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_perm_v4_setting_current_limit_min_v4_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_perm_v4_setting_current_limit_min_v4_is_in_phys_range(
+    double value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -9097,7 +9155,8 @@ bool vesc_vesc_set_current_limit_perm_v4_setting_current_limit_max_v4_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_perm_v4_setting_current_limit_max_v4_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_perm_v4_setting_current_limit_max_v4_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Set_CurrentLimitTemp_V4.
@@ -9109,9 +9168,7 @@ bool vesc_vesc_set_current_limit_perm_v4_setting_current_limit_max_v4_is_in_phys
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_set_current_limit_temp_v4_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_set_current_limit_temp_v4_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_set_current_limit_temp_v4_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Set_CurrentLimitTemp_V4.
@@ -9122,10 +9179,8 @@ int vesc_vesc_set_current_limit_temp_v4_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_set_current_limit_temp_v4_unpack(
-    struct vesc_vesc_set_current_limit_temp_v4_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_set_current_limit_temp_v4_unpack(struct vesc_vesc_set_current_limit_temp_v4_t* dst_p,
+                                               const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Set_CurrentLimitTemp_V4.
@@ -9134,7 +9189,7 @@ int vesc_vesc_set_current_limit_temp_v4_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_set_current_limit_temp_v4_init(struct vesc_vesc_set_current_limit_temp_v4_t *msg_p);
+int vesc_vesc_set_current_limit_temp_v4_init(struct vesc_vesc_set_current_limit_temp_v4_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -9174,7 +9229,8 @@ bool vesc_vesc_set_current_limit_temp_v4_setting_current_limit_min_v4_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_temp_v4_setting_current_limit_min_v4_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_temp_v4_setting_current_limit_min_v4_is_in_phys_range(
+    double value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -9214,7 +9270,8 @@ bool vesc_vesc_set_current_limit_temp_v4_setting_current_limit_max_v4_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_temp_v4_setting_current_limit_max_v4_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_temp_v4_setting_current_limit_max_v4_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_RelBrakeCurrent_V4.
@@ -9226,9 +9283,7 @@ bool vesc_vesc_set_current_limit_temp_v4_setting_current_limit_max_v4_is_in_phys
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_rel_brake_current_v4_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rel_brake_current_v4_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_rel_brake_current_v4_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_RelBrakeCurrent_V4.
@@ -9240,9 +9295,7 @@ int vesc_vesc_command_rel_brake_current_v4_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_rel_brake_current_v4_unpack(
-    struct vesc_vesc_command_rel_brake_current_v4_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_rel_brake_current_v4_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RelBrakeCurrent_V4.
@@ -9251,7 +9304,8 @@ int vesc_vesc_command_rel_brake_current_v4_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rel_brake_current_v4_init(struct vesc_vesc_command_rel_brake_current_v4_t *msg_p);
+int vesc_vesc_command_rel_brake_current_v4_init(
+    struct vesc_vesc_command_rel_brake_current_v4_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -9260,7 +9314,8 @@ int vesc_vesc_command_rel_brake_current_v4_init(struct vesc_vesc_command_rel_bra
  *
  * @return Encoded signal.
  */
-int32_t vesc_vesc_command_rel_brake_current_v4_command_relative_brake_current_v4_encode(double value);
+int32_t vesc_vesc_command_rel_brake_current_v4_command_relative_brake_current_v4_encode(
+    double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -9269,7 +9324,8 @@ int32_t vesc_vesc_command_rel_brake_current_v4_command_relative_brake_current_v4
  *
  * @return Decoded signal.
  */
-double vesc_vesc_command_rel_brake_current_v4_command_relative_brake_current_v4_decode(int32_t value);
+double vesc_vesc_command_rel_brake_current_v4_command_relative_brake_current_v4_decode(
+    int32_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -9278,7 +9334,8 @@ double vesc_vesc_command_rel_brake_current_v4_command_relative_brake_current_v4_
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_brake_current_v4_command_relative_brake_current_v4_is_in_range(int32_t value);
+bool vesc_vesc_command_rel_brake_current_v4_command_relative_brake_current_v4_is_in_range(
+    int32_t value);
 
 /**
  * Check that given physical value is in allowed range before encoding.
@@ -9291,7 +9348,8 @@ bool vesc_vesc_command_rel_brake_current_v4_command_relative_brake_current_v4_is
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_brake_current_v4_command_relative_brake_current_v4_is_in_phys_range(double value);
+bool vesc_vesc_command_rel_brake_current_v4_command_relative_brake_current_v4_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_RelCurrent_V4.
@@ -9302,10 +9360,9 @@ bool vesc_vesc_command_rel_brake_current_v4_command_relative_brake_current_v4_is
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_rel_current_v4_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rel_current_v4_t *src_p,
-    size_t size);
+int vesc_vesc_command_rel_current_v4_pack(uint8_t* dst_p,
+                                          const struct vesc_vesc_command_rel_current_v4_t* src_p,
+                                          size_t size);
 
 /**
  * Unpack message VESC_Command_RelCurrent_V4.
@@ -9316,10 +9373,8 @@ int vesc_vesc_command_rel_current_v4_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_rel_current_v4_unpack(
-    struct vesc_vesc_command_rel_current_v4_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_rel_current_v4_unpack(struct vesc_vesc_command_rel_current_v4_t* dst_p,
+                                            const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RelCurrent_V4.
@@ -9328,7 +9383,7 @@ int vesc_vesc_command_rel_current_v4_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rel_current_v4_init(struct vesc_vesc_command_rel_current_v4_t *msg_p);
+int vesc_vesc_command_rel_current_v4_init(struct vesc_vesc_command_rel_current_v4_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -9379,10 +9434,8 @@ bool vesc_vesc_command_rel_current_v4_command_relative_current_v4_is_in_phys_ran
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_pos_v4_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_pos_v4_t *src_p,
-    size_t size);
+int vesc_vesc_command_pos_v4_pack(uint8_t* dst_p, const struct vesc_vesc_command_pos_v4_t* src_p,
+                                  size_t size);
 
 /**
  * Unpack message VESC_Command_POS_V4.
@@ -9393,10 +9446,8 @@ int vesc_vesc_command_pos_v4_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_pos_v4_unpack(
-    struct vesc_vesc_command_pos_v4_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_pos_v4_unpack(struct vesc_vesc_command_pos_v4_t* dst_p, const uint8_t* src_p,
+                                    size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_POS_V4.
@@ -9405,7 +9456,7 @@ int vesc_vesc_command_pos_v4_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_pos_v4_init(struct vesc_vesc_command_pos_v4_t *msg_p);
+int vesc_vesc_command_pos_v4_init(struct vesc_vesc_command_pos_v4_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -9457,9 +9508,7 @@ bool vesc_vesc_command_pos_v4_command_pos_v4_is_in_phys_range(double value);
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_abs_brake_current_v4_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_abs_brake_current_v4_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_abs_brake_current_v4_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_AbsBrakeCurrent_V4.
@@ -9471,9 +9520,7 @@ int vesc_vesc_command_abs_brake_current_v4_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_abs_brake_current_v4_unpack(
-    struct vesc_vesc_command_abs_brake_current_v4_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_abs_brake_current_v4_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_AbsBrakeCurrent_V4.
@@ -9482,7 +9529,8 @@ int vesc_vesc_command_abs_brake_current_v4_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_abs_brake_current_v4_init(struct vesc_vesc_command_abs_brake_current_v4_t *msg_p);
+int vesc_vesc_command_abs_brake_current_v4_init(
+    struct vesc_vesc_command_abs_brake_current_v4_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -9533,10 +9581,9 @@ bool vesc_vesc_command_abs_brake_current_v4_command_brake_current_v4_is_in_phys_
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_abs_current_v4_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_abs_current_v4_t *src_p,
-    size_t size);
+int vesc_vesc_command_abs_current_v4_pack(uint8_t* dst_p,
+                                          const struct vesc_vesc_command_abs_current_v4_t* src_p,
+                                          size_t size);
 
 /**
  * Unpack message VESC_Command_AbsCurrent_V4.
@@ -9547,10 +9594,8 @@ int vesc_vesc_command_abs_current_v4_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_abs_current_v4_unpack(
-    struct vesc_vesc_command_abs_current_v4_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_abs_current_v4_unpack(struct vesc_vesc_command_abs_current_v4_t* dst_p,
+                                            const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_AbsCurrent_V4.
@@ -9559,7 +9604,7 @@ int vesc_vesc_command_abs_current_v4_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_abs_current_v4_init(struct vesc_vesc_command_abs_current_v4_t *msg_p);
+int vesc_vesc_command_abs_current_v4_init(struct vesc_vesc_command_abs_current_v4_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -9610,10 +9655,8 @@ bool vesc_vesc_command_abs_current_v4_command_current_v4_is_in_phys_range(double
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_rpm_v4_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rpm_v4_t *src_p,
-    size_t size);
+int vesc_vesc_command_rpm_v4_pack(uint8_t* dst_p, const struct vesc_vesc_command_rpm_v4_t* src_p,
+                                  size_t size);
 
 /**
  * Unpack message VESC_Command_RPM_V4.
@@ -9624,10 +9667,8 @@ int vesc_vesc_command_rpm_v4_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_rpm_v4_unpack(
-    struct vesc_vesc_command_rpm_v4_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_rpm_v4_unpack(struct vesc_vesc_command_rpm_v4_t* dst_p, const uint8_t* src_p,
+                                    size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RPM_V4.
@@ -9636,7 +9677,7 @@ int vesc_vesc_command_rpm_v4_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rpm_v4_init(struct vesc_vesc_command_rpm_v4_t *msg_p);
+int vesc_vesc_command_rpm_v4_init(struct vesc_vesc_command_rpm_v4_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -9687,10 +9728,8 @@ bool vesc_vesc_command_rpm_v4_command_rpm_v4_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status5_v4_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status5_v4_t *src_p,
-    size_t size);
+int vesc_vesc_status5_v4_pack(uint8_t* dst_p, const struct vesc_vesc_status5_v4_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status5_V4.
@@ -9701,10 +9740,8 @@ int vesc_vesc_status5_v4_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status5_v4_unpack(
-    struct vesc_vesc_status5_v4_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status5_v4_unpack(struct vesc_vesc_status5_v4_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status5_V4.
@@ -9713,7 +9750,7 @@ int vesc_vesc_status5_v4_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status5_v4_init(struct vesc_vesc_status5_v4_t *msg_p);
+int vesc_vesc_status5_v4_init(struct vesc_vesc_status5_v4_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -9844,10 +9881,8 @@ bool vesc_vesc_status5_v4_status_tachometer_v4_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status4_v4_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status4_v4_t *src_p,
-    size_t size);
+int vesc_vesc_status4_v4_pack(uint8_t* dst_p, const struct vesc_vesc_status4_v4_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status4_V4.
@@ -9858,10 +9893,8 @@ int vesc_vesc_status4_v4_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status4_v4_unpack(
-    struct vesc_vesc_status4_v4_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status4_v4_unpack(struct vesc_vesc_status4_v4_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status4_V4.
@@ -9870,7 +9903,7 @@ int vesc_vesc_status4_v4_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status4_v4_init(struct vesc_vesc_status4_v4_t *msg_p);
+int vesc_vesc_status4_v4_init(struct vesc_vesc_status4_v4_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -10041,10 +10074,8 @@ bool vesc_vesc_status4_v4_status_pid_pos_v4_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status3_v4_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status3_v4_t *src_p,
-    size_t size);
+int vesc_vesc_status3_v4_pack(uint8_t* dst_p, const struct vesc_vesc_status3_v4_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status3_V4.
@@ -10055,10 +10086,8 @@ int vesc_vesc_status3_v4_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status3_v4_unpack(
-    struct vesc_vesc_status3_v4_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status3_v4_unpack(struct vesc_vesc_status3_v4_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status3_V4.
@@ -10067,7 +10096,7 @@ int vesc_vesc_status3_v4_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status3_v4_init(struct vesc_vesc_status3_v4_t *msg_p);
+int vesc_vesc_status3_v4_init(struct vesc_vesc_status3_v4_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -10158,10 +10187,8 @@ bool vesc_vesc_status3_v4_status_watt_hours_charged_v4_is_in_phys_range(double v
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status2_v4_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status2_v4_t *src_p,
-    size_t size);
+int vesc_vesc_status2_v4_pack(uint8_t* dst_p, const struct vesc_vesc_status2_v4_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status2_V4.
@@ -10172,10 +10199,8 @@ int vesc_vesc_status2_v4_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status2_v4_unpack(
-    struct vesc_vesc_status2_v4_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status2_v4_unpack(struct vesc_vesc_status2_v4_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status2_V4.
@@ -10184,7 +10209,7 @@ int vesc_vesc_status2_v4_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status2_v4_init(struct vesc_vesc_status2_v4_t *msg_p);
+int vesc_vesc_status2_v4_init(struct vesc_vesc_status2_v4_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -10275,10 +10300,8 @@ bool vesc_vesc_status2_v4_status_amp_hours_charged_v4_is_in_phys_range(double va
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status1_v4_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status1_v4_t *src_p,
-    size_t size);
+int vesc_vesc_status1_v4_pack(uint8_t* dst_p, const struct vesc_vesc_status1_v4_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status1_V4.
@@ -10289,10 +10312,8 @@ int vesc_vesc_status1_v4_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status1_v4_unpack(
-    struct vesc_vesc_status1_v4_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status1_v4_unpack(struct vesc_vesc_status1_v4_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status1_V4.
@@ -10301,7 +10322,7 @@ int vesc_vesc_status1_v4_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status1_v4_init(struct vesc_vesc_status1_v4_t *msg_p);
+int vesc_vesc_status1_v4_init(struct vesc_vesc_status1_v4_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -10432,10 +10453,9 @@ bool vesc_vesc_status1_v4_status_duty_cycle_v4_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_duty_cycle_v4_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_duty_cycle_v4_t *src_p,
-    size_t size);
+int vesc_vesc_command_duty_cycle_v4_pack(uint8_t* dst_p,
+                                         const struct vesc_vesc_command_duty_cycle_v4_t* src_p,
+                                         size_t size);
 
 /**
  * Unpack message VESC_Command_DutyCycle_V4.
@@ -10446,10 +10466,8 @@ int vesc_vesc_command_duty_cycle_v4_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_duty_cycle_v4_unpack(
-    struct vesc_vesc_command_duty_cycle_v4_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_duty_cycle_v4_unpack(struct vesc_vesc_command_duty_cycle_v4_t* dst_p,
+                                           const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_DutyCycle_V4.
@@ -10458,7 +10476,7 @@ int vesc_vesc_command_duty_cycle_v4_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_duty_cycle_v4_init(struct vesc_vesc_command_duty_cycle_v4_t *msg_p);
+int vesc_vesc_command_duty_cycle_v4_init(struct vesc_vesc_command_duty_cycle_v4_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -10510,9 +10528,7 @@ bool vesc_vesc_command_duty_cycle_v4_command_duty_cycle_v4_is_in_phys_range(doub
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_set_current_limit_perm_v5_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_set_current_limit_perm_v5_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_set_current_limit_perm_v5_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Set_CurrentLimitPerm_V5.
@@ -10523,10 +10539,8 @@ int vesc_vesc_set_current_limit_perm_v5_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_set_current_limit_perm_v5_unpack(
-    struct vesc_vesc_set_current_limit_perm_v5_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_set_current_limit_perm_v5_unpack(struct vesc_vesc_set_current_limit_perm_v5_t* dst_p,
+                                               const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Set_CurrentLimitPerm_V5.
@@ -10535,7 +10549,7 @@ int vesc_vesc_set_current_limit_perm_v5_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_set_current_limit_perm_v5_init(struct vesc_vesc_set_current_limit_perm_v5_t *msg_p);
+int vesc_vesc_set_current_limit_perm_v5_init(struct vesc_vesc_set_current_limit_perm_v5_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -10575,7 +10589,8 @@ bool vesc_vesc_set_current_limit_perm_v5_setting_current_limit_min_v5_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_perm_v5_setting_current_limit_min_v5_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_perm_v5_setting_current_limit_min_v5_is_in_phys_range(
+    double value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -10615,7 +10630,8 @@ bool vesc_vesc_set_current_limit_perm_v5_setting_current_limit_max_v5_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_perm_v5_setting_current_limit_max_v5_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_perm_v5_setting_current_limit_max_v5_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Set_CurrentLimitTemp_V5.
@@ -10627,9 +10643,7 @@ bool vesc_vesc_set_current_limit_perm_v5_setting_current_limit_max_v5_is_in_phys
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_set_current_limit_temp_v5_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_set_current_limit_temp_v5_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_set_current_limit_temp_v5_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Set_CurrentLimitTemp_V5.
@@ -10640,10 +10654,8 @@ int vesc_vesc_set_current_limit_temp_v5_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_set_current_limit_temp_v5_unpack(
-    struct vesc_vesc_set_current_limit_temp_v5_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_set_current_limit_temp_v5_unpack(struct vesc_vesc_set_current_limit_temp_v5_t* dst_p,
+                                               const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Set_CurrentLimitTemp_V5.
@@ -10652,7 +10664,7 @@ int vesc_vesc_set_current_limit_temp_v5_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_set_current_limit_temp_v5_init(struct vesc_vesc_set_current_limit_temp_v5_t *msg_p);
+int vesc_vesc_set_current_limit_temp_v5_init(struct vesc_vesc_set_current_limit_temp_v5_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -10692,7 +10704,8 @@ bool vesc_vesc_set_current_limit_temp_v5_setting_current_limit_min_v5_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_temp_v5_setting_current_limit_min_v5_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_temp_v5_setting_current_limit_min_v5_is_in_phys_range(
+    double value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -10732,7 +10745,8 @@ bool vesc_vesc_set_current_limit_temp_v5_setting_current_limit_max_v5_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_temp_v5_setting_current_limit_max_v5_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_temp_v5_setting_current_limit_max_v5_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_RelBrakeCurrent_V5.
@@ -10744,9 +10758,7 @@ bool vesc_vesc_set_current_limit_temp_v5_setting_current_limit_max_v5_is_in_phys
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_rel_brake_current_v5_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rel_brake_current_v5_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_rel_brake_current_v5_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_RelBrakeCurrent_V5.
@@ -10758,9 +10770,7 @@ int vesc_vesc_command_rel_brake_current_v5_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_rel_brake_current_v5_unpack(
-    struct vesc_vesc_command_rel_brake_current_v5_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_rel_brake_current_v5_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RelBrakeCurrent_V5.
@@ -10769,7 +10779,8 @@ int vesc_vesc_command_rel_brake_current_v5_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rel_brake_current_v5_init(struct vesc_vesc_command_rel_brake_current_v5_t *msg_p);
+int vesc_vesc_command_rel_brake_current_v5_init(
+    struct vesc_vesc_command_rel_brake_current_v5_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -10778,7 +10789,8 @@ int vesc_vesc_command_rel_brake_current_v5_init(struct vesc_vesc_command_rel_bra
  *
  * @return Encoded signal.
  */
-int32_t vesc_vesc_command_rel_brake_current_v5_command_relative_brake_current_v5_encode(double value);
+int32_t vesc_vesc_command_rel_brake_current_v5_command_relative_brake_current_v5_encode(
+    double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -10787,7 +10799,8 @@ int32_t vesc_vesc_command_rel_brake_current_v5_command_relative_brake_current_v5
  *
  * @return Decoded signal.
  */
-double vesc_vesc_command_rel_brake_current_v5_command_relative_brake_current_v5_decode(int32_t value);
+double vesc_vesc_command_rel_brake_current_v5_command_relative_brake_current_v5_decode(
+    int32_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -10796,7 +10809,8 @@ double vesc_vesc_command_rel_brake_current_v5_command_relative_brake_current_v5_
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_brake_current_v5_command_relative_brake_current_v5_is_in_range(int32_t value);
+bool vesc_vesc_command_rel_brake_current_v5_command_relative_brake_current_v5_is_in_range(
+    int32_t value);
 
 /**
  * Check that given physical value is in allowed range before encoding.
@@ -10809,7 +10823,8 @@ bool vesc_vesc_command_rel_brake_current_v5_command_relative_brake_current_v5_is
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_brake_current_v5_command_relative_brake_current_v5_is_in_phys_range(double value);
+bool vesc_vesc_command_rel_brake_current_v5_command_relative_brake_current_v5_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_RelCurrent_V5.
@@ -10820,10 +10835,9 @@ bool vesc_vesc_command_rel_brake_current_v5_command_relative_brake_current_v5_is
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_rel_current_v5_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rel_current_v5_t *src_p,
-    size_t size);
+int vesc_vesc_command_rel_current_v5_pack(uint8_t* dst_p,
+                                          const struct vesc_vesc_command_rel_current_v5_t* src_p,
+                                          size_t size);
 
 /**
  * Unpack message VESC_Command_RelCurrent_V5.
@@ -10834,10 +10848,8 @@ int vesc_vesc_command_rel_current_v5_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_rel_current_v5_unpack(
-    struct vesc_vesc_command_rel_current_v5_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_rel_current_v5_unpack(struct vesc_vesc_command_rel_current_v5_t* dst_p,
+                                            const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RelCurrent_V5.
@@ -10846,7 +10858,7 @@ int vesc_vesc_command_rel_current_v5_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rel_current_v5_init(struct vesc_vesc_command_rel_current_v5_t *msg_p);
+int vesc_vesc_command_rel_current_v5_init(struct vesc_vesc_command_rel_current_v5_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -10897,10 +10909,8 @@ bool vesc_vesc_command_rel_current_v5_command_relative_current_v5_is_in_phys_ran
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_pos_v5_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_pos_v5_t *src_p,
-    size_t size);
+int vesc_vesc_command_pos_v5_pack(uint8_t* dst_p, const struct vesc_vesc_command_pos_v5_t* src_p,
+                                  size_t size);
 
 /**
  * Unpack message VESC_Command_POS_V5.
@@ -10911,10 +10921,8 @@ int vesc_vesc_command_pos_v5_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_pos_v5_unpack(
-    struct vesc_vesc_command_pos_v5_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_pos_v5_unpack(struct vesc_vesc_command_pos_v5_t* dst_p, const uint8_t* src_p,
+                                    size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_POS_V5.
@@ -10923,7 +10931,7 @@ int vesc_vesc_command_pos_v5_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_pos_v5_init(struct vesc_vesc_command_pos_v5_t *msg_p);
+int vesc_vesc_command_pos_v5_init(struct vesc_vesc_command_pos_v5_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -10975,9 +10983,7 @@ bool vesc_vesc_command_pos_v5_command_pos_v5_is_in_phys_range(double value);
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_abs_brake_current_v5_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_abs_brake_current_v5_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_abs_brake_current_v5_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_AbsBrakeCurrent_V5.
@@ -10989,9 +10995,7 @@ int vesc_vesc_command_abs_brake_current_v5_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_abs_brake_current_v5_unpack(
-    struct vesc_vesc_command_abs_brake_current_v5_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_abs_brake_current_v5_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_AbsBrakeCurrent_V5.
@@ -11000,7 +11004,8 @@ int vesc_vesc_command_abs_brake_current_v5_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_abs_brake_current_v5_init(struct vesc_vesc_command_abs_brake_current_v5_t *msg_p);
+int vesc_vesc_command_abs_brake_current_v5_init(
+    struct vesc_vesc_command_abs_brake_current_v5_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -11051,10 +11056,9 @@ bool vesc_vesc_command_abs_brake_current_v5_command_brake_current_v5_is_in_phys_
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_abs_current_v5_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_abs_current_v5_t *src_p,
-    size_t size);
+int vesc_vesc_command_abs_current_v5_pack(uint8_t* dst_p,
+                                          const struct vesc_vesc_command_abs_current_v5_t* src_p,
+                                          size_t size);
 
 /**
  * Unpack message VESC_Command_AbsCurrent_V5.
@@ -11065,10 +11069,8 @@ int vesc_vesc_command_abs_current_v5_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_abs_current_v5_unpack(
-    struct vesc_vesc_command_abs_current_v5_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_abs_current_v5_unpack(struct vesc_vesc_command_abs_current_v5_t* dst_p,
+                                            const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_AbsCurrent_V5.
@@ -11077,7 +11079,7 @@ int vesc_vesc_command_abs_current_v5_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_abs_current_v5_init(struct vesc_vesc_command_abs_current_v5_t *msg_p);
+int vesc_vesc_command_abs_current_v5_init(struct vesc_vesc_command_abs_current_v5_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -11128,10 +11130,8 @@ bool vesc_vesc_command_abs_current_v5_command_current_v5_is_in_phys_range(double
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_rpm_v5_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rpm_v5_t *src_p,
-    size_t size);
+int vesc_vesc_command_rpm_v5_pack(uint8_t* dst_p, const struct vesc_vesc_command_rpm_v5_t* src_p,
+                                  size_t size);
 
 /**
  * Unpack message VESC_Command_RPM_V5.
@@ -11142,10 +11142,8 @@ int vesc_vesc_command_rpm_v5_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_rpm_v5_unpack(
-    struct vesc_vesc_command_rpm_v5_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_rpm_v5_unpack(struct vesc_vesc_command_rpm_v5_t* dst_p, const uint8_t* src_p,
+                                    size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RPM_V5.
@@ -11154,7 +11152,7 @@ int vesc_vesc_command_rpm_v5_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rpm_v5_init(struct vesc_vesc_command_rpm_v5_t *msg_p);
+int vesc_vesc_command_rpm_v5_init(struct vesc_vesc_command_rpm_v5_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -11205,10 +11203,8 @@ bool vesc_vesc_command_rpm_v5_command_rpm_v5_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status5_v5_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status5_v5_t *src_p,
-    size_t size);
+int vesc_vesc_status5_v5_pack(uint8_t* dst_p, const struct vesc_vesc_status5_v5_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status5_V5.
@@ -11219,10 +11215,8 @@ int vesc_vesc_status5_v5_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status5_v5_unpack(
-    struct vesc_vesc_status5_v5_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status5_v5_unpack(struct vesc_vesc_status5_v5_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status5_V5.
@@ -11231,7 +11225,7 @@ int vesc_vesc_status5_v5_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status5_v5_init(struct vesc_vesc_status5_v5_t *msg_p);
+int vesc_vesc_status5_v5_init(struct vesc_vesc_status5_v5_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -11362,10 +11356,8 @@ bool vesc_vesc_status5_v5_status_tachometer_v5_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status4_v5_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status4_v5_t *src_p,
-    size_t size);
+int vesc_vesc_status4_v5_pack(uint8_t* dst_p, const struct vesc_vesc_status4_v5_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status4_V5.
@@ -11376,10 +11368,8 @@ int vesc_vesc_status4_v5_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status4_v5_unpack(
-    struct vesc_vesc_status4_v5_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status4_v5_unpack(struct vesc_vesc_status4_v5_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status4_V5.
@@ -11388,7 +11378,7 @@ int vesc_vesc_status4_v5_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status4_v5_init(struct vesc_vesc_status4_v5_t *msg_p);
+int vesc_vesc_status4_v5_init(struct vesc_vesc_status4_v5_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -11559,10 +11549,8 @@ bool vesc_vesc_status4_v5_status_pid_pos_v5_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status3_v5_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status3_v5_t *src_p,
-    size_t size);
+int vesc_vesc_status3_v5_pack(uint8_t* dst_p, const struct vesc_vesc_status3_v5_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status3_V5.
@@ -11573,10 +11561,8 @@ int vesc_vesc_status3_v5_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status3_v5_unpack(
-    struct vesc_vesc_status3_v5_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status3_v5_unpack(struct vesc_vesc_status3_v5_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status3_V5.
@@ -11585,7 +11571,7 @@ int vesc_vesc_status3_v5_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status3_v5_init(struct vesc_vesc_status3_v5_t *msg_p);
+int vesc_vesc_status3_v5_init(struct vesc_vesc_status3_v5_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -11676,10 +11662,8 @@ bool vesc_vesc_status3_v5_status_watt_hours_charged_v5_is_in_phys_range(double v
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status2_v5_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status2_v5_t *src_p,
-    size_t size);
+int vesc_vesc_status2_v5_pack(uint8_t* dst_p, const struct vesc_vesc_status2_v5_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status2_V5.
@@ -11690,10 +11674,8 @@ int vesc_vesc_status2_v5_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status2_v5_unpack(
-    struct vesc_vesc_status2_v5_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status2_v5_unpack(struct vesc_vesc_status2_v5_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status2_V5.
@@ -11702,7 +11684,7 @@ int vesc_vesc_status2_v5_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status2_v5_init(struct vesc_vesc_status2_v5_t *msg_p);
+int vesc_vesc_status2_v5_init(struct vesc_vesc_status2_v5_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -11793,10 +11775,8 @@ bool vesc_vesc_status2_v5_status_amp_hours_charged_v5_is_in_phys_range(double va
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status1_v5_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status1_v5_t *src_p,
-    size_t size);
+int vesc_vesc_status1_v5_pack(uint8_t* dst_p, const struct vesc_vesc_status1_v5_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status1_V5.
@@ -11807,10 +11787,8 @@ int vesc_vesc_status1_v5_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status1_v5_unpack(
-    struct vesc_vesc_status1_v5_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status1_v5_unpack(struct vesc_vesc_status1_v5_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status1_V5.
@@ -11819,7 +11797,7 @@ int vesc_vesc_status1_v5_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status1_v5_init(struct vesc_vesc_status1_v5_t *msg_p);
+int vesc_vesc_status1_v5_init(struct vesc_vesc_status1_v5_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -11950,10 +11928,9 @@ bool vesc_vesc_status1_v5_status_duty_cycle_v5_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_duty_cycle_v5_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_duty_cycle_v5_t *src_p,
-    size_t size);
+int vesc_vesc_command_duty_cycle_v5_pack(uint8_t* dst_p,
+                                         const struct vesc_vesc_command_duty_cycle_v5_t* src_p,
+                                         size_t size);
 
 /**
  * Unpack message VESC_Command_DutyCycle_V5.
@@ -11964,10 +11941,8 @@ int vesc_vesc_command_duty_cycle_v5_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_duty_cycle_v5_unpack(
-    struct vesc_vesc_command_duty_cycle_v5_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_duty_cycle_v5_unpack(struct vesc_vesc_command_duty_cycle_v5_t* dst_p,
+                                           const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_DutyCycle_V5.
@@ -11976,7 +11951,7 @@ int vesc_vesc_command_duty_cycle_v5_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_duty_cycle_v5_init(struct vesc_vesc_command_duty_cycle_v5_t *msg_p);
+int vesc_vesc_command_duty_cycle_v5_init(struct vesc_vesc_command_duty_cycle_v5_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -12028,9 +12003,7 @@ bool vesc_vesc_command_duty_cycle_v5_command_duty_cycle_v5_is_in_phys_range(doub
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_set_current_limit_perm_v6_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_set_current_limit_perm_v6_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_set_current_limit_perm_v6_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Set_CurrentLimitPerm_V6.
@@ -12041,10 +12014,8 @@ int vesc_vesc_set_current_limit_perm_v6_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_set_current_limit_perm_v6_unpack(
-    struct vesc_vesc_set_current_limit_perm_v6_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_set_current_limit_perm_v6_unpack(struct vesc_vesc_set_current_limit_perm_v6_t* dst_p,
+                                               const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Set_CurrentLimitPerm_V6.
@@ -12053,7 +12024,7 @@ int vesc_vesc_set_current_limit_perm_v6_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_set_current_limit_perm_v6_init(struct vesc_vesc_set_current_limit_perm_v6_t *msg_p);
+int vesc_vesc_set_current_limit_perm_v6_init(struct vesc_vesc_set_current_limit_perm_v6_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -12093,7 +12064,8 @@ bool vesc_vesc_set_current_limit_perm_v6_setting_current_limit_min_v6_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_perm_v6_setting_current_limit_min_v6_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_perm_v6_setting_current_limit_min_v6_is_in_phys_range(
+    double value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -12133,7 +12105,8 @@ bool vesc_vesc_set_current_limit_perm_v6_setting_current_limit_max_v6_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_perm_v6_setting_current_limit_max_v6_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_perm_v6_setting_current_limit_max_v6_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Set_CurrentLimitTemp_V6.
@@ -12145,9 +12118,7 @@ bool vesc_vesc_set_current_limit_perm_v6_setting_current_limit_max_v6_is_in_phys
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_set_current_limit_temp_v6_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_set_current_limit_temp_v6_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_set_current_limit_temp_v6_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Set_CurrentLimitTemp_V6.
@@ -12158,10 +12129,8 @@ int vesc_vesc_set_current_limit_temp_v6_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_set_current_limit_temp_v6_unpack(
-    struct vesc_vesc_set_current_limit_temp_v6_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_set_current_limit_temp_v6_unpack(struct vesc_vesc_set_current_limit_temp_v6_t* dst_p,
+                                               const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Set_CurrentLimitTemp_V6.
@@ -12170,7 +12139,7 @@ int vesc_vesc_set_current_limit_temp_v6_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_set_current_limit_temp_v6_init(struct vesc_vesc_set_current_limit_temp_v6_t *msg_p);
+int vesc_vesc_set_current_limit_temp_v6_init(struct vesc_vesc_set_current_limit_temp_v6_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -12210,7 +12179,8 @@ bool vesc_vesc_set_current_limit_temp_v6_setting_current_limit_min_v6_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_temp_v6_setting_current_limit_min_v6_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_temp_v6_setting_current_limit_min_v6_is_in_phys_range(
+    double value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -12250,7 +12220,8 @@ bool vesc_vesc_set_current_limit_temp_v6_setting_current_limit_max_v6_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_temp_v6_setting_current_limit_max_v6_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_temp_v6_setting_current_limit_max_v6_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_RelBrakeCurrent_V6.
@@ -12262,9 +12233,7 @@ bool vesc_vesc_set_current_limit_temp_v6_setting_current_limit_max_v6_is_in_phys
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_rel_brake_current_v6_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rel_brake_current_v6_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_rel_brake_current_v6_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_RelBrakeCurrent_V6.
@@ -12276,9 +12245,7 @@ int vesc_vesc_command_rel_brake_current_v6_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_rel_brake_current_v6_unpack(
-    struct vesc_vesc_command_rel_brake_current_v6_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_rel_brake_current_v6_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RelBrakeCurrent_V6.
@@ -12287,7 +12254,8 @@ int vesc_vesc_command_rel_brake_current_v6_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rel_brake_current_v6_init(struct vesc_vesc_command_rel_brake_current_v6_t *msg_p);
+int vesc_vesc_command_rel_brake_current_v6_init(
+    struct vesc_vesc_command_rel_brake_current_v6_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -12296,7 +12264,8 @@ int vesc_vesc_command_rel_brake_current_v6_init(struct vesc_vesc_command_rel_bra
  *
  * @return Encoded signal.
  */
-int32_t vesc_vesc_command_rel_brake_current_v6_command_relative_brake_current_v6_encode(double value);
+int32_t vesc_vesc_command_rel_brake_current_v6_command_relative_brake_current_v6_encode(
+    double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -12305,7 +12274,8 @@ int32_t vesc_vesc_command_rel_brake_current_v6_command_relative_brake_current_v6
  *
  * @return Decoded signal.
  */
-double vesc_vesc_command_rel_brake_current_v6_command_relative_brake_current_v6_decode(int32_t value);
+double vesc_vesc_command_rel_brake_current_v6_command_relative_brake_current_v6_decode(
+    int32_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -12314,7 +12284,8 @@ double vesc_vesc_command_rel_brake_current_v6_command_relative_brake_current_v6_
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_brake_current_v6_command_relative_brake_current_v6_is_in_range(int32_t value);
+bool vesc_vesc_command_rel_brake_current_v6_command_relative_brake_current_v6_is_in_range(
+    int32_t value);
 
 /**
  * Check that given physical value is in allowed range before encoding.
@@ -12327,7 +12298,8 @@ bool vesc_vesc_command_rel_brake_current_v6_command_relative_brake_current_v6_is
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_brake_current_v6_command_relative_brake_current_v6_is_in_phys_range(double value);
+bool vesc_vesc_command_rel_brake_current_v6_command_relative_brake_current_v6_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_RelCurrent_V6.
@@ -12338,10 +12310,9 @@ bool vesc_vesc_command_rel_brake_current_v6_command_relative_brake_current_v6_is
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_rel_current_v6_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rel_current_v6_t *src_p,
-    size_t size);
+int vesc_vesc_command_rel_current_v6_pack(uint8_t* dst_p,
+                                          const struct vesc_vesc_command_rel_current_v6_t* src_p,
+                                          size_t size);
 
 /**
  * Unpack message VESC_Command_RelCurrent_V6.
@@ -12352,10 +12323,8 @@ int vesc_vesc_command_rel_current_v6_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_rel_current_v6_unpack(
-    struct vesc_vesc_command_rel_current_v6_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_rel_current_v6_unpack(struct vesc_vesc_command_rel_current_v6_t* dst_p,
+                                            const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RelCurrent_V6.
@@ -12364,7 +12333,7 @@ int vesc_vesc_command_rel_current_v6_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rel_current_v6_init(struct vesc_vesc_command_rel_current_v6_t *msg_p);
+int vesc_vesc_command_rel_current_v6_init(struct vesc_vesc_command_rel_current_v6_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -12415,10 +12384,8 @@ bool vesc_vesc_command_rel_current_v6_command_relative_current_v6_is_in_phys_ran
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_pos_v6_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_pos_v6_t *src_p,
-    size_t size);
+int vesc_vesc_command_pos_v6_pack(uint8_t* dst_p, const struct vesc_vesc_command_pos_v6_t* src_p,
+                                  size_t size);
 
 /**
  * Unpack message VESC_Command_POS_V6.
@@ -12429,10 +12396,8 @@ int vesc_vesc_command_pos_v6_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_pos_v6_unpack(
-    struct vesc_vesc_command_pos_v6_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_pos_v6_unpack(struct vesc_vesc_command_pos_v6_t* dst_p, const uint8_t* src_p,
+                                    size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_POS_V6.
@@ -12441,7 +12406,7 @@ int vesc_vesc_command_pos_v6_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_pos_v6_init(struct vesc_vesc_command_pos_v6_t *msg_p);
+int vesc_vesc_command_pos_v6_init(struct vesc_vesc_command_pos_v6_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -12493,9 +12458,7 @@ bool vesc_vesc_command_pos_v6_command_pos_v6_is_in_phys_range(double value);
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_abs_brake_current_v6_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_abs_brake_current_v6_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_abs_brake_current_v6_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_AbsBrakeCurrent_V6.
@@ -12507,9 +12470,7 @@ int vesc_vesc_command_abs_brake_current_v6_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_abs_brake_current_v6_unpack(
-    struct vesc_vesc_command_abs_brake_current_v6_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_abs_brake_current_v6_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_AbsBrakeCurrent_V6.
@@ -12518,7 +12479,8 @@ int vesc_vesc_command_abs_brake_current_v6_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_abs_brake_current_v6_init(struct vesc_vesc_command_abs_brake_current_v6_t *msg_p);
+int vesc_vesc_command_abs_brake_current_v6_init(
+    struct vesc_vesc_command_abs_brake_current_v6_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -12569,10 +12531,9 @@ bool vesc_vesc_command_abs_brake_current_v6_command_brake_current_v6_is_in_phys_
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_abs_current_v6_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_abs_current_v6_t *src_p,
-    size_t size);
+int vesc_vesc_command_abs_current_v6_pack(uint8_t* dst_p,
+                                          const struct vesc_vesc_command_abs_current_v6_t* src_p,
+                                          size_t size);
 
 /**
  * Unpack message VESC_Command_AbsCurrent_V6.
@@ -12583,10 +12544,8 @@ int vesc_vesc_command_abs_current_v6_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_abs_current_v6_unpack(
-    struct vesc_vesc_command_abs_current_v6_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_abs_current_v6_unpack(struct vesc_vesc_command_abs_current_v6_t* dst_p,
+                                            const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_AbsCurrent_V6.
@@ -12595,7 +12554,7 @@ int vesc_vesc_command_abs_current_v6_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_abs_current_v6_init(struct vesc_vesc_command_abs_current_v6_t *msg_p);
+int vesc_vesc_command_abs_current_v6_init(struct vesc_vesc_command_abs_current_v6_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -12646,10 +12605,8 @@ bool vesc_vesc_command_abs_current_v6_command_current_v6_is_in_phys_range(double
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_rpm_v6_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rpm_v6_t *src_p,
-    size_t size);
+int vesc_vesc_command_rpm_v6_pack(uint8_t* dst_p, const struct vesc_vesc_command_rpm_v6_t* src_p,
+                                  size_t size);
 
 /**
  * Unpack message VESC_Command_RPM_V6.
@@ -12660,10 +12617,8 @@ int vesc_vesc_command_rpm_v6_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_rpm_v6_unpack(
-    struct vesc_vesc_command_rpm_v6_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_rpm_v6_unpack(struct vesc_vesc_command_rpm_v6_t* dst_p, const uint8_t* src_p,
+                                    size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RPM_V6.
@@ -12672,7 +12627,7 @@ int vesc_vesc_command_rpm_v6_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rpm_v6_init(struct vesc_vesc_command_rpm_v6_t *msg_p);
+int vesc_vesc_command_rpm_v6_init(struct vesc_vesc_command_rpm_v6_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -12723,10 +12678,8 @@ bool vesc_vesc_command_rpm_v6_command_rpm_v6_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status5_v6_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status5_v6_t *src_p,
-    size_t size);
+int vesc_vesc_status5_v6_pack(uint8_t* dst_p, const struct vesc_vesc_status5_v6_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status5_V6.
@@ -12737,10 +12690,8 @@ int vesc_vesc_status5_v6_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status5_v6_unpack(
-    struct vesc_vesc_status5_v6_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status5_v6_unpack(struct vesc_vesc_status5_v6_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status5_V6.
@@ -12749,7 +12700,7 @@ int vesc_vesc_status5_v6_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status5_v6_init(struct vesc_vesc_status5_v6_t *msg_p);
+int vesc_vesc_status5_v6_init(struct vesc_vesc_status5_v6_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -12880,10 +12831,8 @@ bool vesc_vesc_status5_v6_status_tachometer_v6_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status4_v6_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status4_v6_t *src_p,
-    size_t size);
+int vesc_vesc_status4_v6_pack(uint8_t* dst_p, const struct vesc_vesc_status4_v6_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status4_V6.
@@ -12894,10 +12843,8 @@ int vesc_vesc_status4_v6_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status4_v6_unpack(
-    struct vesc_vesc_status4_v6_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status4_v6_unpack(struct vesc_vesc_status4_v6_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status4_V6.
@@ -12906,7 +12853,7 @@ int vesc_vesc_status4_v6_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status4_v6_init(struct vesc_vesc_status4_v6_t *msg_p);
+int vesc_vesc_status4_v6_init(struct vesc_vesc_status4_v6_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -13077,10 +13024,8 @@ bool vesc_vesc_status4_v6_status_pid_pos_v6_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status3_v6_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status3_v6_t *src_p,
-    size_t size);
+int vesc_vesc_status3_v6_pack(uint8_t* dst_p, const struct vesc_vesc_status3_v6_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status3_V6.
@@ -13091,10 +13036,8 @@ int vesc_vesc_status3_v6_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status3_v6_unpack(
-    struct vesc_vesc_status3_v6_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status3_v6_unpack(struct vesc_vesc_status3_v6_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status3_V6.
@@ -13103,7 +13046,7 @@ int vesc_vesc_status3_v6_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status3_v6_init(struct vesc_vesc_status3_v6_t *msg_p);
+int vesc_vesc_status3_v6_init(struct vesc_vesc_status3_v6_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -13194,10 +13137,8 @@ bool vesc_vesc_status3_v6_status_watt_hours_charged_v6_is_in_phys_range(double v
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status2_v6_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status2_v6_t *src_p,
-    size_t size);
+int vesc_vesc_status2_v6_pack(uint8_t* dst_p, const struct vesc_vesc_status2_v6_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status2_V6.
@@ -13208,10 +13149,8 @@ int vesc_vesc_status2_v6_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status2_v6_unpack(
-    struct vesc_vesc_status2_v6_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status2_v6_unpack(struct vesc_vesc_status2_v6_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status2_V6.
@@ -13220,7 +13159,7 @@ int vesc_vesc_status2_v6_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status2_v6_init(struct vesc_vesc_status2_v6_t *msg_p);
+int vesc_vesc_status2_v6_init(struct vesc_vesc_status2_v6_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -13311,10 +13250,8 @@ bool vesc_vesc_status2_v6_status_amp_hours_charged_v6_is_in_phys_range(double va
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status1_v6_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status1_v6_t *src_p,
-    size_t size);
+int vesc_vesc_status1_v6_pack(uint8_t* dst_p, const struct vesc_vesc_status1_v6_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status1_V6.
@@ -13325,10 +13262,8 @@ int vesc_vesc_status1_v6_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status1_v6_unpack(
-    struct vesc_vesc_status1_v6_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status1_v6_unpack(struct vesc_vesc_status1_v6_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status1_V6.
@@ -13337,7 +13272,7 @@ int vesc_vesc_status1_v6_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status1_v6_init(struct vesc_vesc_status1_v6_t *msg_p);
+int vesc_vesc_status1_v6_init(struct vesc_vesc_status1_v6_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -13468,10 +13403,9 @@ bool vesc_vesc_status1_v6_status_duty_cycle_v6_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_duty_cycle_v6_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_duty_cycle_v6_t *src_p,
-    size_t size);
+int vesc_vesc_command_duty_cycle_v6_pack(uint8_t* dst_p,
+                                         const struct vesc_vesc_command_duty_cycle_v6_t* src_p,
+                                         size_t size);
 
 /**
  * Unpack message VESC_Command_DutyCycle_V6.
@@ -13482,10 +13416,8 @@ int vesc_vesc_command_duty_cycle_v6_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_duty_cycle_v6_unpack(
-    struct vesc_vesc_command_duty_cycle_v6_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_duty_cycle_v6_unpack(struct vesc_vesc_command_duty_cycle_v6_t* dst_p,
+                                           const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_DutyCycle_V6.
@@ -13494,7 +13426,7 @@ int vesc_vesc_command_duty_cycle_v6_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_duty_cycle_v6_init(struct vesc_vesc_command_duty_cycle_v6_t *msg_p);
+int vesc_vesc_command_duty_cycle_v6_init(struct vesc_vesc_command_duty_cycle_v6_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -13546,9 +13478,7 @@ bool vesc_vesc_command_duty_cycle_v6_command_duty_cycle_v6_is_in_phys_range(doub
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_set_current_limit_perm_v7_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_set_current_limit_perm_v7_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_set_current_limit_perm_v7_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Set_CurrentLimitPerm_V7.
@@ -13559,10 +13489,8 @@ int vesc_vesc_set_current_limit_perm_v7_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_set_current_limit_perm_v7_unpack(
-    struct vesc_vesc_set_current_limit_perm_v7_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_set_current_limit_perm_v7_unpack(struct vesc_vesc_set_current_limit_perm_v7_t* dst_p,
+                                               const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Set_CurrentLimitPerm_V7.
@@ -13571,7 +13499,7 @@ int vesc_vesc_set_current_limit_perm_v7_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_set_current_limit_perm_v7_init(struct vesc_vesc_set_current_limit_perm_v7_t *msg_p);
+int vesc_vesc_set_current_limit_perm_v7_init(struct vesc_vesc_set_current_limit_perm_v7_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -13611,7 +13539,8 @@ bool vesc_vesc_set_current_limit_perm_v7_setting_current_limit_min_v7_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_perm_v7_setting_current_limit_min_v7_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_perm_v7_setting_current_limit_min_v7_is_in_phys_range(
+    double value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -13651,7 +13580,8 @@ bool vesc_vesc_set_current_limit_perm_v7_setting_current_limit_max_v7_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_perm_v7_setting_current_limit_max_v7_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_perm_v7_setting_current_limit_max_v7_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Set_CurrentLimitTemp_V7.
@@ -13663,9 +13593,7 @@ bool vesc_vesc_set_current_limit_perm_v7_setting_current_limit_max_v7_is_in_phys
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_set_current_limit_temp_v7_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_set_current_limit_temp_v7_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_set_current_limit_temp_v7_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Set_CurrentLimitTemp_V7.
@@ -13676,10 +13604,8 @@ int vesc_vesc_set_current_limit_temp_v7_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_set_current_limit_temp_v7_unpack(
-    struct vesc_vesc_set_current_limit_temp_v7_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_set_current_limit_temp_v7_unpack(struct vesc_vesc_set_current_limit_temp_v7_t* dst_p,
+                                               const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Set_CurrentLimitTemp_V7.
@@ -13688,7 +13614,7 @@ int vesc_vesc_set_current_limit_temp_v7_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_set_current_limit_temp_v7_init(struct vesc_vesc_set_current_limit_temp_v7_t *msg_p);
+int vesc_vesc_set_current_limit_temp_v7_init(struct vesc_vesc_set_current_limit_temp_v7_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -13728,7 +13654,8 @@ bool vesc_vesc_set_current_limit_temp_v7_setting_current_limit_min_v7_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_temp_v7_setting_current_limit_min_v7_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_temp_v7_setting_current_limit_min_v7_is_in_phys_range(
+    double value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -13768,7 +13695,8 @@ bool vesc_vesc_set_current_limit_temp_v7_setting_current_limit_max_v7_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_temp_v7_setting_current_limit_max_v7_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_temp_v7_setting_current_limit_max_v7_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_RelBrakeCurrent_V7.
@@ -13780,9 +13708,7 @@ bool vesc_vesc_set_current_limit_temp_v7_setting_current_limit_max_v7_is_in_phys
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_rel_brake_current_v7_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rel_brake_current_v7_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_rel_brake_current_v7_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_RelBrakeCurrent_V7.
@@ -13794,9 +13720,7 @@ int vesc_vesc_command_rel_brake_current_v7_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_rel_brake_current_v7_unpack(
-    struct vesc_vesc_command_rel_brake_current_v7_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_rel_brake_current_v7_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RelBrakeCurrent_V7.
@@ -13805,7 +13729,8 @@ int vesc_vesc_command_rel_brake_current_v7_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rel_brake_current_v7_init(struct vesc_vesc_command_rel_brake_current_v7_t *msg_p);
+int vesc_vesc_command_rel_brake_current_v7_init(
+    struct vesc_vesc_command_rel_brake_current_v7_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -13814,7 +13739,8 @@ int vesc_vesc_command_rel_brake_current_v7_init(struct vesc_vesc_command_rel_bra
  *
  * @return Encoded signal.
  */
-int32_t vesc_vesc_command_rel_brake_current_v7_command_relative_brake_current_v7_encode(double value);
+int32_t vesc_vesc_command_rel_brake_current_v7_command_relative_brake_current_v7_encode(
+    double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -13823,7 +13749,8 @@ int32_t vesc_vesc_command_rel_brake_current_v7_command_relative_brake_current_v7
  *
  * @return Decoded signal.
  */
-double vesc_vesc_command_rel_brake_current_v7_command_relative_brake_current_v7_decode(int32_t value);
+double vesc_vesc_command_rel_brake_current_v7_command_relative_brake_current_v7_decode(
+    int32_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -13832,7 +13759,8 @@ double vesc_vesc_command_rel_brake_current_v7_command_relative_brake_current_v7_
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_brake_current_v7_command_relative_brake_current_v7_is_in_range(int32_t value);
+bool vesc_vesc_command_rel_brake_current_v7_command_relative_brake_current_v7_is_in_range(
+    int32_t value);
 
 /**
  * Check that given physical value is in allowed range before encoding.
@@ -13845,7 +13773,8 @@ bool vesc_vesc_command_rel_brake_current_v7_command_relative_brake_current_v7_is
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_brake_current_v7_command_relative_brake_current_v7_is_in_phys_range(double value);
+bool vesc_vesc_command_rel_brake_current_v7_command_relative_brake_current_v7_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_RelCurrent_V7.
@@ -13856,10 +13785,9 @@ bool vesc_vesc_command_rel_brake_current_v7_command_relative_brake_current_v7_is
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_rel_current_v7_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rel_current_v7_t *src_p,
-    size_t size);
+int vesc_vesc_command_rel_current_v7_pack(uint8_t* dst_p,
+                                          const struct vesc_vesc_command_rel_current_v7_t* src_p,
+                                          size_t size);
 
 /**
  * Unpack message VESC_Command_RelCurrent_V7.
@@ -13870,10 +13798,8 @@ int vesc_vesc_command_rel_current_v7_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_rel_current_v7_unpack(
-    struct vesc_vesc_command_rel_current_v7_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_rel_current_v7_unpack(struct vesc_vesc_command_rel_current_v7_t* dst_p,
+                                            const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RelCurrent_V7.
@@ -13882,7 +13808,7 @@ int vesc_vesc_command_rel_current_v7_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rel_current_v7_init(struct vesc_vesc_command_rel_current_v7_t *msg_p);
+int vesc_vesc_command_rel_current_v7_init(struct vesc_vesc_command_rel_current_v7_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -13933,10 +13859,8 @@ bool vesc_vesc_command_rel_current_v7_command_relative_current_v7_is_in_phys_ran
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_pos_v7_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_pos_v7_t *src_p,
-    size_t size);
+int vesc_vesc_command_pos_v7_pack(uint8_t* dst_p, const struct vesc_vesc_command_pos_v7_t* src_p,
+                                  size_t size);
 
 /**
  * Unpack message VESC_Command_POS_V7.
@@ -13947,10 +13871,8 @@ int vesc_vesc_command_pos_v7_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_pos_v7_unpack(
-    struct vesc_vesc_command_pos_v7_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_pos_v7_unpack(struct vesc_vesc_command_pos_v7_t* dst_p, const uint8_t* src_p,
+                                    size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_POS_V7.
@@ -13959,7 +13881,7 @@ int vesc_vesc_command_pos_v7_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_pos_v7_init(struct vesc_vesc_command_pos_v7_t *msg_p);
+int vesc_vesc_command_pos_v7_init(struct vesc_vesc_command_pos_v7_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -14011,9 +13933,7 @@ bool vesc_vesc_command_pos_v7_command_pos_v7_is_in_phys_range(double value);
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_abs_brake_current_v7_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_abs_brake_current_v7_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_abs_brake_current_v7_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_AbsBrakeCurrent_V7.
@@ -14025,9 +13945,7 @@ int vesc_vesc_command_abs_brake_current_v7_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_abs_brake_current_v7_unpack(
-    struct vesc_vesc_command_abs_brake_current_v7_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_abs_brake_current_v7_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_AbsBrakeCurrent_V7.
@@ -14036,7 +13954,8 @@ int vesc_vesc_command_abs_brake_current_v7_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_abs_brake_current_v7_init(struct vesc_vesc_command_abs_brake_current_v7_t *msg_p);
+int vesc_vesc_command_abs_brake_current_v7_init(
+    struct vesc_vesc_command_abs_brake_current_v7_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -14087,10 +14006,9 @@ bool vesc_vesc_command_abs_brake_current_v7_command_brake_current_v7_is_in_phys_
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_abs_current_v7_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_abs_current_v7_t *src_p,
-    size_t size);
+int vesc_vesc_command_abs_current_v7_pack(uint8_t* dst_p,
+                                          const struct vesc_vesc_command_abs_current_v7_t* src_p,
+                                          size_t size);
 
 /**
  * Unpack message VESC_Command_AbsCurrent_V7.
@@ -14101,10 +14019,8 @@ int vesc_vesc_command_abs_current_v7_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_abs_current_v7_unpack(
-    struct vesc_vesc_command_abs_current_v7_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_abs_current_v7_unpack(struct vesc_vesc_command_abs_current_v7_t* dst_p,
+                                            const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_AbsCurrent_V7.
@@ -14113,7 +14029,7 @@ int vesc_vesc_command_abs_current_v7_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_abs_current_v7_init(struct vesc_vesc_command_abs_current_v7_t *msg_p);
+int vesc_vesc_command_abs_current_v7_init(struct vesc_vesc_command_abs_current_v7_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -14164,10 +14080,8 @@ bool vesc_vesc_command_abs_current_v7_command_current_v7_is_in_phys_range(double
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_rpm_v7_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rpm_v7_t *src_p,
-    size_t size);
+int vesc_vesc_command_rpm_v7_pack(uint8_t* dst_p, const struct vesc_vesc_command_rpm_v7_t* src_p,
+                                  size_t size);
 
 /**
  * Unpack message VESC_Command_RPM_V7.
@@ -14178,10 +14092,8 @@ int vesc_vesc_command_rpm_v7_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_rpm_v7_unpack(
-    struct vesc_vesc_command_rpm_v7_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_rpm_v7_unpack(struct vesc_vesc_command_rpm_v7_t* dst_p, const uint8_t* src_p,
+                                    size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RPM_V7.
@@ -14190,7 +14102,7 @@ int vesc_vesc_command_rpm_v7_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rpm_v7_init(struct vesc_vesc_command_rpm_v7_t *msg_p);
+int vesc_vesc_command_rpm_v7_init(struct vesc_vesc_command_rpm_v7_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -14241,10 +14153,8 @@ bool vesc_vesc_command_rpm_v7_command_rpm_v7_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status5_v7_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status5_v7_t *src_p,
-    size_t size);
+int vesc_vesc_status5_v7_pack(uint8_t* dst_p, const struct vesc_vesc_status5_v7_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status5_V7.
@@ -14255,10 +14165,8 @@ int vesc_vesc_status5_v7_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status5_v7_unpack(
-    struct vesc_vesc_status5_v7_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status5_v7_unpack(struct vesc_vesc_status5_v7_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status5_V7.
@@ -14267,7 +14175,7 @@ int vesc_vesc_status5_v7_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status5_v7_init(struct vesc_vesc_status5_v7_t *msg_p);
+int vesc_vesc_status5_v7_init(struct vesc_vesc_status5_v7_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -14398,10 +14306,8 @@ bool vesc_vesc_status5_v7_status_tachometer_v7_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status4_v7_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status4_v7_t *src_p,
-    size_t size);
+int vesc_vesc_status4_v7_pack(uint8_t* dst_p, const struct vesc_vesc_status4_v7_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status4_V7.
@@ -14412,10 +14318,8 @@ int vesc_vesc_status4_v7_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status4_v7_unpack(
-    struct vesc_vesc_status4_v7_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status4_v7_unpack(struct vesc_vesc_status4_v7_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status4_V7.
@@ -14424,7 +14328,7 @@ int vesc_vesc_status4_v7_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status4_v7_init(struct vesc_vesc_status4_v7_t *msg_p);
+int vesc_vesc_status4_v7_init(struct vesc_vesc_status4_v7_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -14595,10 +14499,8 @@ bool vesc_vesc_status4_v7_status_pid_pos_v7_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status3_v7_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status3_v7_t *src_p,
-    size_t size);
+int vesc_vesc_status3_v7_pack(uint8_t* dst_p, const struct vesc_vesc_status3_v7_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status3_V7.
@@ -14609,10 +14511,8 @@ int vesc_vesc_status3_v7_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status3_v7_unpack(
-    struct vesc_vesc_status3_v7_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status3_v7_unpack(struct vesc_vesc_status3_v7_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status3_V7.
@@ -14621,7 +14521,7 @@ int vesc_vesc_status3_v7_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status3_v7_init(struct vesc_vesc_status3_v7_t *msg_p);
+int vesc_vesc_status3_v7_init(struct vesc_vesc_status3_v7_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -14712,10 +14612,8 @@ bool vesc_vesc_status3_v7_status_watt_hours_charged_v7_is_in_phys_range(double v
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status2_v7_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status2_v7_t *src_p,
-    size_t size);
+int vesc_vesc_status2_v7_pack(uint8_t* dst_p, const struct vesc_vesc_status2_v7_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status2_V7.
@@ -14726,10 +14624,8 @@ int vesc_vesc_status2_v7_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status2_v7_unpack(
-    struct vesc_vesc_status2_v7_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status2_v7_unpack(struct vesc_vesc_status2_v7_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status2_V7.
@@ -14738,7 +14634,7 @@ int vesc_vesc_status2_v7_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status2_v7_init(struct vesc_vesc_status2_v7_t *msg_p);
+int vesc_vesc_status2_v7_init(struct vesc_vesc_status2_v7_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -14829,10 +14725,8 @@ bool vesc_vesc_status2_v7_status_amp_hours_charged_v7_is_in_phys_range(double va
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status1_v7_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status1_v7_t *src_p,
-    size_t size);
+int vesc_vesc_status1_v7_pack(uint8_t* dst_p, const struct vesc_vesc_status1_v7_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status1_V7.
@@ -14843,10 +14737,8 @@ int vesc_vesc_status1_v7_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status1_v7_unpack(
-    struct vesc_vesc_status1_v7_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status1_v7_unpack(struct vesc_vesc_status1_v7_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status1_V7.
@@ -14855,7 +14747,7 @@ int vesc_vesc_status1_v7_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status1_v7_init(struct vesc_vesc_status1_v7_t *msg_p);
+int vesc_vesc_status1_v7_init(struct vesc_vesc_status1_v7_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -14986,10 +14878,9 @@ bool vesc_vesc_status1_v7_status_duty_cycle_v7_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_duty_cycle_v7_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_duty_cycle_v7_t *src_p,
-    size_t size);
+int vesc_vesc_command_duty_cycle_v7_pack(uint8_t* dst_p,
+                                         const struct vesc_vesc_command_duty_cycle_v7_t* src_p,
+                                         size_t size);
 
 /**
  * Unpack message VESC_Command_DutyCycle_V7.
@@ -15000,10 +14891,8 @@ int vesc_vesc_command_duty_cycle_v7_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_duty_cycle_v7_unpack(
-    struct vesc_vesc_command_duty_cycle_v7_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_duty_cycle_v7_unpack(struct vesc_vesc_command_duty_cycle_v7_t* dst_p,
+                                           const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_DutyCycle_V7.
@@ -15012,7 +14901,7 @@ int vesc_vesc_command_duty_cycle_v7_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_duty_cycle_v7_init(struct vesc_vesc_command_duty_cycle_v7_t *msg_p);
+int vesc_vesc_command_duty_cycle_v7_init(struct vesc_vesc_command_duty_cycle_v7_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -15064,9 +14953,7 @@ bool vesc_vesc_command_duty_cycle_v7_command_duty_cycle_v7_is_in_phys_range(doub
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_set_current_limit_perm_v8_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_set_current_limit_perm_v8_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_set_current_limit_perm_v8_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Set_CurrentLimitPerm_V8.
@@ -15077,10 +14964,8 @@ int vesc_vesc_set_current_limit_perm_v8_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_set_current_limit_perm_v8_unpack(
-    struct vesc_vesc_set_current_limit_perm_v8_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_set_current_limit_perm_v8_unpack(struct vesc_vesc_set_current_limit_perm_v8_t* dst_p,
+                                               const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Set_CurrentLimitPerm_V8.
@@ -15089,7 +14974,7 @@ int vesc_vesc_set_current_limit_perm_v8_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_set_current_limit_perm_v8_init(struct vesc_vesc_set_current_limit_perm_v8_t *msg_p);
+int vesc_vesc_set_current_limit_perm_v8_init(struct vesc_vesc_set_current_limit_perm_v8_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -15129,7 +15014,8 @@ bool vesc_vesc_set_current_limit_perm_v8_setting_current_limit_min_v8_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_perm_v8_setting_current_limit_min_v8_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_perm_v8_setting_current_limit_min_v8_is_in_phys_range(
+    double value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -15169,7 +15055,8 @@ bool vesc_vesc_set_current_limit_perm_v8_setting_current_limit_max_v8_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_perm_v8_setting_current_limit_max_v8_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_perm_v8_setting_current_limit_max_v8_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Set_CurrentLimitTemp_V8.
@@ -15181,9 +15068,7 @@ bool vesc_vesc_set_current_limit_perm_v8_setting_current_limit_max_v8_is_in_phys
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_set_current_limit_temp_v8_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_set_current_limit_temp_v8_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_set_current_limit_temp_v8_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Set_CurrentLimitTemp_V8.
@@ -15194,10 +15079,8 @@ int vesc_vesc_set_current_limit_temp_v8_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_set_current_limit_temp_v8_unpack(
-    struct vesc_vesc_set_current_limit_temp_v8_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_set_current_limit_temp_v8_unpack(struct vesc_vesc_set_current_limit_temp_v8_t* dst_p,
+                                               const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Set_CurrentLimitTemp_V8.
@@ -15206,7 +15089,7 @@ int vesc_vesc_set_current_limit_temp_v8_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_set_current_limit_temp_v8_init(struct vesc_vesc_set_current_limit_temp_v8_t *msg_p);
+int vesc_vesc_set_current_limit_temp_v8_init(struct vesc_vesc_set_current_limit_temp_v8_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -15246,7 +15129,8 @@ bool vesc_vesc_set_current_limit_temp_v8_setting_current_limit_min_v8_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_temp_v8_setting_current_limit_min_v8_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_temp_v8_setting_current_limit_min_v8_is_in_phys_range(
+    double value);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -15286,7 +15170,8 @@ bool vesc_vesc_set_current_limit_temp_v8_setting_current_limit_max_v8_is_in_rang
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_set_current_limit_temp_v8_setting_current_limit_max_v8_is_in_phys_range(double value);
+bool vesc_vesc_set_current_limit_temp_v8_setting_current_limit_max_v8_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_RelBrakeCurrent_V8.
@@ -15298,9 +15183,7 @@ bool vesc_vesc_set_current_limit_temp_v8_setting_current_limit_max_v8_is_in_phys
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_rel_brake_current_v8_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rel_brake_current_v8_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_rel_brake_current_v8_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_RelBrakeCurrent_V8.
@@ -15312,9 +15195,7 @@ int vesc_vesc_command_rel_brake_current_v8_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_rel_brake_current_v8_unpack(
-    struct vesc_vesc_command_rel_brake_current_v8_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_rel_brake_current_v8_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RelBrakeCurrent_V8.
@@ -15323,7 +15204,8 @@ int vesc_vesc_command_rel_brake_current_v8_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rel_brake_current_v8_init(struct vesc_vesc_command_rel_brake_current_v8_t *msg_p);
+int vesc_vesc_command_rel_brake_current_v8_init(
+    struct vesc_vesc_command_rel_brake_current_v8_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -15332,7 +15214,8 @@ int vesc_vesc_command_rel_brake_current_v8_init(struct vesc_vesc_command_rel_bra
  *
  * @return Encoded signal.
  */
-int32_t vesc_vesc_command_rel_brake_current_v8_command_relative_brake_current_v8_encode(double value);
+int32_t vesc_vesc_command_rel_brake_current_v8_command_relative_brake_current_v8_encode(
+    double value);
 
 /**
  * Decode given signal by applying scaling and offset.
@@ -15341,7 +15224,8 @@ int32_t vesc_vesc_command_rel_brake_current_v8_command_relative_brake_current_v8
  *
  * @return Decoded signal.
  */
-double vesc_vesc_command_rel_brake_current_v8_command_relative_brake_current_v8_decode(int32_t value);
+double vesc_vesc_command_rel_brake_current_v8_command_relative_brake_current_v8_decode(
+    int32_t value);
 
 /**
  * Check that given signal is in allowed range.
@@ -15350,7 +15234,8 @@ double vesc_vesc_command_rel_brake_current_v8_command_relative_brake_current_v8_
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_brake_current_v8_command_relative_brake_current_v8_is_in_range(int32_t value);
+bool vesc_vesc_command_rel_brake_current_v8_command_relative_brake_current_v8_is_in_range(
+    int32_t value);
 
 /**
  * Check that given physical value is in allowed range before encoding.
@@ -15363,7 +15248,8 @@ bool vesc_vesc_command_rel_brake_current_v8_command_relative_brake_current_v8_is
  *
  * @return true if in range, false otherwise.
  */
-bool vesc_vesc_command_rel_brake_current_v8_command_relative_brake_current_v8_is_in_phys_range(double value);
+bool vesc_vesc_command_rel_brake_current_v8_command_relative_brake_current_v8_is_in_phys_range(
+    double value);
 
 /**
  * Pack message VESC_Command_RelCurrent_V8.
@@ -15374,10 +15260,9 @@ bool vesc_vesc_command_rel_brake_current_v8_command_relative_brake_current_v8_is
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_rel_current_v8_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rel_current_v8_t *src_p,
-    size_t size);
+int vesc_vesc_command_rel_current_v8_pack(uint8_t* dst_p,
+                                          const struct vesc_vesc_command_rel_current_v8_t* src_p,
+                                          size_t size);
 
 /**
  * Unpack message VESC_Command_RelCurrent_V8.
@@ -15388,10 +15273,8 @@ int vesc_vesc_command_rel_current_v8_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_rel_current_v8_unpack(
-    struct vesc_vesc_command_rel_current_v8_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_rel_current_v8_unpack(struct vesc_vesc_command_rel_current_v8_t* dst_p,
+                                            const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RelCurrent_V8.
@@ -15400,7 +15283,7 @@ int vesc_vesc_command_rel_current_v8_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rel_current_v8_init(struct vesc_vesc_command_rel_current_v8_t *msg_p);
+int vesc_vesc_command_rel_current_v8_init(struct vesc_vesc_command_rel_current_v8_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -15451,10 +15334,8 @@ bool vesc_vesc_command_rel_current_v8_command_relative_current_v8_is_in_phys_ran
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_pos_v8_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_pos_v8_t *src_p,
-    size_t size);
+int vesc_vesc_command_pos_v8_pack(uint8_t* dst_p, const struct vesc_vesc_command_pos_v8_t* src_p,
+                                  size_t size);
 
 /**
  * Unpack message VESC_Command_POS_V8.
@@ -15465,10 +15346,8 @@ int vesc_vesc_command_pos_v8_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_pos_v8_unpack(
-    struct vesc_vesc_command_pos_v8_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_pos_v8_unpack(struct vesc_vesc_command_pos_v8_t* dst_p, const uint8_t* src_p,
+                                    size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_POS_V8.
@@ -15477,7 +15356,7 @@ int vesc_vesc_command_pos_v8_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_pos_v8_init(struct vesc_vesc_command_pos_v8_t *msg_p);
+int vesc_vesc_command_pos_v8_init(struct vesc_vesc_command_pos_v8_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -15529,9 +15408,7 @@ bool vesc_vesc_command_pos_v8_command_pos_v8_is_in_phys_range(double value);
  * @return Size of packed data, or negative error code.
  */
 int vesc_vesc_command_abs_brake_current_v8_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_abs_brake_current_v8_t *src_p,
-    size_t size);
+    uint8_t* dst_p, const struct vesc_vesc_command_abs_brake_current_v8_t* src_p, size_t size);
 
 /**
  * Unpack message VESC_Command_AbsBrakeCurrent_V8.
@@ -15543,9 +15420,7 @@ int vesc_vesc_command_abs_brake_current_v8_pack(
  * @return zero(0) or negative error code.
  */
 int vesc_vesc_command_abs_brake_current_v8_unpack(
-    struct vesc_vesc_command_abs_brake_current_v8_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+    struct vesc_vesc_command_abs_brake_current_v8_t* dst_p, const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_AbsBrakeCurrent_V8.
@@ -15554,7 +15429,8 @@ int vesc_vesc_command_abs_brake_current_v8_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_abs_brake_current_v8_init(struct vesc_vesc_command_abs_brake_current_v8_t *msg_p);
+int vesc_vesc_command_abs_brake_current_v8_init(
+    struct vesc_vesc_command_abs_brake_current_v8_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -15605,10 +15481,9 @@ bool vesc_vesc_command_abs_brake_current_v8_command_brake_current_v8_is_in_phys_
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_abs_current_v8_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_abs_current_v8_t *src_p,
-    size_t size);
+int vesc_vesc_command_abs_current_v8_pack(uint8_t* dst_p,
+                                          const struct vesc_vesc_command_abs_current_v8_t* src_p,
+                                          size_t size);
 
 /**
  * Unpack message VESC_Command_AbsCurrent_V8.
@@ -15619,10 +15494,8 @@ int vesc_vesc_command_abs_current_v8_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_abs_current_v8_unpack(
-    struct vesc_vesc_command_abs_current_v8_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_abs_current_v8_unpack(struct vesc_vesc_command_abs_current_v8_t* dst_p,
+                                            const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_AbsCurrent_V8.
@@ -15631,7 +15504,7 @@ int vesc_vesc_command_abs_current_v8_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_abs_current_v8_init(struct vesc_vesc_command_abs_current_v8_t *msg_p);
+int vesc_vesc_command_abs_current_v8_init(struct vesc_vesc_command_abs_current_v8_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -15682,10 +15555,8 @@ bool vesc_vesc_command_abs_current_v8_command_current_v8_is_in_phys_range(double
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_rpm_v8_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_rpm_v8_t *src_p,
-    size_t size);
+int vesc_vesc_command_rpm_v8_pack(uint8_t* dst_p, const struct vesc_vesc_command_rpm_v8_t* src_p,
+                                  size_t size);
 
 /**
  * Unpack message VESC_Command_RPM_V8.
@@ -15696,10 +15567,8 @@ int vesc_vesc_command_rpm_v8_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_rpm_v8_unpack(
-    struct vesc_vesc_command_rpm_v8_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_rpm_v8_unpack(struct vesc_vesc_command_rpm_v8_t* dst_p, const uint8_t* src_p,
+                                    size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_RPM_V8.
@@ -15708,7 +15577,7 @@ int vesc_vesc_command_rpm_v8_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_rpm_v8_init(struct vesc_vesc_command_rpm_v8_t *msg_p);
+int vesc_vesc_command_rpm_v8_init(struct vesc_vesc_command_rpm_v8_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -15759,10 +15628,8 @@ bool vesc_vesc_command_rpm_v8_command_rpm_v8_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status5_v8_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status5_v8_t *src_p,
-    size_t size);
+int vesc_vesc_status5_v8_pack(uint8_t* dst_p, const struct vesc_vesc_status5_v8_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status5_V8.
@@ -15773,10 +15640,8 @@ int vesc_vesc_status5_v8_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status5_v8_unpack(
-    struct vesc_vesc_status5_v8_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status5_v8_unpack(struct vesc_vesc_status5_v8_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status5_V8.
@@ -15785,7 +15650,7 @@ int vesc_vesc_status5_v8_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status5_v8_init(struct vesc_vesc_status5_v8_t *msg_p);
+int vesc_vesc_status5_v8_init(struct vesc_vesc_status5_v8_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -15916,10 +15781,8 @@ bool vesc_vesc_status5_v8_status_tachometer_v8_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status4_v8_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status4_v8_t *src_p,
-    size_t size);
+int vesc_vesc_status4_v8_pack(uint8_t* dst_p, const struct vesc_vesc_status4_v8_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status4_V8.
@@ -15930,10 +15793,8 @@ int vesc_vesc_status4_v8_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status4_v8_unpack(
-    struct vesc_vesc_status4_v8_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status4_v8_unpack(struct vesc_vesc_status4_v8_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status4_V8.
@@ -15942,7 +15803,7 @@ int vesc_vesc_status4_v8_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status4_v8_init(struct vesc_vesc_status4_v8_t *msg_p);
+int vesc_vesc_status4_v8_init(struct vesc_vesc_status4_v8_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -16113,10 +15974,8 @@ bool vesc_vesc_status4_v8_status_pid_pos_v8_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status3_v8_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status3_v8_t *src_p,
-    size_t size);
+int vesc_vesc_status3_v8_pack(uint8_t* dst_p, const struct vesc_vesc_status3_v8_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status3_V8.
@@ -16127,10 +15986,8 @@ int vesc_vesc_status3_v8_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status3_v8_unpack(
-    struct vesc_vesc_status3_v8_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status3_v8_unpack(struct vesc_vesc_status3_v8_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status3_V8.
@@ -16139,7 +15996,7 @@ int vesc_vesc_status3_v8_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status3_v8_init(struct vesc_vesc_status3_v8_t *msg_p);
+int vesc_vesc_status3_v8_init(struct vesc_vesc_status3_v8_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -16230,10 +16087,8 @@ bool vesc_vesc_status3_v8_status_watt_hours_charged_v8_is_in_phys_range(double v
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status2_v8_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status2_v8_t *src_p,
-    size_t size);
+int vesc_vesc_status2_v8_pack(uint8_t* dst_p, const struct vesc_vesc_status2_v8_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status2_V8.
@@ -16244,10 +16099,8 @@ int vesc_vesc_status2_v8_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status2_v8_unpack(
-    struct vesc_vesc_status2_v8_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status2_v8_unpack(struct vesc_vesc_status2_v8_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status2_V8.
@@ -16256,7 +16109,7 @@ int vesc_vesc_status2_v8_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status2_v8_init(struct vesc_vesc_status2_v8_t *msg_p);
+int vesc_vesc_status2_v8_init(struct vesc_vesc_status2_v8_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -16347,10 +16200,8 @@ bool vesc_vesc_status2_v8_status_amp_hours_charged_v8_is_in_phys_range(double va
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_status1_v8_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_status1_v8_t *src_p,
-    size_t size);
+int vesc_vesc_status1_v8_pack(uint8_t* dst_p, const struct vesc_vesc_status1_v8_t* src_p,
+                              size_t size);
 
 /**
  * Unpack message VESC_Status1_V8.
@@ -16361,10 +16212,8 @@ int vesc_vesc_status1_v8_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_status1_v8_unpack(
-    struct vesc_vesc_status1_v8_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_status1_v8_unpack(struct vesc_vesc_status1_v8_t* dst_p, const uint8_t* src_p,
+                                size_t size);
 
 /**
  * Init message fields to default values from VESC_Status1_V8.
@@ -16373,7 +16222,7 @@ int vesc_vesc_status1_v8_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_status1_v8_init(struct vesc_vesc_status1_v8_t *msg_p);
+int vesc_vesc_status1_v8_init(struct vesc_vesc_status1_v8_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -16504,10 +16353,9 @@ bool vesc_vesc_status1_v8_status_duty_cycle_v8_is_in_phys_range(double value);
  *
  * @return Size of packed data, or negative error code.
  */
-int vesc_vesc_command_duty_cycle_v8_pack(
-    uint8_t *dst_p,
-    const struct vesc_vesc_command_duty_cycle_v8_t *src_p,
-    size_t size);
+int vesc_vesc_command_duty_cycle_v8_pack(uint8_t* dst_p,
+                                         const struct vesc_vesc_command_duty_cycle_v8_t* src_p,
+                                         size_t size);
 
 /**
  * Unpack message VESC_Command_DutyCycle_V8.
@@ -16518,10 +16366,8 @@ int vesc_vesc_command_duty_cycle_v8_pack(
  *
  * @return zero(0) or negative error code.
  */
-int vesc_vesc_command_duty_cycle_v8_unpack(
-    struct vesc_vesc_command_duty_cycle_v8_t *dst_p,
-    const uint8_t *src_p,
-    size_t size);
+int vesc_vesc_command_duty_cycle_v8_unpack(struct vesc_vesc_command_duty_cycle_v8_t* dst_p,
+                                           const uint8_t* src_p, size_t size);
 
 /**
  * Init message fields to default values from VESC_Command_DutyCycle_V8.
@@ -16530,7 +16376,7 @@ int vesc_vesc_command_duty_cycle_v8_unpack(
  *
  * @return zero(0) on success or (-1) in case of nullptr argument.
  */
-int vesc_vesc_command_duty_cycle_v8_init(struct vesc_vesc_command_duty_cycle_v8_t *msg_p);
+int vesc_vesc_command_duty_cycle_v8_init(struct vesc_vesc_command_duty_cycle_v8_t* msg_p);
 
 /**
  * Encode given signal by applying scaling and offset.
@@ -16571,7 +16417,6 @@ bool vesc_vesc_command_duty_cycle_v8_command_duty_cycle_v8_is_in_range(int32_t v
  * @return true if in range, false otherwise.
  */
 bool vesc_vesc_command_duty_cycle_v8_command_duty_cycle_v8_is_in_phys_range(double value);
-
 
 #ifdef __cplusplus
 }

@@ -14,6 +14,18 @@ enum class VcuStateId
     SAME,
 };
 
+struct VescData
+{
+    int32_t rpm;
+    float motorCurrent = 0;
+    float inputCurrent = 0;
+    float inputVoltage = 0;
+    float mosfetTemp = 0;
+    float motorTemp = 0;
+    uint32_t lastRxMs = 0;
+    uint32_t txFailCount = 0;
+};
+
 struct VcuInputs
 {
     struct
@@ -27,23 +39,7 @@ struct VcuInputs
         float throttlePercent = 0.0f;
     } pilot;
 
-    struct
-    {
-        bool isAlive = false;
-        int32_t erpm = 0;
-        float motorCurrent = 0.0f;
-        float inputCurrent = 0.0f;
-        float dutyCycle = 0.0f;
-        float inputVoltage = 0.0f;
-        float mosfetTemp = 0.0f;
-        float motorTemp = 0.0f;
-        uint8_t faultCode = 0;
-
-        float ampHours = 0.0f;
-        float ampHoursCharged = 0.0f;
-        float wattHours = 0.0f;
-        float wattHoursCharged = 0.0f;
-    } vesc;
+    VescData vesc;
 
     uint32_t tickMs = 0;
 };
@@ -58,9 +54,9 @@ struct VcuOutputs
 
     struct
     {
-        bool enableMotor = false;
+        bool isMotorEnabled = false;
         float targetAmp = 0.0f;
-    } motor;
+    } vesc;
 
     struct
     {

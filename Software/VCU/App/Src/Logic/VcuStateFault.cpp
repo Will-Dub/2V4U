@@ -10,8 +10,8 @@ void VcuStateFault::onEnter(const VcuInputs& inputs)
 
 VcuStateId VcuStateFault::update(const VcuInputs& inputs, VcuOutputs& outputs)
 {
-    outputs.motor.enableMotor = false;
-    outputs.motor.targetAmp = 0.0f;
+    outputs.vesc.isMotorEnabled = false;
+    outputs.vesc.targetAmp = 0.0f;
     outputs.power.contactor = false;
     outputs.power.prechargeRelay = false;
     outputs.lights.errorLed = true;
@@ -23,4 +23,9 @@ VcuStateId VcuStateFault::update(const VcuInputs& inputs, VcuOutputs& outputs)
     }
 
     return VcuStateId::SAME;
+}
+
+VcuStateId VcuStateFault::getId()
+{
+    return VcuStateId::FAULT;
 }

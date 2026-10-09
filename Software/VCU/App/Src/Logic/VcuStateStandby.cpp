@@ -9,9 +9,14 @@ void VcuStateStandby::onEnter(const VcuInputs& inputs)
 
 VcuStateId VcuStateStandby::update(const VcuInputs& inputs, VcuOutputs& outputs)
 {
-    if (inputs.pilot.isStartPressed && !inputs.pilot.isEStopPressed) {
+    if (inputs.pilot.isStartPressed) {
         return VcuStateId::PRECHARGE;
     }
 
     return VcuStateId::SAME;
+}
+
+VcuStateId VcuStateStandby::getId()
+{
+    return VcuStateId::STANDBY;
 }

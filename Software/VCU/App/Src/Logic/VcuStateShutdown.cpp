@@ -9,19 +9,30 @@ void VcuStateShutdown::onEnter(const VcuInputs& inputs)
 
 VcuStateId VcuStateShutdown::update(const VcuInputs& inputs, VcuOutputs& outputs)
 {
-    outputs.power.contactor = true;
+    outputs.vesc.isMotorEnabled = false;
+    outputs.vesc.targetAmp = 0.0f;
+
+    if (inputs.vesc.motorCurrent > 1.0f) {
+        outputs.power.contactor = true;
+        outputs.power.prechargeRelay = false;
+        return VcuStateId::SAME;
+    }
+
+    outputs.power.contactor = false;
     outputs.power.prechargeRelay = false;
 
-    outputs.motor.enableMotor = false;
-    outputs.motor.targetAmp = 0.0f;
+    bool isRxDead = (inputs.tickMs - inputs.vesc.lastRxMs) > 250;
+    bool isTxDead = (inputs.vesc.txFailCount > 10);
+    bool isVescDead = isRxDead || isTxDead;
 
-    bool isCurrentZero = (inputs.vesc.motorCurrent < 1.0f);
-
-    // TODO: Add a timeout?
-
-    if (isCurrentZero) {
+    if (isVescDead) {
         return VcuStateId::STANDBY;
     }
 
     return VcuStateId::SAME;
+}
+
+VcuStateId VcuStateShutdown::getId()
+{
+    return VcuStateId::SHUTDOWN;
 }

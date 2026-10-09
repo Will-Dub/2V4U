@@ -9,9 +9,21 @@ void VcuStateDrive::onEnter(const VcuInputs& inputs)
 
 VcuStateId VcuStateDrive::update(const VcuInputs& inputs, VcuOutputs& outputs)
 {
+    outputs.power.contactor = true;
+    outputs.power.prechargeRelay = false;
+
     if (!inputs.pilot.isStartPressed) {
         return VcuStateId::SHUTDOWN;
     }
 
+    if (inputs.vesc.inputVoltage < 35.0f) {
+        return VcuStateId::FAULT;
+    }
+
     return VcuStateId::SAME;
+}
+
+VcuStateId VcuStateDrive::getId()
+{
+    return VcuStateId::DRIVE;
 }

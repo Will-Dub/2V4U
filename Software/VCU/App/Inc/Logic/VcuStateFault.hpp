@@ -9,6 +9,7 @@ class VcuStateFault : public VcuState
     VcuStateFault(ILogger& logger) : VcuState(logger) {}
     void onEnter(const VcuInputs& inputs) override;
     virtual VcuStateId update(const VcuInputs& inputs, VcuOutputs& outputs) override;
+    virtual VcuStateId getId() override;
 
   private:
     int m_blinkTimer;

@@ -14,6 +14,7 @@ class VcuState
     virtual void onExit() {}
 
     virtual VcuStateId update(const VcuInputs& inputs, VcuOutputs& outputs) = 0;
+    virtual VcuStateId getId() = 0;
 
   protected:
     ILogger& m_logger;

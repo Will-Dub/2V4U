@@ -41,6 +41,8 @@ extern "C" void App_Init(volatile uint16_t* throttleDmaPtr)
 
 extern "C" void App_Run(void)
 {
+    App::Drivers::vescDriver.processRb();
+
     if (tick) {
         tick = false;
 
@@ -87,5 +89,11 @@ extern "C" void App_Run(void)
                           outputs.power.prechargeRelay ? GPIO_PIN_SET : GPIO_PIN_RESET);
         HAL_GPIO_WritePin(LED_SW_START_GPIO_Port, LED_SW_START_Pin,
                           outputs.lights.startLed ? GPIO_PIN_SET : GPIO_PIN_RESET);
+
+        if (outputs.vesc.isMotorEnabled) {
+            App::Drivers::vescDriver.sendAmpCommand(outputs.vesc.targetAmp);
+        } else {
+            App::Drivers::vescDriver.sendAmpCommand(0.0f);
+        }
     }
 }

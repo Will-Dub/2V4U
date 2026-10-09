@@ -11,3 +11,8 @@ VcuStateId VcuStateInit::update(const VcuInputs& inputs, VcuOutputs& outputs)
 {
     return VcuStateId::STANDBY;
 }
+
+VcuStateId VcuStateInit::getId()
+{
+    return VcuStateId::INIT;
+}
