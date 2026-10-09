@@ -56,7 +56,7 @@ void VcuController::run(const VcuInputs& inputs, VcuOutputs& outputs)
     bool isVescDead = isRxDead || isTxDead;
     bool requiresVesc = (m_currentState->getId() == VcuStateId::DRIVE);
 
-    if (inputs.pilot.isEStopPressed) {
+    if (inputs.pilot.isEStopPressed && m_currentState->getId() != VcuStateId::FAULT) {
         transitionToState(VcuStateId::FAULT, inputs);
     }
 
