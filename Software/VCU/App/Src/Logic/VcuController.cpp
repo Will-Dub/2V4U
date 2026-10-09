@@ -64,6 +64,10 @@ void VcuController::run(const VcuInputs& inputs, VcuOutputs& outputs)
         transitionToState(VcuStateId::FAULT, inputs);
     }
 
+    if(inputs.pilot.isThrottleValid == false){
+        transitionToState(VcuStateId::FAULT, inputs);
+    }
+
     VcuStateId nextStateId = m_currentState->update(inputs, outputs);
     transitionToState(nextStateId, inputs);
 }

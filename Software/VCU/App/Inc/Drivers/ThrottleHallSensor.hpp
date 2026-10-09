@@ -9,6 +9,7 @@ class ThrottleHallSensor
     ThrottleHallSensor();
     void init(volatile uint16_t* dmaPtr, uint16_t dmaSize = 100);
     float getPercent();
+    bool isValid();
     void update();
 
   private:
@@ -18,6 +19,7 @@ class ThrottleHallSensor
     volatile uint16_t* m_dmaPtr;
     uint16_t m_dmaSize;
     float m_throttleValue;
+    bool m_isValid;
 
     const uint16_t FAULT_MIN = 300;
     const uint16_t FAULT_MAX = 3500;

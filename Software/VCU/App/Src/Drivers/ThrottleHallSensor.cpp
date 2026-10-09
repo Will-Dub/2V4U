@@ -13,8 +13,11 @@ void ThrottleHallSensor::init(volatile uint16_t* dmaPtr, uint16_t dmaSize)
 
 void ThrottleHallSensor::update()
 {
-    if (m_dmaPtr == nullptr)
+    if (m_dmaPtr == nullptr){
+        m_throttleValue = 0.0f;
+        m_isValid = false;
         return;
+    }
 
     uint32_t sum = 0;
     for (uint16_t i = 0; i < m_dmaSize; i++) {
@@ -24,10 +27,12 @@ void ThrottleHallSensor::update()
 
     if (average < FAULT_MIN || average > FAULT_MAX) {
         m_throttleValue = 0.0f;
+        m_isValid = false;
         return;
     }
 
     m_throttleValue = average;
+    m_isValid = true;
 }
 
 float ThrottleHallSensor::mapRange(uint16_t x, uint16_t in_min, uint16_t in_max, float out_min,
@@ -38,6 +43,10 @@ float ThrottleHallSensor::mapRange(uint16_t x, uint16_t in_min, uint16_t in_max,
 
 float ThrottleHallSensor::getPercent()
 {
+    if(m_isValid == false){
+        return 0.0f;
+    }
+
     float percent = (m_throttleValue - PEDAL_MIN) / (float)(PEDAL_MAX - PEDAL_MIN);
 
     if (percent < 0.0f)

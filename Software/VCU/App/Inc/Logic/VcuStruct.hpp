@@ -37,6 +37,7 @@ struct VcuInputs
         bool isStartPressed = false;
         bool isStartRisingEdge = false;
         float throttlePercent = 0.0f;
+        bool isThrottleValid = false;
     } pilot;
 
     VescData vesc;

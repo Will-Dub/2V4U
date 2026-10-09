@@ -76,6 +76,7 @@ extern "C" void App_Run(void)
 
         throttleSensor.update();
         inputs.pilot.throttlePercent = throttleSensor.getPercent();
+        inputs.pilot.isThrottleValid = throttleSensor.isValid();
 
         // Business logic
         vcuController.run(inputs, outputs);
