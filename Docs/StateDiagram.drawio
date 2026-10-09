@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-        <mxGraphModel dx="1521" dy="487" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1826" dy="636" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="WIyWlLk6GJQsqaUBKTNV-0"/>
                 <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0"/>
@@ -69,9 +69,9 @@
                         <mxPoint x="290" y="340" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="va8JoiM11q7x9EYEJBWT-13" connectable="0" parent="va8JoiM11q7x9EYEJBWT-12" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="In precharge since&lt;div&gt;3 seconds&lt;/div&gt;" vertex="1">
+                <mxCell id="va8JoiM11q7x9EYEJBWT-13" connectable="0" parent="va8JoiM11q7x9EYEJBWT-12" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Precharge timeout &amp;gt; 3s" vertex="1">
                     <mxGeometry relative="1" x="0.0247" y="1" as="geometry">
-                        <mxPoint x="19" y="-29" as="offset"/>
+                        <mxPoint x="39" y="-14" as="offset"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="va8JoiM11q7x9EYEJBWT-14" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="va8JoiM11q7x9EYEJBWT-5" style="endArrow=open;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endFill=0;" target="va8JoiM11q7x9EYEJBWT-8" value="">
@@ -95,25 +95,24 @@
                         <mxPoint x="430" y="620" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="va8JoiM11q7x9EYEJBWT-17" connectable="0" parent="va8JoiM11q7x9EYEJBWT-16" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="VESC Voltage under 35V&lt;div&gt;VESC not responding&lt;/div&gt;" vertex="1">
+                <mxCell id="va8JoiM11q7x9EYEJBWT-17" connectable="0" parent="va8JoiM11q7x9EYEJBWT-16" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="VESC Voltage under 35V&lt;div&gt;VESC timeout&lt;/div&gt;" vertex="1">
                     <mxGeometry relative="1" x="0.0247" y="1" as="geometry">
-                        <mxPoint x="99" y="-21" as="offset"/>
+                        <mxPoint x="62" y="-21" as="offset"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="va8JoiM11q7x9EYEJBWT-18" parent="WIyWlLk6GJQsqaUBKTNV-1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" value="SHUTDOWN" vertex="1">
                     <mxGeometry height="40" width="120" x="319" y="545" as="geometry"/>
                 </mxCell>
                 <mxCell id="va8JoiM11q7x9EYEJBWT-19" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="va8JoiM11q7x9EYEJBWT-8" style="endArrow=open;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endFill=0;" target="va8JoiM11q7x9EYEJBWT-18" value="">
-                    <mxGeometry height="50" relative="1" width="50" as="geometry">
-                        <Array as="points">
-                            <mxPoint x="380" y="510"/>
-                        </Array>
+                    <mxGeometry height="50" relative="1" width="50" x="0.0154" as="geometry">
+                        <mxPoint as="offset"/>
+                        <Array as="points"/>
                         <mxPoint x="510" y="460" as="sourcePoint"/>
                         <mxPoint x="670" y="520" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="va8JoiM11q7x9EYEJBWT-20" connectable="0" parent="va8JoiM11q7x9EYEJBWT-19" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Start button&lt;div&gt;is off&lt;/div&gt;" vertex="1">
-                    <mxGeometry relative="1" x="0.0247" y="1" as="geometry">
+                    <mxGeometry relative="1" x="0.0149" y="1" as="geometry">
                         <mxPoint x="39" y="-1" as="offset"/>
                     </mxGeometry>
                 </mxCell>
@@ -141,9 +140,9 @@
                         <mxPoint x="390" y="580" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="va8JoiM11q7x9EYEJBWT-26" connectable="0" parent="va8JoiM11q7x9EYEJBWT-25" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Emergency&lt;div&gt;pressed&lt;/div&gt;" vertex="1">
+                <mxCell id="va8JoiM11q7x9EYEJBWT-26" connectable="0" parent="va8JoiM11q7x9EYEJBWT-25" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Emergency&amp;nbsp;&lt;span style=&quot;color: rgb(63, 63, 63); background-color: light-dark(#ffffff, var(--ge-dark-color, #121212));&quot;&gt;pressed&lt;/span&gt;&lt;div&gt;Sensor out of range&lt;/div&gt;" vertex="1">
                     <mxGeometry relative="1" x="0.0247" y="1" as="geometry">
-                        <mxPoint x="18" y="-27" as="offset"/>
+                        <mxPoint x="15" y="-21" as="offset"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="nVDqEPrQ_IAXc-sdnhyG-0" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="va8JoiM11q7x9EYEJBWT-11" style="endArrow=open;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endFill=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" target="va8JoiM11q7x9EYEJBWT-2" value="">
