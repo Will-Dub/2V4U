@@ -66,6 +66,8 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
     # Add user defined libraries
 )
 
+target_link_options(${CMAKE_PROJECT_NAME} PRIVATE -u _printf_float)
+
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Inc
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Inc/Drivers
@@ -75,9 +77,10 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
 
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/App.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Drivers/DebounceButton.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Drivers/ImuDriver.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Drivers/ThrottleHallSensor.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Drivers/VescCanDriver.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Drivers/DebounceButton.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Infrastructure/StmLogger.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/vesc.c
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Logic/VcuStateInit.cpp

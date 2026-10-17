@@ -7,7 +7,7 @@
 
 namespace App::Infrastructure {
 
-StmLogger::StmLogger() : m_currentLogLevel(App::Logic::LogLevel::LEVEL_INFO) {}
+StmLogger::StmLogger() {}
 
 void StmLogger::setLogLevel(App::Logic::LogLevel level)
 {

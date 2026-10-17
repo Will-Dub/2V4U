@@ -25,7 +25,7 @@ class StmLogger : public App::Logic::ILogger
     void errorf(const char* format, ...);
 
   private:
-    App::Logic::LogLevel m_currentLogLevel = App::Logic::LogLevel::LEVEL_INFO;
+    App::Logic::LogLevel m_currentLogLevel = App::Logic::LogLevel::LEVEL_DEBUG;
 
     void logRaw(const char* message);
     void processLog(const char* color, const char* levelStr, const char* format, va_list args);
