@@ -12,14 +12,22 @@
 #define LOG_COLOR_CYAN "\x1b[36m"
 
 namespace App::Infrastructure {
+
 class StmLogger : public App::Logic::ILogger
 {
   public:
     StmLogger();
 
-    void debug(const char* message) override;
-    void info(const char* message) override;
-    void error(const char* message) override;
-    void warn(const char* message) override;
+    void setLogLevel(App::Logic::LogLevel level) override;
+    void debugf(const char* format, ...);
+    void infof(const char* format, ...);
+    void warnf(const char* format, ...);
+    void errorf(const char* format, ...);
+
+  private:
+    App::Logic::LogLevel m_currentLogLevel = App::Logic::LogLevel::LEVEL_INFO;
+
+    void logRaw(const char* message);
+    void processLog(const char* color, const char* levelStr, const char* format, va_list args);
 };
 } // namespace App::Infrastructure

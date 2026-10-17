@@ -4,7 +4,7 @@ using namespace App::Logic;
 
 void VcuStatePrecharge::onEnter(const VcuInputs& inputs)
 {
-    m_logger.debug("OnEnter: Precharge");
+    m_logger.debugf("OnEnter: Precharge");
     m_prechargeStartTimeMs = inputs.tickMs;
 }
 

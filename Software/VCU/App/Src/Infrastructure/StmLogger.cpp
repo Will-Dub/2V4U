@@ -1,24 +1,65 @@
 #include "StmLogger.hpp"
 
+#include "main.h"
+
+#include <stdarg.h>
+#include <stdio.h>
+
 namespace App::Infrastructure {
-StmLogger::StmLogger() {}
 
-void StmLogger::debug(const char* message)
-{
-    printf(LOG_COLOR_CYAN "[%8lu][DEBUG] %s" LOG_COLOR_RESET "\r\n", HAL_GetTick(), message);
-}
+StmLogger::StmLogger() : m_currentLogLevel(App::Logic::LogLevel::LEVEL_INFO) {}
 
-void StmLogger::info(const char* message)
+void StmLogger::setLogLevel(App::Logic::LogLevel level)
 {
-    printf(LOG_COLOR_GREEN "[%8lu][INFO] %s" LOG_COLOR_RESET "\r\n", HAL_GetTick(), message);
+    m_currentLogLevel = level;
 }
 
-void StmLogger::error(const char* message)
+void StmLogger::processLog(const char* color, const char* levelStr, const char* format,
+                           va_list args)
 {
-    printf(LOG_COLOR_RED "[%8lu][ERROR] %s" LOG_COLOR_RESET "\r\n", HAL_GetTick(), message);
+    char buffer[128];
+    vsnprintf(buffer, sizeof(buffer), format, args);
+    printf("%s[%8lu][%s] %s%s\r\n", color, HAL_GetTick(), levelStr, buffer, LOG_COLOR_RESET);
 }
-void StmLogger::warn(const char* message)
+
+void StmLogger::debugf(const char* format, ...)
 {
-    printf(LOG_COLOR_YELLOW "[%8lu][WARN] %s" LOG_COLOR_RESET "\r\n", HAL_GetTick(), message);
+    if (m_currentLogLevel > App::Logic::LogLevel::LEVEL_DEBUG)
+        return;
+    va_list args;
+    va_start(args, format);
+    processLog(LOG_COLOR_CYAN, "DEBUG", format, args);
+    va_end(args);
 }
+
+void StmLogger::infof(const char* format, ...)
+{
+    if (m_currentLogLevel > App::Logic::LogLevel::LEVEL_INFO)
+        return;
+    va_list args;
+    va_start(args, format);
+    processLog(LOG_COLOR_GREEN, "INFO", format, args);
+    va_end(args);
+}
+
+void StmLogger::warnf(const char* format, ...)
+{
+    if (m_currentLogLevel > App::Logic::LogLevel::LEVEL_WARN)
+        return;
+    va_list args;
+    va_start(args, format);
+    processLog(LOG_COLOR_YELLOW, "WARN", format, args);
+    va_end(args);
+}
+
+void StmLogger::errorf(const char* format, ...)
+{
+    if (m_currentLogLevel > App::Logic::LogLevel::LEVEL_ERROR)
+        return;
+    va_list args;
+    va_start(args, format);
+    processLog(LOG_COLOR_RED, "ERROR", format, args);
+    va_end(args);
+}
+
 } // namespace App::Infrastructure

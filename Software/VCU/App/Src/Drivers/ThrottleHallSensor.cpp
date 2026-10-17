@@ -1,6 +1,5 @@
 #include "ThrottleHallSensor.hpp"
 
-#include "stdio.h"
 namespace App::Drivers {
 
 ThrottleHallSensor::ThrottleHallSensor() : m_dmaPtr(nullptr), m_throttleValue(0) {}

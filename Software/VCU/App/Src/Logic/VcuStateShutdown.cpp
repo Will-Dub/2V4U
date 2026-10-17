@@ -4,7 +4,7 @@ using namespace App::Logic;
 
 void VcuStateShutdown::onEnter(const VcuInputs& inputs)
 {
-    m_logger.debug("OnEnter: Shutdown");
+    m_logger.debugf("OnEnter: Shutdown");
 }
 
 VcuStateId VcuStateShutdown::update(const VcuInputs& inputs, VcuOutputs& outputs)

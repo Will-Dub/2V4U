@@ -4,7 +4,7 @@ using namespace App::Logic;
 
 void VcuStateStandby::onEnter(const VcuInputs& inputs)
 {
-    m_logger.debug("OnEnter: Standby");
+    m_logger.debugf("OnEnter: Standby");
 }
 
 VcuStateId VcuStateStandby::update(const VcuInputs& inputs, VcuOutputs& outputs)

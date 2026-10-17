@@ -4,7 +4,7 @@ using namespace App::Logic;
 
 void VcuStateDrive::onEnter(const VcuInputs& inputs)
 {
-    m_logger.debug("OnEnter: Drive");
+    m_logger.debugf("OnEnter: Drive");
 }
 
 VcuStateId VcuStateDrive::update(const VcuInputs& inputs, VcuOutputs& outputs)
