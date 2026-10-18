@@ -17,7 +17,7 @@ void StmLogger::setLogLevel(App::Logic::LogLevel level)
 void StmLogger::processLog(const char* color, const char* levelStr, const char* format,
                            va_list args)
 {
-    char buffer[128];
+    char buffer[256];
     vsnprintf(buffer, sizeof(buffer), format, args);
     printf("%s[%8lu][%s] %s%s\r\n", color, HAL_GetTick(), levelStr, buffer, LOG_COLOR_RESET);
 }

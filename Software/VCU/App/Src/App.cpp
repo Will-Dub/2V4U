@@ -41,71 +41,13 @@ extern "C" void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
     }
 }
 
-extern "C" void App_Init(volatile uint16_t* throttleDmaPtr)
+static void gatherInputs(App::Logic::VcuInputs& inputs)
 {
-    App::Drivers::vescDriver.init();
-    throttleSensor.init(throttleDmaPtr);
-    imuDriver.init();
-
-    App::Logic::VcuInputs inputs;
-    inputs.tickMs = HAL_GetTick();
-    vcuController.init(inputs);
-}
-
-extern "C" void App_Run(void)
-{
-    App::Drivers::vescDriver.processRb();
-
-    if (!tick)
-        return;
-
-    tick = false;
-
-    static float imuAx = 0.0f, imuAy = 0.0f, imuAz = 1.0f;
-    static float imuGx = 0.0f, imuGy = 0.0f, imuGz = 0.0f;
-    static float imuTemp = 0.0f;
-    static bool imuIsDataValid = false;
-
-    if (imuDataReady) {
-        imuDataReady = false;
-
-        imuIsDataValid = imuDriver.readSensorData(imuAx, imuAy, imuAz, imuGx, imuGy, imuGz,
-                                                  imuTemp);
-
-        if (!imuIsDataValid) {
-            imuAx = 0.0f;
-            imuAy = 0.0f;
-            imuAz = 1.0f;
-            imuGx = 0.0f;
-            imuGy = 0.0f;
-            imuGz = 0.0f;
-        }
-    }
-
-    static uint32_t lastLogMs = 0;
-
-    uint32_t currentTickMs = HAL_GetTick();
-    if (currentTickMs - lastLogMs >= 500) {
-        lastLogMs = currentTickMs;
-
-        if (imuIsDataValid) {
-            stmLogger.debugf("\n-----IMU----\nAx: %5.2f | Ay: %5.2f | Az: %5.2f\n"
-                             "Gx: %5.2f | Gy: %5.2f | Gz: %5.2f\nTemp: %.1f C\n",
-                             imuAx, imuAy, imuAz, imuGx, imuGy, imuGz, imuTemp);
-        } else {
-            stmLogger.errorf("INVALID IMU DATA - SENSOR LOST");
-        }
-    }
-
-    /*
-
-    // Reading
-    App::Logic::VcuOutputs outputs{};
-    App::Logic::VcuInputs inputs{};
 
     uint32_t currentTickMs = HAL_GetTick();
     inputs.tickMs = currentTickMs;
 
+    // Buttons/Switch
     bool rawBrake = (HAL_GPIO_ReadPin(SW_BRAKE_GPIO_Port, SW_BRAKE_Pin) == GPIO_PIN_RESET);
     bool rawBoard = (HAL_GPIO_ReadPin(BTN_BOARD_GPIO_Port, BTN_BOARD_Pin) == GPIO_PIN_SET);
     bool rawEStop = (HAL_GPIO_ReadPin(SW_PUSH_EMERGENCY_GPIO_Port, SW_PUSH_EMERGENCY_Pin) ==
@@ -127,13 +69,65 @@ extern "C" void App_Run(void)
     inputs.pilot.isStartPressed = startButton.isPressed();
     inputs.pilot.isStartRisingEdge = startButton.isRisingEdge();
 
+    // Throttle
     throttleSensor.update();
     inputs.pilot.throttlePercent = throttleSensor.getPercent();
+    inputs.pilot.isThrottleValid = throttleSensor.getIsValid();
 
-    // Business logic
-    vcuController.run(inputs, outputs);
+    // IMU
+    static float imuAx = 0.0f, imuAy = 0.0f, imuAz = 1.0f;
+    static float imuGx = 0.0f, imuGy = 0.0f, imuGz = 0.0f;
+    static float imuTemp = 0.0f;
+    static bool imuIsDataValid = false;
 
-    // Writing
+    if (imuDataReady) {
+        imuDataReady = false;
+
+        imuIsDataValid = imuDriver.readSensorData(imuAx, imuAy, imuAz, imuGx, imuGy, imuGz,
+                                                  imuTemp);
+    }
+
+    inputs.imu.isValid = imuIsDataValid;
+
+    if (imuIsDataValid) {
+        inputs.imu.Ax = imuAx;
+        inputs.imu.Ay = imuAy;
+        inputs.imu.Az = imuAz;
+        inputs.imu.Gx = imuGx;
+        inputs.imu.Gy = imuGy;
+        inputs.imu.Gz = imuGz;
+        inputs.imu.temp = imuTemp;
+    }
+
+    // Log
+    static uint32_t lastLogMs = 0;
+
+    if (currentTickMs - lastLogMs >= 1000) {
+        lastLogMs = currentTickMs;
+
+        if (imuIsDataValid) {
+            stmLogger.debugf("PLT | Brk:%d Btn:%d Est:%d Fwd:%d Srt:%d(R:%d) Thr:%5.1f%% (V:%d)",
+                             inputs.pilot.isBrakePressed, inputs.pilot.isBtnBoardPressed,
+                             inputs.pilot.isEStopPressed, inputs.pilot.isForwardDirection,
+                             inputs.pilot.isStartPressed, inputs.pilot.isStartRisingEdge,
+                             inputs.pilot.throttlePercent, inputs.pilot.isThrottleValid);
+
+            stmLogger.debugf("IMU | Val:%d | A:%5.2f %5.2f %5.2f | G:%6.1f %6.1f %6.1f | T:%.1fC",
+                             inputs.imu.isValid, inputs.imu.Ax, inputs.imu.Ay, inputs.imu.Az,
+                             inputs.imu.Gx, inputs.imu.Gy, inputs.imu.Gz, inputs.imu.temp);
+
+            stmLogger.debugf("VSC | %6ld RPM | Mot:%5.1fA In:%5.1fA %4.1fV | TMot:%.1fC TMos:%.1fC",
+                             inputs.vesc.rpm, inputs.vesc.motorCurrent, inputs.vesc.inputCurrent,
+                             inputs.vesc.inputVoltage, inputs.vesc.motorTemp,
+                             inputs.vesc.mosfetTemp);
+        } else {
+            stmLogger.errorf("INVALID IMU DATA - SENSOR LOST");
+        }
+    }
+}
+
+static void applyOutputs(App::Logic::VcuOutputs& outputs)
+{
     HAL_GPIO_WritePin(LED_BOARD_GPIO_Port, LED_BOARD_Pin,
                       outputs.lights.boardLed ? GPIO_PIN_SET : GPIO_PIN_RESET);
     HAL_GPIO_WritePin(MOSFET_CONTACTOR_GATE_GPIO_Port, MOSFET_CONTACTOR_GATE_Pin,
@@ -147,5 +141,35 @@ extern "C" void App_Run(void)
         App::Drivers::vescDriver.sendAmpCommand(outputs.vesc.targetAmp);
     } else {
         App::Drivers::vescDriver.sendAmpCommand(0.0f);
-    }*/
+    }
+}
+
+extern "C" void App_Init(volatile uint16_t* throttleDmaPtr)
+{
+    App::Drivers::vescDriver.init();
+    throttleSensor.init(throttleDmaPtr);
+    imuDriver.init();
+
+    App::Logic::VcuInputs inputs;
+    inputs.tickMs = HAL_GetTick();
+    vcuController.init(inputs);
+}
+
+extern "C" void App_Run(void)
+{
+    App::Drivers::vescDriver.processRb();
+
+    if (!tick)
+        return;
+
+    tick = false;
+
+    App::Logic::VcuOutputs outputs{};
+    App::Logic::VcuInputs inputs{};
+
+    gatherInputs(inputs);
+
+    vcuController.run(inputs, outputs);
+
+    applyOutputs(outputs);
 }

@@ -55,12 +55,17 @@ void VcuController::run(const VcuInputs& inputs, VcuOutputs& outputs)
     bool isTxDead = (inputs.vesc.txFailCount > 10);
     bool isVescDead = isRxDead || isTxDead;
     bool requiresVesc = (m_currentState->getId() == VcuStateId::DRIVE);
+    bool isInFault = m_currentState->getId() == VcuStateId::FAULT;
 
-    if (inputs.pilot.isEStopPressed && m_currentState->getId() != VcuStateId::FAULT) {
+    if (inputs.pilot.isEStopPressed && !isInFault) {
         transitionToState(VcuStateId::FAULT, inputs);
     }
 
-    if (requiresVesc && isVescDead) {
+    if (isVescDead && requiresVesc) {
+        transitionToState(VcuStateId::FAULT, inputs);
+    }
+
+    if (!inputs.pilot.isThrottleValid && !isInFault) {
         transitionToState(VcuStateId::FAULT, inputs);
     }
 
