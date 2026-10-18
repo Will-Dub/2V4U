@@ -41,6 +41,9 @@ float ThrottleHallSensor::mapRange(uint16_t x, uint16_t in_min, uint16_t in_max,
 
 float ThrottleHallSensor::getPercent()
 {
+    if (!m_isValid)
+        return 0.0f;
+
     float percent = (m_value - PEDAL_MIN) / (float)(PEDAL_MAX - PEDAL_MIN);
 
     if (percent < 0.0f)

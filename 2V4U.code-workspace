@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "Software/VCU"
+		},
+		{
+			"path": "Software/Dashboard"
 		}
 	],
 	"settings": {
