@@ -12,6 +12,7 @@ VcuStateId VcuStateDrive::update(const VcuInputs& inputs, VcuOutputs& outputs)
     outputs.power.contactor = true;
     outputs.power.prechargeRelay = false;
 
+    // TODO: Check user speed
     if (!inputs.pilot.isStartPressed) {
         return VcuStateId::SHUTDOWN;
     }
