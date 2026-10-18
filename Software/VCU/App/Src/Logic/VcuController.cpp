@@ -16,6 +16,11 @@ void VcuController::init(const VcuInputs& inputs)
     m_currentState->onEnter(inputs);
 }
 
+VcuStateId App::Logic::VcuController::getCurrentVcuStateId()
+{
+    return m_currentState->getId();
+}
+
 VcuState* VcuController::getStateInstance(VcuStateId id)
 {
     switch (id) {
@@ -69,7 +74,7 @@ void VcuController::run(const VcuInputs& inputs, VcuOutputs& outputs)
         transitionToState(VcuStateId::FAULT, inputs);
     }
 
-    if(inputs.pilot.isThrottleValid == false){
+    if (inputs.pilot.isThrottleValid == false) {
         transitionToState(VcuStateId::FAULT, inputs);
     }
 

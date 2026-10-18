@@ -73,6 +73,7 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Inc/Drivers
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Inc/Infrastructure
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Inc/Logic
+    ${CMAKE_CURRENT_SOURCE_DIR}/../Shared
 )
 
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
@@ -81,6 +82,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Drivers/ImuDriver.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Drivers/ThrottleHallSensor.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Drivers/VescCanDriver.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Infrastructure/DashTransmitter.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Infrastructure/StmLogger.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/vesc.c
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Logic/VcuStateInit.cpp

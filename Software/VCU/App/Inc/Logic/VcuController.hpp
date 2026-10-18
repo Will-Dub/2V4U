@@ -27,5 +27,6 @@ class VcuController
     VcuController(ILogger& logger);
     void run(const VcuInputs& inputs, VcuOutputs& outputs);
     void init(const VcuInputs& inputs);
+    VcuStateId getCurrentVcuStateId();
 };
 } // namespace App::Logic

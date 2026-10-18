@@ -1,5 +1,6 @@
 #include "App.h"
 
+#include "DashTransmitter.hpp"
 #include "DebounceButton.hpp"
 #include "ImuDriver.hpp"
 #include "StmLogger.hpp"
@@ -15,6 +16,7 @@
 
 extern SPI_HandleTypeDef hspi2;
 
+static App::Infrastructure::DashTransmitter dashTransmitter;
 static App::Infrastructure::StmLogger stmLogger;
 static App::Logic::VcuController vcuController(stmLogger);
 static App::Drivers::ThrottleHallSensor throttleSensor;
@@ -100,7 +102,7 @@ static void gatherInputs(App::Logic::VcuInputs& inputs)
     }
 
     // Log
-    static uint32_t lastLogMs = 0;
+    /*
 
     if (currentTickMs - lastLogMs >= 1000) {
         lastLogMs = currentTickMs;
@@ -123,7 +125,7 @@ static void gatherInputs(App::Logic::VcuInputs& inputs)
         } else {
             stmLogger.errorf("INVALID IMU DATA - SENSOR LOST");
         }
-    }
+    }*/
 }
 
 static void applyOutputs(App::Logic::VcuOutputs& outputs)
@@ -172,4 +174,6 @@ extern "C" void App_Run(void)
     vcuController.run(inputs, outputs);
 
     applyOutputs(outputs);
+
+    dashTransmitter.process(vcuController.getCurrentVcuStateId(), inputs, outputs);
 }
