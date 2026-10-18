@@ -65,3 +65,4 @@ Thumbs.db
 *.kicad_prl
 *.lck
 .vscode/
+.history
