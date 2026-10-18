@@ -4,19 +4,32 @@ project(Dashboard VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick)
+find_package(Qt6 REQUIRED COMPONENTS Quick SerialPort)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
 qt_add_executable(appDashboard
-    main.cpp
+    src/main.cpp
+    src/usbdashreceiver.cpp
+    src/usbdashreceiver.h
 )
+
+set_source_files_properties(qml/AppTheme.qml PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
 
 qt_add_qml_module(appDashboard
     URI Dashboard
     VERSION 1.0
     QML_FILES
-        Main.qml
+        qml/Main.qml
+        qml/DrivePage.qml
+        qml/DebugPage.qml
+        qml/AppTheme.qml
+        qml/PageElement.qml
+)
+
+target_include_directories(appDashboard PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
+    ${CMAKE_CURRENT_SOURCE_DIR}/../shared
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
@@ -31,7 +44,9 @@ set_target_properties(appDashboard PROPERTIES
 )
 
 target_link_libraries(appDashboard
-    PRIVATE Qt6::Quick
+    PRIVATE
+        Qt6::Quick
+        Qt6::SerialPort
 )
 
 include(GNUInstallDirs)
