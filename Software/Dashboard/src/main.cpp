@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     auto* receiver = engine.singletonInstance<UsbDashReceiver*>("Dashboard", "UsbDashReceiver");
 
     if (receiver) {
-        receiver->init("COM3");
+        receiver->start(1155, 14158);
     } else {
         qWarning("No UsbDashReceiver singleton");
     }

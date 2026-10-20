@@ -2,28 +2,30 @@ pragma Singleton
 import QtQuick
 
 QtObject {
-    readonly property color colorActn:   "#D3F85A" // Drive / Success / Go
-    readonly property color colorPrm:    "#007AFF" // Primary highlights / Accents
-    readonly property color colorSec:    "#FF9500" // Secondary / Standby / Warnings
-    readonly property color colorAlert:  "#FF3B30" // Faults / Errors / E-Stop
+    // ACTION / ACCENT PALETTE
+    readonly property color colorActn:   "#D5FA46" // Drive / Success / Go[cite: 1]
+    readonly property color colorPrm:    "#4AC8FA" // Primary highlights / Accents
+    readonly property color colorSec:    "#FFB03D" // Secondary / Standby / Warnings
+    readonly property color colorAlert:  "#FF543D" // Faults / Errors / E-Stop[cite: 1]
 
     // NEUTRAL PALETTE
-    readonly property color colorNeut100: "#FFFFFF" // Pure white (Primary Text)
-    readonly property color colorNeut90:  "#E5E5E5" // Off-white (Secondary Text)
-    readonly property color colorNeut80:  "#CCCCCC" // Light borders / Dividers
-    readonly property color colorNeut70:  "#B3B3B3" // Inactive icons
-    readonly property color colorNeut60:  "#999999" // Subtle secondary text
-    readonly property color colorNeut50:  "#808080" // Muted / Disabled UI
-    readonly property color colorNeut40:  "#666666" // Dark disabled elements
-    readonly property color colorNeut30:  "#4D4D4D" // Lighter panel backgrounds / Hover states
-    readonly property color colorNeut20:  "#333333" // Default borders / Panel Backgrounds
-    readonly property color colorNeut10:  "#1A1A1A" // Deep backgrounds / Modals
-    readonly property color colorNeut0:   "#000000" // Pure black (App Background)
+    readonly property color colorNeut100: "#F4F5E9" // Bone White (Primary Text)[cite: 1]
+    readonly property color colorNeut90:  "#DCDFDA" // Interpolated off-white
+    readonly property color colorNeut80:  "#BFC7BE" // Interpolated light borders
+    readonly property color colorNeut70:  "#A2ACA0" // Light Sage (Inactive icons)[cite: 1]
+    readonly property color colorNeut60:  "#838E81" // Interpolated subtle text
+    readonly property color colorNeut50:  "#647062" // Medium Sage (Muted / Disabled UI)[cite: 1]
+    readonly property color colorNeut40:  "#4B5649" // Interpolated dark elements
+    readonly property color colorNeut30:  "#323C30" // Dark Olive (Panel backgrounds)[cite: 1]
+    readonly property color colorNeut20:  "#262E27" // Interpolated default borders
+    readonly property color colorNeut10:  "#1B201C" // Interpolated deep backgrounds
+    readonly property color colorNeut0:   "#101311" // Deepest Charcoal (App Background)[cite: 1]
 
-    readonly property string fontMono: "Courier"
+    readonly property string fontMono: "Roboto Mono"
 
     readonly property int sizeMassive: 160
     readonly property int sizeHeader: 48
     readonly property int sizeNormal: 32
     readonly property int sizeSmall: 16
+    readonly property int sizeExtraSmall: 9
 }

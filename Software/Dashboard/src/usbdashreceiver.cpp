@@ -3,51 +3,86 @@
 UsbDashReceiver::UsbDashReceiver(QObject *parent)
     : QObject{parent}
 {
-    connect(&m_serial, &QSerialPort::errorOccurred, this, &UsbDashReceiver::handleError);
+    m_serialPort = new QSerialPort(this);
+    m_reconnectTimer = new QTimer(this);
+    m_reconnectTimer->setInterval(1000);
+
+    connect(m_serialPort, &QSerialPort::errorOccurred, this, &UsbDashReceiver::handleError);
+    connect(m_reconnectTimer, &QTimer::timeout, this, &UsbDashReceiver::handleAutoreconnect);
+    connect(m_serialPort, &QSerialPort::readyRead, this, &UsbDashReceiver::handleRead);
 }
 
-bool UsbDashReceiver::init(const QString &portName)
+void UsbDashReceiver::start(quint16 targetVid, quint16 targetPid)
 {
-    if (m_serial.isOpen()) {
-        m_serial.close();
-    }
-
-    m_serial.setPortName(portName);
-    m_serial.setBaudRate(QSerialPort::Baud115200);
-    m_serial.setParity(QSerialPort::NoParity);
-    m_serial.setStopBits(QSerialPort::OneStop);
-    m_serial.setFlowControl(QSerialPort::NoFlowControl);
-
-    if (!m_serial.open(QIODevice::ReadWrite)) {
-        qWarning() << "Failed to open port";
-        emit connectionStatusChanged();
-        return false;
-    }
-
-    connect(&m_serial, &QSerialPort::readyRead, this, &UsbDashReceiver::handleRead);
-
-    qInfo() << "Successfully opened port:" << portName;
-    emit connectionStatusChanged();
-    return true;
+    m_targetVid = targetVid;
+    m_targetPid = targetPid;
+    handleAutoreconnect();
 }
 
 DashData UsbDashReceiver::dashData() const { return m_data; }
 
-bool UsbDashReceiver::isConnected() const { return m_serial.isOpen(); }
+bool UsbDashReceiver::isConnected() const { return m_serialPort->isOpen(); }
 
 void UsbDashReceiver::handleError(QSerialPort::SerialPortError error)
 {
     if (error == QSerialPort::ResourceError) {
-        qWarning() << "Serial port error " << m_serial.errorString();
-        m_serial.close();
+        qWarning() << "Serial port error " << m_serialPort->errorString();
+        m_serialPort->close();
         emit connectionStatusChanged();
+
+        if (!m_reconnectTimer->isActive()) {
+            m_reconnectTimer->start();
+        }
+    }
+}
+
+void UsbDashReceiver::handleAutoreconnect()
+{
+    if (m_serialPort != nullptr && m_serialPort->isOpen()) {
+        m_reconnectTimer->stop();
+        return;
+    }
+
+    QString foundPortName = "";
+
+    for (const QSerialPortInfo &portInfo : QSerialPortInfo::availablePorts()) {
+        if (portInfo.hasVendorIdentifier() && portInfo.hasProductIdentifier()) {
+            if (portInfo.vendorIdentifier() == m_targetVid && portInfo.productIdentifier() == m_targetPid) {
+                foundPortName = portInfo.portName();
+                qDebug() << "Found usb port:" << foundPortName;
+                break;
+            }
+        }
+    }
+
+    // Not found
+    if (foundPortName.isEmpty()) {
+        if (!m_reconnectTimer->isActive()) {
+            m_reconnectTimer->start();
+        }
+        return;
+    }
+
+    // Device found
+    m_serialPort->setPortName(foundPortName);
+    m_serialPort->setBaudRate(QSerialPort::Baud115200);
+
+    if (m_serialPort->open(QIODevice::ReadOnly)) {
+        qDebug() << "Successfully connected";
+        m_reconnectTimer->stop();
+        emit connectionStatusChanged();
+    } else {
+        qWarning() << "Found the device but failed to open";
+        if (!m_reconnectTimer->isActive()) {
+            m_reconnectTimer->start();
+        }
     }
 }
 
 void UsbDashReceiver::handleRead()
 {
-    while (m_serial.canReadLine()) {
-        QString line = QString::fromUtf8(m_serial.readLine().trimmed());
+    while (m_serialPort->canReadLine()) {
+        QString line = QString::fromUtf8(m_serialPort->readLine().trimmed());
         if (line.isEmpty()) continue;
 
         if (line.startsWith("$VCU,")) {

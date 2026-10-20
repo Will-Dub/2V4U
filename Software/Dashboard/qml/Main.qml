@@ -58,14 +58,14 @@ Window {
             Rectangle {
                 width: 14; height: 14; radius: 7
                 anchors.verticalCenter: parent.verticalCenter
-                color: UsbDashReceiver.dashData.stateStr === "FAULT" ? AppTheme.colorAlert : AppTheme.colorActn
+                color: UsbDashReceiver.isConnected ? AppTheme.colorActn : AppTheme.colorAlert
 
                 border.color: Qt.darker(color, 1.5)
                 border.width: 1
             }
 
             Text {
-                text: "VCU ONLINE"
+                text: UsbDashReceiver.isConnected ? "VCU Online" : "VCU Offline"
                 color: AppTheme.colorNeut100
                 font.pixelSize: AppTheme.sizeSmall
                 font.family: AppTheme.fontMono

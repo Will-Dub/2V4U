@@ -6,6 +6,8 @@
 #include <qqmlintegration.h>
 #include "VcuComms.h"
 #include <QDebug>
+#include <QTimer>
+#include <QSerialPortInfo>
 
 struct DashData {
     Q_GADGET
@@ -60,7 +62,7 @@ class UsbDashReceiver : public QObject
 
 public:
     explicit UsbDashReceiver(QObject *parent = nullptr);
-    bool init(const QString& portName);
+    void start(quint16 targetVid, quint16 targetPid);
 
     DashData dashData() const;
     bool isConnected() const;
@@ -73,10 +75,14 @@ signals:
 private slots:
     void handleRead();
     void handleError(QSerialPort::SerialPortError error);
+    void handleAutoreconnect();
 
 private:
-    QSerialPort m_serial;
+    QSerialPort *m_serialPort;
+    QTimer *m_reconnectTimer;
     DashData m_data;
+    quint16 m_targetVid;
+    quint16 m_targetPid;
 
     void parseVcuPacket(const QString& line);
     QString stateToString(uint8_t stateId);
