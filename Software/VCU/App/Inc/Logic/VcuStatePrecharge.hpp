@@ -6,7 +6,7 @@ namespace App::Logic {
 class VcuStatePrecharge : public VcuState
 {
   public:
-    VcuStatePrecharge(ILogger& logger) : VcuState(logger) {}
+    VcuStatePrecharge(VcuController* context, ILogger& logger) : VcuState(context, logger) {}
     void onEnter(const VcuInputs& inputs) override;
     virtual VcuStateId update(const VcuInputs& inputs, VcuOutputs& outputs) override;
     virtual VcuStateId getId() override;
