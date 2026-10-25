@@ -19,6 +19,7 @@ class VcuController
     VcuStateShutdown m_stateShutdown;
     VcuStateInit m_stateInit;
     VcuState* m_currentState;
+    bool m_isInReverse = false;
 
     VcuState* getStateInstance(VcuStateId id);
     void transitionToState(VcuStateId nextStateId, const VcuInputs& inputs);
@@ -27,6 +28,7 @@ class VcuController
     VcuController(ILogger& logger);
     void run(const VcuInputs& inputs, VcuOutputs& outputs);
     void init(const VcuInputs& inputs);
-    VcuStateId getCurrentVcuStateId();
+    VcuStateId getCurrentVcuStateId() const;
+    bool getIsInReverse() const { return m_isInReverse; }
 };
 } // namespace App::Logic

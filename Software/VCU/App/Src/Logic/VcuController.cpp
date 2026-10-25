@@ -5,8 +5,8 @@
 using namespace App::Logic;
 
 VcuController::VcuController(ILogger& logger)
-    : m_logger(logger), m_stateStandby(logger), m_statePrecharge(logger), m_stateDrive(logger),
-      m_stateFault(logger), m_stateShutdown(logger), m_stateInit(logger)
+    : m_logger(logger), m_stateStandby(this, logger), m_statePrecharge(this, logger), m_stateDrive(this, logger),
+      m_stateFault(this, logger), m_stateShutdown(this, logger), m_stateInit(this, logger)
 {
     m_currentState = &m_stateInit;
 }
@@ -16,7 +16,7 @@ void VcuController::init(const VcuInputs& inputs)
     m_currentState->onEnter(inputs);
 }
 
-VcuStateId App::Logic::VcuController::getCurrentVcuStateId()
+VcuStateId App::Logic::VcuController::getCurrentVcuStateId() const
 {
     return m_currentState->getId();
 }
@@ -76,6 +76,15 @@ void VcuController::run(const VcuInputs& inputs, VcuOutputs& outputs)
 
     if (inputs.pilot.isThrottleValid == false) {
         transitionToState(VcuStateId::FAULT, inputs);
+    }
+
+    // Reverse and forward logic
+    if(inputs.vesc.rpm == 0.0f && inputs.pilot.isBrakePressed){
+        if(inputs.pilot.isForwardDirection){
+            m_isInReverse = false;
+        } else {
+            m_isInReverse = true;
+        }   
     }
 
     VcuStateId nextStateId = m_currentState->update(inputs, outputs);

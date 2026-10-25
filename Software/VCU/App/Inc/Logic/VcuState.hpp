@@ -4,10 +4,12 @@
 
 namespace App::Logic {
 
+class VcuController;
+
 class VcuState
 {
   public:
-    VcuState(ILogger& logger) : m_logger(logger) {}
+    VcuState(VcuController* context, ILogger& logger) : m_logger(logger), m_context(context) {}
     virtual ~VcuState() {}
 
     virtual void onEnter(const VcuInputs& inputs) {}
@@ -18,6 +20,7 @@ class VcuState
 
   protected:
     ILogger& m_logger;
+    VcuController* m_context;
 };
 
 } // namespace App::Logic
