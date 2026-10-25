@@ -14,6 +14,9 @@ namespace Shared
         int32_t rpm;
         float motorTemp;
         float mosfetTemp;
+        float motorCurrent;
+        float inputCurrent;
+        float inputVoltage;
 
         // IMU
         float accelX;
@@ -23,7 +26,13 @@ namespace Shared
         // Pilot
         float throttlePercent;
 
-        uint8_t statusFlags;
+        // CAN
+        uint32_t canRxCount;
+        uint32_t canTxCount;
+        uint32_t canTxFailCount;
+
+        uint8_t inputStatusFlags;
+        uint8_t outputStatusFlags;
     };
 #pragma pack(pop)
 }

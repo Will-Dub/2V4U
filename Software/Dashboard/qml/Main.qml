@@ -3,8 +3,14 @@ import QtQuick.Controls
 import Dashboard
 
 Window {
-    width: 800; height: 480; visible: true; color: AppTheme.colorNeut0
-    maximumWidth: 800; maximumHeight: 480; minimumWidth: 800; minimumHeight: 480
+    width: 800
+    height: 480
+    visible: true
+    color: AppTheme.colorNeut0
+    maximumWidth: 800
+    maximumHeight: 480
+    minimumWidth: 800
+    minimumHeight: 480
 
     SwipeView {
         id: dashView
@@ -15,8 +21,9 @@ Window {
         currentIndex: 0
         interactive: false
 
-        DrivePage { }
-        DebugPage { }
+        DrivePage {}
+        DebugPage {}
+        LogPage {}
     }
 
     Rectangle {
@@ -46,6 +53,13 @@ Window {
                 isActive: dashView.currentIndex === 1
                 onClicked: dashView.currentIndex = 1
             }
+
+            PageElement {
+                iconText: ""
+                labelText: "Log"
+                isActive: dashView.currentIndex === 2
+                onClicked: dashView.currentIndex = 2
+            }
         }
 
         // Connection Status
@@ -56,7 +70,9 @@ Window {
             spacing: 12
 
             Rectangle {
-                width: 14; height: 14; radius: 7
+                width: 14
+                height: 14
+                radius: 7
                 anchors.verticalCenter: parent.verticalCenter
                 color: UsbDashReceiver.isConnected ? AppTheme.colorActn : AppTheme.colorAlert
 

@@ -97,7 +97,7 @@ void UsbDashReceiver::parseVcuPacket(const QString& line)
 {
     QStringList parts = line.split(',');
 
-    if (parts.size() != 11) return;
+    if (parts.size() != 18) return;
 
     m_data.tickMs = parts[1].toInt();
     m_data.stateStr = stateToString(parts[2].toUInt());
@@ -108,15 +108,26 @@ void UsbDashReceiver::parseVcuPacket(const QString& line)
     m_data.accelY = parts[7].toFloat();
     m_data.accelZ = parts[8].toFloat();
     m_data.throttlePercent = parts[9].toFloat();
+    m_data.motorCurrent = parts[12].toFloat();
+    m_data.inputCurrent = parts[13].toFloat();
+    m_data.inputVoltage = parts[14].toFloat();
+    m_data.canRxCount = parts[15].toInt();
+    m_data.canTxCount = parts[16].toInt();
+    m_data.canTxFailCount = parts[17].toInt();
 
-    uint8_t flags = parts[10].toUInt();
+    uint8_t inputFlags = parts[10].toUInt();
+    uint8_t outputFlags = parts[11].toUInt();
 
-    m_data.isBrakePressed = (flags & (1 << 0)) != 0;
-    m_data.isStartPressed = (flags & (1 << 1)) != 0;
-    m_data.isEStopPressed = (flags & (1 << 2)) != 0;
-    m_data.isMotorEnabled = (flags & (1 << 3)) != 0;
-    m_data.isPrechargeOn  = (flags & (1 << 4)) != 0;
-    m_data.isContactorOn  = (flags & (1 << 5)) != 0;
+    m_data.isBrakePressed = (inputFlags & (1 << 0)) != 0;
+    m_data.isStartPressed = (inputFlags & (1 << 1)) != 0;
+    m_data.isEStopPressed = (inputFlags & (1 << 2)) != 0;
+    m_data.isForwardDirection = (inputFlags & (1 << 3)) != 0;
+    m_data.isThrottleValid = (inputFlags & (1 << 4)) != 0;
+    m_data.isMotorEnabled = (outputFlags & (1 << 0)) != 0;
+    m_data.isPrechargeOn  = (outputFlags & (1 << 1)) != 0;
+    m_data.isContactorOn  = (outputFlags & (1 << 2)) != 0;
+
+
     emit dashDataChanged();
 }
 

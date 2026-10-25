@@ -101,6 +101,8 @@ static void gatherInputs(App::Logic::VcuInputs& inputs)
         inputs.imu.temp = imuTemp;
     }
 
+    inputs.vesc = App::Drivers::vescDriver.getData();
+
     // Log
     /*
 

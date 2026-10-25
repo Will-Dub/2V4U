@@ -22,7 +22,7 @@ VcuStateId VcuStateShutdown::update(const VcuInputs& inputs, VcuOutputs& outputs
     outputs.power.prechargeRelay = false;
 
     bool isRxDead = (inputs.tickMs - inputs.vesc.lastRxMs) > 250;
-    bool isTxDead = (inputs.vesc.txFailCount > 10);
+    bool isTxDead = (inputs.vesc.followedTxFailCount > 10);
     bool isVescDead = isRxDead || isTxDead;
 
     if (isVescDead) {

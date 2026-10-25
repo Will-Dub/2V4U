@@ -4,7 +4,7 @@ project(Dashboard VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick SerialPort)
+find_package(Qt6 REQUIRED COMPONENTS Gui Qml Quick QuickControls2 SerialPort)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -25,6 +25,7 @@ qt_add_qml_module(appDashboard
         qml/DebugPage.qml
         qml/AppTheme.qml
         qml/PageElement.qml
+        QML_FILES qml/LogPage.qml
 )
 
 target_include_directories(appDashboard PRIVATE
@@ -45,7 +46,11 @@ set_target_properties(appDashboard PROPERTIES
 
 target_link_libraries(appDashboard
     PRIVATE
+        Qt6::Core
+        Qt6::Gui
+        Qt6::Qml
         Qt6::Quick
+        Qt6::QuickControls2
         Qt6::SerialPort
 )
 

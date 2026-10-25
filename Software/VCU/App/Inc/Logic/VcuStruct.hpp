@@ -23,7 +23,10 @@ struct VescData
     float mosfetTemp = 0;
     float motorTemp = 0;
     uint32_t lastRxMs = 0;
+    uint32_t followedTxFailCount = 0;
     uint32_t txFailCount = 0;
+    uint32_t rxCount = 0;
+    uint32_t txCount = 0;
 };
 
 struct VcuInputs

@@ -46,8 +46,9 @@ void VescCanDriver::sendAmpCommand(float amp)
 
     if (HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan1, &txHeader, txData) != HAL_OK) {
         m_data.txFailCount++;
+        m_data.followedTxFailCount++;
     } else {
-        m_data.txFailCount = 0;
+        m_data.followedTxFailCount = 0;
     }
 
     // TODO: Add regenerative braking

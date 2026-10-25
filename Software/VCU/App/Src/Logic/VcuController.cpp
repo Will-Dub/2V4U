@@ -57,7 +57,7 @@ void VcuController::transitionToState(VcuStateId nextStateId, const VcuInputs& i
 void VcuController::run(const VcuInputs& inputs, VcuOutputs& outputs)
 {
     bool isRxDead = (inputs.tickMs - inputs.vesc.lastRxMs) > 250;
-    bool isTxDead = (inputs.vesc.txFailCount > 10);
+    bool isTxDead = (inputs.vesc.followedTxFailCount > 10);
     bool isVescDead = isRxDead || isTxDead;
     bool requiresVesc = (m_currentState->getId() == VcuStateId::DRIVE);
     bool isInFault = m_currentState->getId() == VcuStateId::FAULT;
