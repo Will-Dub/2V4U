@@ -1,4 +1,5 @@
 #include "VcuStateDrive.hpp"
+#include "VcuController.hpp"
 
 using namespace App::Logic;
 
@@ -21,10 +22,23 @@ VcuStateId VcuStateDrive::update(const VcuInputs& inputs, VcuOutputs& outputs)
         return VcuStateId::SHUTDOWN;
     }
 
+    outputs.vesc.targetAmp = getTargetAmps(inputs);
+
     return VcuStateId::SAME;
 }
 
 VcuStateId VcuStateDrive::getId()
 {
     return VcuStateId::DRIVE;
+}
+
+float VcuStateDrive::getTargetAmps(const VcuInputs& inputs)
+{
+    float targetAmps = inputs.pilot.throttlePercent * MAX_AMPERAGE;
+
+    if(m_context->getIsInReverse()) {
+        targetAmps *= -1.0f;
+    }
+
+    return targetAmps;
 }

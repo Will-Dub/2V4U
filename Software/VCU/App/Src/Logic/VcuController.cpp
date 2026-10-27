@@ -74,11 +74,7 @@ void VcuController::run(const VcuInputs& inputs, VcuOutputs& outputs)
         transitionToState(VcuStateId::FAULT, inputs);
     }
 
-    if (inputs.pilot.isThrottleValid == false) {
-        transitionToState(VcuStateId::FAULT, inputs);
-    }
-
-    // Reverse and forward logic
+    // Reverse and forward change
     if(inputs.vesc.rpm == 0.0f && inputs.pilot.isBrakePressed){
         if(inputs.pilot.isForwardDirection){
             m_isInReverse = false;

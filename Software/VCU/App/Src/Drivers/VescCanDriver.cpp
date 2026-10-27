@@ -49,6 +49,7 @@ void VescCanDriver::sendAmpCommand(float amp)
         m_data.followedTxFailCount++;
     } else {
         m_data.followedTxFailCount = 0;
+        m_data.txCount++;
     }
 
     // TODO: Add regenerative braking
@@ -69,6 +70,7 @@ void VescCanDriver::processRb()
             continue;
         }
 
+        m_data.rxCount++;
         m_lastRxMs = HAL_GetTick();
 
         switch (commandId) {
