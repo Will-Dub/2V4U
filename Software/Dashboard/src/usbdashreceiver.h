@@ -40,8 +40,8 @@ struct DashData {
     Q_PROPERTY(bool isContactorOn MEMBER isContactorOn)
 
 public:
-    int tickMs;
-    QString stateStr = "UNKNOWN";
+    int tickMs = 0;
+    QString stateStr = "";
     int rpm = 0;
     float motorTemp = 0.0f;
     float mosfetTemp = 0.0f;
