@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>assets/BatteryAlert_48x48.png</file>
+        <file>assets/DebugIcon_16x16.png</file>
+        <file>assets/HomeIcon_16x16.png</file>
+        <file>assets/LogIcon_16x16.png</file>
+    </qresource>
+</RCC>

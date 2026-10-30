@@ -21,7 +21,7 @@ Window {
         currentIndex: 0
         interactive: false
 
-        DrivePage {}
+        HomePage {}
         DebugPage {}
         LogPage {}
     }
@@ -41,21 +41,21 @@ Window {
             spacing: 8
 
             PageElement {
-                iconText: ""
-                labelText: "Drive"
+                iconSource: "qrc:/assets/HomeIcon_16x16.png"
+                labelText: "Home"
                 isActive: dashView.currentIndex === 0
                 onClicked: dashView.currentIndex = 0
             }
 
             PageElement {
-                iconText: ""
+                iconSource: "qrc:/assets/DebugIcon_16x16.png"
                 labelText: "Debug"
                 isActive: dashView.currentIndex === 1
                 onClicked: dashView.currentIndex = 1
             }
 
             PageElement {
-                iconText: ""
+                iconSource: "qrc:/assets/LogIcon_16x16.png"
                 labelText: "Log"
                 isActive: dashView.currentIndex === 2
                 onClicked: dashView.currentIndex = 2

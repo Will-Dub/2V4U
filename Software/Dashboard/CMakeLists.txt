@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.16)
 project(Dashboard VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_AUTORCC ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Gui Qml Quick QuickControls2 SerialPort)
 
@@ -12,6 +13,7 @@ qt_add_executable(appDashboard
     src/main.cpp
     src/usbdashreceiver.cpp
     src/usbdashreceiver.h
+    assets.qrc
 )
 
 set_source_files_properties(qml/AppTheme.qml PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
@@ -21,11 +23,13 @@ qt_add_qml_module(appDashboard
     VERSION 1.0
     QML_FILES
         qml/Main.qml
-        qml/DrivePage.qml
+        qml/HomePage.qml
         qml/DebugPage.qml
         qml/AppTheme.qml
         qml/PageElement.qml
         QML_FILES qml/LogPage.qml
+        QML_FILES qml/SpeedGauge.qml
+        QML_FILES qml/RpmGauge.qml
 )
 
 target_include_directories(appDashboard PRIVATE

@@ -41,7 +41,51 @@ Item {
         }
     }
 
+    Item {
+        id: gaugeContainer
+        anchors {
+            top: root.top
+            left: root.left
+            right: root.right
+            bottom: separator.top
+        }
+        Row {
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: -50
+
+            spacing: 60
+
+            SpeedGauge {
+                width: 350
+                height: 350
+                speedValue: 0
+            }
+            RpmGauge {
+                width: 350
+                height: 350
+                rpmValue: UsbDashReceiver.dashData.rpm
+            }
+        }
+    }
+
+    Rectangle {
+        id: separator
+        height: 2
+        color: AppTheme.colorActn
+        opacity: 0.5
+        anchors {
+            left: root.left
+            leftMargin: 30
+            right: root.right
+            rightMargin: 30
+            bottom: bottomInfo.top
+            bottomMargin: 20
+        }
+    }
+
     Row {
+        id: bottomInfo
         anchors {
             left: root.left
             leftMargin: 30
@@ -58,7 +102,8 @@ Item {
             labelText: "MOTOR"
             valueText: UsbDashReceiver.dashData.motorTemp.toFixed(1)
             valueUnit: "°C"
-            valueColor: UsbDashReceiver.dashData.motorTemp > 85 ? AppTheme.colorSec : AppTheme.colorNeut100
+            valueColor: UsbDashReceiver.dashData.motorTemp
+                        > 85 ? AppTheme.colorSec : AppTheme.colorNeut100
         }
 
         InfoBlock {
@@ -66,7 +111,8 @@ Item {
             labelText: "MOSFET"
             valueText: UsbDashReceiver.dashData.mosfetTemp.toFixed(1)
             valueUnit: "°C"
-            valueColor: UsbDashReceiver.dashData.mosfetTemp > 75 ? AppTheme.colorSec : AppTheme.colorNeut100
+            valueColor: UsbDashReceiver.dashData.mosfetTemp
+                        > 75 ? AppTheme.colorSec : AppTheme.colorNeut100
         }
 
         InfoBlock {

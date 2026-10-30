@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Effects
 import Dashboard
 
 Rectangle {
@@ -7,11 +8,11 @@ Rectangle {
     height: 42
     color: "transparent"
 
-    required property string iconText
     required property string labelText
+    property string iconSource: ""
     property bool isActive: false
 
-    signal clicked()
+    signal clicked
 
     Rectangle {
         width: parent.width
@@ -20,18 +21,36 @@ Rectangle {
 
         color: root.isActive ? AppTheme.colorActn : "transparent"
 
-        Behavior on color { ColorAnimation { duration: 150 } }
+        Behavior on color {
+            ColorAnimation {
+                duration: 150
+            }
+        }
     }
 
     Row {
         anchors.centerIn: parent
         spacing: 10
 
-        Text {
-            text: root.iconText
-            font.pixelSize: 20
-            color: root.isActive ? AppTheme.colorActn : AppTheme.colorNeut70
+        Item {
+            width: 16
+            height: 16
             anchors.verticalCenter: parent.verticalCenter
+            visible: iconSource !== ""
+
+            Image {
+                id: rawIcon
+                source: root.iconSource
+                anchors.fill: parent
+                visible: false
+            }
+
+            MultiEffect {
+                source: rawIcon
+                anchors.fill: rawIcon
+                colorization: 1.0
+                colorizationColor: root.isActive ? AppTheme.colorActn : AppTheme.colorNeut70
+            }
         }
 
         Text {
