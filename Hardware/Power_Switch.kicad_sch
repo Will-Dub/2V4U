@@ -687,7 +687,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_QFP:TQFP-44_10x10mm_P0.8mm"
+		(property "Footprint" "Package_TO_SOT_THT:TO-220-3_Vertical"
 			(at 129.54 96.52 0)
 			(hide yes)
 			(show_name no)
@@ -774,7 +774,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_DFN_QFN:WDFN-10-1EP_3x3mm_P0.5mm_EP1.8x2.5mm"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 115.824 98.044 90)
 			(hide yes)
 			(show_name no)
@@ -942,7 +942,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Package_DFN_QFN:WDFN-10-1EP_3x3mm_P0.5mm_EP1.8x2.5mm"
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
 			(at 109.474 103.886 90)
 			(hide yes)
 			(show_name no)
