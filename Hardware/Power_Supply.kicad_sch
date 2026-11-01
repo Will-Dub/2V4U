@@ -998,6 +998,28 @@
 		)
 		(uuid "bbdfc760-5278-47fd-8db0-e84df8e75a94")
 	)
+	(hierarchical_label "CONVERTER_GND"
+		(shape input)
+		(at 116.84 114.3 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "7dc176b3-e7ea-4a59-868f-2c2d754160ae")
+	)
+	(hierarchical_label "CONVERTER_VOUT"
+		(shape input)
+		(at 127 93.98 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "ca0e4d94-efe5-4c4d-95f0-16d98e6842f5")
+	)
 	(symbol
 		(lib_id "power:+48V")
 		(at 93.98 93.98 90)
@@ -1088,7 +1110,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "a1078aaa-3084-4d19-9adf-28da54278f21")
+		(uuid "74f3ed15-cf85-41a6-90aa-dde2c144f662")
 		(property "Reference" "#PWR027"
 			(at 116.84 120.65 0)
 			(hide yes)
@@ -1110,7 +1132,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Sensor_Motion:InvenSense_QFN-24_3x3mm_P0.4mm"
+		(property "Footprint" ""
 			(at 116.84 114.3 0)
 			(hide yes)
 			(show_name no)
@@ -1144,7 +1166,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "5963ff60-d4de-4219-ae21-851c5ec117d4")
+			(uuid "27eb8923-6f74-48fd-baf7-e6cb0791e8b7")
 		)
 		(instances
 			(project "VCU_Board"

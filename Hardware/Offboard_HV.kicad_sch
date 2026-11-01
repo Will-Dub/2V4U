@@ -3429,18 +3429,18 @@
 	)
 	(symbol
 		(lib_id "Device:R_US")
-		(at 121.92 86.36 90)
+		(at 121.92 86.36 180)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
+		(in_bom no)
+		(on_board no)
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d2d2b1df-82d1-40f6-83af-73a4fe5c8d4f")
 		(property "Reference" "R1"
-			(at 121.92 80.01 90)
+			(at 115.57 86.36 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3450,7 +3450,7 @@
 			)
 		)
 		(property "Value" "100"
-			(at 121.92 82.55 90)
+			(at 118.11 86.36 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3460,7 +3460,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
-			(at 122.174 85.344 90)
+			(at 120.904 86.106 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
