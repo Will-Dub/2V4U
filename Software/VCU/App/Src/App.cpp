@@ -15,6 +15,7 @@
 #include <stdio.h>
 
 extern SPI_HandleTypeDef hspi2;
+extern IWDG_HandleTypeDef hiwdg;
 
 static App::Infrastructure::DashTransmitter dashTransmitter;
 static App::Infrastructure::StmLogger stmLogger;
@@ -102,32 +103,6 @@ static void gatherInputs(App::Logic::VcuInputs& inputs)
     }
 
     inputs.vesc = App::Drivers::vescDriver.getData();
-
-    // Log
-    /*
-
-    if (currentTickMs - lastLogMs >= 1000) {
-        lastLogMs = currentTickMs;
-
-        if (imuIsDataValid) {
-            stmLogger.debugf("PLT | Brk:%d Btn:%d Est:%d Fwd:%d Srt:%d(R:%d) Thr:%5.1f%% (V:%d)",
-                             inputs.pilot.isBrakePressed, inputs.pilot.isBtnBoardPressed,
-                             inputs.pilot.isEStopPressed, inputs.pilot.isForwardDirection,
-                             inputs.pilot.isStartPressed, inputs.pilot.isStartRisingEdge,
-                             inputs.pilot.throttlePercent, inputs.pilot.isThrottleValid);
-
-            stmLogger.debugf("IMU | Val:%d | A:%5.2f %5.2f %5.2f | G:%6.1f %6.1f %6.1f | T:%.1fC",
-                             inputs.imu.isValid, inputs.imu.Ax, inputs.imu.Ay, inputs.imu.Az,
-                             inputs.imu.Gx, inputs.imu.Gy, inputs.imu.Gz, inputs.imu.temp);
-
-            stmLogger.debugf("VSC | %6ld RPM | Mot:%5.1fA In:%5.1fA %4.1fV | TMot:%.1fC TMos:%.1fC",
-                             inputs.vesc.rpm, inputs.vesc.motorCurrent, inputs.vesc.inputCurrent,
-                             inputs.vesc.inputVoltage, inputs.vesc.motorTemp,
-                             inputs.vesc.mosfetTemp);
-        } else {
-            stmLogger.errorf("INVALID IMU DATA - SENSOR LOST");
-        }
-    }*/
 }
 
 static void applyOutputs(App::Logic::VcuOutputs& outputs)
@@ -157,6 +132,8 @@ extern "C" void App_Init(volatile uint16_t* throttleDmaPtr)
     App::Logic::VcuInputs inputs;
     inputs.tickMs = HAL_GetTick();
     vcuController.init(inputs);
+
+    stmLogger.infof("Init finished");
 }
 
 extern "C" void App_Run(void)
@@ -178,4 +155,6 @@ extern "C" void App_Run(void)
     applyOutputs(outputs);
 
     dashTransmitter.process(vcuController.getCurrentVcuStateId(), inputs, outputs);
+
+    HAL_IWDG_Refresh(&hiwdg);
 }
