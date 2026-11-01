@@ -3885,10 +3885,6 @@
 		(uuid "026620ab-df91-4000-95b3-1001411e09af")
 	)
 	(no_connect
-		(at 76.2 135.89)
-		(uuid "031cf297-fd30-4038-acb4-212de3571e4d")
-	)
-	(no_connect
 		(at 128.27 134.62)
 		(uuid "08b06149-9ae7-4847-9d51-1ad83adc2d5d")
 	)
@@ -3947,6 +3943,10 @@
 	(no_connect
 		(at 66.04 80.01)
 		(uuid "23d7df8c-d580-4497-85c6-5004991ac56e")
+	)
+	(no_connect
+		(at 76.2 130.81)
+		(uuid "254c0d11-ec8e-4fdd-875b-3b0ad2b158b1")
 	)
 	(no_connect
 		(at 40.64 120.65)
@@ -4197,10 +4197,6 @@
 		(uuid "ac1e9630-0b2d-4d7d-81aa-2dff6e55280e")
 	)
 	(no_connect
-		(at 255.27 125.73)
-		(uuid "b502234c-6355-4ea3-86de-d784171a9a17")
-	)
-	(no_connect
 		(at 242.57 100.33)
 		(uuid "b54b66c1-06db-4904-985c-aea01c77d06e")
 	)
@@ -4231,6 +4227,10 @@
 	(no_connect
 		(at 76.2 123.19)
 		(uuid "bb39f42f-d2f2-412e-a49a-bc939e9254ee")
+	)
+	(no_connect
+		(at 242.57 143.51)
+		(uuid "bbaf7d35-e828-4ef5-ba33-27c64fede803")
 	)
 	(no_connect
 		(at 242.57 115.57)
@@ -4309,6 +4309,10 @@
 		(uuid "ea40aeea-9cbd-4fd1-a028-16091c8463f3")
 	)
 	(no_connect
+		(at 140.97 139.7)
+		(uuid "ebca022b-92cd-4346-ad36-6bd2f265136d")
+	)
+	(no_connect
 		(at 140.97 101.6)
 		(uuid "eeb4773b-f11e-491c-9cc6-68db28351d71")
 	)
@@ -4379,7 +4383,7 @@
 	)
 	(hierarchical_label "MOSFET_PRECHARGE_GATE"
 		(shape input)
-		(at 255.27 128.27 0)
+		(at 255.27 125.73 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4423,7 +4427,7 @@
 	)
 	(hierarchical_label "MOSFET_CONTACTOR_GATE"
 		(shape input)
-		(at 140.97 139.7 0)
+		(at 255.27 128.27 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4467,17 +4471,6 @@
 	)
 	(hierarchical_label "SW_BRAKE"
 		(shape input)
-		(at 242.57 143.51 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "6c1ef144-8393-4309-af8c-4d38dbf3fc16")
-	)
-	(hierarchical_label "SW_BRAKE"
-		(shape input)
 		(at 40.64 118.11 180)
 		(effects
 			(font
@@ -4489,7 +4482,7 @@
 	)
 	(hierarchical_label "MOSFET_CONTACTOR_GATE"
 		(shape input)
-		(at 76.2 130.81 0)
+		(at 76.2 133.35 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4533,7 +4526,7 @@
 	)
 	(hierarchical_label "MOSFET_PRECHARGE_GATE"
 		(shape input)
-		(at 76.2 133.35 0)
+		(at 76.2 135.89 0)
 		(effects
 			(font
 				(size 1.27 1.27)
