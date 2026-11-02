@@ -3945,10 +3945,6 @@
 		(uuid "23d7df8c-d580-4497-85c6-5004991ac56e")
 	)
 	(no_connect
-		(at 76.2 130.81)
-		(uuid "254c0d11-ec8e-4fdd-875b-3b0ad2b158b1")
-	)
-	(no_connect
 		(at 40.64 120.65)
 		(uuid "25c64b0c-63c4-43c4-a685-7f1c8d16b897")
 	)
@@ -4309,10 +4305,6 @@
 		(uuid "ea40aeea-9cbd-4fd1-a028-16091c8463f3")
 	)
 	(no_connect
-		(at 140.97 139.7)
-		(uuid "ebca022b-92cd-4346-ad36-6bd2f265136d")
-	)
-	(no_connect
 		(at 140.97 101.6)
 		(uuid "eeb4773b-f11e-491c-9cc6-68db28351d71")
 	)
@@ -4479,6 +4471,17 @@
 			(justify right)
 		)
 		(uuid "79518cd2-a8f7-463d-9bad-ca63c2f1ba53")
+	)
+	(hierarchical_label "BUZZER"
+		(shape input)
+		(at 140.97 139.7 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "8212b4eb-abdb-4ac8-9f91-57073458e0a1")
 	)
 	(hierarchical_label "MOSFET_CONTACTOR_GATE"
 		(shape input)
@@ -4688,6 +4691,17 @@
 			(justify left)
 		)
 		(uuid "e4f82159-a2e7-49b3-970d-e5689a99e97f")
+	)
+	(hierarchical_label "BUZZER"
+		(shape input)
+		(at 76.2 130.81 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "edc1399c-d6e6-4a3b-9ee8-de8df63aaca6")
 	)
 	(hierarchical_label "CAN_TX"
 		(shape input)
