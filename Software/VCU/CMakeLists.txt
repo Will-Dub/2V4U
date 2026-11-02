@@ -78,6 +78,7 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
 
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/App.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Drivers/Buzzer.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Drivers/DebounceButton.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Drivers/ImuDriver.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Drivers/ThrottleHallSensor.cpp

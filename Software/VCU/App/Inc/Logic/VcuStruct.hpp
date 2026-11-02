@@ -3,6 +3,14 @@
 
 namespace App::Logic {
 
+enum class BuzzerMode : uint8_t
+{
+    OFF = 0,
+    ON,
+    BEEP_ONCE,
+    BEEP_LOOP
+};
+
 enum class VcuStateId
 {
     INIT,
@@ -76,6 +84,13 @@ struct VcuOutputs
         bool errorLed = false;
         bool startLed = false;
     } lights;
+
+    struct
+    {
+        BuzzerMode mode = BuzzerMode::OFF;
+        uint32_t beepMs = 0;
+        uint32_t pauseMs = 0;
+    } buzzer;
 };
 
 }; // namespace App::Logic

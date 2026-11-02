@@ -1,5 +1,6 @@
 #include "App.h"
 
+#include "Buzzer.hpp"
 #include "DashTransmitter.hpp"
 #include "DebounceButton.hpp"
 #include "ImuDriver.hpp"
@@ -20,6 +21,7 @@ extern IWDG_HandleTypeDef hiwdg;
 static App::Infrastructure::DashTransmitter dashTransmitter;
 static App::Infrastructure::StmLogger stmLogger;
 static App::Logic::VcuController vcuController(stmLogger);
+static App::Drivers::Buzzer buzzer(BUZZER_GPIO_Port, BUZZER_Pin);
 static App::Drivers::ThrottleHallSensor throttleSensor;
 static App::Drivers::DebounceButton brakeButton;
 static App::Drivers::DebounceButton boardButton;
@@ -44,10 +46,8 @@ extern "C" void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
     }
 }
 
-static void gatherInputs(App::Logic::VcuInputs& inputs)
+static void gatherInputs(App::Logic::VcuInputs& inputs, uint32_t currentTickMs)
 {
-
-    uint32_t currentTickMs = HAL_GetTick();
     inputs.tickMs = currentTickMs;
 
     // Buttons/Switch
@@ -105,7 +105,7 @@ static void gatherInputs(App::Logic::VcuInputs& inputs)
     inputs.vesc = App::Drivers::vescDriver.getData();
 }
 
-static void applyOutputs(App::Logic::VcuOutputs& outputs)
+static void applyOutputs(App::Logic::VcuOutputs& outputs, uint32_t currentTickMs)
 {
     HAL_GPIO_WritePin(LED_BOARD_GPIO_Port, LED_BOARD_Pin,
                       outputs.lights.boardLed ? GPIO_PIN_SET : GPIO_PIN_RESET);
@@ -121,6 +121,8 @@ static void applyOutputs(App::Logic::VcuOutputs& outputs)
     } else {
         App::Drivers::vescDriver.sendAmpCommand(0.0f);
     }
+
+    buzzer.set(outputs.buzzer.mode, outputs.buzzer.beepMs, outputs.buzzer.pauseMs);
 }
 
 extern "C" void App_Init(volatile uint16_t* throttleDmaPtr)
@@ -145,16 +147,18 @@ extern "C" void App_Run(void)
 
     tick = false;
 
+    uint32_t currentTickMs = HAL_GetTick();
     App::Logic::VcuOutputs outputs{};
     App::Logic::VcuInputs inputs{};
 
-    gatherInputs(inputs);
+    gatherInputs(inputs, currentTickMs);
 
     vcuController.run(inputs, outputs);
 
-    applyOutputs(outputs);
+    applyOutputs(outputs, currentTickMs);
 
     dashTransmitter.process(vcuController.getCurrentVcuStateId(), inputs, outputs);
+    buzzer.update(currentTickMs);
 
     HAL_IWDG_Refresh(&hiwdg);
 }
