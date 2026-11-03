@@ -918,7 +918,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Device:C"
+		(symbol "Device:C_Polarized"
 			(pin_numbers
 				(hide yes)
 			)
@@ -941,7 +941,7 @@
 					(justify left)
 				)
 			)
-			(property "Value" "C"
+			(property "Value" "C_Polarized"
 				(at 0.635 -2.54 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -974,7 +974,7 @@
 					)
 				)
 			)
-			(property "Description" "Unpolarized capacitor"
+			(property "Description" "Polarized capacitor"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -996,7 +996,7 @@
 					)
 				)
 			)
-			(property "ki_fp_filters" "C_*"
+			(property "ki_fp_filters" "CP_*"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1007,13 +1007,12 @@
 					)
 				)
 			)
-			(symbol "C_0_1"
-				(polyline
-					(pts
-						(xy -2.032 0.762) (xy 2.032 0.762)
-					)
+			(symbol "C_Polarized_0_1"
+				(rectangle
+					(start -2.286 0.508)
+					(end 2.286 1.016)
 					(stroke
-						(width 0.508)
+						(width 0)
 						(type default)
 					)
 					(fill
@@ -1022,18 +1021,41 @@
 				)
 				(polyline
 					(pts
-						(xy -2.032 -0.762) (xy 2.032 -0.762)
+						(xy -1.778 2.286) (xy -0.762 2.286)
 					)
 					(stroke
-						(width 0.508)
+						(width 0)
 						(type default)
 					)
 					(fill
 						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 2.794) (xy -1.27 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 2.286 -0.508)
+					(end -2.286 -1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
 					)
 				)
 			)
-			(symbol "C_1_1"
+			(symbol "C_Polarized_1_1"
 				(pin passive line
 					(at 0 3.81 270)
 					(length 2.794)
@@ -2813,12 +2835,6 @@
 		(uuid "06427787-e095-4fd4-ac63-cf0639b7b9bc")
 	)
 	(junction
-		(at 100.33 123.19)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "0756d06e-dca9-4d75-b2e2-2abc1ed65a59")
-	)
-	(junction
 		(at 72.39 143.51)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2879,16 +2895,16 @@
 		(uuid "88ecf7ec-084a-4e99-854e-3cdc7627caa0")
 	)
 	(junction
-		(at 102.87 179.07)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "937fd6ad-843b-4b8b-afa6-e40325c085fe")
-	)
-	(junction
 		(at 82.55 101.6)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9454987b-f778-49c7-9329-85fdd5687b6f")
+	)
+	(junction
+		(at 102.87 101.6)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9789db20-34b4-44c1-bcab-56cb7215f5a3")
 	)
 	(junction
 		(at 78.74 125.73)
@@ -2900,13 +2916,19 @@
 		(at 87.63 146.05)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "b91f0546-cba2-418a-9a41-11cb7e55c251")
+		(uuid "be7bcd74-5117-4e2f-86fa-3454729ef019")
 	)
 	(junction
 		(at 72.39 146.05)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c01dfc0c-8223-4c64-8911-e8c34bec55ab")
+	)
+	(junction
+		(at 100.33 123.19)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c36a840c-40f5-4c56-94fd-8912abf1ca8d")
 	)
 	(junction
 		(at 85.09 74.93)
@@ -2933,16 +2955,16 @@
 		(uuid "d7117e85-8d07-4b69-bfc8-373dcff373f7")
 	)
 	(junction
-		(at 102.87 101.6)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "e38ac5ec-1c75-4a9a-8152-b0327d5afb5b")
-	)
-	(junction
 		(at 105.41 72.39)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "f29708d3-7e09-4dfa-84dc-30e0d15e4ea3")
+		(uuid "da968d67-01d2-41b5-838b-55610ea4a6df")
+	)
+	(junction
+		(at 102.87 179.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e38715e5-6e08-4ea8-81e4-9bc8a3e08444")
 	)
 	(junction
 		(at 85.09 72.39)
@@ -2992,7 +3014,7 @@
 	)
 	(wire
 		(pts
-			(xy 102.87 179.07) (xy 105.41 179.07)
+			(xy 97.79 179.07) (xy 102.87 179.07)
 		)
 		(stroke
 			(width 0)
@@ -3082,6 +3104,16 @@
 	)
 	(wire
 		(pts
+			(xy 87.63 146.05) (xy 97.79 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "201ac97f-20f9-4064-ad55-d0aa37313c92")
+	)
+	(wire
+		(pts
 			(xy 87.63 101.6) (xy 91.44 101.6)
 		)
 		(stroke
@@ -3119,16 +3151,6 @@
 			(type default)
 		)
 		(uuid "2994a829-d1bd-4dea-ab03-874d89deca66")
-	)
-	(wire
-		(pts
-			(xy 100.33 123.19) (xy 102.87 123.19)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2e3c086b-df30-4eeb-916c-ef27d38b44ed")
 	)
 	(wire
 		(pts
@@ -3242,16 +3264,6 @@
 	)
 	(wire
 		(pts
-			(xy 97.79 179.07) (xy 102.87 179.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5c9ed00f-429b-460b-b7e9-cb90309904b8")
-	)
-	(wire
-		(pts
 			(xy 85.09 72.39) (xy 85.09 66.04)
 		)
 		(stroke
@@ -3259,16 +3271,6 @@
 			(type default)
 		)
 		(uuid "5e66346d-4897-46a7-a344-6921abefb449")
-	)
-	(wire
-		(pts
-			(xy 99.06 101.6) (xy 102.87 101.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "61d3fb5b-2123-4759-b123-096eb5ce9ebe")
 	)
 	(wire
 		(pts
@@ -3282,17 +3284,17 @@
 	)
 	(wire
 		(pts
-			(xy 87.63 146.05) (xy 97.79 146.05)
+			(xy 100.33 123.19) (xy 102.87 123.19)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "66aacf31-7bb8-4c33-a573-a761e0e5e45d")
+		(uuid "67800cf0-aa50-40ac-9b47-067c2f35cd5f")
 	)
 	(wire
 		(pts
-			(xy 107.95 101.6) (xy 102.87 101.6)
+			(xy 99.06 101.6) (xy 102.87 101.6)
 		)
 		(stroke
 			(width 0)
@@ -3552,6 +3554,16 @@
 	)
 	(wire
 		(pts
+			(xy 102.87 179.07) (xy 105.41 179.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "be8fa21f-247b-470f-aaa7-2c5f2d6d70b3")
+	)
+	(wire
+		(pts
 			(xy 69.85 46.99) (xy 64.77 46.99)
 		)
 		(stroke
@@ -3649,6 +3661,16 @@
 			(type default)
 		)
 		(uuid "ee0cee8a-75d9-4f04-9c83-0e31817774e3")
+	)
+	(wire
+		(pts
+			(xy 102.87 101.6) (xy 107.95 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ee119171-f3c0-44cc-a372-d103afe59223")
 	)
 	(wire
 		(pts
@@ -3945,7 +3967,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-3-2.54_1x03_P2.54mm_Horizontal"
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-3-5.08_1x03_P5.08mm_Horizontal"
 			(at 67.31 143.51 0)
 			(hide yes)
 			(show_name no)
@@ -4267,7 +4289,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal"
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal"
 			(at 76.2 181.61 0)
 			(hide yes)
 			(show_name no)
@@ -4310,6 +4332,88 @@
 			(project "VCU_Board"
 				(path "/8a252f7b-887b-4a1b-8069-7e7f79ad368e/23ae0136-313c-47d7-bba9-3bfd4cbfb902"
 					(reference "J10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Polarized")
+		(at 87.63 149.86 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2d15cc55-7a03-4bbf-9707-50f8ba137d4a")
+		(property "Reference" "C8"
+			(at 91.44 147.7009 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100n"
+			(at 91.44 150.2409 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm"
+			(at 88.5952 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 87.63 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Polarized capacitor"
+			(at 87.63 149.86 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b8297b6c-0a99-428e-93b5-4b7565f1c504")
+		)
+		(pin "2"
+			(uuid "7e4fc1dc-7675-4ac6-927e-d629cf5250cb")
+		)
+		(instances
+			(project "VCU_Board"
+				(path "/8a252f7b-887b-4a1b-8069-7e7f79ad368e/23ae0136-313c-47d7-bba9-3bfd4cbfb902"
+					(reference "C8")
 					(unit 1)
 				)
 			)
@@ -4597,7 +4701,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-3-2.54_1x03_P2.54mm_Horizontal"
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-3-5.08_1x03_P5.08mm_Horizontal"
 			(at 80.01 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -4832,8 +4936,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
-		(at 105.41 76.2 0)
+		(lib_id "Device:C_Polarized")
+		(at 102.87 97.79 180)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4842,31 +4946,31 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "4e6cf3d7-f35f-4a3b-9983-97c2bbddf889")
-		(property "Reference" "C5"
-			(at 109.22 74.9299 0)
+		(uuid "4adae538-4980-4e92-984d-fad44d61b130")
+		(property "Reference" "C10"
+			(at 106.68 97.4089 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Value" "100n"
-			(at 109.22 77.4699 0)
+			(at 106.68 99.9489 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm"
-			(at 106.3752 80.01 0)
+			(at 101.9048 93.98 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4877,7 +4981,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 105.41 76.2 0)
+			(at 102.87 97.79 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4887,8 +4991,8 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
-			(at 105.41 76.2 0)
+		(property "Description" "Polarized capacitor"
+			(at 102.87 97.79 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4897,17 +5001,17 @@
 					(size 1.27 1.27)
 				)
 			)
-		)
-		(pin "2"
-			(uuid "3795bbe2-42ad-4fe9-bb8d-51c840d5c0ea")
 		)
 		(pin "1"
-			(uuid "b077ca1b-e133-4f55-98ea-97ef785cb7f2")
+			(uuid "0f3cfc33-4238-4ac8-92e1-1dd9839258f8")
+		)
+		(pin "2"
+			(uuid "e614a30a-bc8a-479f-b69a-967d168ac51d")
 		)
 		(instances
 			(project "VCU_Board"
 				(path "/8a252f7b-887b-4a1b-8069-7e7f79ad368e/23ae0136-313c-47d7-bba9-3bfd4cbfb902"
-					(reference "C5")
+					(reference "C10")
 					(unit 1)
 				)
 			)
@@ -5231,6 +5335,170 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C_Polarized")
+		(at 102.87 175.26 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6604925d-7db1-413a-ad13-bba627a90436")
+		(property "Reference" "C12"
+			(at 106.68 174.8789 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "100n"
+			(at 106.68 177.4189 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm"
+			(at 101.9048 171.45 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 102.87 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Polarized capacitor"
+			(at 102.87 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "185617e6-f693-421d-9a5e-7c25250fa6ce")
+		)
+		(pin "2"
+			(uuid "24558421-8e22-4a5f-b8b4-ceda4fc036d7")
+		)
+		(instances
+			(project "VCU_Board"
+				(path "/8a252f7b-887b-4a1b-8069-7e7f79ad368e/23ae0136-313c-47d7-bba9-3bfd4cbfb902"
+					(reference "C12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Polarized")
+		(at 100.33 119.38 180)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "66746fd9-150c-4791-b98d-0d46fb3f4d60")
+		(property "Reference" "C9"
+			(at 104.14 118.9989 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "100n"
+			(at 104.14 121.5389 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm"
+			(at 99.3648 115.57 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 100.33 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Polarized capacitor"
+			(at 100.33 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e0153320-796b-40b3-b22e-a338c7a6efb0")
+		)
+		(pin "2"
+			(uuid "a1eafe93-3da4-4760-b27d-2067149d3348")
+		)
+		(instances
+			(project "VCU_Board"
+				(path "/8a252f7b-887b-4a1b-8069-7e7f79ad368e/23ae0136-313c-47d7-bba9-3bfd4cbfb902"
+					(reference "C9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 90.17 104.14 90)
 		(unit 1)
@@ -5388,170 +5656,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
-		(at 102.87 175.26 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "6d47874e-57a9-4fbf-98ce-f639fb6a2834")
-		(property "Reference" "C2"
-			(at 106.68 173.9899 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100n"
-			(at 106.68 176.5299 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm"
-			(at 103.8352 179.07 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 102.87 175.26 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 102.87 175.26 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "38509362-f7b3-43be-8dc6-228f72ad2469")
-		)
-		(pin "1"
-			(uuid "693e0d59-3c55-45c7-ae73-272ceef88f85")
-		)
-		(instances
-			(project "VCU_Board"
-				(path "/8a252f7b-887b-4a1b-8069-7e7f79ad368e/23ae0136-313c-47d7-bba9-3bfd4cbfb902"
-					(reference "C2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 100.33 119.38 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "6d90c067-4018-4751-baf1-efb76ec28b89")
-		(property "Reference" "C3"
-			(at 104.14 118.1099 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100n"
-			(at 104.14 120.6499 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm"
-			(at 101.2952 123.19 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 100.33 119.38 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 100.33 119.38 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "93eb23b5-90d5-4c4f-a24a-016661bf7770")
-		)
-		(pin "1"
-			(uuid "ba71cae4-8219-4839-a24d-5474455ef6b4")
-		)
-		(instances
-			(project "VCU_Board"
-				(path "/8a252f7b-887b-4a1b-8069-7e7f79ad368e/23ae0136-313c-47d7-bba9-3bfd4cbfb902"
-					(reference "C3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R_US")
 		(at 100.33 72.39 270)
 		(unit 1)
@@ -5626,87 +5730,6 @@
 			(project "VCU_Board"
 				(path "/8a252f7b-887b-4a1b-8069-7e7f79ad368e/23ae0136-313c-47d7-bba9-3bfd4cbfb902"
 					(reference "R2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 87.63 149.86 180)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "736f118f-c805-4253-9744-0b935569c31f")
-		(property "Reference" "C1"
-			(at 92.964 149.606 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100n"
-			(at 93.98 152.146 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm"
-			(at 86.6648 146.05 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 87.63 149.86 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 87.63 149.86 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "914dc5b5-8ebf-451f-a8c5-02c728cecff4")
-		)
-		(pin "1"
-			(uuid "186b98d1-e337-4d77-8dc5-6e82399740a7")
-		)
-		(instances
-			(project "VCU_Board"
-				(path "/8a252f7b-887b-4a1b-8069-7e7f79ad368e/23ae0136-313c-47d7-bba9-3bfd4cbfb902"
-					(reference "C1")
 					(unit 1)
 				)
 			)
@@ -6456,7 +6479,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal"
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal"
 			(at 77.47 104.14 0)
 			(hide yes)
 			(show_name no)
@@ -6740,6 +6763,88 @@
 			(project "VCU_Board"
 				(path "/8a252f7b-887b-4a1b-8069-7e7f79ad368e/23ae0136-313c-47d7-bba9-3bfd4cbfb902"
 					(reference "R10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Polarized")
+		(at 105.41 76.2 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c4ff6d14-089c-4b3c-87b2-6ac74073c9e5")
+		(property "Reference" "C11"
+			(at 109.22 74.0409 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100n"
+			(at 109.22 76.5809 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm"
+			(at 106.3752 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 105.41 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Polarized capacitor"
+			(at 105.41 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0894b020-209e-46f1-af67-70b38fb4abe5")
+		)
+		(pin "2"
+			(uuid "bd8e0790-6baa-4116-8a13-6627b666eb6f")
+		)
+		(instances
+			(project "VCU_Board"
+				(path "/8a252f7b-887b-4a1b-8069-7e7f79ad368e/23ae0136-313c-47d7-bba9-3bfd4cbfb902"
+					(reference "C11")
 					(unit 1)
 				)
 			)
@@ -7064,88 +7169,6 @@
 			(project "VCU_Board"
 				(path "/8a252f7b-887b-4a1b-8069-7e7f79ad368e/23ae0136-313c-47d7-bba9-3bfd4cbfb902"
 					(reference "R9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 102.87 97.79 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "db00eabf-cd23-45de-88df-bc170ea688e0")
-		(property "Reference" "C4"
-			(at 106.68 96.5199 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100n"
-			(at 106.68 99.0599 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_THT:CP_Radial_D6.3mm_P2.50mm"
-			(at 103.8352 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 102.87 97.79 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 102.87 97.79 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "2"
-			(uuid "9c99e226-11b4-4e99-be52-7cdbb644fce4")
-		)
-		(pin "1"
-			(uuid "b4e1b5fa-31fd-431f-bcd1-4c25954f3bbd")
-		)
-		(instances
-			(project "VCU_Board"
-				(path "/8a252f7b-887b-4a1b-8069-7e7f79ad368e/23ae0136-313c-47d7-bba9-3bfd4cbfb902"
-					(reference "C4")
 					(unit 1)
 				)
 			)
@@ -8267,7 +8290,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal"
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal"
 			(at 73.66 125.73 0)
 			(hide yes)
 			(show_name no)
