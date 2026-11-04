@@ -7,6 +7,8 @@
 #include "VcuStateShutdown.hpp"
 #include "VcuStateStandby.hpp"
 
+#define THROTTLE_RELEASE_THRESHOLD 0.05f
+
 namespace App::Logic {
 class VcuController
 {
@@ -20,6 +22,7 @@ class VcuController
     VcuStateInit m_stateInit;
     VcuState* m_currentState;
     bool m_isInReverse = false;
+    bool m_isBrakeThrottleLatched = false;
 
     VcuState* getStateInstance(VcuStateId id);
     void transitionToState(VcuStateId nextStateId, const VcuInputs& inputs);
@@ -30,5 +33,6 @@ class VcuController
     void init(const VcuInputs& inputs);
     VcuStateId getCurrentVcuStateId() const;
     bool getIsInReverse() const { return m_isInReverse; }
+    bool getIsBrakeThrottleLatched() const { return m_isBrakeThrottleLatched; }
 };
 } // namespace App::Logic

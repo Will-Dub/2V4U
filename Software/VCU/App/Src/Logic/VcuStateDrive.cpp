@@ -34,6 +34,10 @@ VcuStateId VcuStateDrive::getId()
 
 float VcuStateDrive::getTargetAmps(const VcuInputs& inputs)
 {
+    if(m_context->getIsBrakeThrottleLatched()) {
+        return 0.0f;
+    }
+
     float targetAmps = inputs.pilot.throttlePercent * MAX_AMPERAGE;
 
     if(m_context->getIsInReverse()) {

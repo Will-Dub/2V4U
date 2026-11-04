@@ -74,6 +74,12 @@ void VcuController::run(const VcuInputs& inputs, VcuOutputs& outputs)
         transitionToState(VcuStateId::FAULT, inputs);
     }
 
+    // Pressing brake and throttle
+    if (inputs.pilot.isBrakePressed && inputs.pilot.throttlePercent < THROTTLE_RELEASE_THRESHOLD)
+        m_isBrakeThrottleLatched = false;
+    else if (inputs.pilot.isBrakePressed)
+        m_isBrakeThrottleLatched = true;
+
     // Reverse and forward change
     if(inputs.vesc.rpm == 0.0f && inputs.pilot.isBrakePressed){
         if(inputs.pilot.isForwardDirection){
