@@ -1,21 +1,17 @@
 #include "VescCanDriver.hpp"
 
-extern FDCAN_HandleTypeDef hfdcan1;
-
 namespace App::Drivers {
 
-VescCanDriver vescDriver;
-
-VescCanDriver::VescCanDriver()
+VescCanDriver::VescCanDriver(FDCAN_HandleTypeDef& hfdcan): m_hfdcan(hfdcan)
 {
     m_data = {0};
 }
 
 void VescCanDriver::init()
 {
-    HAL_FDCAN_Start(&hfdcan1);
+    HAL_FDCAN_Start(&m_hfdcan);
 
-    HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
+    HAL_FDCAN_ActivateNotification(&m_hfdcan, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0);
 }
 
 App::Logic::VescData VescCanDriver::getData() const
@@ -44,7 +40,7 @@ void VescCanDriver::sendAmpCommand(float amp)
     txHeader.TxEventFifoControl = FDCAN_NO_TX_EVENTS;
     txHeader.MessageMarker = 0;
 
-    if (HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan1, &txHeader, txData) != HAL_OK) {
+    if (HAL_FDCAN_AddMessageToTxFifoQ(&m_hfdcan, &txHeader, txData) != HAL_OK) {
         m_data.txFailCount++;
         m_data.followedTxFailCount++;
     } else {

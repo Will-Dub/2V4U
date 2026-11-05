@@ -106,6 +106,7 @@ int main(void)
   MX_SPI2_Init();
   MX_TIM6_Init();
   MX_IWDG_Init();
+  MX_UART4_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim6);
   HAL_ADCEx_Calibration_Start(&hadc1, ADC_SINGLE_ENDED);

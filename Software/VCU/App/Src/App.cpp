@@ -1,5 +1,6 @@
 #include "App.h"
 
+#include "BmsDriver.hpp"
 #include "Buzzer.hpp"
 #include "DashTransmitter.hpp"
 #include "DebounceButton.hpp"
@@ -17,12 +18,15 @@
 
 extern SPI_HandleTypeDef hspi2;
 extern IWDG_HandleTypeDef hiwdg;
+extern UART_HandleTypeDef huart4;
 
 static App::Infrastructure::DashTransmitter dashTransmitter;
 static App::Infrastructure::StmLogger stmLogger;
 static App::Logic::VcuController vcuController(stmLogger);
 static App::Drivers::Buzzer buzzer(BUZZER_GPIO_Port, BUZZER_Pin);
 static App::Drivers::ThrottleHallSensor throttleSensor;
+static App::Drivers::BmsDriver bmsDriver(huart4);
+static App::Drivers::VescCanDriver vescDriver(hfdcan1);
 static App::Drivers::DebounceButton brakeButton;
 static App::Drivers::DebounceButton boardButton;
 static App::Drivers::DebounceButton eStopButton;
@@ -44,6 +48,16 @@ extern "C" void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
     if (htim->Instance == TIM6) {
         tick = true;
     }
+}
+
+extern "C" void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef* huart, uint16_t size)
+{
+    if (huart == &huart4) bmsDriver.onRxEvent(size);
+}
+
+extern "C" void HAL_UART_ErrorCallback(UART_HandleTypeDef* huart)
+{
+    if (huart == &huart4) bmsDriver.onUartError();
 }
 
 static void gatherInputs(App::Logic::VcuInputs& inputs, uint32_t currentTickMs)
@@ -102,7 +116,7 @@ static void gatherInputs(App::Logic::VcuInputs& inputs, uint32_t currentTickMs)
         inputs.imu.temp = imuTemp;
     }
 
-    inputs.vesc = App::Drivers::vescDriver.getData();
+    inputs.vesc = vescDriver.getData();
 }
 
 static void applyOutputs(App::Logic::VcuOutputs& outputs, uint32_t currentTickMs)
@@ -117,9 +131,9 @@ static void applyOutputs(App::Logic::VcuOutputs& outputs, uint32_t currentTickMs
                       outputs.lights.startLed ? GPIO_PIN_SET : GPIO_PIN_RESET);
 
     if (outputs.vesc.isMotorEnabled) {
-        App::Drivers::vescDriver.sendAmpCommand(outputs.vesc.targetAmp);
+        vescDriver.sendAmpCommand(outputs.vesc.targetAmp);
     } else {
-        App::Drivers::vescDriver.sendAmpCommand(0.0f);
+        vescDriver.sendAmpCommand(0.0f);
     }
 
     buzzer.set(outputs.buzzer.mode, outputs.buzzer.beepMs, outputs.buzzer.pauseMs);
@@ -127,7 +141,8 @@ static void applyOutputs(App::Logic::VcuOutputs& outputs, uint32_t currentTickMs
 
 extern "C" void App_Init(volatile uint16_t* throttleDmaPtr)
 {
-    App::Drivers::vescDriver.init();
+    vescDriver.init();
+    bmsDriver.init();
     throttleSensor.init(throttleDmaPtr);
     imuDriver.init();
 
@@ -140,14 +155,16 @@ extern "C" void App_Init(volatile uint16_t* throttleDmaPtr)
 
 extern "C" void App_Run(void)
 {
-    App::Drivers::vescDriver.processRb();
+    uint32_t currentTickMs = HAL_GetTick();
+
+    vescDriver.processRb();
+    bmsDriver.process(currentTickMs);
 
     if (!tick)
         return;
 
     tick = false;
 
-    uint32_t currentTickMs = HAL_GetTick();
     App::Logic::VcuOutputs outputs{};
     App::Logic::VcuInputs inputs{};
 

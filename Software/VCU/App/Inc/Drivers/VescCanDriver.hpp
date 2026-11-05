@@ -13,7 +13,7 @@ struct CanFrame
 class VescCanDriver
 {
   public:
-    VescCanDriver();
+    VescCanDriver(FDCAN_HandleTypeDef& hfdcan);
 
     void init();
     void sendAmpCommand(float amp);
@@ -24,6 +24,7 @@ class VescCanDriver
     void processRb();
 
   private:
+    FDCAN_HandleTypeDef& m_hfdcan;
     App::Logic::VescData m_data;
 
     static const int RING_BUFFER_SIZE = 16;
