@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="CXWd5arhFevtDgLfgVb9" name="Page-1">
-        <mxGraphModel dx="2638" dy="1041" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="2775" dy="1011" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -270,6 +270,20 @@
                 </mxCell>
                 <mxCell id="ygH63aKoF2fUWu5eHLnh-80" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="&lt;b style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgba(168, 169, 170, 0.52) rgb(18, 19, 20); font-size: 16px;&quot;&gt;Flyback diode under coils*&lt;/b&gt;&lt;div&gt;&lt;b style=&quot;color: rgb(63, 63, 63); scrollbar-color: rgba(168, 169, 170, 0.52) rgb(18, 19, 20); font-size: 16px;&quot;&gt;120Ω on CAN ends**&lt;/b&gt;&lt;/div&gt;" vertex="1">
                     <mxGeometry height="40" width="240" x="400" y="890" as="geometry"/>
+                </mxCell>
+                <mxCell id="tfsV_yrAkUk0XuEga2j4-2" edge="1" parent="1" style="endArrow=none;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#0000FF;strokeWidth=2;" target="ygH63aKoF2fUWu5eHLnh-26" value="">
+                    <mxGeometry height="50" relative="1" width="50" x="0.0199" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="480" y="180"/>
+                        </Array>
+                        <mxPoint x="480" y="500" as="sourcePoint"/>
+                        <mxPoint x="570" y="510" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="tfsV_yrAkUk0XuEga2j4-3" connectable="0" parent="tfsV_yrAkUk0XuEga2j4-2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;" value="UART" vertex="1">
+                    <mxGeometry relative="1" x="0.8707" y="-2" as="geometry">
+                        <mxPoint x="-9" y="-8" as="offset"/>
+                    </mxGeometry>
                 </mxCell>
             </root>
         </mxGraphModel>

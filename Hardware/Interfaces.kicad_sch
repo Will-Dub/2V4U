@@ -3199,8 +3199,8 @@
 		(uuid "1cdd23d5-ef1a-425c-8687-7e903a050a5f")
 	)
 	(no_connect
-		(at 151.13 34.29)
-		(uuid "5bb2cecc-9cd0-4dd1-bd35-791b82901015")
+		(at 151.13 36.83)
+		(uuid "45644026-04dd-4228-85c4-75f0bdf5f47a")
 	)
 	(no_connect
 		(at 55.88 105.41)
@@ -4484,7 +4484,7 @@
 				)
 			)
 		)
-		(property "Value" "1000"
+		(property "Value" "2200"
 			(at 81.026 148.082 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4565,7 +4565,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "2200"
+		(property "Value" "1000"
 			(at 87.63 176.5299 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4781,6 +4781,85 @@
 			(project "VCU_Board"
 				(path "/8a252f7b-887b-4a1b-8069-7e7f79ad368e/23ae0136-313c-47d7-bba9-3bfd4cbfb902"
 					(reference "R20")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 151.13 34.29 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "27783b9e-3a27-4211-ba37-d9541b7b4715")
+		(property "Reference" "#PWR045"
+			(at 157.48 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 154.94 34.2899 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 151.13 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 151.13 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 151.13 34.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "cd6aa37a-56fa-4a16-8a80-cdc16e2f1f9b")
+		)
+		(instances
+			(project "VCU_Board"
+				(path "/8a252f7b-887b-4a1b-8069-7e7f79ad368e/23ae0136-313c-47d7-bba9-3bfd4cbfb902"
+					(reference "#PWR045")
 					(unit 1)
 				)
 			)
@@ -5059,7 +5138,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "2200"
+		(property "Value" "1000"
 			(at 86.36 120.6499 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6284,7 +6363,7 @@
 				)
 			)
 		)
-		(property "Value" "1000"
+		(property "Value" "2200"
 			(at 94.234 177.038 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6521,7 +6600,7 @@
 				)
 			)
 		)
-		(property "Value" "1000"
+		(property "Value" "2200"
 			(at 91.694 121.158 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6680,7 +6759,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "2200"
+		(property "Value" "1000"
 			(at 89.154 99.06 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7391,25 +7470,25 @@
 		(fields_autoplaced yes)
 		(uuid "c9aa49da-8db8-460d-bdaf-a3fdb49cbd84")
 		(property "Reference" "R4"
-			(at 72.39 151.1301 0)
+			(at 77.47 148.5899 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
-		(property "Value" "2200"
-			(at 72.39 148.5901 0)
+		(property "Value" "1000"
+			(at 77.47 151.1299 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal"
@@ -7696,85 +7775,6 @@
 			(project "VCU_Board"
 				(path "/8a252f7b-887b-4a1b-8069-7e7f79ad368e/23ae0136-313c-47d7-bba9-3bfd4cbfb902"
 					(reference "#PWR052")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 151.13 36.83 90)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "d3dda322-ad50-45a7-b5d1-36258e9ec68c")
-		(property "Reference" "#PWR038"
-			(at 157.48 36.83 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "GND"
-			(at 154.94 36.8299 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 151.13 36.83 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 151.13 36.83 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 151.13 36.83 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "9670ae71-5483-49af-8a15-5fe56d11f9e5")
-		)
-		(instances
-			(project "VCU_Board"
-				(path "/8a252f7b-887b-4a1b-8069-7e7f79ad368e/23ae0136-313c-47d7-bba9-3bfd4cbfb902"
-					(reference "#PWR038")
 					(unit 1)
 				)
 			)
@@ -8885,7 +8885,7 @@
 				)
 			)
 		)
-		(property "Value" "1000"
+		(property "Value" "2200"
 			(at 95.504 99.568 90)
 			(show_name no)
 			(do_not_autoplace no)
