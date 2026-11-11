@@ -52,12 +52,21 @@ extern "C" void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
 
 extern "C" void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef* huart, uint16_t size)
 {
-    if (huart == &huart4) bmsDriver.onRxEvent(size);
+    if (huart == &huart4)
+        bmsDriver.onRxEvent(size);
 }
 
 extern "C" void HAL_UART_ErrorCallback(UART_HandleTypeDef* huart)
 {
-    if (huart == &huart4) bmsDriver.onUartError();
+    if (huart == &huart4)
+        bmsDriver.onUartError();
+}
+
+extern "C" void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef* hfdcan, uint32_t RxFifo0ITs)
+{
+    if (hfdcan->Instance == FDCAN1) {
+        vescDriver.onRxFifo0();
+    }
 }
 
 static void gatherInputs(App::Logic::VcuInputs& inputs, uint32_t currentTickMs)
@@ -157,7 +166,7 @@ extern "C" void App_Run(void)
 {
     uint32_t currentTickMs = HAL_GetTick();
 
-    vescDriver.processRb();
+    vescDriver.processSlots();
     bmsDriver.process(currentTickMs);
 
     if (!tick)
