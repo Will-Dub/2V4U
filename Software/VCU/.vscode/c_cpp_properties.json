@@ -5,7 +5,12 @@
             "compileCommands": "${workspaceFolder}/build/Debug/compile_commands.json",
             "intelliSenseMode": "windows-msvc-x64",
             "cStandard": "c11",
-            "cppStandard": "gnu++14"
+            "cppStandard": "gnu++14",
+            "includePath": [
+                "${workspaceFolder}/Tests/Fakes",
+                "${workspaceFolder}/build-tests/_deps/googletest-src/googletest/include",
+                "${workspaceFolder}/build-tests/_deps/googletest-src/googlemock/include"
+            ]
         }
     ],
     "version": 4
