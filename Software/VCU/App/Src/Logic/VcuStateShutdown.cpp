@@ -12,7 +12,7 @@ VcuStateId VcuStateShutdown::update(const VcuInputs& inputs, VcuOutputs& outputs
     outputs.vesc.isMotorEnabled = false;
     outputs.vesc.targetAmp = 0.0f;
 
-    if (inputs.vesc.motorCurrent > 1.0f) {
+    if (inputs.vesc.motorCurrent > 1.0f || inputs.vesc.motorCurrent < -1.0f) {
         outputs.power.contactor = true;
         outputs.power.prechargeRelay = false;
         return VcuStateId::SAME;

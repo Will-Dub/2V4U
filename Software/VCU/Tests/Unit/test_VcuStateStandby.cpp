@@ -20,24 +20,24 @@ class VcuStateStandbyTest : public ::testing::Test
     }
 };
 
-TEST_F(VcuStateStandbyTest, ReturnsCorrectStateId)
+TEST_F(VcuStateStandbyTest, GivenStandbyState_WhenGetId_ThenReturnsStandby)
 {
     EXPECT_EQ(state.getId(), VcuStateId::STANDBY);
 }
 
-TEST_F(VcuStateStandbyTest, RemainsInStandbyWhenStartNotPressed)
+TEST_F(VcuStateStandbyTest, GivenStartNotPressed_WhenUpdate_ThenStateSame)
 {
     inputs.pilot.isStartPressed = false;
     EXPECT_EQ(state.update(inputs, outputs), VcuStateId::SAME);
 }
 
-TEST_F(VcuStateStandbyTest, TransitionsToPrechargeWhenStartPressed)
+TEST_F(VcuStateStandbyTest, GivenStartPressed_WhenUpdate_ThenGoesToPrecharge)
 {
     inputs.pilot.isStartPressed = true;
     EXPECT_EQ(state.update(inputs, outputs), VcuStateId::PRECHARGE);
 }
 
-TEST_F(VcuStateStandbyTest, NoTorqueAndContactorOpenInStandby)
+TEST_F(VcuStateStandbyTest, GivenFullThrottle_WhenUpdate_ThenNoTorqueAndRelaysOpen)
 {
     inputs.pilot.throttlePercent = 1.0f;
     state.update(inputs, outputs);

@@ -13,7 +13,12 @@ file(GLOB_RECURSE TEST_SRC CONFIGURE_DEPENDS Unit/*.cpp Integration/*.cpp)
 
 add_executable(vcu_tests
     ${LOGIC_SRC}
-    Unit/test_VcuStateStandby.cpp)
+    Unit/test_VcuStateDrive.cpp
+    Unit/test_VcuStateFault.cpp
+    Unit/test_VcuStatePrecharge.cpp
+    Unit/test_VcuStateShutdown.cpp
+    Unit/test_VcuStateStandby.cpp
+    Integration/test_VcuController.cpp)
 
 target_include_directories(vcu_tests PRIVATE
     ${ROOT}/App/Inc/Logic

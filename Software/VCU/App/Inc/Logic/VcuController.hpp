@@ -22,7 +22,7 @@ class VcuController
     VcuStateInit m_stateInit;
     VcuState* m_currentState;
     bool m_isInReverse = false;
-    bool m_isBrakeThrottleLatched = false;
+    bool m_isBrakeThrottleLatched = true;
 
     VcuState* getStateInstance(VcuStateId id);
     void transitionToState(VcuStateId nextStateId, const VcuInputs& inputs);
@@ -32,7 +32,13 @@ class VcuController
     void run(const VcuInputs& inputs, VcuOutputs& outputs);
     void init(const VcuInputs& inputs);
     VcuStateId getCurrentVcuStateId() const;
-    bool getIsInReverse() const { return m_isInReverse; }
-    bool getIsBrakeThrottleLatched() const { return m_isBrakeThrottleLatched; }
+    bool getIsInReverse() const
+    {
+        return m_isInReverse;
+    }
+    bool getIsBrakeThrottleLatched() const
+    {
+        return m_isBrakeThrottleLatched;
+    }
 };
 } // namespace App::Logic
