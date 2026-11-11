@@ -4,3 +4,5 @@ mx.scratch
 _deps
 build-tests
 CMakeFiles
+coverage
+LastCoverageResults.log

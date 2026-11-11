@@ -49,9 +49,7 @@ void MX_GPIO_Init(void)
   __HAL_RCC_GPIOF_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(LED_SW_START_GPIO_Port, LED_SW_START_Pin, GPIO_PIN_RESET);
+  __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LED_BOARD_GPIO_Port, LED_BOARD_Pin, GPIO_PIN_RESET);
@@ -62,30 +60,20 @@ void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(SPI2_IMU_NCS_GPIO_Port, SPI2_IMU_NCS_Pin, GPIO_PIN_SET);
 
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(LED_SW_START_GPIO_Port, LED_SW_START_Pin, GPIO_PIN_RESET);
+
   /*Configure GPIO pin : BTN_BOARD_Pin */
   GPIO_InitStruct.Pin = BTN_BOARD_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(BTN_BOARD_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : LED_SW_START_Pin */
-  GPIO_InitStruct.Pin = LED_SW_START_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(LED_SW_START_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : SW_START_Pin SW_DIRECTION_Pin SW_BRAKE_Pin */
-  GPIO_InitStruct.Pin = SW_START_Pin|SW_DIRECTION_Pin|SW_BRAKE_Pin;
+  /*Configure GPIO pins : SW_BRAKE_Pin SW_DIRECTION_Pin */
+  GPIO_InitStruct.Pin = SW_BRAKE_Pin|SW_DIRECTION_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : SW_PUSH_EMERGENCY_Pin */
-  GPIO_InitStruct.Pin = SW_PUSH_EMERGENCY_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(SW_PUSH_EMERGENCY_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pin : LED_BOARD_Pin */
   GPIO_InitStruct.Pin = LED_BOARD_Pin;
@@ -113,6 +101,25 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
   HAL_GPIO_Init(SPI2_IMU_NCS_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : LED_SW_START_Pin */
+  GPIO_InitStruct.Pin = LED_SW_START_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(LED_SW_START_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : SW_START_Pin */
+  GPIO_InitStruct.Pin = SW_START_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(SW_START_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : SW_PUSH_EMERGENCY_Pin */
+  GPIO_InitStruct.Pin = SW_PUSH_EMERGENCY_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(SW_PUSH_EMERGENCY_GPIO_Port, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI15_10_IRQn, 3, 0);
