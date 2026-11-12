@@ -41,6 +41,11 @@ Rectangle {
             Image {
                 id: rawIcon
                 source: root.iconSource
+                width: 24
+                height: 24
+                sourceSize.width: 24
+                sourceSize.height: 24
+                fillMode: Image.PreserveAspectFit
                 anchors.fill: parent
                 visible: false
             }

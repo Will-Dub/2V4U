@@ -36,15 +36,20 @@ VcuStateId VcuStateDrive::getId()
 
 float VcuStateDrive::getTargetAmps(const VcuInputs& inputs)
 {
+    const float dt = (inputs.tickMs - m_lastTickMs) / 1000.0f;
+    m_lastTickMs = inputs.tickMs;
+
     if (m_context->getIsBrakeThrottleLatched()) {
+        m_forwardMap.reset();
+        m_reverseMap.reset();
         return 0.0f;
     }
 
-    float targetAmps = inputs.pilot.throttlePercent * MAX_AMPERAGE;
-
     if (m_context->getIsInReverse()) {
-        targetAmps *= -1.0f;
+        m_forwardMap.reset();
+        return -m_reverseMap.update(inputs.pilot.throttlePercent, dtS);
     }
 
-    return targetAmps;
+    m_reverseMap.reset();
+    return m_forwardMap.update(inputs.pilot.throttlePercent, dtS);
 }

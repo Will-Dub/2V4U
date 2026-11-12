@@ -41,24 +41,31 @@ Window {
             spacing: 8
 
             PageElement {
-                iconSource: "qrc:/assets/HomeIcon_16x16.png"
+                iconSource: "qrc:/assets/HomeIcon.png"
                 labelText: "Home"
                 isActive: dashView.currentIndex === 0
                 onClicked: dashView.currentIndex = 0
             }
 
             PageElement {
-                iconSource: "qrc:/assets/DebugIcon_16x16.png"
+                iconSource: "qrc:/assets/DebugIcon.png"
                 labelText: "Debug"
                 isActive: dashView.currentIndex === 1
                 onClicked: dashView.currentIndex = 1
             }
 
             PageElement {
-                iconSource: "qrc:/assets/LogIcon_16x16.png"
+                iconSource: "qrc:/assets/LogIcon.png"
                 labelText: "Log"
                 isActive: dashView.currentIndex === 2
                 onClicked: dashView.currentIndex = 2
+            }
+
+            PageElement {
+                iconSource: "qrc:/assets/BatteryIcon.png"
+                labelText: "Log"
+                isActive: dashView.currentIndex === 3
+                onClicked: dashView.currentIndex = 3
             }
         }
 
