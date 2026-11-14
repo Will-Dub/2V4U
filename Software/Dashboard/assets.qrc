@@ -7,5 +7,6 @@
         <file>assets/HomeIcon.svg</file>
         <file>assets/LogIcon.svg</file>
         <file>assets/WarningIcon.svg</file>
+        <file>assets/CellsIcon.svg</file>
     </qresource>
 </RCC>

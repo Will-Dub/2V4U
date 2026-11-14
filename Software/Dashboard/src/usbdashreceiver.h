@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QSerialPort>
 #include <qqmlintegration.h>
-#include "VcuComms.h"
+//#include "VcuComms.h"
 #include <QDebug>
 #include <QTimer>
 #include <QSerialPortInfo>

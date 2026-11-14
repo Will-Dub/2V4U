@@ -30,6 +30,9 @@ qt_add_qml_module(appDashboard
         QML_FILES qml/LogPage.qml
         QML_FILES qml/SpeedGauge.qml
         QML_FILES qml/RpmGauge.qml
+        QML_FILES qml/BMSPage.qml
+        QML_FILES qml/CustomButton.qml
+        QML_FILES qml/StatusBadge.qml
 )
 
 target_include_directories(appDashboard PRIVATE

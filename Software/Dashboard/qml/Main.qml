@@ -22,6 +22,7 @@ Window {
         interactive: false
 
         HomePage {}
+        BMSPage {}
         DebugPage {}
         LogPage {}
     }
@@ -41,28 +42,28 @@ Window {
             spacing: 8
 
             PageElement {
-                iconSource: "qrc:/assets/HomeIcon.png"
+                iconSource: "qrc:/assets/HomeIcon.svg"
                 labelText: "Home"
                 isActive: dashView.currentIndex === 0
                 onClicked: dashView.currentIndex = 0
             }
 
             PageElement {
-                iconSource: "qrc:/assets/DebugIcon.png"
-                labelText: "Debug"
+                iconSource: "qrc:/assets/BatteryIcon.svg"
+                labelText: "BMS"
                 isActive: dashView.currentIndex === 1
                 onClicked: dashView.currentIndex = 1
             }
 
             PageElement {
-                iconSource: "qrc:/assets/LogIcon.png"
-                labelText: "Log"
+                iconSource: "qrc:/assets/DebugIcon.svg"
+                labelText: "Debug"
                 isActive: dashView.currentIndex === 2
                 onClicked: dashView.currentIndex = 2
             }
 
             PageElement {
-                iconSource: "qrc:/assets/BatteryIcon.png"
+                iconSource: "qrc:/assets/LogIcon.svg"
                 labelText: "Log"
                 isActive: dashView.currentIndex === 3
                 onClicked: dashView.currentIndex = 3
