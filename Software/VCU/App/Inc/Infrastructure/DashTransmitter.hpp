@@ -15,9 +15,15 @@ class DashTransmitter
                  const App::Logic::VcuOutputs& outputs);
 
   private:
-    uint32_t m_lastTxMs = 0;
+    uint32_t m_lastVcuTxMs = 0;
+    uint32_t m_lastBmsTxMs = 0;
 
-    const uint32_t INTERVAL_MS = 50;
+    void sendVcu(App::Logic::VcuStateId currentState, const App::Logic::VcuInputs& inputs,
+                 const App::Logic::VcuOutputs& outputs);
+    void sendBms(const App::Logic::VcuInputs& inputs);
+
+    const uint32_t INTERVAL_BMS_MS = 200;
+    const uint32_t INTERVAL_VCU_MS = 50;
 };
 
 } // namespace App::Infrastructure

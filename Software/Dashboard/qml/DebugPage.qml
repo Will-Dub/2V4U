@@ -9,202 +9,7 @@ Rectangle {
     height: 720
     color: AppTheme.colorNeut0
 
-    component QuickStat: Column {
-        property string labelText
-        property string valueText
-        property string unitText
-
-        width: parent.width
-        spacing: 0
-
-        Text {
-            text: labelText
-            color: AppTheme.colorNeut70
-            font.pixelSize: AppTheme.sizeExtraSmall
-            font.family: AppTheme.fontMono
-            font.letterSpacing: 2
-        }
-
-        Row {
-            spacing: 8
-            anchors.baselineOffset: 0
-            Text {
-                id: valTxt
-                text: valueText
-                color: AppTheme.colorNeut100
-                font.pixelSize: 40
-                font.family: AppTheme.fontMono
-                font.bold: true
-            }
-            Text {
-                text: unitText
-                color: AppTheme.colorActn
-                font.pixelSize: AppTheme.sizeExtraSmall
-                font.family: AppTheme.fontMono
-                anchors.baseline: valTxt.baseline
-            }
-        }
-
-        Item {
-            width: 1
-            height: 10
-        }
-
-        Rectangle {
-            width: parent.width
-            height: 2
-            color: AppTheme.colorActn
-            opacity: 0.5
-        }
-    }
-
-    component SensorRow: Item {
-        property string signalName
-        property string sourceName
-        property string valText
-        property string unitText
-        property string ageText
-        property string stateText: "OK"
-        property color stateColor: AppTheme.colorActn
-
-        width: parent.width
-        height: 50
-
-        Rectangle {
-            width: parent.width
-            height: 1
-            anchors.bottom: parent.bottom
-            color: AppTheme.colorNeut30
-        }
-
-        RowLayout {
-            anchors.fill: parent
-            anchors.bottomMargin: 5
-
-            Column {
-                Layout.fillWidth: true
-                Text {
-                    width: parent.width
-                    text: signalName
-                    color: AppTheme.colorNeut100
-                    font.pixelSize: AppTheme.sizeSmall
-                }
-                Text {
-                    width: parent.width
-                    text: sourceName
-                    color: AppTheme.colorNeut60
-                    font.pixelSize: AppTheme.sizeExtraSmall
-                    font.family: AppTheme.fontMono
-                }
-            }
-
-            Item {
-                Layout.preferredWidth: 120
-                Layout.fillHeight: true
-
-                Row {
-                    anchors.centerIn: parent
-                    spacing: 4
-                    Text {
-                        id: rowVal
-                        text: valText
-                        color: AppTheme.colorNeut100
-                        font.pixelSize: AppTheme.sizeSmall
-                        font.family: AppTheme.fontMono
-                        font.bold: true
-                    }
-                    Text {
-                        text: unitText
-                        color: AppTheme.colorNeut70
-                        font.pixelSize: AppTheme.sizeExtraSmall
-                        font.family: AppTheme.fontMono
-                        anchors.baseline: rowVal.baseline
-                    }
-                }
-            }
-
-            Text {
-                Layout.preferredWidth: 80
-                horizontalAlignment: Text.AlignHCenter
-                text: ageText
-                color: AppTheme.colorNeut70
-                font.pixelSize: AppTheme.sizeExtraSmall
-                font.family: AppTheme.fontMono
-            }
-            Text {
-                Layout.preferredWidth: 40
-                horizontalAlignment: Text.AlignHCenter
-                text: stateText
-                color: stateColor
-                font.pixelSize: AppTheme.sizeExtraSmall
-                font.family: AppTheme.fontMono
-            }
-        }
-    }
-
-    component SysBar: Column {
-        property string labelText
-        property string pctText
-        property real fillRatio: 0.5
-
-        width: parent.width
-        spacing: 4
-
-        RowLayout {
-            width: parent.width
-            Text {
-                text: labelText
-                color: AppTheme.colorNeut70
-                font.pixelSize: AppTheme.sizeExtraSmall
-                font.family: AppTheme.fontMono
-                Layout.fillWidth: true
-            }
-            Text {
-                text: pctText
-                color: AppTheme.colorNeut100
-                font.pixelSize: AppTheme.sizeExtraSmall
-                font.family: AppTheme.fontMono
-            }
-        }
-
-        Rectangle {
-            width: parent.width
-            height: 4
-            color: AppTheme.colorNeut30
-            Rectangle {
-                width: parent.width * fillRatio
-                height: parent.height
-                color: AppTheme.colorActn
-            }
-        }
-    }
-
-    component DigitalIndicator: Row {
-        property string label
-        property bool isActive: false
-
-        spacing: 8
-
-        Rectangle {
-            width: 12
-            height: 12
-            radius: 6
-            color: isActive ? AppTheme.colorActn : AppTheme.colorNeut30
-            anchors.verticalCenter: parent.verticalCenter
-        }
-
-        Text {
-            text: label
-            color: isActive ? AppTheme.colorNeut100 : AppTheme.colorNeut70
-            font.pixelSize: AppTheme.sizeExtraSmall
-            font.family: AppTheme.fontMono
-            anchors.verticalCenter: parent.verticalCenter
-        }
-    }
-
-    // ==========================================
-    // MAIN LAYOUT
-    // ==========================================
+    // Header
     Item {
         id: headerArea
         anchors {
@@ -233,6 +38,7 @@ Rectangle {
             font.bold: true
         }
 
+        // Connection / state badge
         StatusBadge {
             anchors {
                 right: parent.right
@@ -256,6 +62,7 @@ Rectangle {
         }
     }
 
+    // Content
     RowLayout {
         anchors {
             top: headerArea.bottom
@@ -266,7 +73,7 @@ Rectangle {
         }
         spacing: 10
 
-        // LEFT COLUMN
+        // Left
         Column {
             Layout.preferredWidth: 175
             Layout.fillHeight: true
@@ -290,7 +97,7 @@ Rectangle {
             color: AppTheme.colorNeut30
         }
 
-        // MIDDLE COLUMN
+        // Middle
         Column {
             Layout.fillWidth: true
             Layout.minimumWidth: 300
@@ -299,6 +106,7 @@ Rectangle {
 
             Row {}
 
+            // Sensor title
             RowLayout {
                 width: parent.width
 
@@ -319,6 +127,7 @@ Rectangle {
                 }*/
             }
 
+            // Column titles
             RowLayout {
                 width: parent.width
                 Text {
@@ -357,6 +166,7 @@ Rectangle {
                 color: AppTheme.colorNeut30
             }
 
+            // Sensor rows
             Flickable {
                 width: parent.width
                 height: 200
@@ -428,6 +238,7 @@ Rectangle {
                 }
             }
 
+            // Digital inputs
             Column {
                 width: parent.width
                 spacing: 15
@@ -469,12 +280,13 @@ Rectangle {
             color: AppTheme.colorNeut30
         }
 
-        // RIGHT COLUMN
+        // Right
         ColumnLayout {
             Layout.preferredWidth: 180
             Layout.fillHeight: true
             spacing: 30
 
+            // CAN bus counters
             Column {
                 Layout.fillWidth: true
                 spacing: 15
@@ -543,6 +355,7 @@ Rectangle {
                 Layout.fillWidth: true
             }
 
+            // Run time
             Text {
                 Layout.alignment: Qt.AlignRight | Qt.AlignBottom
                 Layout.rightMargin: 10

@@ -14,6 +14,7 @@ Rectangle {
 
     signal clicked
 
+    // Active indicator
     Rectangle {
         width: parent.width
         height: 3
@@ -28,6 +29,7 @@ Rectangle {
         }
     }
 
+    // Icon and label
     Row {
         anchors.centerIn: parent
         spacing: 10
@@ -38,6 +40,7 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             visible: iconSource !== ""
 
+            // Raw icon (hidden)
             Image {
                 id: rawIcon
                 source: root.iconSource
@@ -50,6 +53,7 @@ Rectangle {
                 visible: false
             }
 
+            // Colorized icon
             MultiEffect {
                 source: rawIcon
                 anchors.fill: rawIcon
@@ -67,6 +71,7 @@ Rectangle {
         }
     }
 
+    // Click area
     MouseArea {
         anchors.fill: parent
         onClicked: root.clicked()

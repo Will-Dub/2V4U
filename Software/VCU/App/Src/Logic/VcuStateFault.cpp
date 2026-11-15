@@ -19,6 +19,7 @@ VcuStateId VcuStateFault::update(const VcuInputs& inputs, VcuOutputs& outputs)
     outputs.buzzer.mode = Logic::BuzzerMode::BEEP_LOOP;
     outputs.buzzer.beepMs = 50;
     outputs.buzzer.pauseMs = 2000;
+    outputs.lights.startLed = m_isBoardLedOn;
 
     m_blinkTimer++;
     if (m_blinkTimer % 50 == 0) {

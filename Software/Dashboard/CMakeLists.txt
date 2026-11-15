@@ -33,6 +33,15 @@ qt_add_qml_module(appDashboard
         QML_FILES qml/BMSPage.qml
         QML_FILES qml/CustomButton.qml
         QML_FILES qml/StatusBadge.qml
+        QML_FILES qml/StatCard.qml
+        QML_FILES qml/TempBar.qml
+        QML_FILES qml/CellBar.qml
+        QML_FILES qml/CellStat.qml
+        QML_FILES qml/QuickStat.qml
+        QML_FILES qml/SensorRow.qml
+        QML_FILES qml/SysBar.qml
+        QML_FILES qml/DigitalIndicator.qml
+        QML_FILES qml/InfoBlock.qml
 )
 
 target_include_directories(appDashboard PRIVATE

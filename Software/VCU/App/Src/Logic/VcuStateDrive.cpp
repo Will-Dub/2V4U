@@ -47,9 +47,9 @@ float VcuStateDrive::getTargetAmps(const VcuInputs& inputs)
 
     if (m_context->getIsInReverse()) {
         m_forwardMap.reset();
-        return -m_reverseMap.update(inputs.pilot.throttlePercent, dtS);
+        return -m_reverseMap.update(inputs.pilot.throttlePercent, dt);
     }
 
     m_reverseMap.reset();
-    return m_forwardMap.update(inputs.pilot.throttlePercent, dtS);
+    return m_forwardMap.update(inputs.pilot.throttlePercent, dt);
 }

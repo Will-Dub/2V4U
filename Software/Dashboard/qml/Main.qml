@@ -12,6 +12,7 @@ Window {
     minimumWidth: 800
     minimumHeight: 480
 
+    // Pages
     SwipeView {
         id: dashView
         anchors.top: parent.top
@@ -27,6 +28,7 @@ Window {
         LogPage {}
     }
 
+    // Navigation bar
     Rectangle {
         id: navBar
         width: parent.width

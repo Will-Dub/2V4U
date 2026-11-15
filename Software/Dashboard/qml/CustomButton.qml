@@ -6,7 +6,7 @@ Rectangle {
     property string iconSource: ""
     property string titleText: "TITLE"
     property string detailText: "Detail description"
-    signal clicked()
+    signal clicked
 
     width: parent.width
     implicitHeight: 64
@@ -15,8 +15,17 @@ Rectangle {
     border.color: hoverHandler.hovered ? AppTheme.colorPrm : AppTheme.colorCardBorder
     border.width: 2
 
-    Behavior on color { ColorAnimation { duration: 100 } }
-    Behavior on border.color { ColorAnimation { duration: 100 } }
+    // Hover transition
+    Behavior on color {
+        ColorAnimation {
+            duration: 100
+        }
+    }
+    Behavior on border.color {
+        ColorAnimation {
+            duration: 100
+        }
+    }
 
     Row {
         anchors.fill: parent
@@ -65,10 +74,12 @@ Rectangle {
         }
     }
 
+    // Hover state
     HoverHandler {
         id: hoverHandler
     }
 
+    // Click
     TapHandler {
         id: tapHandler
         onTapped: root.clicked()

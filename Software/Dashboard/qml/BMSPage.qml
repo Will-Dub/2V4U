@@ -9,201 +9,81 @@ Rectangle {
     height: 720
     color: AppTheme.colorNeut0
 
-    component QuickStat: Rectangle {
-        property string labelText
-        property string valueText
-        property string unitText
+    // Cell voltage limits (LiFePO4)
+    readonly property real cellWarnHigh: 3.60
+    readonly property real cellAlertHigh: 3.65
+    readonly property real cellWarnLow: 3.00
+    readonly property real cellAlertLow: 2.80
 
-        width: parent.width
-        implicitHeight: contentCol.implicitHeight + 16
+    // Cell data (16 voltages in volts, empty list shows --)
+    readonly property var cellVoltages: {
+        let c = UsbDashReceiver.dashData.cellVoltages
+        return (c !== undefined && c.length > 0) ? c : []
+    }
+    // Min, max, average and delta of the cells
+    readonly property real cellMin: cellVoltages.length > 0 ? Math.min.apply(
+                                                                  null,
+                                                                  cellVoltages) : NaN
+    readonly property real cellMax: cellVoltages.length > 0 ? Math.max.apply(
+                                                                  null,
+                                                                  cellVoltages) : NaN
+    readonly property real cellDeltaMv: (cellVoltages.length > 0) ? (cellMax - cellMin) * 1000 : NaN
 
-        radius: 8
-        color: AppTheme.colorCardBg
-
-        Column {
-            id: contentCol
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.margins: 8
-            spacing: 0
-
-            Text {
-                text: labelText
-                color: AppTheme.colorNeut70
-                font.pixelSize: AppTheme.sizeExtraSmall
-                font.family: AppTheme.fontMono
-                font.letterSpacing: 2
-            }
-
-            Row {
-                spacing: 8
-                Text {
-                    id: valTxt
-                    text: valueText
-                    color: AppTheme.colorNeut100
-                    font.pixelSize: 40
-                    font.family: AppTheme.fontMono
-                    font.bold: true
-                }
-                Text {
-                    text: unitText
-                    color: AppTheme.colorActn
-                    font.pixelSize: AppTheme.sizeExtraSmall
-                    font.family: AppTheme.fontMono
-                    anchors.baseline: valTxt.baseline
-                }
-            }
-        }
+    readonly property real cellMean: {
+        if (cellVoltages.length === 0)
+            return NaN
+        let sum = 0
+        for (var i = 0; i < cellVoltages.length; i++)
+            sum += cellVoltages[i]
+        return sum / cellVoltages.length
     }
 
-    component SensorRow: Item {
-        property string signalName
-        property string sourceName
-        property string valText
-        property string unitText
-        property string ageText
-        property string stateText: "OK"
-        property color stateColor: AppTheme.colorActn
+    // Bar chart: +-barSpanV around the average, flat bars = balanced pack
+    readonly property real barSpanV: 0.060
+    // Deviation where a bar starts turning red / is fully red
+    readonly property real devStartV: 0.015
+    readonly property real devFullV: 0.030
 
-        width: parent.width
-        height: 50
-
-        Rectangle {
-            width: parent.width
-            height: 1
-            anchors.bottom: parent.bottom
-            color: AppTheme.colorNeut30
-        }
-
-        RowLayout {
-            anchors.fill: parent
-            anchors.bottomMargin: 5
-
-            Column {
-                Layout.fillWidth: true
-                Text {
-                    width: parent.width
-                    text: signalName
-                    color: AppTheme.colorNeut100
-                    font.pixelSize: AppTheme.sizeSmall
-                }
-                Text {
-                    width: parent.width
-                    text: sourceName
-                    color: AppTheme.colorNeut60
-                    font.pixelSize: AppTheme.sizeExtraSmall
-                    font.family: AppTheme.fontMono
-                }
-            }
-
-            Item {
-                Layout.preferredWidth: 120
-                Layout.fillHeight: true
-
-                Row {
-                    anchors.centerIn: parent
-                    spacing: 4
-                    Text {
-                        id: rowVal
-                        text: valText
-                        color: AppTheme.colorNeut100
-                        font.pixelSize: AppTheme.sizeSmall
-                        font.family: AppTheme.fontMono
-                        font.bold: true
-                    }
-                    Text {
-                        text: unitText
-                        color: AppTheme.colorNeut70
-                        font.pixelSize: AppTheme.sizeExtraSmall
-                        font.family: AppTheme.fontMono
-                        anchors.baseline: rowVal.baseline
-                    }
-                }
-            }
-
-            Text {
-                Layout.preferredWidth: 80
-                horizontalAlignment: Text.AlignHCenter
-                text: ageText
-                color: AppTheme.colorNeut70
-                font.pixelSize: AppTheme.sizeExtraSmall
-                font.family: AppTheme.fontMono
-            }
-            Text {
-                Layout.preferredWidth: 40
-                horizontalAlignment: Text.AlignHCenter
-                text: stateText
-                color: stateColor
-                font.pixelSize: AppTheme.sizeExtraSmall
-                font.family: AppTheme.fontMono
-            }
-        }
+    // Color for one cell voltage: too high or too low is a problem
+    function cellColor(v) {
+        if (isNaN(v))
+            return AppTheme.colorNeut60
+        if (v >= cellAlertHigh || v <= cellAlertLow)
+            return AppTheme.colorAlert
+        if (v >= cellWarnHigh || v <= cellWarnLow)
+            return AppTheme.colorWarn
+        return AppTheme.colorNeut100
     }
 
-    component SysBar: Column {
-        property string labelText
-        property string pctText
-        property real fillRatio: 0.5
-
-        width: parent.width
-        spacing: 4
-
-        RowLayout {
-            width: parent.width
-            Text {
-                text: labelText
-                color: AppTheme.colorNeut70
-                font.pixelSize: AppTheme.sizeExtraSmall
-                font.family: AppTheme.fontMono
-                Layout.fillWidth: true
-            }
-            Text {
-                text: pctText
-                color: AppTheme.colorNeut100
-                font.pixelSize: AppTheme.sizeExtraSmall
-                font.family: AppTheme.fontMono
-            }
-        }
-
-        Rectangle {
-            width: parent.width
-            height: 4
-            color: AppTheme.colorNeut30
-            Rectangle {
-                width: parent.width * fillRatio
-                height: parent.height
-                color: AppTheme.colorActn
-            }
-        }
+    // Blue when close to the pack average, fading to red as it drifts away.
+    // Absolute limits always force full red.
+    function cellBarColor(v) {
+        if (isNaN(v) || isNaN(cellMean))
+            return AppTheme.colorNeut30
+        if (v >= cellAlertHigh || v <= cellAlertLow)
+            return AppTheme.colorAlert
+        let d = Math.abs(v - cellMean)
+        let t = Math.min(Math.max((d - devStartV) / (devFullV - devStartV), 0),
+                         1)
+        let a = AppTheme.colorPrm
+        let b = AppTheme.colorAlert
+        return Qt.rgba(a.r + (b.r - a.r) * t, a.g + (b.g - a.g) * t,
+                       a.b + (b.b - a.b) * t, 1)
     }
 
-    component DigitalIndicator: Row {
-        property string label
-        property bool isActive: false
-
-        spacing: 8
-
-        Rectangle {
-            width: 12
-            height: 12
-            radius: 6
-            color: isActive ? AppTheme.colorActn : AppTheme.colorNeut30
-            anchors.verticalCenter: parent.verticalCenter
-        }
-
-        Text {
-            text: label
-            color: isActive ? AppTheme.colorNeut100 : AppTheme.colorNeut70
-            font.pixelSize: AppTheme.sizeExtraSmall
-            font.family: AppTheme.fontMono
-            anchors.verticalCenter: parent.verticalCenter
-        }
+    // Bar height as 0..1 around the average (0.5 = on the average)
+    function cellRatio(v) {
+        if (isNaN(v) || isNaN(cellMean))
+            return 0
+        return Math.min(Math.max(0.5 + (v - cellMean) / (2 * barSpanV), 0), 1)
     }
 
-    // ==========================================
-    // MAIN LAYOUT
-    // ==========================================
+    function volts(v) {
+        return isNaN(v) ? "--" : Number(v).toFixed(3)
+    }
+
+    // Header
+    // Header
     Item {
         id: headerArea
         anchors {
@@ -232,6 +112,7 @@ Rectangle {
             font.bold: true
         }
 
+        // Connection / state badge
         StatusBadge {
             anchors {
                 right: parent.right
@@ -255,6 +136,7 @@ Rectangle {
         }
     }
 
+    // Content
     RowLayout {
         anchors {
             top: headerArea.bottom
@@ -265,213 +147,124 @@ Rectangle {
         }
         spacing: 10
 
-        // LEFT COLUMN
+        // Left
         Column {
             Layout.preferredWidth: 175
             Layout.fillHeight: true
             spacing: 10
 
-            QuickStat {
-                labelText: "Pack Voltage"
+            StatCard {
+                labelText: "Pack voltage"
                 // TODO: Change
                 valueText: UsbDashReceiver.dashData.rpm
                 unitText: "V"
             }
-            QuickStat {
+            StatCard {
                 labelText: "Pack current"
                 // TODO: Change
                 valueText: UsbDashReceiver.dashData.throttlePercent
                 unitText: "A"
             }
-            QuickStat {
-                labelText: "Cell delta"
-                // TODO: Change
-                valueText: UsbDashReceiver.dashData.throttlePercent
-                unitText: "mV"
-            }
-            CustomButton {
-                iconSource: "qrc:/assets/CellsIcon.svg"
-                onClicked: {
-                    console.log("Settings button clicked!");
-                }
-            }
         }
 
+        // Separator left to middle
         Rectangle {
             Layout.preferredWidth: 1
             Layout.fillHeight: true
             color: AppTheme.colorNeut30
         }
 
-        // MIDDLE COLUMN
-        Column {
+        // Middle
+        ColumnLayout {
             Layout.fillWidth: true
             Layout.minimumWidth: 300
             Layout.fillHeight: true
             spacing: 10
 
-            Row {}
-
-            RowLayout {
-                width: parent.width
-
-                Text {
-                    text: "Sensor"
-                    color: AppTheme.colorNeut100
-                    font.pixelSize: AppTheme.sizeSmall
-                    font.bold: true
-                    Layout.fillWidth: true
-                }
-
-
-                /*Text {
-                    text: "5 / 5 VALID"
-                    color: AppTheme.colorActn
-                    font.pixelSize: AppTheme.sizeExtraSmall
-                    font.family: AppTheme.fontMono
-                }*/
-            }
-
-            RowLayout {
-                width: parent.width
-                Text {
-                    text: "SIGNAL / SOURCE"
-                    color: AppTheme.colorNeut60
-                    font.pixelSize: AppTheme.sizeExtraSmall
-                    Layout.fillWidth: true
-                    horizontalAlignment: Text.AlignHCenter
-                }
-                Text {
-                    text: "VALUE"
-                    color: AppTheme.colorNeut60
-                    font.pixelSize: AppTheme.sizeExtraSmall
-                    Layout.preferredWidth: 120
-                    horizontalAlignment: Text.AlignHCenter
-                }
-                Text {
-                    text: "AGE"
-                    color: AppTheme.colorNeut60
-                    font.pixelSize: AppTheme.sizeExtraSmall
-                    Layout.preferredWidth: 80
-                    horizontalAlignment: Text.AlignHCenter
-                }
-                Text {
-                    text: "STATE"
-                    color: AppTheme.colorNeut60
-                    font.pixelSize: AppTheme.sizeExtraSmall
-                    Layout.preferredWidth: 40
-                    horizontalAlignment: Text.AlignHCenter
-                }
-            }
-
             Rectangle {
-                width: parent.width
-                height: 1
-                color: AppTheme.colorNeut30
-            }
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                radius: 8
+                color: AppTheme.colorCardBg
 
-            Flickable {
-                width: parent.width
-                height: 200
-                clip: true
-                contentHeight: sensorCol.implicitHeight
+                ColumnLayout {
+                    anchors.fill: parent
+                    anchors.margins: 12
+                    spacing: 8
 
-                Column {
-                    id: sensorCol
-                    width: parent.width
+                    RowLayout {
+                        Layout.fillWidth: true
 
-                    SensorRow {
-                        signalName: "RPM"
-                        sourceName: "VESC CAN"
-                        valText: UsbDashReceiver.dashData.rpm
-                        unitText: "rpm"
+                        Text {
+                            text: "CELLS VS PACK AVERAGE"
+                            color: AppTheme.colorNeut70
+                            font.pixelSize: AppTheme.sizeExtraSmall
+                            font.family: AppTheme.fontMono
+                            font.letterSpacing: 2
+                            Layout.fillWidth: true
+                        }
+                        Text {
+                            text: "AVG " + debugRoot.volts(
+                                      debugRoot.cellMean) + " V   ±"
+                                  + (debugRoot.barSpanV * 1000).toFixed(
+                                      0) + " mV"
+                            color: AppTheme.colorNeut70
+                            font.pixelSize: AppTheme.sizeExtraSmall
+                            font.family: AppTheme.fontMono
+                        }
                     }
-                    SensorRow {
-                        signalName: "Motor Current"
-                        sourceName: "VESC CAN"
-                        valText: UsbDashReceiver.dashData.motorCurrent
-                        unitText: "Amp"
-                    }
-                    SensorRow {
-                        signalName: "Input Current"
-                        sourceName: "VESC CAN"
-                        valText: UsbDashReceiver.dashData.inputCurrent
-                        unitText: "Amp"
-                    }
-                    SensorRow {
-                        signalName: "Throttle"
-                        sourceName: "ADC"
-                        valText: UsbDashReceiver.dashData.throttlePercent
-                        unitText: "%"
-                    }
-                    SensorRow {
-                        signalName: "Input Voltage"
-                        sourceName: "VESC CAN"
-                        valText: UsbDashReceiver.dashData.inputVoltage
-                        unitText: "V"
-                    }
-                    SensorRow {
-                        signalName: "Mosfet Temp"
-                        sourceName: "ADC"
-                        valText: UsbDashReceiver.dashData.mosfetTemp
-                        unitText: "°C"
-                    }
-                    SensorRow {
-                        signalName: "Motor Temp"
-                        sourceName: "ADC"
-                        valText: UsbDashReceiver.dashData.motorTemp
-                        unitText: "°C"
-                    }
-                }
 
-                ScrollBar.vertical: ScrollBar {
-                    policy: ScrollBar.AsNeeded
+                    RowLayout {
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
+                        spacing: 0
 
-                    contentItem: Rectangle {
-                        implicitWidth: 4
-                        radius: 2
-                        color: AppTheme.colorNeut60
-                        opacity: parent.active ? 0.8 : 0.0
-                        Behavior on opacity {
-                            NumberAnimation {
-                                duration: 300
+                        // One bar per cell
+                        Repeater {
+                            model: 16
+
+                            CellBar {
+                                readonly property real cellVoltage: index < debugRoot.cellVoltages.length ? debugRoot.cellVoltages[index] : NaN
+
+                                Layout.fillWidth: true
+                                Layout.fillHeight: true
+                                cellIndex: index
+                                voltageText: debugRoot.volts(cellVoltage)
+                                barColor: debugRoot.cellBarColor(cellVoltage)
+                                ratio: debugRoot.cellRatio(cellVoltage)
                             }
                         }
                     }
                 }
             }
 
-            Column {
-                width: parent.width
-                spacing: 15
-                Text {
-                    text: "Digital"
-                    color: AppTheme.colorNeut100
-                    font.pixelSize: AppTheme.sizeSmall
-                    font.bold: true
+            // Min, max and delta
+            RowLayout {
+                Layout.fillWidth: true
+                spacing: 10
+
+                CellStat {
+                    Layout.fillWidth: true
+                    labelText: "MIN CELL"
+                    valueText: debugRoot.volts(debugRoot.cellMin)
+                    unitText: "V"
+                    valueColor: debugRoot.cellColor(debugRoot.cellMin)
                 }
-
-                GridLayout {
-                    columns: 5
-                    columnSpacing: 20
-                    rowSpacing: 10
-
-                    DigitalIndicator {
-                        label: "Brake"
-                        isActive: UsbDashReceiver.dashData.isBrakePressed
-                    }
-                    DigitalIndicator {
-                        label: "EStop"
-                        isActive: UsbDashReceiver.dashData.isEStopPressed
-                    }
-                    DigitalIndicator {
-                        label: "Fwd"
-                        isActive: UsbDashReceiver.dashData.isForwardDirection
-                    }
-                    DigitalIndicator {
-                        label: "Start"
-                        isActive: UsbDashReceiver.dashData.isStartPressed
-                    }
+                CellStat {
+                    Layout.fillWidth: true
+                    labelText: "MAX CELL"
+                    valueText: debugRoot.volts(debugRoot.cellMax)
+                    unitText: "V"
+                    valueColor: debugRoot.cellColor(debugRoot.cellMax)
+                }
+                CellStat {
+                    Layout.fillWidth: true
+                    labelText: "DELTA"
+                    valueText: isNaN(
+                                   debugRoot.cellDeltaMv) ? "--" : Number(
+                                                                debugRoot.cellDeltaMv).toFixed(
+                                                                0)
+                    unitText: "mV"
                 }
             }
         }
@@ -482,67 +275,42 @@ Rectangle {
             color: AppTheme.colorNeut30
         }
 
-        // RIGHT COLUMN
+        // Right
         ColumnLayout {
-            Layout.preferredWidth: 180
+            Layout.preferredWidth: 220
             Layout.fillHeight: true
-            spacing: 30
+            spacing: 20
 
-            Column {
+            Text {
+                text: "Temperature"
+                color: AppTheme.colorNeut100
+                font.pixelSize: AppTheme.sizeSmall
+                font.bold: true
+            }
+
+            // Temperature bars
+            TempBar {
                 Layout.fillWidth: true
-                spacing: 15
-                Text {
-                    text: "CAN bus"
-                    color: AppTheme.colorNeut100
-                    font.pixelSize: AppTheme.sizeSmall
-                    font.bold: true
-                }
+                labelText: "MOSFET"
+                value: Number(UsbDashReceiver.dashData.mosfetTemp)
+                warnAt: 80
+                alertAt: 90
+            }
 
-                RowLayout {
-                    width: parent.width
-                    Column {
-                        Layout.fillWidth: true
-                        Text {
-                            text: "RX"
-                            color: AppTheme.colorNeut70
-                            font.pixelSize: AppTheme.sizeExtraSmall
-                        }
-                        Text {
-                            text: UsbDashReceiver.dashData.canRxCount
-                            color: AppTheme.colorNeut100
-                            font.pixelSize: AppTheme.sizeSmall
-                            font.bold: true
-                        }
-                    }
-                    Column {
-                        Layout.fillWidth: true
-                        Text {
-                            text: "TX"
-                            color: AppTheme.colorNeut70
-                            font.pixelSize: AppTheme.sizeExtraSmall
-                        }
-                        Text {
-                            text: UsbDashReceiver.dashData.canTxCount
-                            color: AppTheme.colorNeut100
-                            font.pixelSize: AppTheme.sizeSmall
-                            font.bold: true
-                        }
-                    }
-                    Column {
-                        Layout.fillWidth: true
-                        Text {
-                            text: "ERRORS"
-                            color: AppTheme.colorNeut70
-                            font.pixelSize: AppTheme.sizeExtraSmall
-                        }
-                        Text {
-                            text: UsbDashReceiver.dashData.canTxFailCount
-                            color: AppTheme.colorActn
-                            font.pixelSize: AppTheme.sizeSmall
-                            font.bold: true
-                        }
-                    }
-                }
+            TempBar {
+                Layout.fillWidth: true
+                labelText: "MOTOR"
+                value: Number(UsbDashReceiver.dashData.motorTemp)
+                warnAt: 90
+                alertAt: 110
+            }
+
+            TempBar {
+                Layout.fillWidth: true
+                labelText: "BMS"
+                value: Number(UsbDashReceiver.dashData.bmsTemp)
+                warnAt: 45
+                alertAt: 55
             }
 
             Rectangle {
@@ -556,6 +324,7 @@ Rectangle {
                 Layout.fillWidth: true
             }
 
+            // Run time
             Text {
                 Layout.alignment: Qt.AlignRight | Qt.AlignBottom
                 Layout.rightMargin: 10

@@ -13,6 +13,7 @@ Rectangle {
     border.color: statusColor
     border.width: 1
 
+    // Label
     Text {
         id: badgeText
         anchors.centerIn: parent

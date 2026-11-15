@@ -14,7 +14,7 @@ struct ThrottleMapConfig
 
     // Ratio of maxAmps per sec
     float riseRatePerS = 1.5f;
-    float fallRatePerS = 4.0f
+    float fallRatePerS = 4.0f;
 };
 
 class ThrottleMapper
@@ -24,9 +24,15 @@ class ThrottleMapper
 
     float update(float throttle, float dtS);
 
-    void reset() { m_out = 0.0f; }
+    void reset()
+    {
+        m_out = 0.0f;
+    }
 
-    float getOutput() const { return m_out; }
+    float getOutput() const
+    {
+        return m_out;
+    }
 
   private:
     ThrottleMapConfig m_config;

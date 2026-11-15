@@ -87,6 +87,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Infrastructure/DashTransmitter.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Infrastructure/StmLogger.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/vesc.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Logic/ThrottleMapper.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Logic/VcuStateInit.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Logic/VcuStateStandby.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/App/Src/Logic/VcuStatePrecharge.cpp

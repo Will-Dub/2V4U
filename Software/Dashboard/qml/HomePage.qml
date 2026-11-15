@@ -4,43 +4,7 @@ import Dashboard
 Item {
     id: root
 
-    component InfoBlock: Column {
-        required property string labelText
-        required property string valueText
-        property string valueUnit: ""
-        property color valueColor: AppTheme.colorNeut100
-
-        spacing: 4
-
-        Text {
-            text: labelText
-            color: AppTheme.colorNeut70
-            font.pixelSize: AppTheme.sizeExtraSmall
-            font.bold: true
-        }
-        Row {
-            spacing: 4
-
-            Text {
-                id: valText
-                text: valueText
-                color: valueColor
-                font.pixelSize: AppTheme.sizeNormal
-                font.family: AppTheme.fontMono
-                font.bold: true
-            }
-
-            Text {
-                text: valueUnit
-                color: AppTheme.colorNeut70
-                font.pixelSize: AppTheme.sizeExtraSmall
-                font.bold: true
-
-                anchors.baseline: valText.baseline
-            }
-        }
-    }
-
+    // Gauges
     Item {
         id: gaugeContainer
         anchors {
@@ -56,11 +20,13 @@ Item {
 
             spacing: 60
 
+            // Speed
             SpeedGauge {
                 width: 350
                 height: 350
                 speedValue: 0
             }
+            // Rpm
             RpmGauge {
                 width: 350
                 height: 350
@@ -69,6 +35,7 @@ Item {
         }
     }
 
+    // Separator
     Rectangle {
         id: separator
         height: 2
@@ -84,6 +51,7 @@ Item {
         }
     }
 
+    // Bottom info
     Row {
         id: bottomInfo
         anchors {
@@ -97,6 +65,7 @@ Item {
 
         spacing: (width - (120 * 4)) / 3
 
+        // Motor temp
         InfoBlock {
             width: 120
             labelText: "MOTOR"
@@ -106,6 +75,7 @@ Item {
                         > 85 ? AppTheme.colorSec : AppTheme.colorNeut100
         }
 
+        // Mosfet temp
         InfoBlock {
             width: 120
             labelText: "MOSFET"
@@ -115,6 +85,7 @@ Item {
                         > 75 ? AppTheme.colorSec : AppTheme.colorNeut100
         }
 
+        // Throttle
         InfoBlock {
             width: 120
             labelText: "THROTTLE"
@@ -122,6 +93,7 @@ Item {
             valueUnit: "%"
         }
 
+        // Brake
         InfoBlock {
             width: 120
             labelText: "BRAKE"

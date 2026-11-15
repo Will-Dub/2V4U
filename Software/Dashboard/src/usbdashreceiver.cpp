@@ -1,15 +1,27 @@
 #include "usbdashreceiver.h"
 
+constexpr bool isSet(unsigned flags, int bit)
+{
+    return (flags >> bit) & 1u;
+}
+
 UsbDashReceiver::UsbDashReceiver(QObject *parent)
-    : QObject{parent}
+    : QObject{parent},
+    m_serialPort(new QSerialPort(this)),
+    m_reconnectTimer(new QTimer(this)),
+    m_publishTimer(new QTimer(this))
 {
     m_serialPort = new QSerialPort(this);
     m_reconnectTimer = new QTimer(this);
     m_reconnectTimer->setInterval(1000);
+    m_publishTimer->setInterval(33);
 
     connect(m_serialPort, &QSerialPort::errorOccurred, this, &UsbDashReceiver::handleError);
     connect(m_reconnectTimer, &QTimer::timeout, this, &UsbDashReceiver::handleAutoreconnect);
     connect(m_serialPort, &QSerialPort::readyRead, this, &UsbDashReceiver::handleRead);
+    connect(m_publishTimer, &QTimer::timeout, this, &UsbDashReceiver::publish);
+
+    m_publishTimer->start();
 }
 
 void UsbDashReceiver::start(quint16 targetVid, quint16 targetPid)
@@ -19,21 +31,23 @@ void UsbDashReceiver::start(quint16 targetVid, quint16 targetPid)
     handleAutoreconnect();
 }
 
-DashData UsbDashReceiver::dashData() const { return m_data; }
+const DashData& UsbDashReceiver::dashData() const { return m_data; }
 
 bool UsbDashReceiver::isConnected() const { return m_serialPort->isOpen(); }
 
+bool UsbDashReceiver::isDataOld() const
+{
+    return m_isDataOld;
+}
+
 void UsbDashReceiver::handleError(QSerialPort::SerialPortError error)
 {
-    if (error == QSerialPort::ResourceError) {
-        qWarning() << "Serial port error " << m_serialPort->errorString();
-        m_serialPort->close();
-        emit connectionStatusChanged();
+    if (error != QSerialPort::ResourceError) return;
 
-        if (!m_reconnectTimer->isActive()) {
-            m_reconnectTimer->start();
-        }
-    }
+    qWarning() << "Serial port error " << m_serialPort->errorString();
+    m_serialPort->close();
+    emit connectionStatusChanged();
+    startReconnecting();
 }
 
 void UsbDashReceiver::handleAutoreconnect()
@@ -73,9 +87,31 @@ void UsbDashReceiver::handleAutoreconnect()
         emit connectionStatusChanged();
     } else {
         qWarning() << "Found the device but failed to open";
-        if (!m_reconnectTimer->isActive()) {
-            m_reconnectTimer->start();
-        }
+        startReconnecting();
+    }
+}
+
+void UsbDashReceiver::publish()
+{
+    const bool fresh = m_sinceLastPacket.isValid()
+    && !m_sinceLastPacket.hasExpired(DATA_LIFESPAN_MS);
+    if (fresh != m_isDataOld) {
+        m_isDataOld = fresh;
+        emit dataOldChanged();
+    }
+
+    if (!m_newDataFlag)
+        return;
+
+    m_newDataFlag = false;
+    m_data = m_pendingData;
+    emit dashDataChanged();
+}
+
+void UsbDashReceiver::startReconnecting()
+{
+    if (!m_reconnectTimer->isActive()) {
+        m_reconnectTimer->start();
     }
 }
 
@@ -86,49 +122,75 @@ void UsbDashReceiver::handleRead()
         if (line.isEmpty()) continue;
 
         if (line.startsWith("$VCU,")) {
-            parseVcuPacket(line);
-        } else {
+            parseVcuPacket(line.split(','));
+        }
+        else if (line.startsWith("$BMS,")) {
+            parseVcuPacket(line.split(','));
+        }
+        else {
             emit debugLogReceived(line);
         }
     }
 }
 
-void UsbDashReceiver::parseVcuPacket(const QString& line)
+void UsbDashReceiver::parseVcuPacket(const QStringList &parts)
 {
-    QStringList parts = line.split(',');
+    if (parts.size() != VcuFieldCount)
+        return;
 
-    if (parts.size() != 18) return;
+    m_pendingData.tickMs = parts[VcuTick].toInt();
+    m_pendingData.stateStr = stateToString(parts[VcuState].toUInt());
 
-    m_data.tickMs = parts[1].toInt();
-    m_data.stateStr = stateToString(parts[2].toUInt());
-    m_data.rpm = parts[3].toInt();
-    m_data.motorTemp = parts[4].toFloat();
-    m_data.mosfetTemp = parts[5].toFloat();
-    m_data.accelX = parts[6].toFloat();
-    m_data.accelY = parts[7].toFloat();
-    m_data.accelZ = parts[8].toFloat();
-    m_data.throttlePercent = parts[9].toFloat();
-    m_data.motorCurrent = parts[12].toFloat();
-    m_data.inputCurrent = parts[13].toFloat();
-    m_data.inputVoltage = parts[14].toFloat();
-    m_data.canRxCount = parts[15].toInt();
-    m_data.canTxCount = parts[16].toInt();
-    m_data.canTxFailCount = parts[17].toInt();
+    m_pendingData.rpm = parts[VcuRpm].toInt();
+    m_pendingData.motorTemp = parts[VcuMotorTemp].toFloat();
+    m_pendingData.mosfetTemp = parts[VcuMosfetTemp].toFloat();
+    m_pendingData.motorCurrent = parts[VcuMotorCurrent].toFloat();
+    m_pendingData.inputCurrent = parts[VcuInputCurrent].toFloat();
+    m_pendingData.inputVoltage = parts[VcuInputVoltage].toFloat();
+    m_pendingData.canRxCount = parts[VcuCanRx].toInt();
+    m_pendingData.canTxCount = parts[VcuCanTx].toInt();
+    m_pendingData.canTxFailCount = parts[VcuCanTxFail].toInt();
 
-    uint8_t inputFlags = parts[10].toUInt();
-    uint8_t outputFlags = parts[11].toUInt();
+    m_pendingData.accelX = parts[VcuAccelX].toFloat();
+    m_pendingData.accelY = parts[VcuAccelY].toFloat();
+    m_pendingData.accelZ = parts[VcuAccelZ].toFloat();
 
-    m_data.isBrakePressed = (inputFlags & (1 << 0)) != 0;
-    m_data.isStartPressed = (inputFlags & (1 << 1)) != 0;
-    m_data.isEStopPressed = (inputFlags & (1 << 2)) != 0;
-    m_data.isForwardDirection = (inputFlags & (1 << 3)) != 0;
-    m_data.isThrottleValid = (inputFlags & (1 << 4)) != 0;
-    m_data.isMotorEnabled = (outputFlags & (1 << 0)) != 0;
-    m_data.isPrechargeOn  = (outputFlags & (1 << 1)) != 0;
-    m_data.isContactorOn  = (outputFlags & (1 << 2)) != 0;
+    m_pendingData.throttlePercent = parts[VcuThrottle].toFloat();
 
+    const unsigned in = parts[VcuInputFlags].toUInt();
+    m_pendingData.isBrakePressed = isSet(in, InBrake);
+    m_pendingData.isStartPressed = isSet(in, InStart);
+    m_pendingData.isEStopPressed = isSet(in, InEStop);
+    m_pendingData.isForwardDirection = isSet(in, InForward);
+    m_pendingData.isThrottleValid = isSet(in, InThrottleValid);
 
-    emit dashDataChanged();
+    const unsigned out = parts[VcuOutputFlags].toUInt();
+    m_pendingData.isMotorEnabled = isSet(out, OutMotor);
+    m_pendingData.isPrechargeOn = isSet(out, OutPrecharge);
+    m_pendingData.isContactorOn = isSet(out, OutContactor);
+
+    m_sinceLastPacket.restart();
+    m_newDataFlag = true;
+}
+
+void UsbDashReceiver::parseBMSPacket(const QStringList &parts)
+{
+    const int cellCount = parts.size() - BmsFirstCell;
+    if (cellCount < 0 || cellCount > BMS_MAX_CELL_COUNT)
+        return;
+
+    m_pendingData.packVoltage = parts[BmsPackVoltage].toFloat();
+    m_pendingData.packCurrent = parts[BmsPackCurrent].toFloat();
+    m_pendingData.bmsTemp = parts[BmsTemp].toFloat();
+
+    // Convert to volt
+    QVariantList cells;
+    for (int i = 0; i < cellCount; ++i) {
+        cells.append(parts[BmsFirstCell + i].toInt() / 1000.0);
+    }
+    m_pendingData.cellVoltages = cells;
+
+    m_newDataFlag = true;
 }
 
 QString UsbDashReceiver::stateToString(uint8_t stateId)

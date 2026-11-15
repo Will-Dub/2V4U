@@ -10,9 +10,11 @@ Item {
     required property real speedValue
     property real maxSpeed: 100
 
+    // Arc layout
     property real startAngleOffset: 145
     property real totalSweepAngle: 250
 
+    // Colors
     property color colorTrack: AppTheme.colorNeut30
     property color colorFill: AppTheme.colorActn
     property color colorText: AppTheme.colorNeut100

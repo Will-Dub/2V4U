@@ -126,6 +126,7 @@ static void gatherInputs(App::Logic::VcuInputs& inputs, uint32_t currentTickMs)
     }
 
     inputs.vesc = vescDriver.getData();
+    inputs.bms = bmsDriver.getData();
 }
 
 static void applyOutputs(App::Logic::VcuOutputs& outputs, uint32_t currentTickMs)
@@ -145,7 +146,7 @@ static void applyOutputs(App::Logic::VcuOutputs& outputs, uint32_t currentTickMs
         vescDriver.sendAmpCommand(0.0f);
     }
 
-    buzzer.set(outputs.buzzer.mode, outputs.buzzer.beepMs, outputs.buzzer.pauseMs);
+    // buzzer.set(outputs.buzzer.mode, outputs.buzzer.beepMs, outputs.buzzer.pauseMs);
 }
 
 extern "C" void App_Init(volatile uint16_t* throttleDmaPtr)
@@ -169,7 +170,19 @@ extern "C" void App_Run(void)
     vescDriver.processSlots();
     bmsDriver.process(currentTickMs);
 
-    if (!tick)
+    static uint32_t lastLogMs = 0;
+    if (HAL_GetTick() - lastLogMs >= 1000) {
+        lastLogMs = HAL_GetTick();
+        const auto& b = bmsDriver.getData();
+        stmLogger.infof("BMS valid=%d V=%d cV err=%lu", b.isValid, (int)(b.packVoltageV * 100.0f),
+                        (unsigned long)b.rxErrorCount);
+        stmLogger.infof("n=%u %02X %02X %02X %02X %02X %02X %02X %02X", bmsDriver.dbgSize,
+                        bmsDriver.dbgBytes[0], bmsDriver.dbgBytes[1], bmsDriver.dbgBytes[2],
+                        bmsDriver.dbgBytes[3], bmsDriver.dbgBytes[4], bmsDriver.dbgBytes[5],
+                        bmsDriver.dbgBytes[6], bmsDriver.dbgBytes[7]);
+    }
+
+    /*if (!tick)
         return;
 
     tick = false;
@@ -184,7 +197,7 @@ extern "C" void App_Run(void)
     applyOutputs(outputs, currentTickMs);
 
     dashTransmitter.process(vcuController.getCurrentVcuStateId(), inputs, outputs);
-    buzzer.update(currentTickMs);
+    buzzer.update(currentTickMs);*/
 
     HAL_IWDG_Refresh(&hiwdg);
 }

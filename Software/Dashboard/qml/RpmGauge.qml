@@ -10,11 +10,13 @@ Item {
     property real maxRpm: 9000
     property real redlineRpm: 8000
 
+    // Gauge layout
     readonly property int segments: 45
     readonly property real startAngle: 160
     readonly property real sweepAngle: 220
     readonly property real gaugeSize: height - 20
 
+    // Smoothed rpm
     property real displayRpm: rpmValue
     Behavior on displayRpm {
         NumberAnimation {
@@ -23,13 +25,16 @@ Item {
         }
     }
 
+    // Redline state
     readonly property bool inRedline: rpmValue >= redlineRpm
     readonly property real load: rpmValue / maxRpm
 
+    // Thousands separator
     function fmt(n) {
         return Math.round(n).toLocaleString(Qt.locale(), 'f', 0)
     }
 
+    // Segments
     Repeater {
         model: root.segments
 
@@ -69,6 +74,7 @@ Item {
         }
     }
 
+    // Scale numbers
     Repeater {
         model: 10
 
@@ -93,6 +99,7 @@ Item {
         }
     }
 
+    // Rpm readout
     Column {
         id: readout
         anchors.centerIn: parent
@@ -100,6 +107,7 @@ Item {
         property real pulse: 1
         opacity: root.inRedline ? pulse : 1
 
+        // Pulse in the redline
         SequentialAnimation on pulse {
             running: root.inRedline
             loops: Animation.Infinite
