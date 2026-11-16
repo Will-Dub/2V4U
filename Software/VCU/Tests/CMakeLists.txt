@@ -13,6 +13,7 @@ file(GLOB_RECURSE TEST_SRC CONFIGURE_DEPENDS Unit/*.cpp Integration/*.cpp)
 
 add_executable(vcu_tests
     ${LOGIC_SRC}
+    Unit/test_ThrottleMapper.cpp
     Unit/test_VcuStateDrive.cpp
     Unit/test_VcuStateFault.cpp
     Unit/test_VcuStatePrecharge.cpp

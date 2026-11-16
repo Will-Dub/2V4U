@@ -1,4 +1,5 @@
 #include "../../App/Inc/Logic/VcuStateFault.hpp"
+#include "Calibration.hpp"
 #include "FakeLogger.hpp"
 
 #include <gtest/gtest.h>
@@ -58,11 +59,25 @@ TEST_F(VcuStateFaultTest, GivenFaultState_WhenUpdate_ThenBuzzerAlarmLoops)
     EXPECT_EQ(out.buzzer.pauseMs, 2000);
 }
 
-TEST_F(VcuStateFaultTest, Given50Updates_WhenUpdateOnceMore_ThenBoardLedToggles)
+TEST_F(VcuStateFaultTest, GivenTimeZero_WhenUpdate_ThenBoardAndStartLedOn)
 {
-    for (int i = 0; i < 50; i++)
-        state.update(in, out);
-    const bool before = out.lights.boardLed;
+    in.tickMs = 0;
     state.update(in, out);
-    EXPECT_NE(out.lights.boardLed, before);
+    EXPECT_TRUE(out.lights.boardLed);
+    EXPECT_TRUE(out.lights.startLed);
+}
+
+TEST_F(VcuStateFaultTest, GivenOneBlinkPeriodElapsed_WhenUpdate_ThenLedsOff)
+{
+    in.tickMs = Calibration::FAULT_BLINK_MS;
+    state.update(in, out);
+    EXPECT_FALSE(out.lights.boardLed);
+    EXPECT_FALSE(out.lights.startLed);
+}
+
+TEST_F(VcuStateFaultTest, GivenTwoBlinkPeriodsElapsed_WhenUpdate_ThenLedsOnAgain)
+{
+    in.tickMs = 2 * Calibration::FAULT_BLINK_MS;
+    state.update(in, out);
+    EXPECT_TRUE(out.lights.boardLed);
 }

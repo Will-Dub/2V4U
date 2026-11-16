@@ -4,13 +4,6 @@
 
 #include <stdint.h>
 
-#define SPI_READ_BIT 0x80
-#define SPI_TIMEOUT_MS 5
-#define REG_WHO_AM_I 0x00
-#define REG_PWR_MGMT_1 0x06
-#define REG_INT_ENABLE 0x11
-#define REG_ACCEL_XOUT_H 0x2D
-
 namespace App::Drivers {
 
 class ImuDriver
@@ -22,6 +15,16 @@ class ImuDriver
                         float& tempC);
 
   private:
+    // SPI
+    static constexpr uint8_t SPI_READ_BIT = 0x80;
+    static constexpr uint32_t SPI_TIMEOUT_MS = 5;
+
+    // Registers
+    static constexpr uint8_t REG_WHO_AM_I = 0x00;
+    static constexpr uint8_t REG_PWR_MGMT_1 = 0x06;
+    static constexpr uint8_t REG_INT_ENABLE = 0x11;
+    static constexpr uint8_t REG_ACCEL_XOUT_H = 0x2D;
+
     SPI_HandleTypeDef& m_hspi;
     GPIO_TypeDef* m_csPort;
     uint16_t m_csPin;

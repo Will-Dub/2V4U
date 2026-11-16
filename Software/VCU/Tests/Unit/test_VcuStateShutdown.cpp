@@ -1,4 +1,5 @@
 #include "../../App/Inc/Logic/VcuStateShutdown.hpp"
+#include "Calibration.hpp"
 #include "FakeLogger.hpp"
 
 #include <gtest/gtest.h>
@@ -12,6 +13,12 @@ class VcuStateShutdownTest : public ::testing::Test
     VcuStateShutdown state{nullptr, logger};
     VcuInputs in{};
     VcuOutputs out{};
+
+    void SetUp() override
+    {
+        in.vesc.isOk = true;
+        in.bms.isOk = true;
+    }
 };
 
 TEST_F(VcuStateShutdownTest, GivenShutdownState_WhenGetId_ThenReturnsShutdown)
@@ -44,54 +51,30 @@ TEST_F(VcuStateShutdownTest, GivenRegenCurrentFlowing_WhenUpdate_ThenContactorSt
     state.update(in, out);
     EXPECT_TRUE(out.power.contactor);
 }
-
-TEST_F(VcuStateShutdownTest, GivenMotorCurrentExactly1A_WhenUpdate_ThenContactorOpens)
+TEST_F(VcuStateShutdownTest, GivenMotorCurrentExactlyAtThreshold_WhenUpdate_ThenContactorOpens)
 {
-    in.vesc.motorCurrent = 1.0f;
+    in.vesc.motorCurrent = Calibration::SHUTDOWN_CURRENT_A;
     state.update(in, out);
     EXPECT_FALSE(out.power.contactor);
     EXPECT_FALSE(out.power.prechargeRelay);
 }
 
-TEST_F(VcuStateShutdownTest, GivenVescStillTalking_WhenUpdate_ThenStateSame)
+TEST_F(VcuStateShutdownTest, GivenVescOk_WhenUpdate_ThenStateSame)
 {
-    in.tickMs = 100;
-    in.vesc.lastRxMs = 0;
     EXPECT_EQ(state.update(in, out), VcuStateId::SAME);
 }
 
-TEST_F(VcuStateShutdownTest, GivenVescSilentOver250ms_WhenUpdate_ThenGoesToStandby)
+TEST_F(VcuStateShutdownTest, GivenVescNotOk_WhenUpdate_ThenGoesToStandby)
 {
-    in.tickMs = 251;
-    in.vesc.lastRxMs = 0;
+    in.vesc.isOk = false;
     EXPECT_EQ(state.update(in, out), VcuStateId::STANDBY);
-}
-
-TEST_F(VcuStateShutdownTest, GivenVescSilentExactly250ms_WhenUpdateThenStateSame)
-{
-    in.tickMs = 250;
-    in.vesc.lastRxMs = 0;
-    EXPECT_EQ(state.update(in, out), VcuStateId::SAME);
-}
-
-TEST_F(VcuStateShutdownTest, GivenMoreThan10TxFailures_WhenUpdate_ThenGoesToStandby)
-{
-    in.vesc.followedTxFailCount = 11;
-    EXPECT_EQ(state.update(in, out), VcuStateId::STANDBY);
-}
-
-TEST_F(VcuStateShutdownTest, GivenExactly10TxFailures_WhenUpdate_ThenStateSame)
-{
-    in.vesc.followedTxFailCount = 10;
-    EXPECT_EQ(state.update(in, out), VcuStateId::SAME);
 }
 
 TEST_F(VcuStateShutdownTest,
-       GivenCurrentFlowingAndVescDead_WhenUpdate_ThenStateSameAndContactorClosed)
+       GivenCurrentFlowingAndVescNotOk_WhenUpdate_ThenContactorOpensAndStandby)
 {
     in.vesc.motorCurrent = 5.0f;
-    in.tickMs = 1000;
-    in.vesc.lastRxMs = 0;
-    EXPECT_EQ(state.update(in, out), VcuStateId::SAME);
-    EXPECT_TRUE(out.power.contactor);
+    in.vesc.isOk = false;
+    EXPECT_EQ(state.update(in, out), VcuStateId::STANDBY);
+    EXPECT_FALSE(out.power.contactor);
 }

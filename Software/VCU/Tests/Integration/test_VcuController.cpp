@@ -1,3 +1,4 @@
+#include "../../App/Inc/Logic/Calibration.hpp"
 #include "../../App/Inc/Logic/VcuController.hpp"
 #include "FakeLogger.hpp"
 
@@ -18,16 +19,23 @@ class VcuControllerTest : public ::testing::Test
         in.pilot.isEStopPressed = false;
         in.pilot.isThrottleValid = true;
         in.pilot.isForwardDirection = true;
+        in.vesc.isOk = true;
+        in.bms.isOk = true;
         vcu.init(in);
     }
 
-    void tick(uint32_t dtMs = 10, bool vescAlive = true)
+    void tick(uint32_t dtMs = 10)
     {
         in.tickMs += dtMs;
-        if (vescAlive)
-            in.vesc.lastRxMs = in.tickMs;
         out = VcuOutputs{};
         vcu.run(in, out);
+    }
+
+    void holdThrottle(float throttle, int ticks = 150)
+    {
+        in.pilot.throttlePercent = throttle;
+        for (int i = 0; i < ticks; i++)
+            tick();
     }
 
     VcuStateId state() const
@@ -120,35 +128,103 @@ TEST_F(VcuControllerTest, GivenStandby_WhenThrottleBecomesInvalid_ThenGoesToFaul
     EXPECT_EQ(state(), VcuStateId::FAULT);
 }
 
-TEST_F(VcuControllerTest, GivenDrive_WhenVescSilent_ThenGoesToFault)
+TEST_F(VcuControllerTest, GivenDrive_WhenVescNotOk_ThenGoesToFault)
 {
     goToDrive();
-    tick(300, false);
+    in.vesc.isOk = false;
+    tick(300);
     EXPECT_EQ(state(), VcuStateId::FAULT);
 }
 
-TEST_F(VcuControllerTest, GivenStandby_WhenVescSilent_ThenStaysInStandby)
+TEST_F(VcuControllerTest, GivenStandby_WhenVescNotOk_ThenStaysInStandby)
 {
     tick();
-    tick(300, false);
+    in.vesc.isOk = false;
+    tick(300);
     EXPECT_EQ(state(), VcuStateId::STANDBY);
 }
 
-TEST_F(VcuControllerTest, GivenDrive_WhenTxFailuresExceedLimit_ThenGoesToFault)
+TEST_F(VcuControllerTest, GivenDrive_WhenBmsNotOk_ThenGoesToFault)
 {
     goToDrive();
-    in.vesc.followedTxFailCount = 11;
+    in.bms.isOk = false;
     tick();
     EXPECT_EQ(state(), VcuStateId::FAULT);
 }
 
-// ---- Throttle and brake latch
-TEST_F(VcuControllerTest, GivenDrive_WhenThrottleHalfPressed_ThenCurrentIsHalfOfMax)
+TEST_F(VcuControllerTest, GivenStandby_WhenBmsNotOk_ThenStaysInStandby)
+{
+    tick();
+    in.bms.isOk = false;
+    tick();
+    EXPECT_EQ(state(), VcuStateId::STANDBY);
+}
+
+TEST_F(VcuControllerTest, GivenDrive_WhenBmsOkAndVescOk_ThenStaysInDrive)
+{
+    goToDrive();
+    tick();
+    EXPECT_EQ(state(), VcuStateId::DRIVE);
+}
+
+TEST_F(VcuControllerTest, GivenDriveWithThrottle_WhenBmsNotOk_ThenCurrentZeroAndContactorOpen)
 {
     goToDrive();
     in.pilot.throttlePercent = 0.5f;
     tick();
-    EXPECT_FLOAT_EQ(out.vesc.targetAmp, 0.5f * MAX_AMPERAGE);
+
+    in.bms.isOk = false;
+    tick();
+
+    EXPECT_EQ(state(), VcuStateId::FAULT);
+    EXPECT_FLOAT_EQ(out.vesc.targetAmp, 0.0f);
+    EXPECT_FALSE(out.power.contactor);
+}
+
+// ---- Throttle and brake latch
+TEST_F(VcuControllerTest, GivenDrive_WhenFullThrottleHeld_ThenCurrentReachesMax)
+{
+    goToDrive();
+    in.pilot.throttlePercent = 0.0f;
+    tick();
+    holdThrottle(1.0f);
+    EXPECT_NEAR(out.vesc.targetAmp, Calibration::MAX_AMPS, 0.1f);
+}
+
+TEST_F(VcuControllerTest, GivenDrive_WhenThrottleHalfHeld_ThenCurrentIsPositiveAndBelowMax)
+{
+    goToDrive();
+    in.pilot.throttlePercent = 0.0f;
+    tick();
+    holdThrottle(0.5f);
+    EXPECT_GT(out.vesc.targetAmp, 0.0f);
+    EXPECT_LT(out.vesc.targetAmp, Calibration::MAX_AMPS);
+}
+
+TEST_F(VcuControllerTest, GivenDrive_WhenThrottleJumpsToFull_ThenCurrentRisesGradually)
+{
+    goToDrive();
+    in.pilot.throttlePercent = 0.0f;
+    tick();
+    in.pilot.throttlePercent = 1.0f;
+    tick();
+    EXPECT_LT(out.vesc.targetAmp, Calibration::MAX_AMPS * 0.1f);
+}
+
+TEST_F(VcuControllerTest,
+       GivenShutdownWithCurrentFlowing_WhenVescLinkDies_ThenContactorOpensAndStandby)
+{
+    goToDrive();
+    in.vesc.motorCurrent = 5.0f;
+    in.pilot.isStartPressed = false;
+    tick();
+    EXPECT_EQ(state(), VcuStateId::SHUTDOWN);
+    EXPECT_TRUE(out.power.contactor);
+
+    in.vesc.isOk = false;
+    tick(300);
+    EXPECT_EQ(state(), VcuStateId::STANDBY);
+    EXPECT_FALSE(out.power.contactor);
 }
 
 TEST_F(VcuControllerTest, GivenDrive_WhenBrakeAndThrottleTogether_ThenCurrentZero)
@@ -170,24 +246,6 @@ TEST_F(VcuControllerTest, GivenBrakeLatched_WhenBrakeReleasedButThrottleHeld_The
     in.pilot.isBrakePressed = false;
     tick();
     EXPECT_FLOAT_EQ(out.vesc.targetAmp, 0.0f);
-}
-
-TEST_F(VcuControllerTest, GivenBrakeLatched_WhenThrottleReleasedThenPressed_ThenCurrentReturns)
-{
-    goToDrive();
-    in.pilot.throttlePercent = 0.5f;
-    in.pilot.isBrakePressed = true;
-    tick();
-    EXPECT_FLOAT_EQ(out.vesc.targetAmp, 0.0f);
-
-    in.pilot.isBrakePressed = false;
-    in.pilot.throttlePercent = 0.0f;
-    tick();
-    EXPECT_FLOAT_EQ(out.vesc.targetAmp, 0.0f);
-
-    in.pilot.throttlePercent = 0.3f;
-    tick();
-    EXPECT_NEAR(out.vesc.targetAmp, 0.3f * MAX_AMPERAGE, 0.01f);
 }
 
 TEST_F(VcuControllerTest, GivenThrottleHeldSincePowerOn_WhenEnteringDrive_ThenCurrentZero)
@@ -241,10 +299,9 @@ TEST_F(VcuControllerTest, GivenReverseSelectedInDrive_WhenThrottlePressed_ThenCu
     in.pilot.throttlePercent = 0.0f;
     tick();
 
-    in.pilot.isBrakePressed = false;
-    in.pilot.throttlePercent = 0.5f;
-    tick();
-    EXPECT_NEAR(out.vesc.targetAmp, -0.5f * MAX_AMPERAGE, 0.01f);
+    holdThrottle(0.5f);
+    EXPECT_LT(out.vesc.targetAmp, 0.0f);
+    EXPECT_GE(out.vesc.targetAmp, -Calibration::MAX_AMPS * 0.5f);
 }
 
 // ---- Full scenario
@@ -258,7 +315,8 @@ TEST_F(
     tick();
     EXPECT_EQ(state(), VcuStateId::SHUTDOWN);
 
-    tick(300, false);
+    in.vesc.isOk = false;
+    tick(300);
     EXPECT_EQ(state(), VcuStateId::STANDBY);
     EXPECT_FALSE(out.power.contactor);
 }

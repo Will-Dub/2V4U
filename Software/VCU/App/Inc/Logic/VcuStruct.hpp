@@ -35,21 +35,24 @@ struct VescData
     uint32_t txFailCount = 0;
     uint32_t rxCount = 0;
     uint32_t txCount = 0;
+    bool isOk = false;
+    bool isTxDead = true;
+    bool isRxDead = true;
 };
 
 struct BmsData
 {
-    static constexpr uint8_t kMaxCells = 16;
-    static constexpr uint8_t kMaxTemps = 3;
+    static constexpr uint8_t MAX_CELLS = 16;
+    static constexpr uint8_t MAX_TEMPS = 3;
 
     float packVoltageV = 0;
     float packCurrentA = 0;
     uint8_t socPercent = 0;
 
-    float tempC[kMaxTemps]{};
+    float tempC[MAX_TEMPS]{};
     uint8_t tempCount = 0;
 
-    uint16_t cellMv[kMaxCells]{};
+    uint16_t cellMv[MAX_CELLS]{};
     uint8_t cellCount = 0;
     float cellMinV = 0;
     float cellMaxV = 0;
@@ -60,6 +63,7 @@ struct BmsData
     uint32_t lastUpdateMs = 0;
     uint32_t rxErrorCount = 0;
     bool isValid = false;
+    bool isOk = false;
 };
 
 struct VcuInputs

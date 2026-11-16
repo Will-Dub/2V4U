@@ -167,20 +167,8 @@ extern "C" void App_Run(void)
 {
     uint32_t currentTickMs = HAL_GetTick();
 
-    vescDriver.processSlots();
+    vescDriver.processSlots(currentTickMs);
     bmsDriver.process(currentTickMs);
-
-    static uint32_t lastLogMs = 0;
-    if (HAL_GetTick() - lastLogMs >= 1000) {
-        lastLogMs = HAL_GetTick();
-        const auto& b = bmsDriver.getData();
-        stmLogger.infof("BMS valid=%d V=%d cV err=%lu", b.isValid, (int)(b.packVoltageV * 100.0f),
-                        (unsigned long)b.rxErrorCount);
-        stmLogger.infof("n=%u %02X %02X %02X %02X %02X %02X %02X %02X", bmsDriver.dbgSize,
-                        bmsDriver.dbgBytes[0], bmsDriver.dbgBytes[1], bmsDriver.dbgBytes[2],
-                        bmsDriver.dbgBytes[3], bmsDriver.dbgBytes[4], bmsDriver.dbgBytes[5],
-                        bmsDriver.dbgBytes[6], bmsDriver.dbgBytes[7]);
-    }
 
     /*if (!tick)
         return;

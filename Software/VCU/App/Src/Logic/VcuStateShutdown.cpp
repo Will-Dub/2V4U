@@ -1,5 +1,7 @@
 #include "VcuStateShutdown.hpp"
 
+#include "Calibration.hpp"
+
 using namespace App::Logic;
 
 void VcuStateShutdown::onEnter(const VcuInputs& inputs)
@@ -11,21 +13,17 @@ VcuStateId VcuStateShutdown::update(const VcuInputs& inputs, VcuOutputs& outputs
 {
     outputs.vesc.isMotorEnabled = false;
     outputs.vesc.targetAmp = 0.0f;
+    outputs.power.prechargeRelay = false;
 
-    if (inputs.vesc.motorCurrent > 1.0f || inputs.vesc.motorCurrent < -1.0f) {
+    if (inputs.vesc.isOk && (inputs.vesc.motorCurrent > Calibration::SHUTDOWN_CURRENT_A ||
+                             inputs.vesc.motorCurrent < -Calibration::SHUTDOWN_CURRENT_A)) {
         outputs.power.contactor = true;
-        outputs.power.prechargeRelay = false;
         return VcuStateId::SAME;
     }
 
     outputs.power.contactor = false;
-    outputs.power.prechargeRelay = false;
 
-    bool isRxDead = (inputs.tickMs - inputs.vesc.lastRxMs) > 250;
-    bool isTxDead = (inputs.vesc.followedTxFailCount > 10);
-    bool isVescDead = isRxDead || isTxDead;
-
-    if (isVescDead) {
+    if (!inputs.vesc.isOk) {
         return VcuStateId::STANDBY;
     }
 

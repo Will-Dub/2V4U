@@ -1,8 +1,7 @@
 #pragma once
-#include "VcuState.hpp"
+#include "Calibration.hpp"
 #include "ThrottleMapper.hpp"
-
-#define MAX_AMPERAGE 95.0f
+#include "VcuState.hpp"
 
 namespace App::Logic {
 
@@ -19,8 +18,8 @@ class VcuStateDrive : public VcuState
     float getTargetAmps(const VcuInputs& inputs);
 
     uint32_t m_lastTickMs = 0;
-    ThrottleMapper m_forwardMap{{0.04f, 1.5f, MAX_AMPERAGE, 1.5f, 4.0f}};
-    ThrottleMapper m_reverseMap{{0.04f, 1.5f, MAX_AMPERAGE * 0.5f, 1.0f, 4.0f}};
+    ThrottleMapper m_forwardMap{Calibration::FORWARD_THROTTLE};
+    ThrottleMapper m_reverseMap{Calibration::REVERSE_THROTTLE};
 };
 
 } // namespace App::Logic

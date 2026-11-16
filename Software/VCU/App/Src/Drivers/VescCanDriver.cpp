@@ -4,10 +4,7 @@
 
 namespace App::Drivers {
 
-VescCanDriver::VescCanDriver(FDCAN_HandleTypeDef& hfdcan) : m_hfdcan(hfdcan)
-{
-    m_data = {0};
-}
+VescCanDriver::VescCanDriver(FDCAN_HandleTypeDef& hfdcan) : m_hfdcan(hfdcan) {}
 
 void VescCanDriver::init()
 {
@@ -21,13 +18,18 @@ void VescCanDriver::init()
         Error_Handler();
 }
 
-App::Logic::VescData VescCanDriver::getData() const
+const App::Logic::VescData& VescCanDriver::getData() const
 {
     return m_data;
 }
 
 void VescCanDriver::sendAmpCommand(float amp)
 {
+    if (amp > MAX_COMMAND_AMP)
+        amp = MAX_COMMAND_AMP;
+    if (amp < -MAX_COMMAND_AMP)
+        amp = -MAX_COMMAND_AMP;
+
     uint8_t txData[8]{0};
     vesc_vesc_command_abs_current_v1_t src;
 
@@ -38,7 +40,7 @@ void VescCanDriver::sendAmpCommand(float amp)
     FDCAN_TxHeaderTypeDef txHeader{};
 
     // Command id 0x01, vesc id 0x01
-    txHeader.Identifier = (1 << 8) | 1;
+    txHeader.Identifier = (CMD_SET_CURRENT << 8) | VESC_ID;
     txHeader.IdType = FDCAN_EXTENDED_ID;
     txHeader.TxFrameType = FDCAN_DATA_FRAME;
     txHeader.DataLength = FDCAN_DLC_BYTES_8;
@@ -59,7 +61,7 @@ void VescCanDriver::sendAmpCommand(float amp)
     // TODO: Add regenerative braking (vesc_vesc_command_abs_brake_current_v1_pack)
 }
 
-void VescCanDriver::processSlots()
+void VescCanDriver::processSlots(uint32_t currentMs)
 {
     for (uint8_t i = 0; i < SLOT_COUNT; i++) {
         const Slot slot = static_cast<Slot>(i);
@@ -86,6 +88,8 @@ void VescCanDriver::processSlots()
                 break;
         }
     }
+
+    updateHealth(currentMs);
 }
 
 void VescCanDriver::onRxFifo0()
@@ -107,7 +111,7 @@ void VescCanDriver::onRxFifo0()
         // Check the id and command
         const uint8_t vescId = rxHeader.Identifier & 0xFF;
         const uint8_t commandId = (rxHeader.Identifier >> 8) & 0xFF;
-        if (vescId != kVescId)
+        if (vescId != VESC_ID)
             continue;
 
         // Find the slot
@@ -137,6 +141,13 @@ bool VescCanDriver::takeSlot(Slot slot, uint8_t (&data)[8], uint32_t& lastRxMs)
 
     __set_PRIMASK(primask);
     return isNew;
+}
+
+void VescCanDriver::updateHealth(uint32_t currentMs)
+{
+    m_data.isRxDead = (currentMs - m_data.lastRxMs) > RX_TIMEOUT_MS;
+    m_data.isTxDead = m_data.followedTxFailCount > MAX_TX_FAILS;
+    m_data.isOk = !m_data.isRxDead && !m_data.isTxDead;
 }
 
 void VescCanDriver::decodeStatus1(const uint8_t* data)

@@ -1,7 +1,5 @@
 #pragma once
 
-#define THROTTLE_RELEASE_THRESHOLD 0.05f
-
 namespace App::Logic {
 
 struct ThrottleMapConfig

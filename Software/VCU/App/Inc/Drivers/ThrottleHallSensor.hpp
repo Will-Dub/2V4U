@@ -21,10 +21,10 @@ class ThrottleHallSensor
     float m_value = 0;
     bool m_isValid = false;
 
-    const uint16_t FAULT_MIN = 300;
-    const uint16_t FAULT_MAX = 3500;
-    const uint16_t PEDAL_MIN = 570;
-    const uint16_t PEDAL_MAX = 3180;
+    static constexpr uint16_t FAULT_MIN = 300;
+    static constexpr uint16_t FAULT_MAX = 3500;
+    static constexpr uint16_t PEDAL_MIN = 570;
+    static constexpr uint16_t PEDAL_MAX = 3180;
 };
 
 }; // namespace App::Drivers

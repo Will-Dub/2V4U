@@ -5,8 +5,6 @@
 
 #include <stdint.h>
 
-#define DEBOUNCE_TIME_MS 20
-
 namespace App::Drivers {
 
 class Buzzer

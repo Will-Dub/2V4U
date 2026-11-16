@@ -1,5 +1,6 @@
 #include "VcuController.hpp"
 
+#include "Calibration.hpp"
 #include "VcuStruct.hpp"
 
 using namespace App::Logic;
@@ -57,26 +58,25 @@ void VcuController::transitionToState(VcuStateId nextStateId, const VcuInputs& i
 
 void VcuController::run(const VcuInputs& inputs, VcuOutputs& outputs)
 {
-    bool isRxDead = (inputs.tickMs - inputs.vesc.lastRxMs) > 250;
-    bool isTxDead = (inputs.vesc.followedTxFailCount > 10);
-    bool isVescDead = isRxDead || isTxDead;
-    bool requiresVesc = (m_currentState->getId() == VcuStateId::DRIVE);
+    bool isInDrive = (m_currentState->getId() == VcuStateId::DRIVE);
     bool isInFault = m_currentState->getId() == VcuStateId::FAULT;
+    bool shouldFault = false;
 
-    if (inputs.pilot.isEStopPressed && !isInFault) {
-        transitionToState(VcuStateId::FAULT, inputs);
+    if (!isInFault) {
+        shouldFault = inputs.pilot.isEStopPressed || !inputs.pilot.isThrottleValid;
     }
 
-    if (isVescDead && requiresVesc) {
-        transitionToState(VcuStateId::FAULT, inputs);
+    if (isInDrive) {
+        shouldFault = shouldFault || !inputs.vesc.isOk || !inputs.bms.isOk;
     }
 
-    if (!inputs.pilot.isThrottleValid && !isInFault) {
+    if (shouldFault) {
         transitionToState(VcuStateId::FAULT, inputs);
     }
 
     // Pressing brake and throttle
-    if (!inputs.pilot.isBrakePressed && inputs.pilot.throttlePercent < THROTTLE_RELEASE_THRESHOLD)
+    if (!inputs.pilot.isBrakePressed &&
+        inputs.pilot.throttlePercent < Calibration::THROTTLE_RELEASE_THRESHOLD)
         m_isBrakeThrottleLatched = false;
     else if (inputs.pilot.isBrakePressed)
         m_isBrakeThrottleLatched = true;

@@ -88,7 +88,7 @@ void DashTransmitter::sendBms(const App::Logic::VcuInputs& inputs)
     printf("$BMS,%.2f,%.2f,%.1f", bms.packVoltageV, bms.packCurrentA, temp);
 
     // Cell voltages in mV
-    for (uint8_t i = 0; i < App::Logic::BmsData::kMaxCells; i++) {
+    for (uint8_t i = 0; i < App::Logic::BmsData::MAX_CELLS; i++) {
         printf(",%u", bms.cellMv[i]);
     }
 

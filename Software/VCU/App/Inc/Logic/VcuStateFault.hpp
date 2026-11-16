@@ -12,7 +12,6 @@ class VcuStateFault : public VcuState
     virtual VcuStateId getId() override;
 
   private:
-    int m_blinkTimer;
     bool m_isBoardLedOn;
 };
 

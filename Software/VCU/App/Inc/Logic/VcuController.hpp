@@ -7,8 +7,6 @@
 #include "VcuStateShutdown.hpp"
 #include "VcuStateStandby.hpp"
 
-#define THROTTLE_RELEASE_THRESHOLD 0.05f
-
 namespace App::Logic {
 class VcuController
 {

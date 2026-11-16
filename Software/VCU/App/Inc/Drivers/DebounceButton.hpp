@@ -2,8 +2,6 @@
 
 #include <stdint.h>
 
-#define DEBOUNCE_TIME_MS 20
-
 namespace App::Drivers {
 
 class DebounceButton
@@ -15,6 +13,8 @@ class DebounceButton
     bool isRisingEdge() const;
 
   private:
+    static constexpr int DEBOUNCE_TIME_MS = 20;
+
     bool m_state = false;
     bool m_lastRawState = false;
     uint32_t m_lastChangeTimeMs = 0;
