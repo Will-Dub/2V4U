@@ -125,7 +125,7 @@ void UsbDashReceiver::handleRead()
             parseVcuPacket(line.split(','));
         }
         else if (line.startsWith("$BMS,")) {
-            parseVcuPacket(line.split(','));
+            parseBMSPacket(line.split(','));
         }
         else {
             emit debugLogReceived(line);
@@ -175,17 +175,25 @@ void UsbDashReceiver::parseVcuPacket(const QStringList &parts)
 
 void UsbDashReceiver::parseBMSPacket(const QStringList &parts)
 {
-    const int cellCount = parts.size() - BmsFirstCell;
-    if (cellCount < 0 || cellCount > BMS_MAX_CELL_COUNT)
+    if (parts.size() != BmsFieldCount)
         return;
 
-    m_pendingData.packVoltage = parts[BmsPackVoltage].toFloat();
-    m_pendingData.packCurrent = parts[BmsPackCurrent].toFloat();
-    m_pendingData.bmsTemp = parts[BmsTemp].toFloat();
+    m_pendingData.isBmsOk = (parts[BmsOk] == "1");
+    m_pendingData.bmsVoltage = parts[BmsVoltage].toFloat();
+    m_pendingData.bmsCurrent = parts[BmsCurrent].toFloat();
+
+    // Temperatures
+    QVariantList temps;
+    for (int i = 0; i < Shared::BMS_TEMP_COUNT; ++i) {
+        const double temp = parts[BmsFirstTemp + i].toDouble();
+        temps.append(temp == Shared::BMS_TEMP_MISSING ? qQNaN() : temp);
+    }
+    m_pendingData.packTemperatures = temps;
+
 
     // Convert to volt
     QVariantList cells;
-    for (int i = 0; i < cellCount; ++i) {
+    for (int i = 0; i < Shared::BMS_CELL_COUNT; ++i) {
         cells.append(parts[BmsFirstCell + i].toInt() / 1000.0);
     }
     m_pendingData.cellVoltages = cells;

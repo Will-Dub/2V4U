@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QSerialPort>
 #include <qqmlintegration.h>
-//#include "VcuComms.h"
+#include "VcuComms.h"
 #include <QDebug>
 #include <QTimer>
 #include <QSerialPortInfo>
@@ -49,10 +49,11 @@ struct DashData {
     Q_PROPERTY(bool isContactorOn MEMBER isContactorOn)
 
     // BMS
-    Q_PROPERTY(float packVoltage MEMBER packVoltage)
-    Q_PROPERTY(float packCurrent MEMBER packCurrent)
-    Q_PROPERTY(float bmsTemp MEMBER bmsTemp)
+    Q_PROPERTY(float isBmsOk MEMBER isBmsOk)
+    Q_PROPERTY(float bmsVoltage MEMBER bmsVoltage)
+    Q_PROPERTY(float bmsCurrent MEMBER bmsCurrent)
     Q_PROPERTY(QVariantList cellVoltages MEMBER cellVoltages)
+    Q_PROPERTY(QVariantList packTemperatures MEMBER packTemperatures)
 
 public:
     int tickMs = 0;
@@ -83,10 +84,11 @@ public:
     bool isPrechargeOn = false;
     bool isContactorOn = false;
 
-    float packVoltage = 0.0f;
-    float packCurrent = 0.0f;
-    float bmsTemp = 0.0f;
+    bool isBmsOk = false;
+    float bmsVoltage = 0.0f;
+    float bmsCurrent = 0.0f;
     QVariantList cellVoltages;
+    QVariantList packTemperatures;
 };
 Q_DECLARE_METATYPE(DashData)
 
@@ -151,10 +153,12 @@ private:
 
     // $BMS,packV,packA,tempC,cell1,cell2,...
     enum BmsField {
-        BmsPackVoltage = 1,
-        BmsPackCurrent,
-        BmsTemp,
-        BmsFirstCell
+        BmsOk = 1,
+        BmsVoltage = 2,
+        BmsCurrent = 3,
+        BmsFirstTemp = 4,
+        BmsFirstCell = BmsFirstTemp + Shared::BMS_TEMP_COUNT,
+        BmsFieldCount = BmsFirstCell + Shared::BMS_CELL_COUNT
     };
 
     enum InputBit { InBrake, InStart, InEStop, InForward, InThrottleValid };

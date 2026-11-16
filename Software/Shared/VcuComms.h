@@ -3,6 +3,9 @@
 
 namespace Shared
 {
+    constexpr uint8_t BMS_CELL_COUNT = 16;
+    constexpr uint8_t BMS_TEMP_COUNT = 3;
+    constexpr float BMS_TEMP_MISSING = -99.0f;
 
 #pragma pack(push, 1)
     struct VcuStatusPacket

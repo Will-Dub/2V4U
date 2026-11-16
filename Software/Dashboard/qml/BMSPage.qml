@@ -83,7 +83,6 @@ Rectangle {
     }
 
     // Header
-    // Header
     Item {
         id: headerArea
         anchors {
@@ -138,6 +137,7 @@ Rectangle {
 
     // Content
     RowLayout {
+        id: content
         anchors {
             top: headerArea.bottom
             bottom: parent.bottom
@@ -154,15 +154,17 @@ Rectangle {
             spacing: 10
 
             StatCard {
-                labelText: "Pack voltage"
-                // TODO: Change
-                valueText: UsbDashReceiver.dashData.rpm
+                labelText: "Voltage"
+                valueText: UsbDashReceiver.dashData.isBmsOk ? Number(
+                                                                  UsbDashReceiver.dashData.bmsVoltage).toFixed(
+                                                                  1) : "--"
                 unitText: "V"
             }
             StatCard {
-                labelText: "Pack current"
-                // TODO: Change
-                valueText: UsbDashReceiver.dashData.throttlePercent
+                labelText: "Current"
+                valueText: UsbDashReceiver.dashData.isBmsOk ? Number(
+                                                                  UsbDashReceiver.dashData.bmsCurrent).toFixed(
+                                                                  1) : "--"
                 unitText: "A"
             }
         }
@@ -196,18 +198,9 @@ Rectangle {
                         Layout.fillWidth: true
 
                         Text {
-                            text: "CELLS VS PACK AVERAGE"
-                            color: AppTheme.colorNeut70
-                            font.pixelSize: AppTheme.sizeExtraSmall
-                            font.family: AppTheme.fontMono
-                            font.letterSpacing: 2
-                            Layout.fillWidth: true
-                        }
-                        Text {
-                            text: "AVG " + debugRoot.volts(
-                                      debugRoot.cellMean) + " V   ±"
-                                  + (debugRoot.barSpanV * 1000).toFixed(
-                                      0) + " mV"
+                            text: UsbDashReceiver.dashData.isBmsOk ? "AVG " + debugRoot.volts(
+                                                                         debugRoot.cellMean) + " V   ±" + (debugRoot.barSpanV * 1000).toFixed(
+                                                                         0) + " mV" : "--"
                             color: AppTheme.colorNeut70
                             font.pixelSize: AppTheme.sizeExtraSmall
                             font.family: AppTheme.fontMono
@@ -229,7 +222,6 @@ Rectangle {
                                 Layout.fillWidth: true
                                 Layout.fillHeight: true
                                 cellIndex: index
-                                voltageText: debugRoot.volts(cellVoltage)
                                 barColor: debugRoot.cellBarColor(cellVoltage)
                                 ratio: debugRoot.cellRatio(cellVoltage)
                             }
@@ -289,28 +281,19 @@ Rectangle {
             }
 
             // Temperature bars
-            TempBar {
-                Layout.fillWidth: true
-                labelText: "MOSFET"
-                value: Number(UsbDashReceiver.dashData.mosfetTemp)
-                warnAt: 80
-                alertAt: 90
-            }
+            Repeater {
+                model: 3
 
-            TempBar {
-                Layout.fillWidth: true
-                labelText: "MOTOR"
-                value: Number(UsbDashReceiver.dashData.motorTemp)
-                warnAt: 90
-                alertAt: 110
-            }
+                TempBar {
+                    required property int index
 
-            TempBar {
-                Layout.fillWidth: true
-                labelText: "BMS"
-                value: Number(UsbDashReceiver.dashData.bmsTemp)
-                warnAt: 45
-                alertAt: 55
+                    Layout.fillWidth: true
+                    labelText: "Battery temp " + (index + 1)
+                    value: Number(
+                               UsbDashReceiver.dashData.packTemperatures[index])
+                    warnAt: 45
+                    alertAt: 55
+                }
             }
 
             Rectangle {
@@ -352,6 +335,21 @@ Rectangle {
                     return hStr + ":" + mStr + ":" + sStr
                 }
             }
+        }
+    }
+
+    Rectangle {
+        anchors.fill: content
+        visible: UsbDashReceiver.isConnected
+                 && !UsbDashReceiver.dashData.isBmsOk
+        color: Qt.rgba(0, 0, 0, 0.75)
+
+        Text {
+            anchors.centerIn: parent
+            text: "BMS LOST"
+            color: AppTheme.colorAlert
+            font.pixelSize: AppTheme.sizeHeader
+            font.bold: true
         }
     }
 }

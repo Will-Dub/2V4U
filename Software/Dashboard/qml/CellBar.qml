@@ -8,22 +8,9 @@ Item {
     property color barColor: AppTheme.colorNeut30
     property real ratio: 0
 
-    Text {
-        id: topText
-        anchors.top: parent.top
-        anchors.left: parent.left
-        anchors.right: parent.right
-        horizontalAlignment: Text.AlignHCenter
-        text: voltageText
-        color: barColor
-        font.pixelSize: 12
-        font.family: AppTheme.fontMono
-        font.bold: true
-    }
-
     Rectangle {
         id: track
-        anchors.top: topText.bottom
+        anchors.top: parent.top
         anchors.topMargin: 6
         anchors.bottom: bottomText.top
         anchors.bottomMargin: 6

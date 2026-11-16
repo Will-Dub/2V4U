@@ -170,7 +170,7 @@ extern "C" void App_Run(void)
     vescDriver.processSlots(currentTickMs);
     bmsDriver.process(currentTickMs);
 
-    /*if (!tick)
+    if (!tick)
         return;
 
     tick = false;
@@ -185,7 +185,7 @@ extern "C" void App_Run(void)
     applyOutputs(outputs, currentTickMs);
 
     dashTransmitter.process(vcuController.getCurrentVcuStateId(), inputs, outputs);
-    buzzer.update(currentTickMs);*/
+    buzzer.update(currentTickMs);
 
     HAL_IWDG_Refresh(&hiwdg);
 }

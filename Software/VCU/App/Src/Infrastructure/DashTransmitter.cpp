@@ -2,15 +2,17 @@
 
 #include "VcuStruct.hpp"
 
+static_assert(App::Logic::BmsData::MAX_CELLS == Shared::BMS_CELL_COUNT,
+              "BMS cell count differs from the dash packet");
+static_assert(App::Logic::BmsData::MAX_TEMPS == Shared::BMS_TEMP_COUNT,
+              "BMS temp count differs from the dash packet");
+
 namespace App::Infrastructure {
 
 void DashTransmitter::process(App::Logic::VcuStateId currentState,
                               const App::Logic::VcuInputs& inputs,
                               const App::Logic::VcuOutputs& outputs)
 {
-    m_lastVcuTxMs = inputs.tickMs;
-    m_lastBmsTxMs = inputs.tickMs;
-
     sendVcu(currentState, inputs, outputs);
     sendBms(inputs);
 }
@@ -81,11 +83,13 @@ void DashTransmitter::sendBms(const App::Logic::VcuInputs& inputs)
 
     const App::Logic::BmsData& bms = inputs.bms;
 
-    float temp = 0.0f;
-    if (bms.tempCount > 0)
-        temp = bms.tempC[0];
+    printf("$BMS,%u,%.2f,%.2f", bms.isOk ? 1 : 0, bms.packVoltageV, bms.packCurrentA);
 
-    printf("$BMS,%.2f,%.2f,%.1f", bms.packVoltageV, bms.packCurrentA, temp);
+    // Temperature
+    for (uint8_t i = 0; i < Shared::BMS_TEMP_COUNT; i++) {
+        const float temp = (i < bms.tempCount) ? bms.tempC[i] : Shared::BMS_TEMP_MISSING;
+        printf(",%.1f", temp);
+    }
 
     // Cell voltages in mV
     for (uint8_t i = 0; i < App::Logic::BmsData::MAX_CELLS; i++) {
