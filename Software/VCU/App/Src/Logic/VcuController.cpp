@@ -89,18 +89,19 @@ void VcuController::run(const VcuInputs& inputs, VcuOutputs& outputs)
     bool isInFault = m_currentState->getId() == VcuStateId::FAULT;
     Shared::FaultCode fault = Shared::FaultCode::NONE;
 
+    // Check for fault
     if (!isInFault) {
         if (inputs.pilot.isEStopPressed)
             fault = Shared::FaultCode::ESTOP;
         else if (!inputs.pilot.isThrottleValid)
             fault = Shared::FaultCode::THROTTLE_INVALID;
+        else if (!inputs.bms.isOk)
+            fault = Shared::FaultCode::BMS_LOST;
     }
 
     if (isInDrive && fault == Shared::FaultCode::NONE) {
         if (!inputs.vesc.isOk)
             fault = Shared::FaultCode::VESC_LOST;
-        else if (!inputs.bms.isOk)
-            fault = Shared::FaultCode::BMS_LOST;
     }
 
     if (fault != Shared::FaultCode::NONE) {
