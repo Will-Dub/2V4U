@@ -1,6 +1,7 @@
 #include "VcuStatePrecharge.hpp"
 
 #include "Calibration.hpp"
+#include "VcuController.hpp"
 
 using namespace App::Logic;
 
@@ -21,7 +22,8 @@ VcuStateId VcuStatePrecharge::update(const VcuInputs& inputs, VcuOutputs& output
 
     uint32_t currentTimeMs = inputs.tickMs;
     if (currentTimeMs - m_prechargeStartTimeMs >= Calibration::PRECHARGE_TIMEOUT_MS) {
-        return VcuStateId::FAULT;
+        m_context->requestFault(Shared::FaultCode::PRECHARGE_TIMEOUT);
+        return VcuStateId::SHUTDOWN;
     }
 
     return VcuStateId::SAME;

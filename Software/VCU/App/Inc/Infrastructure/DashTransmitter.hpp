@@ -2,23 +2,20 @@
 #include "VcuComms.h"
 #include "VcuStruct.hpp"
 
-#include <stdint.h>
-#include <stdio.h>
-
 namespace App::Infrastructure {
 
 class DashTransmitter
 {
   public:
     DashTransmitter() = default;
-    void process(App::Logic::VcuStateId currentState, const App::Logic::VcuInputs& inputs,
+    void process(const App::Logic::VcuStatus& status, const App::Logic::VcuInputs& inputs,
                  const App::Logic::VcuOutputs& outputs);
 
   private:
     uint32_t m_lastVcuTxMs = 0;
     uint32_t m_lastBmsTxMs = 0;
 
-    void sendVcu(App::Logic::VcuStateId currentState, const App::Logic::VcuInputs& inputs,
+    void sendVcu(const App::Logic::VcuStatus& status, const App::Logic::VcuInputs& inputs,
                  const App::Logic::VcuOutputs& outputs);
     void sendBms(const App::Logic::VcuInputs& inputs);
 

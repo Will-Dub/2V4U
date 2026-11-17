@@ -42,6 +42,7 @@ qt_add_qml_module(appDashboard
         QML_FILES qml/SysBar.qml
         QML_FILES qml/DigitalIndicator.qml
         QML_FILES qml/InfoBlock.qml
+        QML_FILES qml/TopBar.qml
 )
 
 target_include_directories(appDashboard PRIVATE

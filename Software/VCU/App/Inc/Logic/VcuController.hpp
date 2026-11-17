@@ -6,6 +6,7 @@
 #include "VcuStatePrecharge.hpp"
 #include "VcuStateShutdown.hpp"
 #include "VcuStateStandby.hpp"
+#include "VcuStruct.hpp"
 
 namespace App::Logic {
 class VcuController
@@ -21,6 +22,7 @@ class VcuController
     VcuState* m_currentState;
     bool m_isInReverse = false;
     bool m_isBrakeThrottleLatched = true;
+    Shared::FaultCode m_faultCode = Shared::FaultCode::NONE;
 
     VcuState* getStateInstance(VcuStateId id);
     void transitionToState(VcuStateId nextStateId, const VcuInputs& inputs);
@@ -30,13 +32,10 @@ class VcuController
     void run(const VcuInputs& inputs, VcuOutputs& outputs);
     void init(const VcuInputs& inputs);
     VcuStateId getCurrentVcuStateId() const;
-    bool getIsInReverse() const
-    {
-        return m_isInReverse;
-    }
-    bool getIsBrakeThrottleLatched() const
-    {
-        return m_isBrakeThrottleLatched;
-    }
+    void requestFault(Shared::FaultCode code);
+    VcuStatus getStatus() const;
+    Shared::FaultCode getFaultCode() const;
+    bool getIsInReverse() const;
+    bool getIsBrakeThrottleLatched() const;
 };
 } // namespace App::Logic

@@ -23,6 +23,33 @@ VcuStateId App::Logic::VcuController::getCurrentVcuStateId() const
     return m_currentState->getId();
 }
 
+void App::Logic::VcuController::requestFault(Shared::FaultCode code)
+{
+    if (m_faultCode == Shared::FaultCode::NONE) {
+        m_faultCode = code;
+    }
+}
+
+VcuStatus App::Logic::VcuController::getStatus() const
+{
+    return {getCurrentVcuStateId(), m_faultCode};
+}
+
+Shared::FaultCode App::Logic::VcuController::getFaultCode() const
+{
+    return m_faultCode;
+}
+
+bool App::Logic::VcuController::getIsInReverse() const
+{
+    return m_isInReverse;
+}
+
+bool App::Logic::VcuController::getIsBrakeThrottleLatched() const
+{
+    return m_isBrakeThrottleLatched;
+}
+
 VcuState* VcuController::getStateInstance(VcuStateId id)
 {
     switch (id) {
@@ -60,17 +87,24 @@ void VcuController::run(const VcuInputs& inputs, VcuOutputs& outputs)
 {
     bool isInDrive = (m_currentState->getId() == VcuStateId::DRIVE);
     bool isInFault = m_currentState->getId() == VcuStateId::FAULT;
-    bool shouldFault = false;
+    Shared::FaultCode fault = Shared::FaultCode::NONE;
 
     if (!isInFault) {
-        shouldFault = inputs.pilot.isEStopPressed || !inputs.pilot.isThrottleValid;
+        if (inputs.pilot.isEStopPressed)
+            fault = Shared::FaultCode::ESTOP;
+        else if (!inputs.pilot.isThrottleValid)
+            fault = Shared::FaultCode::THROTTLE_INVALID;
     }
 
-    if (isInDrive) {
-        shouldFault = shouldFault || !inputs.vesc.isOk || !inputs.bms.isOk;
+    if (isInDrive && fault == Shared::FaultCode::NONE) {
+        if (!inputs.vesc.isOk)
+            fault = Shared::FaultCode::VESC_LOST;
+        else if (!inputs.bms.isOk)
+            fault = Shared::FaultCode::BMS_LOST;
     }
 
-    if (shouldFault) {
+    if (fault != Shared::FaultCode::NONE) {
+        m_faultCode = fault;
         transitionToState(VcuStateId::FAULT, inputs);
     }
 

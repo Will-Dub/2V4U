@@ -12,10 +12,18 @@ Window {
     minimumWidth: 800
     minimumHeight: 480
 
+    // Header
+    TopBar {
+        id: topBar
+        width: parent.width
+        height: 60
+        title: ["Home", "BMS", "Debug", "Log"][dashView.currentIndex]
+    }
+
     // Pages
     SwipeView {
         id: dashView
-        anchors.top: parent.top
+        anchors.top: topBar.bottom
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: navBar.top

@@ -1,6 +1,7 @@
 #include "VcuStateShutdown.hpp"
 
 #include "Calibration.hpp"
+#include "VcuController.hpp"
 
 using namespace App::Logic;
 
@@ -24,6 +25,8 @@ VcuStateId VcuStateShutdown::update(const VcuInputs& inputs, VcuOutputs& outputs
     outputs.power.contactor = false;
 
     if (!inputs.vesc.isOk) {
+        if (m_context->getFaultCode() != Shared::FaultCode::NONE)
+            return VcuStateId::FAULT;
         return VcuStateId::STANDBY;
     }
 

@@ -140,6 +140,7 @@ void UsbDashReceiver::parseVcuPacket(const QStringList &parts)
 
     m_pendingData.tickMs = parts[VcuTick].toInt();
     m_pendingData.stateStr = stateToString(parts[VcuState].toUInt());
+    m_pendingData.faultStr = faultCodeToString(static_cast<Shared::FaultCode>(parts[VcuFaultCode].toUInt()));
 
     m_pendingData.rpm = parts[VcuRpm].toInt();
     m_pendingData.motorTemp = parts[VcuMotorTemp].toFloat();
@@ -211,5 +212,18 @@ QString UsbDashReceiver::stateToString(uint8_t stateId)
     case 4: return "FAULT";
     case 5: return "SHUTDOWN";
     default: return "UNKNOWN";
+    }
+}
+
+QString UsbDashReceiver::faultCodeToString(Shared::FaultCode faultCode)
+{
+    switch (faultCode) {
+        case Shared::FaultCode::ESTOP:             return "E-STOP";
+        case Shared::FaultCode::THROTTLE_INVALID:  return "THROTTLE";
+        case Shared::FaultCode::VESC_LOST:         return "VESC LOST";
+        case Shared::FaultCode::BMS_LOST:          return "BMS LOST";
+        case Shared::FaultCode::PRECHARGE_TIMEOUT: return "PRECHARGE";
+        case Shared::FaultCode::LOW_BUS_VOLTAGE:   return "LOW VOLTAGE";
+        default:                                   return "";
     }
 }

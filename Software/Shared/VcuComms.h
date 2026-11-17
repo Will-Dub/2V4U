@@ -12,6 +12,7 @@ namespace Shared
     {
         uint32_t tickMs;
         uint8_t currentState;
+        uint8_t faultCode;
 
         // VESC
         int32_t rpm;

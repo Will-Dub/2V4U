@@ -10,6 +10,7 @@
 #include <QSerialPortInfo>
 #include <QVariant>
 #include <QElapsedTimer>
+#include <FaultCode.h>
 
 #define BMS_MAX_CELL_COUNT 16
 #define DATA_LIFESPAN_MS 3000
@@ -18,6 +19,7 @@ struct DashData {
     Q_GADGET
     Q_PROPERTY(int tickMs MEMBER tickMs)
     Q_PROPERTY(QString stateStr MEMBER stateStr)
+    Q_PROPERTY(QString faultStr MEMBER faultStr)
 
     // VESC
     Q_PROPERTY(int rpm MEMBER rpm)
@@ -58,6 +60,7 @@ struct DashData {
 public:
     int tickMs = 0;
     QString stateStr;
+    QString faultStr;
 
     int rpm = 0;
     float motorTemp = 0.0f;
@@ -127,12 +130,14 @@ private:
     void parseVcuPacket(const QStringList &parts);
     void parseBMSPacket(const QStringList &parts);
     static QString stateToString(uint8_t stateId);
+    static QString faultCodeToString(Shared::FaultCode faultCode);
 
     // $VCU,tick,state,rpm,motorTemp,mosfetTemp,ax,ay,az,throttle,inFlags,outFlags,
     //      motorA,inputA,inputV,canRx,canTx,canTxFail
     enum VcuField {
         VcuTick = 1,
         VcuState,
+        VcuFaultCode,
         VcuRpm,
         VcuMotorTemp,
         VcuMosfetTemp,

@@ -1,6 +1,6 @@
 #include "DashTransmitter.hpp"
 
-#include "VcuStruct.hpp"
+#include <stdio.h>
 
 static_assert(App::Logic::BmsData::MAX_CELLS == Shared::BMS_CELL_COUNT,
               "BMS cell count differs from the dash packet");
@@ -9,15 +9,15 @@ static_assert(App::Logic::BmsData::MAX_TEMPS == Shared::BMS_TEMP_COUNT,
 
 namespace App::Infrastructure {
 
-void DashTransmitter::process(App::Logic::VcuStateId currentState,
+void DashTransmitter::process(const App::Logic::VcuStatus& status,
                               const App::Logic::VcuInputs& inputs,
                               const App::Logic::VcuOutputs& outputs)
 {
-    sendVcu(currentState, inputs, outputs);
+    sendVcu(status, inputs, outputs);
     sendBms(inputs);
 }
 
-void DashTransmitter::sendVcu(App::Logic::VcuStateId currentState,
+void DashTransmitter::sendVcu(const App::Logic::VcuStatus& status,
                               const App::Logic::VcuInputs& inputs,
                               const App::Logic::VcuOutputs& outputs)
 {
@@ -29,7 +29,8 @@ void DashTransmitter::sendVcu(App::Logic::VcuStateId currentState,
     Shared::VcuStatusPacket packet;
 
     packet.tickMs = inputs.tickMs;
-    packet.currentState = static_cast<uint8_t>(currentState);
+    packet.currentState = static_cast<uint8_t>(status.stateId);
+    packet.faultCode = static_cast<uint8_t>(status.faultCode);
     packet.rpm = inputs.vesc.rpm;
     packet.motorTemp = inputs.vesc.motorTemp;
     packet.mosfetTemp = inputs.vesc.mosfetTemp;
@@ -66,9 +67,9 @@ void DashTransmitter::sendVcu(App::Logic::VcuStateId currentState,
     if (outputs.power.contactor)
         packet.outputStatusFlags |= (1 << 2);
 
-    printf("$VCU,%lu,%u,%ld,%.2f,%.2f,%.2f,%.2f,%.2f,%.1f,%u,%u,%.2f,%.2f,%.2f,%lu,%lu,%lu\n",
-           packet.tickMs, packet.currentState, packet.rpm, packet.motorTemp, packet.mosfetTemp,
-           packet.accelX, packet.accelY, packet.accelZ, packet.throttlePercent,
+    printf("$VCU,%lu,%u,%u,%ld,%.2f,%.2f,%.2f,%.2f,%.2f,%.1f,%u,%u,%.2f,%.2f,%.2f,%lu,%lu,%lu\n",
+           packet.tickMs, packet.currentState, packet.faultCode, packet.rpm, packet.motorTemp,
+           packet.mosfetTemp, packet.accelX, packet.accelY, packet.accelZ, packet.throttlePercent,
            packet.inputStatusFlags, packet.outputStatusFlags, packet.motorCurrent,
            packet.inputCurrent, packet.inputVoltage, packet.canRxCount, packet.canTxCount,
            packet.canTxFailCount);

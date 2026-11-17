@@ -1,4 +1,6 @@
 #pragma once
+#include "FaultCode.h"
+
 #include <stdint.h>
 
 namespace App::Logic {
@@ -20,6 +22,12 @@ enum class VcuStateId
     FAULT,
     SHUTDOWN,
     SAME,
+};
+
+struct VcuStatus
+{
+    VcuStateId stateId = VcuStateId::INIT;
+    Shared::FaultCode faultCode = Shared::FaultCode::NONE;
 };
 
 struct VescData

@@ -13,6 +13,9 @@ Item {
             right: root.right
             bottom: separator.top
         }
+
+        readonly property real gaugeSize: Math.min(350, height + 40)
+
         Row {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
@@ -22,14 +25,14 @@ Item {
 
             // Speed
             SpeedGauge {
-                width: 350
-                height: 350
+                width: gaugeContainer.gaugeSize
+                height: gaugeContainer.gaugeSize
                 speedValue: 0
             }
             // Rpm
             RpmGauge {
-                width: 350
-                height: 350
+                width: gaugeContainer.gaugeSize
+                height: gaugeContainer.gaugeSize
                 rpmValue: UsbDashReceiver.dashData.rpm
             }
         }
@@ -47,7 +50,7 @@ Item {
             right: root.right
             rightMargin: 30
             bottom: bottomInfo.top
-            bottomMargin: 20
+            bottomMargin: 5
         }
     }
 
@@ -60,7 +63,7 @@ Item {
             right: root.right
             rightMargin: 30
             bottom: root.bottom
-            bottomMargin: 20
+            bottomMargin: 10
         }
 
         spacing: (width - (120 * 4)) / 3

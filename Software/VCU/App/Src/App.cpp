@@ -184,7 +184,7 @@ extern "C" void App_Run(void)
 
     applyOutputs(outputs, currentTickMs);
 
-    dashTransmitter.process(vcuController.getCurrentVcuStateId(), inputs, outputs);
+    dashTransmitter.process(vcuController.getStatus(), inputs, outputs);
     buzzer.update(currentTickMs);
 
     HAL_IWDG_Refresh(&hiwdg);
