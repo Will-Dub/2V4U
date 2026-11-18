@@ -96,6 +96,10 @@ void Error_Handler(void);
 #define T_SWCLK_GPIO_Port GPIOA
 #define SW_DIRECTION_Pin GPIO_PIN_15
 #define SW_DIRECTION_GPIO_Port GPIOA
+#define BMS_TX_Pin GPIO_PIN_10
+#define BMS_TX_GPIO_Port GPIOC
+#define BMS_RX_Pin GPIO_PIN_11
+#define BMS_RX_GPIO_Port GPIOC
 #define LED_SW_START_Pin GPIO_PIN_12
 #define LED_SW_START_GPIO_Port GPIOC
 #define SW_START_Pin GPIO_PIN_2
