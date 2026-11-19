@@ -1,5 +1,8 @@
 # Wiring
- 
+
+## Images
+### Signal wiring
+![Signal wiring](Wiring/signal.png)
 ## Wire color code
  
 | Color | Meaning |

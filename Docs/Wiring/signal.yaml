@@ -1,0 +1,217 @@
+connectors:
+  SENSOR:
+    pincount: 3
+    type: Hall sensor
+    pinlabels: [5V, GND, SIG]
+  J-THR-A:
+    pincount: 3
+    type: Deutsch 3S (male)
+  J-THR-B:
+    pincount: 3
+    type: Deutsch 3P (female)
+
+  BMS:
+    pincount: 3
+    type: BMS
+    pinlabels: [GND, RX, TX]
+  J-BMS-A:
+    pincount: 3
+    type: Deutsch 3P (female)
+  J-BMS-B:
+    pincount: 3
+    type: Deutsch 3S (male)
+
+  VESC:
+    pincount: 3
+    type: VESC
+    pinlabels: [CANH, CANL, GND]
+  J-VESC-A:
+    pincount: 4
+    type: Deutsch 3S (male)
+    hide_disconnected_pins: true
+  J-VESC-B:
+    pincount: 4
+    type: Deutsch 3P (female)
+    hide_disconnected_pins: true
+  CAN-MODULE:
+    pincount: 7
+    type: Isolated CAN transceiver
+    pinlabels: [CANH, CANL, CANGND, 5V, T, R, GND]
+
+  DIR-SWITCH:
+    pincount: 2
+    type: Direction switch
+    pinlabels: [GND, SIG]
+  START-BUTTON:
+    pincount: 4
+    type: Start button
+    pinlabels: [GND, LEDGND, SIG, LEDSIG]
+  ESTOP:
+    pincount: 2
+    type: Emergency stop (NC)
+    pinlabels: [GND, SIG]
+  J-PILOT-A:
+    pincount: 6
+    type: Deutsch 3S (male)
+    pinlabels: [GND, DIR, START, LED, ESTOP, SPARE]
+    hide_disconnected_pins: true
+  J-PILOT-B:
+    pincount: 6
+    type: Deutsch 3P (female)
+    pinlabels: [GND, DIR, START, LED, ESTOP, SPARE]
+    hide_disconnected_pins: true
+
+  BRAKE:
+    pincount: 2
+    type: Brake switch
+    pinlabels: [GND, SIG]
+  J-BRAKE-A:
+    pincount: 2
+    type: Deutsch 2S (female)
+  J-BRAKE-B:
+    pincount: 2
+    type: Deutsch 2P (male)
+
+  CONTACTOR:
+    pincount: 2
+    type: Contactor coil
+    pinlabels: [COIL+, COIL-]
+    notes: COIL+ from E-Stop output
+  RELAY:
+    pincount: 2
+    type: Precharge relay coil
+    pinlabels: [COIL+, COIL-]
+    notes: COIL+ from E-Stop output
+  J-CON-A:
+    pincount: 2
+    type: Deutsch 2P (male)
+    pinlabels: [CON_SW, PRE_SW]
+  J-CON-B:
+    pincount: 2
+    type: Deutsch 2S (female)
+    pinlabels: [CON_SW, PRE_SW]
+
+  VCU:
+    pincount: 14
+    type: VCU board
+    pinlabels: [5V, GND, THROTTLE_ADC, BMS_TX, BMS_RX, CAN_RX, CAN_TX, SW_DIRECTION, SW_START, LED_SW_START, SW_PUSH_EMERGENCY, SW_BRAKE, CON_SW, PRE_SW]
+
+cables:
+  W-SENSOR:
+    colors: [RD, BK, GN]
+    length: 0.3
+  W-SENSOR-VCU:
+    colors: [RD, BK, GN]
+    length: 0.3
+
+  W-BMS:
+    colors: [BK, WH, BU]
+    length: 0.3
+  W-BMS-VCU:
+    colors: [BK, WH, BU]
+    length: 0.3
+
+  W-VESC:
+    colors: [YE, GN, BK]
+    length: 0.3
+  W-VESC-MOD:
+    colors: [YE, GN, BK]
+    length: 0.3
+  W-VESC-MOD-VCU:
+    colors: [RD, WH, BU, BK]
+    length: 0.3
+
+  W-PILOT-DIR:
+    colors: [BK, YE]
+    length: 0.3
+  W-PILOT-START:
+    colors: [BK, BK, GN, BU]
+    length: 0.3
+  W-PILOT-ESTOP:
+    colors: [BK, WH]
+    length: 0.3
+  W-PILOT-VCU:
+    colors: [BK, YE, GN, BU, WH]
+    length: 0.3
+
+  W-BRAKE:
+    colors: [BK, WH]
+    length: 0.3
+  W-BRAKE-VCU:
+    colors: [BK, WH]
+    length: 0.3
+
+  W-CON-CONTACTOR:
+    colors: [WH]
+    length: 0.3
+  W-CON-RELAY:
+    colors: [BU]
+    length: 0.3
+  W-CON-VCU:
+    colors: [WH, BU]
+    length: 0.3
+
+connections:
+  - - SENSOR: [1, 2, 3]
+    - W-SENSOR: [1, 2, 3]
+    - J-THR-A: [1, 2, 3]
+    - "-->"
+    - J-THR-B: [1, 2, 3]
+    - W-SENSOR-VCU: [1, 2, 3]
+    - VCU: [1, 2, 3]
+
+  - - BMS: [1, 2, 3]
+    - W-BMS: [1, 2, 3]
+    - J-BMS-A: [1, 2, 3]
+    - "-->"
+    - J-BMS-B: [1, 2, 3]
+    - W-BMS-VCU: [1, 2, 3]
+    - VCU: [2, 4, 5]
+
+  - - VESC: [1, 2, 3]
+    - W-VESC: [1, 2, 3]
+    - J-VESC-A: [1, 2, 3]
+    - "-->"
+    - J-VESC-B: [1, 2, 3]
+    - W-VESC-MOD: [1, 2, 3]
+    - CAN-MODULE: [1, 2, 3]
+  - - CAN-MODULE: [4, 5, 6, 7]
+    - W-VESC-MOD-VCU: [1, 2, 3, 4]
+    - VCU: [1, 7, 6, 2]
+
+  - - DIR-SWITCH: [1, 2]
+    - W-PILOT-DIR: [1, 2]
+    - J-PILOT-A: [1, 2]
+  - - START-BUTTON: [1, 2, 3, 4]
+    - W-PILOT-START: [1, 2, 3, 4]
+    - J-PILOT-A: [1, 1, 3, 4]
+  - - ESTOP: [1, 2]
+    - W-PILOT-ESTOP: [1, 2]
+    - J-PILOT-A: [1, 5]
+  - - J-PILOT-A: [1, 2, 3, 4, 5]
+    - "-->"
+    - J-PILOT-B: [1, 2, 3, 4, 5]
+    - W-PILOT-VCU: [1, 2, 3, 4, 5]
+    - VCU: [2, 8, 9, 10, 11]
+
+  - - BRAKE: [1, 2]
+    - W-BRAKE: [1, 2]
+    - J-BRAKE-A: [1, 2]
+    - "-->"
+    - J-BRAKE-B: [1, 2]
+    - W-BRAKE-VCU: [1, 2]
+    - VCU: [2, 12]
+  
+  - - CONTACTOR: [2]
+    - W-CON-CONTACTOR: [1]
+    - J-CON-A: [1]
+
+  - - RELAY: [2]
+    - W-CON-RELAY: [1]
+    - J-CON-A: [2]
+
+  - - J-CON-A: [1, 2]
+    - "-->"
+    - J-CON-B: [1, 2]
+    - W-CON-VCU: [1, 2]
+    - VCU: [13, 14]

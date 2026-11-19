@@ -1,0 +1,25 @@
+Id	Description	Qty	Unit	Designators
+1	Cable, 1 wires	0.6	m	W-CON-CONTACTOR, W-CON-RELAY
+2	Cable, 2 wires	1.5	m	W-BRAKE, W-BRAKE-VCU, W-CON-VCU, W-PILOT-DIR, W-PILOT-ESTOP
+3	Cable, 3 wires	1.8	m	W-BMS, W-BMS-VCU, W-SENSOR, W-SENSOR-VCU, W-VESC, W-VESC-MOD
+4	Cable, 4 wires	0.6	m	W-PILOT-START, W-VESC-MOD-VCU
+5	Cable, 5 wires	0.3	m	W-PILOT-VCU
+6	Connector, BMS, 3 pins	1		BMS
+7	Connector, Brake switch, 2 pins	1		BRAKE
+8	Connector, Contactor coil, 2 pins	1		CONTACTOR
+9	Connector, Deutsch 2P (male), 2 pins	2		J-BRAKE-B, J-CON-A
+10	Connector, Deutsch 2S (female), 2 pins	2		J-BRAKE-A, J-CON-B
+11	Connector, Deutsch 3P (female), 3 pins	2		J-BMS-A, J-THR-B
+12	Connector, Deutsch 3P (female), 4 pins	1		J-VESC-B
+13	Connector, Deutsch 3P (female), 6 pins	1		J-PILOT-B
+14	Connector, Deutsch 3S (male), 3 pins	2		J-BMS-B, J-THR-A
+15	Connector, Deutsch 3S (male), 4 pins	1		J-VESC-A
+16	Connector, Deutsch 3S (male), 6 pins	1		J-PILOT-A
+17	Connector, Direction switch, 2 pins	1		DIR-SWITCH
+18	Connector, Emergency stop (NC), 2 pins	1		ESTOP
+19	Connector, Hall sensor, 3 pins	1		SENSOR
+20	Connector, Isolated CAN transceiver, 7 pins	1		CAN-MODULE
+21	Connector, Precharge relay coil, 2 pins	1		RELAY
+22	Connector, Start button, 4 pins	1		START-BUTTON
+23	Connector, VCU board, 14 pins	1		VCU
+24	Connector, VESC, 3 pins	1		VESC

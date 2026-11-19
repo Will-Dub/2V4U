@@ -34,7 +34,6 @@ Release/
 # Misc
 *.map
 *.m
-*.png
 
 # Eclipse CDT project files
 .cproject
@@ -67,3 +66,7 @@ Thumbs.db
 .vscode/
 .history
 *.txt.user
+
+#Wire
+Docs/Wiring/*.svg
+Docs/Wiring/*.html
