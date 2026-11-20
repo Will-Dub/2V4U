@@ -33,7 +33,7 @@ Rectangle {
             }
             QuickStat {
                 labelText: "THROTTLE"
-                valueText: UsbDashReceiver.dashData.throttlePercent
+                valueText: UsbDashReceiver.dashData.throttleRatio
                 unitText: "%"
             }
         }
@@ -145,7 +145,7 @@ Rectangle {
                     SensorRow {
                         signalName: "Throttle"
                         sourceName: "ADC"
-                        valText: UsbDashReceiver.dashData.throttlePercent
+                        valText: UsbDashReceiver.dashData.throttleRatio
                         unitText: "%"
                     }
                     SensorRow {

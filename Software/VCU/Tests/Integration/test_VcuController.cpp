@@ -33,7 +33,7 @@ class VcuControllerTest : public ::testing::Test
 
     void holdThrottle(float throttle, int ticks = 150)
     {
-        in.pilot.throttlePercent = throttle;
+        in.pilot.throttleRatio = throttle;
         for (int i = 0; i < ticks; i++)
             tick();
     }
@@ -82,7 +82,7 @@ TEST_F(VcuControllerTest, GivenPrecharge_WhenBusVoltageReached_ThenEntersDrive)
 TEST_F(VcuControllerTest, GivenDriveState_WhenTick_ThenMotorEnabled)
 {
     goToDrive();
-    in.pilot.throttlePercent = 0.5f;
+    in.pilot.throttleRatio = 0.5f;
     tick();
     EXPECT_TRUE(out.vesc.isMotorEnabled);
 }
@@ -99,7 +99,7 @@ TEST_F(VcuControllerTest, GivenStandby_WhenEStopPressed_ThenGoesToFault)
 TEST_F(VcuControllerTest, GivenDrivingWithThrottle_WhenEStopPressed_ThenCurrentZeroAndContactorOpen)
 {
     goToDrive();
-    in.pilot.throttlePercent = 0.5f;
+    in.pilot.throttleRatio = 0.5f;
     tick();
 
     in.pilot.isEStopPressed = true;
@@ -170,7 +170,7 @@ TEST_F(VcuControllerTest, GivenDrive_WhenBmsOkAndVescOk_ThenStaysInDrive)
 TEST_F(VcuControllerTest, GivenDriveWithThrottle_WhenBmsNotOk_ThenCurrentZeroAndContactorOpen)
 {
     goToDrive();
-    in.pilot.throttlePercent = 0.5f;
+    in.pilot.throttleRatio = 0.5f;
     tick();
 
     in.bms.isOk = false;
@@ -185,7 +185,7 @@ TEST_F(VcuControllerTest, GivenDriveWithThrottle_WhenBmsNotOk_ThenCurrentZeroAnd
 TEST_F(VcuControllerTest, GivenDrive_WhenFullThrottleHeld_ThenCurrentReachesMax)
 {
     goToDrive();
-    in.pilot.throttlePercent = 0.0f;
+    in.pilot.throttleRatio = 0.0f;
     tick();
     holdThrottle(1.0f);
     EXPECT_NEAR(out.vesc.targetAmp, Calibration::MAX_AMPS, 0.1f);
@@ -194,7 +194,7 @@ TEST_F(VcuControllerTest, GivenDrive_WhenFullThrottleHeld_ThenCurrentReachesMax)
 TEST_F(VcuControllerTest, GivenDrive_WhenThrottleHalfHeld_ThenCurrentIsPositiveAndBelowMax)
 {
     goToDrive();
-    in.pilot.throttlePercent = 0.0f;
+    in.pilot.throttleRatio = 0.0f;
     tick();
     holdThrottle(0.5f);
     EXPECT_GT(out.vesc.targetAmp, 0.0f);
@@ -204,9 +204,9 @@ TEST_F(VcuControllerTest, GivenDrive_WhenThrottleHalfHeld_ThenCurrentIsPositiveA
 TEST_F(VcuControllerTest, GivenDrive_WhenThrottleJumpsToFull_ThenCurrentRisesGradually)
 {
     goToDrive();
-    in.pilot.throttlePercent = 0.0f;
+    in.pilot.throttleRatio = 0.0f;
     tick();
-    in.pilot.throttlePercent = 1.0f;
+    in.pilot.throttleRatio = 1.0f;
     tick();
     EXPECT_LT(out.vesc.targetAmp, Calibration::MAX_AMPS * 0.1f);
 }
@@ -230,7 +230,7 @@ TEST_F(VcuControllerTest,
 TEST_F(VcuControllerTest, GivenDrive_WhenBrakeAndThrottleTogether_ThenCurrentZero)
 {
     goToDrive();
-    in.pilot.throttlePercent = 0.5f;
+    in.pilot.throttleRatio = 0.5f;
     in.pilot.isBrakePressed = true;
     tick();
     EXPECT_FLOAT_EQ(out.vesc.targetAmp, 0.0f);
@@ -239,7 +239,7 @@ TEST_F(VcuControllerTest, GivenDrive_WhenBrakeAndThrottleTogether_ThenCurrentZer
 TEST_F(VcuControllerTest, GivenBrakeLatched_WhenBrakeReleasedButThrottleHeld_ThenCurrentStaysZero)
 {
     goToDrive();
-    in.pilot.throttlePercent = 0.5f;
+    in.pilot.throttleRatio = 0.5f;
     in.pilot.isBrakePressed = true;
     tick();
 
@@ -250,7 +250,7 @@ TEST_F(VcuControllerTest, GivenBrakeLatched_WhenBrakeReleasedButThrottleHeld_The
 
 TEST_F(VcuControllerTest, GivenThrottleHeldSincePowerOn_WhenEnteringDrive_ThenCurrentZero)
 {
-    in.pilot.throttlePercent = 0.8f;
+    in.pilot.throttleRatio = 0.8f;
     goToDrive();
     tick();
     EXPECT_FLOAT_EQ(out.vesc.targetAmp, 0.0f);
@@ -296,7 +296,7 @@ TEST_F(VcuControllerTest, GivenReverseSelectedInDrive_WhenThrottlePressed_ThenCu
     EXPECT_TRUE(vcu.getIsInReverse());
 
     in.pilot.isBrakePressed = false;
-    in.pilot.throttlePercent = 0.0f;
+    in.pilot.throttleRatio = 0.0f;
     tick();
 
     holdThrottle(0.5f);

@@ -12,7 +12,7 @@ void ThrottleHallSensor::init(volatile uint16_t* dmaPtr, uint16_t dmaSize)
 
 void ThrottleHallSensor::update()
 {
-    if (m_dmaPtr == nullptr) {
+    if (m_dmaPtr == nullptr || m_dmaSize == 0) {
         m_badSamples = COUNT_BAD_READ_TO_FAULT;
         m_isReadingOk = false;
         return;
@@ -29,33 +29,27 @@ void ThrottleHallSensor::update()
     if (m_isReadingOk) {
         m_badSamples = 0;
         m_value = average;
-    }else{
+    } else if (m_badSamples < COUNT_BAD_READ_TO_FAULT) {
         m_badSamples++;
     }
 }
 
-float ThrottleHallSensor::mapRange(uint16_t x, uint16_t in_min, uint16_t in_max, float out_min,
-                                   float out_max)
-{
-    return (x - in_min) * (out_max - out_min) / (float)(in_max - in_min) + out_min;
-}
-
-float ThrottleHallSensor::getPercent()
+float ThrottleHallSensor::getRatio() const
 {
     if (!m_isReadingOk || !getIsValid())
         return 0.0f;
 
-    float percent = (m_value - PEDAL_MIN) / (float)(PEDAL_MAX - PEDAL_MIN);
+    float ratio = (m_value - PEDAL_MIN) / (float)(PEDAL_MAX - PEDAL_MIN);
 
-    if (percent < 0.0f)
-        percent = 0.0f;
-    if (percent > 1.0f)
-        percent = 1.0f;
+    if (ratio < 0.0f)
+        ratio = 0.0f;
+    if (ratio > 1.0f)
+        ratio = 1.0f;
 
-    return percent;
+    return ratio;
 }
 
-bool ThrottleHallSensor::getIsValid()
+bool ThrottleHallSensor::getIsValid() const
 {
     return m_badSamples < COUNT_BAD_READ_TO_FAULT;
 }

@@ -8,14 +8,11 @@ class ThrottleHallSensor
   public:
     ThrottleHallSensor();
     void init(volatile uint16_t* dmaPtr, uint16_t dmaSize = 100);
-    float getPercent();
-    bool getIsValid();
+    float getRatio() const;
+    bool getIsValid() const;
     void update();
 
   private:
-    static float mapRange(uint16_t x, uint16_t in_min, uint16_t in_max, float out_min,
-                          float out_max);
-
     volatile uint16_t* m_dmaPtr = nullptr;
     uint16_t m_dmaSize;
     float m_value = 0;
@@ -23,7 +20,7 @@ class ThrottleHallSensor
     uint8_t m_badSamples = 0;
 
     static constexpr uint16_t FAULT_MIN = 300;
-    static constexpr uint16_t FAULT_MAX = 3500;
+    static constexpr uint16_t FAULT_MAX = 3600;
     static constexpr uint16_t PEDAL_MIN = 570;
     static constexpr uint16_t PEDAL_MAX = 3180;
     static constexpr uint8_t COUNT_BAD_READ_TO_FAULT = 5;

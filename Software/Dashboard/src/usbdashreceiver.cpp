@@ -7,9 +7,9 @@ constexpr bool isSet(unsigned flags, int bit)
 
 UsbDashReceiver::UsbDashReceiver(QObject *parent)
     : QObject{parent},
-    m_serialPort(new QSerialPort(this)),
-    m_reconnectTimer(new QTimer(this)),
-    m_publishTimer(new QTimer(this))
+      m_serialPort(new QSerialPort(this)),
+      m_reconnectTimer(new QTimer(this)),
+      m_publishTimer(new QTimer(this))
 {
     m_serialPort = new QSerialPort(this);
     m_reconnectTimer = new QTimer(this);
@@ -31,7 +31,7 @@ void UsbDashReceiver::start(quint16 targetVid, quint16 targetPid)
     handleAutoreconnect();
 }
 
-const DashData& UsbDashReceiver::dashData() const { return m_data; }
+const DashData &UsbDashReceiver::dashData() const { return m_data; }
 
 bool UsbDashReceiver::isConnected() const { return m_serialPort->isOpen(); }
 
@@ -42,7 +42,8 @@ bool UsbDashReceiver::isDataOld() const
 
 void UsbDashReceiver::handleError(QSerialPort::SerialPortError error)
 {
-    if (error != QSerialPort::ResourceError) return;
+    if (error != QSerialPort::ResourceError)
+        return;
 
     qWarning() << "Serial port error " << m_serialPort->errorString();
     m_serialPort->close();
@@ -52,16 +53,20 @@ void UsbDashReceiver::handleError(QSerialPort::SerialPortError error)
 
 void UsbDashReceiver::handleAutoreconnect()
 {
-    if (m_serialPort != nullptr && m_serialPort->isOpen()) {
+    if (m_serialPort != nullptr && m_serialPort->isOpen())
+    {
         m_reconnectTimer->stop();
         return;
     }
 
     QString foundPortName = "";
 
-    for (const QSerialPortInfo &portInfo : QSerialPortInfo::availablePorts()) {
-        if (portInfo.hasVendorIdentifier() && portInfo.hasProductIdentifier()) {
-            if (portInfo.vendorIdentifier() == m_targetVid && portInfo.productIdentifier() == m_targetPid) {
+    for (const QSerialPortInfo &portInfo : QSerialPortInfo::availablePorts())
+    {
+        if (portInfo.hasVendorIdentifier() && portInfo.hasProductIdentifier())
+        {
+            if (portInfo.vendorIdentifier() == m_targetVid && portInfo.productIdentifier() == m_targetPid)
+            {
                 foundPortName = portInfo.portName();
                 qDebug() << "Found usb port:" << foundPortName;
                 break;
@@ -70,8 +75,10 @@ void UsbDashReceiver::handleAutoreconnect()
     }
 
     // Not found
-    if (foundPortName.isEmpty()) {
-        if (!m_reconnectTimer->isActive()) {
+    if (foundPortName.isEmpty())
+    {
+        if (!m_reconnectTimer->isActive())
+        {
             m_reconnectTimer->start();
         }
         return;
@@ -81,11 +88,14 @@ void UsbDashReceiver::handleAutoreconnect()
     m_serialPort->setPortName(foundPortName);
     m_serialPort->setBaudRate(QSerialPort::Baud115200);
 
-    if (m_serialPort->open(QIODevice::ReadOnly)) {
+    if (m_serialPort->open(QIODevice::ReadOnly))
+    {
         qDebug() << "Successfully connected";
         m_reconnectTimer->stop();
         emit connectionStatusChanged();
-    } else {
+    }
+    else
+    {
         qWarning() << "Found the device but failed to open";
         startReconnecting();
     }
@@ -93,9 +103,9 @@ void UsbDashReceiver::handleAutoreconnect()
 
 void UsbDashReceiver::publish()
 {
-    const bool fresh = m_sinceLastPacket.isValid()
-    && !m_sinceLastPacket.hasExpired(DATA_LIFESPAN_MS);
-    if (fresh != m_isDataOld) {
+    const bool fresh = m_sinceLastPacket.isValid() && !m_sinceLastPacket.hasExpired(DATA_LIFESPAN_MS);
+    if (fresh != m_isDataOld)
+    {
         m_isDataOld = fresh;
         emit dataOldChanged();
     }
@@ -110,24 +120,30 @@ void UsbDashReceiver::publish()
 
 void UsbDashReceiver::startReconnecting()
 {
-    if (!m_reconnectTimer->isActive()) {
+    if (!m_reconnectTimer->isActive())
+    {
         m_reconnectTimer->start();
     }
 }
 
 void UsbDashReceiver::handleRead()
 {
-    while (m_serialPort->canReadLine()) {
+    while (m_serialPort->canReadLine())
+    {
         QString line = QString::fromUtf8(m_serialPort->readLine().trimmed());
-        if (line.isEmpty()) continue;
+        if (line.isEmpty())
+            continue;
 
-        if (line.startsWith("$VCU,")) {
+        if (line.startsWith("$VCU,"))
+        {
             parseVcuPacket(line.split(','));
         }
-        else if (line.startsWith("$BMS,")) {
+        else if (line.startsWith("$BMS,"))
+        {
             parseBMSPacket(line.split(','));
         }
-        else {
+        else
+        {
             emit debugLogReceived(line);
         }
     }
@@ -156,7 +172,7 @@ void UsbDashReceiver::parseVcuPacket(const QStringList &parts)
     m_pendingData.accelY = parts[VcuAccelY].toFloat();
     m_pendingData.accelZ = parts[VcuAccelZ].toFloat();
 
-    m_pendingData.throttlePercent = parts[VcuThrottle].toFloat();
+    m_pendingData.throttleRatio = parts[VcuThrottle].toFloat();
 
     const unsigned in = parts[VcuInputFlags].toUInt();
     m_pendingData.isBrakePressed = isSet(in, InBrake);
@@ -185,16 +201,17 @@ void UsbDashReceiver::parseBMSPacket(const QStringList &parts)
 
     // Temperatures
     QVariantList temps;
-    for (int i = 0; i < Shared::BMS_TEMP_COUNT; ++i) {
+    for (int i = 0; i < Shared::BMS_TEMP_COUNT; ++i)
+    {
         const double temp = parts[BmsFirstTemp + i].toDouble();
         temps.append(temp == Shared::BMS_TEMP_MISSING ? qQNaN() : temp);
     }
     m_pendingData.packTemperatures = temps;
 
-
     // Convert to volt
     QVariantList cells;
-    for (int i = 0; i < Shared::BMS_CELL_COUNT; ++i) {
+    for (int i = 0; i < Shared::BMS_CELL_COUNT; ++i)
+    {
         cells.append(parts[BmsFirstCell + i].toInt() / 1000.0);
     }
     m_pendingData.cellVoltages = cells;
@@ -204,26 +221,42 @@ void UsbDashReceiver::parseBMSPacket(const QStringList &parts)
 
 QString UsbDashReceiver::stateToString(uint8_t stateId)
 {
-    switch(stateId) {
-    case 0: return "INIT";
-    case 1: return "STANDBY";
-    case 2: return "PRECHARGE";
-    case 3: return "DRIVE";
-    case 4: return "FAULT";
-    case 5: return "SHUTDOWN";
-    default: return "UNKNOWN";
+    switch (stateId)
+    {
+    case 0:
+        return "INIT";
+    case 1:
+        return "STANDBY";
+    case 2:
+        return "PRECHARGE";
+    case 3:
+        return "DRIVE";
+    case 4:
+        return "FAULT";
+    case 5:
+        return "SHUTDOWN";
+    default:
+        return "UNKNOWN";
     }
 }
 
 QString UsbDashReceiver::faultCodeToString(Shared::FaultCode faultCode)
 {
-    switch (faultCode) {
-        case Shared::FaultCode::ESTOP:             return "E-STOP";
-        case Shared::FaultCode::THROTTLE_INVALID:  return "THROTTLE";
-        case Shared::FaultCode::VESC_LOST:         return "VESC LOST";
-        case Shared::FaultCode::BMS_LOST:          return "BMS LOST";
-        case Shared::FaultCode::PRECHARGE_TIMEOUT: return "PRECHARGE";
-        case Shared::FaultCode::LOW_BUS_VOLTAGE:   return "LOW VOLTAGE";
-        default:                                   return "";
+    switch (faultCode)
+    {
+    case Shared::FaultCode::ESTOP:
+        return "E-STOP";
+    case Shared::FaultCode::THROTTLE_INVALID:
+        return "THROTTLE";
+    case Shared::FaultCode::VESC_LOST:
+        return "VESC LOST";
+    case Shared::FaultCode::BMS_LOST:
+        return "BMS LOST";
+    case Shared::FaultCode::PRECHARGE_TIMEOUT:
+        return "PRECHARGE";
+    case Shared::FaultCode::LOW_BUS_VOLTAGE:
+        return "LOW VOLTAGE";
+    default:
+        return "";
     }
 }

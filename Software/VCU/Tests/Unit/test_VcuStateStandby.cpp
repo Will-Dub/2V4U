@@ -39,7 +39,7 @@ TEST_F(VcuStateStandbyTest, GivenStartPressed_WhenUpdate_ThenGoesToPrecharge)
 
 TEST_F(VcuStateStandbyTest, GivenFullThrottle_WhenUpdate_ThenNoTorqueAndRelaysOpen)
 {
-    inputs.pilot.throttlePercent = 1.0f;
+    inputs.pilot.throttleRatio = 1.0f;
     state.update(inputs, outputs);
 
     EXPECT_FLOAT_EQ(outputs.vesc.targetAmp, 0.0f);

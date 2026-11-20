@@ -111,7 +111,7 @@ void VcuController::run(const VcuInputs& inputs, VcuOutputs& outputs)
 
     // Pressing brake and throttle
     if (!inputs.pilot.isBrakePressed &&
-        inputs.pilot.throttlePercent < Calibration::THROTTLE_RELEASE_THRESHOLD)
+        inputs.pilot.throttleRatio < Calibration::THROTTLE_RELEASE_THRESHOLD)
         m_isBrakeThrottleLatched = false;
     else if (inputs.pilot.isBrakePressed)
         m_isBrakeThrottleLatched = true;

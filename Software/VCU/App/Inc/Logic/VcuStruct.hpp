@@ -84,7 +84,7 @@ struct VcuInputs
         bool isForwardDirection = false;
         bool isStartPressed = false;
         bool isStartRisingEdge = false;
-        float throttlePercent = 0.0f;
+        float throttleRatio = 0.0f;
         bool isThrottleValid = false;
     } pilot;
 

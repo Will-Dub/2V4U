@@ -28,7 +28,7 @@ namespace Shared
         float accelZ;
 
         // Pilot
-        float throttlePercent;
+        float throttleRatio;
 
         // CAN
         uint32_t canRxCount;

@@ -40,7 +40,7 @@ void DashTransmitter::sendVcu(const App::Logic::VcuStatus& status,
     packet.accelX = inputs.imu.Ax;
     packet.accelY = inputs.imu.Ay;
     packet.accelZ = inputs.imu.Az;
-    packet.throttlePercent = inputs.pilot.throttlePercent;
+    packet.throttleRatio = inputs.pilot.throttleRatio;
     packet.canRxCount = inputs.vesc.rxCount;
     packet.canTxCount = inputs.vesc.txCount;
     packet.canTxFailCount = inputs.vesc.txFailCount;
@@ -67,9 +67,9 @@ void DashTransmitter::sendVcu(const App::Logic::VcuStatus& status,
     if (outputs.power.contactor)
         packet.outputStatusFlags |= (1 << 2);
 
-    printf("$VCU,%lu,%u,%u,%ld,%.2f,%.2f,%.2f,%.2f,%.2f,%.1f,%u,%u,%.2f,%.2f,%.2f,%lu,%lu,%lu\n",
+    printf("$VCU,%lu,%u,%u,%ld,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%u,%u,%.2f,%.2f,%.2f,%lu,%lu,%lu\n",
            packet.tickMs, packet.currentState, packet.faultCode, packet.rpm, packet.motorTemp,
-           packet.mosfetTemp, packet.accelX, packet.accelY, packet.accelZ, packet.throttlePercent,
+           packet.mosfetTemp, packet.accelX, packet.accelY, packet.accelZ, packet.throttleRatio,
            packet.inputStatusFlags, packet.outputStatusFlags, packet.motorCurrent,
            packet.inputCurrent, packet.inputVoltage, packet.canRxCount, packet.canTxCount,
            packet.canTxFailCount);

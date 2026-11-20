@@ -15,7 +15,8 @@
 #define BMS_MAX_CELL_COUNT 16
 #define DATA_LIFESPAN_MS 3000
 
-struct DashData {
+struct DashData
+{
     Q_GADGET
     Q_PROPERTY(int tickMs MEMBER tickMs)
     Q_PROPERTY(QString stateStr MEMBER stateStr)
@@ -38,7 +39,7 @@ struct DashData {
     Q_PROPERTY(float accelZ MEMBER accelZ)
 
     // Pillot
-    Q_PROPERTY(float throttlePercent MEMBER throttlePercent)
+    Q_PROPERTY(float throttleRatio MEMBER throttleRatio)
     Q_PROPERTY(bool isBrakePressed MEMBER isBrakePressed)
     Q_PROPERTY(bool isStartPressed MEMBER isStartPressed)
     Q_PROPERTY(bool isEStopPressed MEMBER isEStopPressed)
@@ -76,7 +77,7 @@ public:
     float accelY = 0.0f;
     float accelZ = 0.0f;
 
-    float throttlePercent = 0.0f;
+    float throttleRatio = 0.0f;
     bool isBrakePressed = false;
     bool isStartPressed = false;
     bool isEStopPressed = false;
@@ -134,7 +135,8 @@ private:
 
     // $VCU,tick,state,rpm,motorTemp,mosfetTemp,ax,ay,az,throttle,inFlags,outFlags,
     //      motorA,inputA,inputV,canRx,canTx,canTxFail
-    enum VcuField {
+    enum VcuField
+    {
         VcuTick = 1,
         VcuState,
         VcuFaultCode,
@@ -157,7 +159,8 @@ private:
     };
 
     // $BMS,packV,packA,tempC,cell1,cell2,...
-    enum BmsField {
+    enum BmsField
+    {
         BmsOk = 1,
         BmsVoltage = 2,
         BmsCurrent = 3,
@@ -166,8 +169,20 @@ private:
         BmsFieldCount = BmsFirstCell + Shared::BMS_CELL_COUNT
     };
 
-    enum InputBit { InBrake, InStart, InEStop, InForward, InThrottleValid };
-    enum OutputBit { OutMotor, OutPrecharge, OutContactor };
+    enum InputBit
+    {
+        InBrake,
+        InStart,
+        InEStop,
+        InForward,
+        InThrottleValid
+    };
+    enum OutputBit
+    {
+        OutMotor,
+        OutPrecharge,
+        OutContactor
+    };
 
     QSerialPort *m_serialPort;
     QTimer *m_reconnectTimer;
@@ -181,7 +196,6 @@ private:
 
     quint16 m_targetVid = 0;
     quint16 m_targetPid = 0;
-
 };
 
 #endif // USBDASHRECEIVER_H

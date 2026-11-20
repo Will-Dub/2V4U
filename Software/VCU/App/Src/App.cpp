@@ -97,8 +97,9 @@ static void gatherInputs(App::Logic::VcuInputs& inputs, uint32_t currentTickMs)
 
     // Throttle
     throttleSensor.update();
-    inputs.pilot.throttlePercent = throttleSensor.getPercent();
+    inputs.pilot.throttleRatio = throttleSensor.getRatio();
     inputs.pilot.isThrottleValid = throttleSensor.getIsValid();
+    // printf("%.2f ", throttleSensor.getRatio());
 
     // IMU
     static float imuAx = 0.0f, imuAy = 0.0f, imuAz = 1.0f;
@@ -184,7 +185,7 @@ extern "C" void App_Run(void)
 
     applyOutputs(outputs, currentTickMs);
 
-    dashTransmitter.process(vcuController.getStatus(), inputs, outputs);
+    // dashTransmitter.process(vcuController.getStatus(), inputs, outputs);
     buzzer.update(currentTickMs);
 
     HAL_IWDG_Refresh(&hiwdg);
