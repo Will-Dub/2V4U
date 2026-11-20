@@ -16,7 +16,7 @@ VcuStateId VcuStatePrecharge::update(const VcuInputs& inputs, VcuOutputs& output
     outputs.power.prechargeRelay = true;
     outputs.power.contactor = false;
 
-    if (inputs.vesc.inputVoltage > Calibration::PRECHARGE_DONE_VOLTAGE) {
+    if (inputs.vesc.inputVoltage > ( inputs.bms.packVoltageV * Calibration::PRECHARGE_DONE_RATIO)) {
         return VcuStateId::DRIVE;
     }
 

@@ -27,6 +27,8 @@ class VcuController
     VcuState* getStateInstance(VcuStateId id);
     void transitionToState(VcuStateId nextStateId, const VcuInputs& inputs);
 
+    static bool isBmsTooHot(const App::Logic::BmsData& bms);
+
   public:
     VcuController(ILogger& logger);
     void run(const VcuInputs& inputs, VcuOutputs& outputs);

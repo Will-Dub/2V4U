@@ -14,11 +14,6 @@ VcuStateId VcuStateDrive::update(const VcuInputs& inputs, VcuOutputs& outputs)
     outputs.power.contactor = true;
     outputs.power.prechargeRelay = false;
 
-    if (inputs.vesc.inputVoltage < 35.0f) {
-        m_context->requestFault(Shared::FaultCode::LOW_BUS_VOLTAGE);
-        return VcuStateId::SHUTDOWN;
-    }
-
     // Shutdown state logic
     if (!inputs.pilot.isStartPressed && inputs.vesc.rpm == 0.0f) {
         return VcuStateId::SHUTDOWN;
