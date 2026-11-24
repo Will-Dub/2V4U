@@ -1,5 +1,7 @@
 #include "ThrottleHallSensor.hpp"
 
+#include <stdio.h>
+
 namespace App::Drivers {
 
 ThrottleHallSensor::ThrottleHallSensor() {}

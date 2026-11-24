@@ -92,7 +92,7 @@ Item {
         InfoBlock {
             width: 120
             labelText: "THROTTLE"
-            valueText: UsbDashReceiver.dashData.throttleRatio
+            valueText: UsbDashReceiver.dashData.throttlePercent
             valueUnit: "%"
         }
 

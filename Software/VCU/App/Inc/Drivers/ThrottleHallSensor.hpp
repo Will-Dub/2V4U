@@ -19,11 +19,11 @@ class ThrottleHallSensor
     bool m_isReadingOk = false;
     uint8_t m_badSamples = 0;
 
-    static constexpr uint16_t FAULT_MIN = 300;
-    static constexpr uint16_t FAULT_MAX = 3600;
-    static constexpr uint16_t PEDAL_MIN = 570;
-    static constexpr uint16_t PEDAL_MAX = 3180;
-    static constexpr uint8_t COUNT_BAD_READ_TO_FAULT = 5;
+    static constexpr uint16_t FAULT_MIN = 700;
+    static constexpr uint16_t FAULT_MAX = 4500;
+    static constexpr uint16_t PEDAL_MIN = 960;
+    static constexpr uint16_t PEDAL_MAX = 4100;
+    static constexpr uint8_t COUNT_BAD_READ_TO_FAULT = 10;
 };
 
 }; // namespace App::Drivers

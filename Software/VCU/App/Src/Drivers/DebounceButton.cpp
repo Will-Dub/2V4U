@@ -2,10 +2,12 @@
 
 namespace App::Drivers {
 
-DebounceButton::DebounceButton() {}
+DebounceButton::DebounceButton(bool isNormallyClosed) : m_isNormallyClosed(isNormallyClosed) {}
 
 void DebounceButton::update(uint32_t currentMs, bool isPressed)
 {
+    if (m_isNormallyClosed)
+        isPressed = !isPressed;
     m_isRisingEdge = false;
 
     if (isPressed != m_lastRawState) {

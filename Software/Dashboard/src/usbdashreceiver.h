@@ -39,7 +39,7 @@ struct DashData
     Q_PROPERTY(float accelZ MEMBER accelZ)
 
     // Pillot
-    Q_PROPERTY(float throttleRatio MEMBER throttleRatio)
+    Q_PROPERTY(float throttlePercent MEMBER throttlePercent)
     Q_PROPERTY(bool isBrakePressed MEMBER isBrakePressed)
     Q_PROPERTY(bool isStartPressed MEMBER isStartPressed)
     Q_PROPERTY(bool isEStopPressed MEMBER isEStopPressed)
@@ -77,7 +77,7 @@ public:
     float accelY = 0.0f;
     float accelZ = 0.0f;
 
-    float throttleRatio = 0.0f;
+    int throttlePercent = 0;
     bool isBrakePressed = false;
     bool isStartPressed = false;
     bool isEStopPressed = false;

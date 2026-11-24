@@ -172,7 +172,7 @@ void UsbDashReceiver::parseVcuPacket(const QStringList &parts)
     m_pendingData.accelY = parts[VcuAccelY].toFloat();
     m_pendingData.accelZ = parts[VcuAccelZ].toFloat();
 
-    m_pendingData.throttleRatio = parts[VcuThrottle].toFloat();
+    m_pendingData.throttlePercent = parts[VcuThrottle].toFloat() * 100;
 
     const unsigned in = parts[VcuInputFlags].toUInt();
     m_pendingData.isBrakePressed = isSet(in, InBrake);
