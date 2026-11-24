@@ -1,6 +1,7 @@
 #include "VcuController.hpp"
 
 #include "Calibration.hpp"
+#include "FaultCode.h"
 #include "VcuStruct.hpp"
 
 using namespace App::Logic;
@@ -85,9 +86,11 @@ void VcuController::transitionToState(VcuStateId nextStateId, const VcuInputs& i
 
 void VcuController::run(const VcuInputs& inputs, VcuOutputs& outputs)
 {
-    bool isInDrive = (m_currentState->getId() == VcuStateId::DRIVE);
-    bool isInFault = m_currentState->getId() == VcuStateId::FAULT;
+    const bool isInDrive = (m_currentState->getId() == VcuStateId::DRIVE);
+    const bool isInFault = m_currentState->getId() == VcuStateId::FAULT;
     Shared::FaultCode fault = Shared::FaultCode::NONE;
+
+    // TODO: Go into fault directly for ESTOP
 
     // Check for fault
     if (!isInFault) {
@@ -97,16 +100,32 @@ void VcuController::run(const VcuInputs& inputs, VcuOutputs& outputs)
             fault = Shared::FaultCode::THROTTLE_INVALID;
         else if (!inputs.bms.isOk)
             fault = Shared::FaultCode::BMS_LOST;
+        else if (inputs.bms.packCurrentA > Calibration::BMS_MAX_CURRENT_A)
+            fault = Shared::FaultCode::BMS_HIGH_CURRENT;
+        else if (inputs.bms.packVoltageV < Calibration::BMS_MIN_VOLTAGE_V)
+            fault = Shared::FaultCode::BMS_LOW_VOLTAGE;
+        else if(inputs.bms.protectionFlags)
+            fault = Shared::FaultCode::BMS_PROTECTION;
+        else if (isBmsTooHot(inputs.bms))
+            fault = Shared::FaultCode::BMS_HIGH_TEMPERATURE;
+        else if ((inputs.bms.cellMaxV - inputs.bms.cellMinV) > Calibration::BMS_MAX_CELL_DELTA_V)
+            fault = Shared::FaultCode::BMS_HIGH_CELL_DELTA;
     }
 
     if (isInDrive && fault == Shared::FaultCode::NONE) {
         if (!inputs.vesc.isOk)
             fault = Shared::FaultCode::VESC_LOST;
+        else if (inputs.vesc.inputVoltage < Calibration::VESC_MIN_VOLTAGE_V)
+            fault = Shared::FaultCode::VESC_LOW_VOLTAGE;
+        else if (inputs.vesc.inputCurrent > Calibration::VESC_MAX_CURRENT_A)
+            fault = Shared::FaultCode::VESC_HIGH_CURRENT;
+        else if (inputs.vesc.mosfetTemp > Calibration::VESC_MAX_MOSFET_TEMP_C || inputs.vesc.motorTemp > Calibration::VESC_MAX_MOTOR_TEMP_C)
+            fault = Shared::FaultCode::VESC_HIGH_TEMPERATURE;
     }
 
     if (fault != Shared::FaultCode::NONE) {
-        m_faultCode = fault;
-        transitionToState(VcuStateId::FAULT, inputs);
+        requestFault(fault);
+        transitionToState(VcuStateId::SHUTDOWN, inputs);
     }
 
     // Pressing brake and throttle
@@ -127,4 +146,13 @@ void VcuController::run(const VcuInputs& inputs, VcuOutputs& outputs)
 
     VcuStateId nextStateId = m_currentState->update(inputs, outputs);
     transitionToState(nextStateId, inputs);
+}
+
+bool VcuController::isBmsTooHot(const App::Logic::BmsData& bms)
+{
+    for (uint8_t i = 0; i < bms.tempCount; i++) {
+        if (bms.tempC[i] > Calibration::BMS_MAX_TEMP_C)
+            return true;
+    }
+    return false;
 }

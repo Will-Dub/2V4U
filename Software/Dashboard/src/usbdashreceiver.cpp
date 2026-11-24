@@ -248,14 +248,28 @@ QString UsbDashReceiver::faultCodeToString(Shared::FaultCode faultCode)
         return "E-STOP";
     case Shared::FaultCode::THROTTLE_INVALID:
         return "THROTTLE";
-    case Shared::FaultCode::VESC_LOST:
-        return "VESC LOST";
-    case Shared::FaultCode::BMS_LOST:
-        return "BMS LOST";
     case Shared::FaultCode::PRECHARGE_TIMEOUT:
         return "PRECHARGE";
-    case Shared::FaultCode::LOW_BUS_VOLTAGE:
-        return "LOW VOLTAGE";
+    case Shared::FaultCode::VESC_LOST:
+        return "VESC LOST";
+    case Shared::FaultCode::VESC_LOW_VOLTAGE:
+        return "VESC LOW VOLT";
+    case Shared::FaultCode::VESC_HIGH_CURRENT:
+        return "VESC HIGH AMP";
+    case Shared::FaultCode::VESC_HIGH_TEMPERATURE:
+        return "VESC HIGH TEMP";
+    case Shared::FaultCode::BMS_LOST:
+        return "BMS LOST";
+    case Shared::FaultCode::BMS_HIGH_CELL_DELTA:
+        return "BMS HIGH DELTA";
+    case Shared::FaultCode::BMS_HIGH_CURRENT:
+        return "BMS HIGH AMP";
+    case Shared::FaultCode::BMS_PROTECTION:
+        return "BMS PROTECTION";
+    case Shared::FaultCode::BMS_LOW_VOLTAGE:
+        return "BMS LOW VOLT";
+    case Shared::FaultCode::BMS_HIGH_TEMPERATURE:
+        return "BMS HIGH TEMP";
     default:
         return "";
     }
